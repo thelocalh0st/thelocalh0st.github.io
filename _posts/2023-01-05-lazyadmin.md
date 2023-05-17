@@ -31,7 +31,8 @@ Nmap done: 1 IP address (1 host up) scanned in 20.10 seconds
 
 **Let's check out port number 80**
 
-![apache2.png](assets/images/apache2-line34.jpg)
+
+![apache](https://github.com/thelocalh0st/thelocalh0st.github.io/assets/125783410/e48bdece-c571-4717-ab3a-9a49d3b2d674)
 
 **We can see that it's a apache2 Ubuntu Default page let's discover the directories by gobuster**
 
@@ -60,7 +61,8 @@ Nmap done: 1 IP address (1 host up) scanned in 20.10 seconds
 
 
 **There's a Sweet Rice notice**
-![sweetrice.png](assets/images/line-63-sweetrice.jpg)
+
+![line-63-sweetrice](https://github.com/thelocalh0st/thelocalh0st.github.io/assets/125783410/6ac0ad67-95ae-4ae7-9837-adadab19db0c)
 
 
 Let's Check the sub directories of /content aswell!!
@@ -108,8 +110,7 @@ New web - new SweetRice for both PC & mobile website creator,easy way to follow 
 
 We can  now conclude that the target machine is using SweetRice CMS V1.5.0. Let's search  [Exploit-DB](https://www.exploit-db.com/) 
 
-
-![mysql_backup.png](assets/images/line112.jpg)
+![line112](https://github.com/thelocalh0st/thelocalh0st.github.io/assets/125783410/adeb2fdc-563a-4ea4-b622-7706ec137f15)
 
 
 &nbsp;
@@ -119,12 +120,13 @@ We now have a username and a password hash. Let's crack the hash using hashcat.
 
 ![crackstation](https://user-images.githubusercontent.com/95465072/214611298-2d296100-6907-46a2-a13a-b2b255c183f9.png)
 
+![line-120](https://github.com/thelocalh0st/thelocalh0st.github.io/assets/125783410/d9286575-7143-4767-b193-b5bdce1ad931)
 
-![login.png](assets/images/line-120.jpg)
+
 
 We can now login to admin panel as we have both the username and password
+![line-123](https://github.com/thelocalh0st/thelocalh0st.github.io/assets/125783410/92c602ed-77c3-4930-be66-6367da47bc40)
 
-![admin_panel.png](assets/images/line-123.jpg)
 
 We have found that there's  [Arbitrary File Upload](https://www.exploit-db.com/exploits/40716) vulnurablity. We can exploit it to upload a reverse shell script and gain access to the target machine.
 
@@ -148,7 +150,9 @@ We have found that there's  [Arbitrary File Upload](https://www.exploit-db.com/e
 [+] URL : http://10.10.39.105/content/attachment/shell.php5
 ```
 
-![file_upload.png](assets/images/127.jpg)
+
+![127](https://github.com/thelocalh0st/thelocalh0st.github.io/assets/125783410/e942147a-d5b2-4637-a93c-e8f553c71662)
+
 
 ```
 ❯ nc -nlvp 1234
