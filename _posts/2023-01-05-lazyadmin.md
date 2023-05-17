@@ -31,7 +31,7 @@ Nmap done: 1 IP address (1 host up) scanned in 20.10 seconds
 
 **Let's check out port number 80**
 
-![apache2.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1665377067571/p7PaKx_ad.png?auto=compress,format&format=webp)
+![apache2.png](assets/images/apache2-line34.jpg)
 
 **We can see that it's a apache2 Ubuntu Default page let's discover the directories by gobuster**
 
@@ -60,7 +60,7 @@ Nmap done: 1 IP address (1 host up) scanned in 20.10 seconds
 
 
 **There's a Sweet Rice notice**
-![sweetrice.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1665377103198/gRtSbUY16.png?auto=compress,format&format=webp)
+![sweetrice.png](assets/images/line-63-sweetrice.jpg)
 
 
 Let's Check the sub directories of /content aswell!!
@@ -109,7 +109,7 @@ New web - new SweetRice for both PC & mobile website creator,easy way to follow 
 We can  now conclude that the target machine is using SweetRice CMS V1.5.0. Let's search  [Exploit-DB](https://www.exploit-db.com/) 
 
 
-![mysql_backup.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1665377129642/EqwkiOGp6.png?auto=compress,format&format=webp)
+![mysql_backup.png](assets/images/line112.jpg)
 
 
 &nbsp;
@@ -120,11 +120,11 @@ We now have a username and a password hash. Let's crack the hash using hashcat.
 ![crackstation](https://user-images.githubusercontent.com/95465072/214611298-2d296100-6907-46a2-a13a-b2b255c183f9.png)
 
 
-![login.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1665377171185/JdiCOSX8Q.png?auto=compress,format&format=webp)
+![login.png](assets/images/line-120.jpg)
 
 We can now login to admin panel as we have both the username and password
 
-![admin_panel.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1665377185323/1tjUtIkNM.png?auto=compress,format&format=webp)
+![admin_panel.png](assets/images/line-123.jpg)
 
 We have found that there's  [Arbitrary File Upload](https://www.exploit-db.com/exploits/40716) vulnurablity. We can exploit it to upload a reverse shell script and gain access to the target machine.
 
@@ -148,7 +148,7 @@ We have found that there's  [Arbitrary File Upload](https://www.exploit-db.com/e
 [+] URL : http://10.10.39.105/content/attachment/shell.php5
 ```
 
-![file_upload.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1665377235556/5ks00u93P.png?auto=compress,format&format=webp)
+![file_upload.png](assets/images/127.jpg)
 
 ```
 ❯ nc -nlvp 1234
