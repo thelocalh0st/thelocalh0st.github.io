@@ -9,7 +9,8 @@ tags: [redteam, penetration-testing, pentesting, burpsuite, burpsuite-pro, learn
 
 
 
-![Cover-Image](https://i0.wp.com/technicalsapien.com/wp-content/uploads/2021/10/Burp-Suite-Professional-2020-Free-Download1.jpg?fit=836%2C484&ssl=1)
+
+![Burp-Suite-Professional-2020-Free-Download1 (1)](https://github.com/thelocalh0st/thelocalh0st.github.io/assets/125783410/f6fd029f-9056-40b2-9442-5fd210625a59)
 
 &nbsp;
 &nbsp;
