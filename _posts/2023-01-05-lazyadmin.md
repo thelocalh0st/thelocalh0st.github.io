@@ -29,6 +29,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 Nmap done: 1 IP address (1 host up) scanned in 20.10 seconds
 ```
 
+
 **Let's check out port number 80**
 
 
