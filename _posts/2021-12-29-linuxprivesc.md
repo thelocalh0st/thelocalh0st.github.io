@@ -40,8 +40,7 @@ tags: [redteam, penetration-testing, pentesting,linux,linux-privilege-escalation
 6 [NFS Root Squashing](#6-nfs-root-squashing)<br>
 7 [Scheduled Tasks](#7-scheduled-tasks)<br>
 8 [SUID](#8-suid)
-   - Find SUID Binaries<br>
-9 [Capabilities](#9-capabilities)<br>
+   - Find SUID Binaries<br><br>
 &nbsp;
 &nbsp;
 &nbsp;
