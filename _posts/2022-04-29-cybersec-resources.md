@@ -16,8 +16,9 @@ tags: [redteam, blueteam, cybersecurity , resources, courses,cyberlabs] # TAG na
 ## ⚛️ Overview
 Want to learn more about cybersecurity? Discover cybersecurity resources: anything from cybersecurity websites to podcasts, industry events, and organizations.
   
+![cybersec](https://github.com/thelocalh0st/thelocalh0st.github.io/assets/125783410/bdbbf881-8143-4db2-8374-31f21f62b67d)
 
-![Logo](https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fGxlYXJuaW5nJTIwcmVzb3VyY2VzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=600&q=60)
+
 
 ## Training Platforms 📖
 
