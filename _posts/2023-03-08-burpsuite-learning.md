@@ -1,7 +1,7 @@
 ---
 title: <img width="50" height="50" alt="front-page port 80-shoopyu" src="https://www.kali.org/tools/burpsuite/images/burpsuite-logo.svg"> Burpsuite Learning Resources 🧠💻
 date: 2023-03-8 00:00:02 +730
-categories: [Resources, others]
+categories: [Resources, bugbounty]
 tags: [redteam, penetration-testing, pentesting, burpsuite, burpsuite-pro, learning, resources, cybersecurity-resources] # TAG names should always be lowercase
 
 
