@@ -1,7 +1,7 @@
 ---
 title: <img width="50" height="50" alt="front-page port 80-shoopyu" src="https://www.springboard.com/blog/wp-content/uploads/2021/07/What-is-github-and-how-to-use-it-scaled-1536x589.jpg"> Github Dork for finding Sensitive Information
 date: 2023-04-02 00:00:02 +240
-categories: [Resources, others]
+categories: [Resources, bugbounty]
 tags: [resources,github-dork,google-dorks,dorks,discovery,recon,reconnaissance,information-gathering] # TAG names should always be lowercase
 
 ---
