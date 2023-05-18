@@ -1,7 +1,7 @@
 ---
 title: <img width="50" height="50" alt="front-page port 80-shoopyu" src="https://user-images.githubusercontent.com/95465072/214883789-1f48e8ab-9de0-4693-b0f2-94f42e433c4f.png"> Linux Privilege Escalation 🦁
 date: 2021-12-29 00:00:02 +730
-categories: [Resources, others ]
+categories: [Resources, general ]
 tags: [redteam, penetration-testing, pentesting,linux,linux-privilege-escalation,linux-privesc] # TAG names should always be lowercase
 
 
