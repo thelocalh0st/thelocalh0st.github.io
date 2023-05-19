@@ -22,19 +22,19 @@ Want to learn more about cybersecurity? Discover cybersecurity resources: anythi
 
 ## Training Platforms 📖
 
-:link: [Hackthebox Academy](https://hackthebox.com) <br>
-:link: [TryHackme](https://tryhackme.com)<br>
-:link: [Cybrary](https://app.cybrary.it/)<br>
-:link: [SANC Cyeber Aces](http://www.cyberaces.org/)<br>
-:link: [INE elearn security](https://elearnsecurity.com/)<br>
-:link: [Codered](https://codered.eccouncil.org/)<br>
-:link: [Fortinet](https://www.fortinet.com/)<br>
-:link: [IT Security GURU](https://www.itsecurityguru.org/)<br>
-:link: [Udemy](https://www.udemy.com/)<br>
-:link: [Coursera](https://in.coursera.org/)<br>
-:link: [Edx](https://www.edx.org/)<br>
-:link: [Plurasight](https://www.pluralsight.com/)<br>
-:link: [Cyberacademy](https://cybercademy.org/author/grant/)<br>
+1 [Hackthebox Academy](https://hackthebox.com) <br>
+2 [TryHackme](https://tryhackme.com)<br>
+3 [Cybrary](https://app.cybrary.it/)<br>
+4 [SANC Cyeber Aces](http://www.cyberaces.org/)<br>
+5 [INE elearn security](https://elearnsecurity.com/)<br>
+6 [Codered](https://codered.eccouncil.org/)<br>
+7 [Fortinet](https://www.fortinet.com/)<br>
+8 [IT Security GURU](https://www.itsecurityguru.org/)<br>
+9 [Udemy](https://www.udemy.com/)<br>
+10 [Coursera](https://in.coursera.org/)<br>
+11 [Edx](https://www.edx.org/)<br>
+12 [Plurasight](https://www.pluralsight.com/)<br>
+13 [Cyberacademy](https://cybercademy.org/author/grant/)<br>
 
 
 ## Cybersecurity-Labs 🧪💻
