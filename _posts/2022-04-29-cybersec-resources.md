@@ -41,47 +41,47 @@ Want to learn more about cybersecurity? Discover cybersecurity resources: anythi
 
 A collection of free labs to practice and test your REDTEAM/BLUETEAM and CTF Skills
 
-:anger: [Attack-Defense](https://attackdefense.com/)<br>
-:anger:  [Alert to win](https://alf.nu/alert1)<br>
-:anger:  [Bancocn](https://bancocn.com/)<br>
-:anger: [CTF Komodo Security](https://ctf.komodosec.com/)<br>
-:anger:  [CryptoHack](https://cryptohack.org/)<br>
-:anger:  [CMD Challenge](https://cmdchallenge.com/)<br>
-:anger: [Explotation Education](https://exploit.education/)<br>
-:anger:  [Google CTF](https://lnkd.in/e46drbz8)<br>
-:anger: [HackTheBox](https://www.hackthebox.com/)<br>
-:anger: [Hackthis](https://www.hackthis.co.uk/)<br>
-:anger:  [Hacksplaining](https://lnkd.in/eAB5CSTA)<br>
-:anger:  [Hacker101](https://ctf.hacker101.com/)<br>
-:anger:  [Hacker Security](https://lnkd.in/ex7R-C-e)<br>
-:anger:  [Hacking-Lab](https://hacking-lab.com/)<br>
-:anger:  [HSTRIKE](https://hstrike.com/)<br>
-:anger: [ImmersiveLabs](https://immersivelabs.com/)<br>
-:anger:  [NewbieContest](https://lnkd.in/ewBk6fU5)<br>
-:anger: [OverTheWire](http://overthewire.org/)<br>
-:anger: [Practical Pentest Labs](https://lnkd.in/esq9Yuv5)<br>
-:anger: [Pentestlab](https://pentesterlab.com/)<br>
-:anger: [Hackaflag BR](https://hackaflag.com.br/)<br>
-:anger: [Penetration Testing Practice Labs](https://lnkd.in/e6wVANYd)<br>
-:anger:  [PentestIT LAB](https://lab.pentestit.ru/)<br>
-:anger:  [PicoCTF](https://picoctf.com/)<br>
-:anger:  [PWNABLE](https://lnkd.in/eMEwBJzn)<br>
-:anger:  [Root-Me](https://www.root-me.org/)<br>
-:anger: [Root in Jail](http://rootinjail.com/)<br>
-:anger:  [SANS Challenger](https://lnkd.in/e5TAMawK)<br>
-:anger: [SmashTheStack](https://lnkd.in/eVn9rP9p)<br>
-:anger:  [The Cryptopals Crypto Challenges](https://cryptopals.com/)<br>
-:anger:  [Try Hack Me](https://tryhackme.com/)<br>
-:anger:  [Vulnhub](https://www.vulnhub.com/)<br>
-:anger:  [W3Challs](https://w3challs.com/)<br>
-:anger: [WeChall](http://www.wechall.net/)<br>
-:anger: [Zenk-Security](https://lnkd.in/ewJ5rNx2)<br>
-:anger:  [Cyberdefenders](https://lnkd.in/dVcmjEw8)<br>
-:anger:  [LetsDefend](https://letsdefend.io/)<br>
-:anger: [Vulnmachines](https://vulnmachines.com)<br>
-:anger:  [Rangeforce](https://www.rangeforce.com)<br>
-:anger:  [Ctftime](https://ctftime.org)<br>
-:anger:  [Pwn college](https://dojo.pwn.college)<br>
+1 [Attack-Defense](https://attackdefense.com/)<br>
+2  [Alert to win](https://alf.nu/alert1)<br>
+3  [Bancocn](https://bancocn.com/)<br>
+4  [CTF Komodo Security](https://ctf.komodosec.com/)<br>
+5  [CryptoHack](https://cryptohack.org/)<br>
+6  [CMD Challenge](https://cmdchallenge.com/)<br>
+7  [Explotation Education](https://exploit.education/)<br>
+8  [Google CTF](https://lnkd.in/e46drbz8)<br>
+9 [HackTheBox](https://www.hackthebox.com/)<br>
+10 [Hackthis](https://www.hackthis.co.uk/)<br>
+11  [Hacksplaining](https://lnkd.in/eAB5CSTA)<br>
+12  [Hacker101](https://ctf.hacker101.com/)<br>
+13  [Hacker Security](https://lnkd.in/ex7R-C-e)<br>
+14  [Hacking-Lab](https://hacking-lab.com/)<br>
+15  [HSTRIKE](https://hstrike.com/)<br>
+16 [ImmersiveLabs](https://immersivelabs.com/)<br>
+17  [NewbieContest](https://lnkd.in/ewBk6fU5)<br>
+18 [OverTheWire](http://overthewire.org/)<br>
+19 [Practical Pentest Labs](https://lnkd.in/esq9Yuv5)<br>
+20 [Pentestlab](https://pentesterlab.com/)<br>
+21 [Hackaflag BR](https://hackaflag.com.br/)<br>
+22 [Penetration Testing Practice Labs](https://lnkd.in/e6wVANYd)<br>
+23  [PentestIT LAB](https://lab.pentestit.ru/)<br>
+24  [PicoCTF](https://picoctf.com/)<br>
+25  [PWNABLE](https://lnkd.in/eMEwBJzn)<br>
+26  [Root-Me](https://www.root-me.org/)<br>
+27 [Root in Jail](http://rootinjail.com/)<br>
+28  [SANS Challenger](https://lnkd.in/e5TAMawK)<br>
+29 [SmashTheStack](https://lnkd.in/eVn9rP9p)<br>
+30 [The Cryptopals Crypto Challenges](https://cryptopals.com/)<br>
+31  [Try Hack Me](https://tryhackme.com/)<br>
+32  [Vulnhub](https://www.vulnhub.com/)<br>
+33  [W3Challs](https://w3challs.com/)<br>
+34 [WeChall](http://www.wechall.net/)<br>
+35 [Zenk-Security](https://lnkd.in/ewJ5rNx2)<br>
+36  [Cyberdefenders](https://lnkd.in/dVcmjEw8)<br>
+37  [LetsDefend](https://letsdefend.io/)<br>
+38 [Vulnmachines](https://vulnmachines.com)<br>
+39  [Rangeforce](https://www.rangeforce.com)<br>
+40  [Ctftime](https://ctftime.org)<br>
+41  [Pwn college](https://dojo.pwn.college)<br>
 
 
 ## Cybersecurity-Youtube Channels 📺
