@@ -187,7 +187,7 @@ Some Great Cybersecurity & Hacking Documentaries Recommendations!
 8. [Secret History Of Hacking](https://lnkd.in/dnCWU-hp) 
 9. [Risk (2016)](https://lnkd.in/dMgWT-TN)
 10. [Zero Days (2016)](https://lnkd.in/dq_gZA8z)
-11. [Guardians Of The New World (Hacking Documentary) | Real Stories](https://lnkd.in/dUPybtFd)
+11. [Guardians Of The New World Hacking Documentary | Real Stories](https://lnkd.in/dUPybtFd)
 12. [A Origem dos Hackers](https://lnkd.in/dUJgG-6J)
 13. [The Great Hack](https://lnkd.in/dp-MsrQJ)
 14. [The Networks Dilemma](https://lnkd.in/dB6rC2RD)
