@@ -1,7 +1,7 @@
 ---
 title: <img width="50" height="50" alt="front-page port 80-shoopyu" src="https://www.thebigredgroup.com/wp-content/uploads/2021/06/top-six.jpg"> Cybersecurity Resources 💻🛡️
 date: 2022-04-29 00:00:02 +730
-categories: [Resources, Books]
+categories: [Resources, general]
 tags: [redteam, blueteam, cybersecurity , resources, courses,cyberlabs] # TAG names should always be lowercase
 
 
