@@ -99,15 +99,43 @@ comments:
 
 
   giscus:
-    repo: thelocalh0st/thelocalh0st.github.io # <gh-username>/<repo>
-    repo_id: 125783410
-    category: General
-    category_id: DIC_kwDOGjYtbc4CA_TS
-    mapping: # optional, default to 'pathname'
-    input_position: # optional, default to 'bottom'
-    lang: # optional, default to the value of `site.lang`
-    reactions_enabled: # optional, default to the value of `1`
-    
+    data-repo="thelocalh0st/thelocalh0st.github.io"
+    data-repo-id="R_kgDOJjupIA"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOJjupIM4CWxhT"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="en"
+    crossorigin="anonymous"
+#    repo: thelocalh0st/thelocalh0st.github.io # <gh-username>/<repo>
+#    repo_id: 125783410
+#    category: 
+#    category_id: DIC_kwDOGjYtbc4CA_TS
+#    mapping: # optional, default to 'pathname'
+#    input_position: # optional, default to 'bottom'
+#    lang: # optional, default to the value of `site.lang`
+#    reactions_enabled: # optional, default to the value of `1`
+ 
+ 
+#  <script src="https://giscus.app/client.js"
+#         data-repo="thelocalh0st/thelocalh0st.github.io"
+#         data-repo-id="R_kgDOJjupIA"
+#         data-category="Announcements"
+#         data-category-id="DIC_kwDOJjupIM4CWxhT"
+#         data-mapping="pathname"
+#         data-strict="0"
+#         data-reactions-enabled="1"
+#         data-emit-metadata="0"
+#         data-input-position="bottom"
+#         data-theme="preferred_color_scheme"
+#         data-lang="en"
+#         crossorigin="anonymous"
+#         async>
+# </script>
     
 
 # Self-hosted static assets, optional › https://github.com/cotes2020/chirpy-static-assets
