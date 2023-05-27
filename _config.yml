@@ -104,6 +104,7 @@ comments:
     input_position: # optional, default to 'bottom'
     lang: # optional, default to the value of `site.lang`
     reactions_enabled: # optional, default to the value of `1`
+    theme: dark
     
     
 
