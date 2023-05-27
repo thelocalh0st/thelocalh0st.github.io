@@ -99,16 +99,16 @@ comments:
 
 
 
-  giscus:
-    repo: thelocalh0st/thelocalh0st.github.io
-    mapping: pathname
-    strict: "0"
-    reactions_enabled: "1"
-    emit_metadata: "0"
-    input_position: bottom
-    theme: preferred_color_scheme
-    lang: en
-    crossorigin: anonymous
+#   giscus:
+#     repo: thelocalh0st/thelocalh0st.github.io
+#     mapping: pathname
+#     strict: "0"
+#     reactions_enabled: "1"
+#     emit_metadata: "0"
+#     input_position: bottom
+#     theme: preferred_color_scheme
+#     lang: en
+#     crossorigin: anonymous
 
 
     
