@@ -95,6 +95,7 @@ comments:
     repo: thelocalh0st/thelocalh0st.github.io # <gh-username>/<repo>
     issue_term: pathname # < url | pathname | title | ...>
     label: comments
+    src: https://utterance.es/cleient.js
   # Giscus options › https://giscus.app
  
  
