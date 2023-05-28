@@ -238,6 +238,12 @@ tags: [redteam, penetration-testing, pentesting,bugbounty, checklist] # TAG name
 - [ ] Check CORS implementation  
 - [ ] Check Offline Web Application  
 
+
+## Video
+
+{% include embed/youtube.html id='Rp69edBmFFo' %}
+
+
 Source:  
 [OWASP](https://www.owasp.org/index.php/Web_Application_Security_Testing_Cheat_Sheet)  
 
