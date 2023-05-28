@@ -20,7 +20,7 @@ This write-up explores a bug bounty methodology related to bypassing HTTP rate l
 
 Rate limiting is a common defense mechanism implemented by servers to prevent abuse or excessive requests. When the rate limit is exceeded, the server responds with a `429` HTTP status code, indicating `"Too Many Requests."` However, in some cases, it may be possible to bypass this restriction.
 
-
+```mermaid
 sequenceDiagram
     participant Hacker
     participant Server
@@ -44,6 +44,7 @@ sequenceDiagram
             Hacker->>Hacker: Analyze response and iterate, #FFA500
         end
     end
+```
 
 
 
@@ -84,11 +85,13 @@ Burp Suite is a powerful web application security testing tool that facilitates 
     
     Example:
     
-    vbnetCopy code
+    <br>
     
-    `GET /path/to/resource HTTP/1.1
+    ````
+    GET /path/to/resource HTTP/1.1
     Host: example.com
-    X-Forwarded-For: 192.168.0.1` 
+    X-Forwarded-For: 192.168.0.1
+    ```
     
 4.  **Forward the modified request**: After modifying the headers, click the "Forward" button in Burp Suite to send the modified request to the server.
     
@@ -97,7 +100,8 @@ Burp Suite is a powerful web application security testing tool that facilitates 
 6.  **Repeat the process**: Repeat steps 3-5, changing the IP address and headers for each subsequent request, to test different scenarios and increase the chances of bypassing the rate limiting.
     
 
-> **Note:** The exact steps and appearance of Burp Suite may vary based on the version you are using. Please refer to the Burp Suite documentation for detailed instructions.{:.prompt-warning}
+> **Note:** The exact steps and appearance of Burp Suite may vary based on the version you are using. Please refer to the Burp Suite documentation for detailed instructions.  {: .prompt-warning }
+
 
 ## Conclusion
 
