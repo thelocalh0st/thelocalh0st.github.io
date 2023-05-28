@@ -21,29 +21,32 @@ This write-up explores a bug bounty methodology related to bypassing HTTP rate l
 Rate limiting is a common defense mechanism implemented by servers to prevent abuse or excessive requests. When the rate limit is exceeded, the server responds with a `429` HTTP status code, indicating `"Too Many Requests."` However, in some cases, it may be possible to bypass this restriction.
 
 ```mermaid
-sequenceDiagram
-    participant Hacker
-    participant Server
-    participant BurpSuite
-    
-    Hacker->>BurpSuite: Set up Burp Suite
-    Hacker->>BurpSuite: Configure browser proxy
-    Hacker->>Server: Send initial request
-    BurpSuite->>Server: Intercept request
-    Server-->>BurpSuite: Respond with 429 status code, red
-    BurpSuite->>Hacker: Intercepted 429 response, red
-    
-    loop Modify Headers & IP
-        Hacker->>BurpSuite: Modify headers and IP, blue
-        BurpSuite->>Server: Forward modified request, blue
-        Server-->>BurpSuite: Respond with modified response, green
-        BurpSuite->>Hacker: Intercept modified response, green
-        alt Rate Limit Bypassed?
-            Hacker->>Hacker: Celebrate bypass success!, #00FF00
-        else
-            Hacker->>Hacker: Analyze response and iterate, #FFA500
-        end
+graph TB
+    subgraph Burp Suite
+        BS(Set up Burp Suite) --> CBP[Configure browser proxy]
     end
+    
+    subgraph Hacker
+        HR(Send initial request) --> BC[Intercept request]
+        BC -->> SR{Respond with 429 status code}
+        SR -->> BC
+    end
+    
+    subgraph Server
+        SR -->>|red| BC
+        BC -->>|red| HR
+        BC -->|blue| MHP[Modify headers and IP]
+        MHP -->|blue| FS[Forward modified request]
+        FS -->>|green| MS{Respond with modified response}
+        MS -->>|green| MHP
+        MS -->|green| HR
+        MS -->>|green| HB[Celebrate bypass success!]
+        MS -->>|green| AI[Analyze response and iterate]
+    end
+    
+    style HR fill:#FFA500
+    style SR fill:#FFA500
+    style MS fill:#00FF00
 ```
 
 
