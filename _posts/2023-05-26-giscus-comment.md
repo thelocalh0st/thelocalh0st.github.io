@@ -118,3 +118,6 @@ That's it folks! Hope this tutorial help, and happy hacking!
 ## Conclusion
 
 By following these steps, you can effortlessly enhance your static site with a fully functional comment system using Giscus. Engage with your readers, foster discussions, and create a vibrant community around your content. Happy coding!
+
+
+![gif](https://media.giphy.com/media/DAtJCG1t3im1G/giphy.gif)
