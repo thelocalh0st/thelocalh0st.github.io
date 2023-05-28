@@ -87,7 +87,7 @@ Burp Suite is a powerful web application security testing tool that facilitates 
     
     <br>
     
-    ````
+    ```
     GET /path/to/resource HTTP/1.1
     Host: example.com
     X-Forwarded-For: 192.168.0.1
