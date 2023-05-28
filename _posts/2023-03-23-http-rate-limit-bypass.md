@@ -1,11 +1,12 @@
 ---
-title: <img width="50" height="50" alt="front-page port 80-shoopyu" src="https://hashnode.com/utility/r?url=https%3A%2F%2Fcdn.hashnode.com%2Fres%2Fhashnode%2Fimage%2Fupload%2Fv1590555348643%2FpvuMAUpXQ.png%3Fw%3D1200%26h%3D630%26fit%3Dcrop%26crop%3Dentropy%26auto%3Dcompress%2Cformat%26format%3Dwebp%26fm%3Dpng"> HTTP Rate Limit Bypass
+title: <img width="50" height="50" alt="front-page port 80-shoopyu" src="https://github.com/thelocalh0st/thelocalh0st.github.io/assets/125783410/dde6cba1-81ad-4c33-855d-78da6b750b9d"> HTTP Rate Limit Bypass
 date: 2023-03-23 00:00:02 +730
 categories: [Resources, bugbounty]
 tags: [http-rate-limit-bypass, bugbounty, rate-limiting, bypass] # TAG names should always be lowercase
 
 
 ---
+
 
 
 # Bug Bounty Methodology: HTTP Rate Limit Bypass
