@@ -1,8 +1,8 @@
 ---
-title: <img width="50" height="50" alt="front-page port 80-shoopyu" src="https://github.com/thelocalh0st/thelocalh0st.github.io/assets/125783410/dde6cba1-81ad-4c33-855d-78da6b750b9d"> HTTP Rate Limit Bypass
+title: HTTP Rate Limit Bypass - Bug Bounty Methodology
 date: 2023-03-23 00:00:02 +730
-categories: [Resources, bugbounty]
-tags: [http-rate-limit-bypass, bugbounty, rate-limiting, bypass] # TAG names should always be lowercase
+categories: [Resources, bug bounty]
+tags: [http rate limit bypass, bug bounty, rate limiting, bypass] # TAG names should always be lowercase
 mermaid: true
 
 ---
@@ -14,12 +14,11 @@ mermaid: true
 
 ## Introduction
 
-This write-up explores a bug bounty methodology related to bypassing HTTP rate limiting. The goal is to evade rate limiting restrictions by adding specific headers and changing the IP address for each request. So grab your Burp Suite and let's dive into the technical details!
+Hey there, fellow bug bounty hunters! Today, we're going to explore a fun and sneaky bug bounty methodology that involves bypassing those  HTTP rate limits. We'll learn how to outsmart the servers by adding some secret headers and playing around with IP addresses. So grab your Burp Suite and get ready for some ninja moves!
 
 ## Background
 
-Rate limiting is a common defense mechanism implemented by servers to prevent abuse or excessive requests. When the rate limit is exceeded, the server responds with a `429` HTTP status code, indicating `"Too Many Requests."` However, in some cases, it may be possible to bypass this restriction.
-
+Rate limiting is like a security guard for servers, trying to prevent abuse and excessive requests. When you cross the line, the server slaps you with a `429` HTTP status code, saying, "Whoa there, buddy, too many requests!" But guess what? We can find ways to dance around those limits.
 
 ```mermaid
 sequenceDiagram
@@ -50,41 +49,42 @@ sequenceDiagram
 
 ## Bypass Techniques
 
-To bypass rate limiting, we can leverage certain headers that allow us to manipulate the request and present ourselves as different clients with varying IP addresses. Here are some of the key headers we can use:
+To outsmart rate limiting, we'll use some clever headers that let us pretend to be different clients with fancy IP addresses. Here are the secret headers we'll play with:
 
-1.  `X-Forwarded-For`: Modify this header to include a different IP address for each request.
-    
-2.  `X-Originating-IP`: Change the IP address in this header to make it appear as if the request is originating from a different source.
-    
-3.  `X-Remote-Addr`: Set this header to a different IP address for each subsequent request.
-    
-4.  `X-Remote-IP`: Modify this header to specify a unique IP address for each request.
-    
-5.  `X-Client-IP`: Alter the IP address in this header to present yourself as a different client.
-    
-6.  `X-Forwarded`: Manipulate this header to forward the request to a different dimension, metaphorically speaking.
-    
-7.  `X-Forwarded-Host`: Change the host specified in this header to trick the server into believing it's a different request.
-    
-8.  `X-Host`: Modify this header to present a different host IP address.
-    
-9.  `X-Forwarded-Server`: Use this header to specify a different server IP address.
-    
-10.  `X-Real-IP`: Play with this header to show off your real (fake) IP address.
-    
+1.  `X-Forwarded-For`: Modify this header to include a different IP address for each request. It's like wearing different disguises.
+
+2.  `X-Originating-IP`: Change the IP address in this header to make it appear as if the request is coming from a different source. We're masters of deception!
+
+3.  `X-Remote-Addr`: Set this header to a different IP address for each subsequent request. It's like teleporting to a new location every time!
+
+4.  `X-Remote-IP`: Modify this header to specify a unique IP address for each request. We're like chameleons, blending into our surroundings!
+
+5.  `X-Client-IP`: Alter the IP address in this header to present yourself as a different client. We're shape-shifters!
+
+6.  `X-Forwarded`: Manipulate this header to send the request to a different dimension, metaphorically speaking. We're bending the rules of space and time!
+
+7.  `X-Forwarded-Host`: Change the host specified in this header to trick the server into believing it's a different request. We're pulling off illusions!
+
+8.  `X-Host`: Modify this header to present a different host IP address. We're the masters of disguise!
+
+9.  `X-Forwarded-Server`: Use
+
+ this header to specify a different server IP address. We're playing tricks on the server!
+
+10.  `X-Real-IP`: Play with this header to show off your real (fake) IP address. We're like magicians, revealing the unreal!
 
 ## Performing the Test using Burp Suite
 
-Burp Suite is a powerful web application security testing tool that facilitates testing for rate limit bypasses. Here's how you can leverage Burp Suite to perform the test:
+Now it's time to unleash the power of Burp Suite, our trusty ally in the bug bounty hunt. Follow these steps to perform the rate limit bypass test:
 
-1.  **Set up Burp Suite**: Download and install [Burp Suite](https://portswigger.net/burp) on your system. Set up your browser to use Burp Suite as a proxy.
-    
-2.  **Intercept the request**: Launch Burp Suite and navigate to the target application. Intercept the request you want to test by clicking on "Proxy" -> "Intercept" and ensuring the "Intercept is on" button is enabled.
-    
-3.  **Modify the headers**: In the "Intercept" tab of Burp Suite, locate the request headers and add the desired bypass headers mentioned earlier. Adjust the IP address in the header value to a different IP for each subsequent request.
-    
+1.  **Set up Burp Suite**: Download and install [Burp Suite](https://portswigger.net/burp) on your system. Make your browser use Burp Suite as a proxy. Burp Suite is our ninja gear!
+
+2.  **Intercept the request**: Launch Burp Suite, go to the target application, and intercept the request you want to test. Just click on "Proxy" -> "Intercept," and make sure the "Intercept is on" button is enabled. We're ready to strike!
+
+3.  **Modify the headers**: In the "Intercept" tab of Burp Suite, find the request headers and add the secret bypass headers we learned earlier. Change the IP address in the header value to a different IP for each subsequent request. We're pulling off the header heist!
+
     Example:
-    
+
     <br>
     
     ```
@@ -93,20 +93,18 @@ Burp Suite is a powerful web application security testing tool that facilitates 
     X-Forwarded-For: 192.168.0.1
     ```
     
-4.  **Forward the modified request**: After modifying the headers, click the "Forward" button in Burp Suite to send the modified request to the server.
-    
-5.  **Analyze the response**: Examine the server's response to determine if the rate limiting has been bypassed. If the server does not respond with a 429 status code, it indicates a successful bypass.
-    
-6.  **Repeat the process**: Repeat steps 3-5, changing the IP address and headers for each subsequent request, to test different scenarios and increase the chances of bypassing the rate limiting.
-    
+4.  **Forward the modified request**: After modifying the headers, click the "Forward" button in Burp Suite to send the modified request to the server. It's time to strike with our secret weapons!
 
-> **Note:** The exact steps and appearance of Burp Suite may vary based on the version you are using. Please refer to the Burp Suite documentation for detailed instructions.
+5.  **Analyze the response**: Examine the server's response to see if we successfully bypassed the rate limiting. If the server doesn't respond with a 429 status code, it means we did it! We're the rate limit ninjas!
+
+6.  **Repeat the process**: Keep going! Repeat steps 3 to 5, changing the IP address and headers for each subsequent request. Each attempt brings us closer to bypassing the rate limiting. We're persistent and clever!
+
+> **Note:** The exact steps and appearance of Burp Suite may vary depending on the version you're using. Check out the Burp Suite documentation for detailed instructions.
 {: .prompt-warning }
 
 
 ## Conclusion
 
-Bypassing rate limiting can be a challenging and exciting aspect of bug bounty hunting. By adding specific headers and manipulating IP addresses, you can attempt to circumvent rate limiting restrictions. However, it is crucial to perform these tests responsibly and within the boundaries of legal and ethical considerations. Happy bug hunting!
-
+Bypassing rate limiting is like a thrilling dance in the world of bug bounty hunting. With our secret headers and IP address tricks, we can attempt to outsmart the servers. But remember, be responsible and stay within legal and ethical boundaries. Happy bug hunting, my fellow ninjas!
 
 ![the-end](https://media.giphy.com/media/DAtJCG1t3im1G/giphy.gif)
