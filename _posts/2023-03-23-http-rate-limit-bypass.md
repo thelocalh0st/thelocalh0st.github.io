@@ -98,7 +98,8 @@ Burp Suite is a powerful web application security testing tool that facilitates 
 6.  **Repeat the process**: Repeat steps 3-5, changing the IP address and headers for each subsequent request, to test different scenarios and increase the chances of bypassing the rate limiting.
     
 
-> **Note:** The exact steps and appearance of Burp Suite may vary based on the version you are using. Please refer to the Burp Suite documentation for detailed instructions.  {: .prompt-warning }
+> **Note:** The exact steps and appearance of Burp Suite may vary based on the version you are using. Please refer to the Burp Suite documentation for detailed instructions.
+{: .prompt-warning }
 
 
 ## Conclusion
