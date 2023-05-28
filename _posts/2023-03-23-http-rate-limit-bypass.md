@@ -19,6 +19,8 @@ This write-up explores a bug bounty methodology related to bypassing HTTP rate l
 ## Background
 
 Rate limiting is a common defense mechanism implemented by servers to prevent abuse or excessive requests. When the rate limit is exceeded, the server responds with a `429` HTTP status code, indicating `"Too Many Requests."` However, in some cases, it may be possible to bypass this restriction.
+
+
 ```mermaid
 sequenceDiagram
     participant Hacker
@@ -105,3 +107,6 @@ Burp Suite is a powerful web application security testing tool that facilitates 
 ## Conclusion
 
 Bypassing rate limiting can be a challenging and exciting aspect of bug bounty hunting. By adding specific headers and manipulating IP addresses, you can attempt to circumvent rate limiting restrictions. However, it is crucial to perform these tests responsibly and within the boundaries of legal and ethical considerations. Happy bug hunting!
+
+
+![the-end](https://media.giphy.com/media/DAtJCG1t3im1G/giphy.gif)
