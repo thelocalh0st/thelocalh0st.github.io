@@ -1,7 +1,7 @@
 ---
 title: HTTP Rate Limit Bypass - Bug Bounty Methodology
 date: 2023-03-23 00:00:02 +730
-categories: [Resources, bug bounty]
+categories: [Resources, bugbounty]
 tags: [http rate limit bypass, bug bounty, rate limiting, bypass] # TAG names should always be lowercase
 mermaid: true
 
