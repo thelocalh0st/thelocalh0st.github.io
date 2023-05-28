@@ -51,27 +51,24 @@ sequenceDiagram
 
 To outsmart rate limiting, we'll use some clever headers that let us pretend to be different clients with fancy IP addresses. Here are the secret headers we'll play with:
 
-1.  `X-Forwarded-For`: Modify this header to include a different IP address for each request. It's like wearing different disguises.
+1.  `X-Forwarded-For`
 
-2.  `X-Originating-IP`: Change the IP address in this header to make it appear as if the request is coming from a different source. We're masters of deception!
+2.  `X-Originating-IP`
 
-3.  `X-Remote-Addr`: Set this header to a different IP address for each subsequent request. It's like teleporting to a new location every time!
+3.  `X-Remote-Addr`
 
-4.  `X-Remote-IP`: Modify this header to specify a unique IP address for each request. We're like chameleons, blending into our surroundings!
+4.  `X-Remote-IP`
 
-5.  `X-Client-IP`: Alter the IP address in this header to present yourself as a different client. We're shape-shifters!
+5.  `X-Client-IP`
 
-6.  `X-Forwarded`: Manipulate this header to send the request to a different dimension, metaphorically speaking. We're bending the rules of space and time!
+6.  `X-Forwarded`
 
-7.  `X-Forwarded-Host`: Change the host specified in this header to trick the server into believing it's a different request. We're pulling off illusions!
+7.  `X-Forwarded-Host`
 
-8.  `X-Host`: Modify this header to present a different host IP address. We're the masters of disguise!
+8.  `X-Host`
 
-9.  `X-Forwarded-Server`: Use
-
- this header to specify a different server IP address. We're playing tricks on the server!
-
-10.  `X-Real-IP`: Play with this header to show off your real (fake) IP address. We're like magicians, revealing the unreal!
+9.  `X-Forwarded-Server`
+10.  `X-Real-IP`
 
 ## Performing the Test using Burp Suite
 
