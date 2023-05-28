@@ -7,7 +7,7 @@ mermaid: true
 
 ---
 
-
+![img](https://github.com/thelocalh0st/thelocalh0st.github.io/assets/125783410/2f1f476d-0772-44dd-9cc2-e95aeb3eeb88)
 
 # Bug Bounty Methodology: HTTP Rate Limit Bypass
 
