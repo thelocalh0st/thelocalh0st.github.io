@@ -1,5 +1,5 @@
 ---
-title: HTTP Rate Limit Bypass - Bug Bounty Methodology
+title: <img width="50" height="50" alt="front-page port 80-shoopyu" src="https://github.com/thelocalh0st/thelocalh0st.github.io/assets/125783410/2f1f476d-0772-44dd-9cc2-e95aeb3eeb88"> HTTP Rate Limit Bypass - Bug Bounty Methodology
 date: 2023-03-23 00:00:02 +730
 categories: [Resources, bugbounty]
 tags: [http rate limit bypass, bug bounty, rate limiting, bypass] # TAG names should always be lowercase
