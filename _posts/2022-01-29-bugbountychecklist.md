@@ -241,7 +241,7 @@ tags: [redteam, penetration-testing, pentesting,bugbounty, checklist] # TAG name
 <br>
 <br>
 <br>
-## Resources Learn
+## Resources to  Learn
 
 {% include embed/youtube.html id='Rp69edBmFFo' %}
 
