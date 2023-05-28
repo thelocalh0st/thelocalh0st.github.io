@@ -7,7 +7,7 @@ mermaid: true
 
 ---
 
-![img](https://www.akana.com/sites/default/files/image/2021-01/image-blog-akana-owasp.jpg)
+![img](https://www.akana.com/sites/default/files/image/2021-01/image-blog-akana-owasp.jpg){: .dark .w-75 .shadow .rounded-10 w='1212' h='668' }
 
 # Bug Bounty Methodology: HTTP Rate Limit Bypass
 
