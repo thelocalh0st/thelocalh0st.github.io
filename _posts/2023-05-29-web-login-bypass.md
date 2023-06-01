@@ -194,8 +194,8 @@ When you enter wrong credentials the site shows error like username and password
  - [ ] First you intercept the request and remove the `password parameter` in the request and `forward` the request. 
  - [ ] Then the server sees that the username is available and logs you in to the site. This problem occurs when the server does not analyze the request properly.
 
-![image1]()
-![image2]()
+![1_gNdDHP3A232KT9R4BA1ERw](https://github.com/thelocalh0st/thelocalh0st.github.io/assets/125783410/7eb0b6bf-cfa5-4451-b294-d1a8acfb40a5)
+![2](https://github.com/thelocalh0st/thelocalh0st.github.io/assets/125783410/38e32544-da62-4851-810d-9a50f826804e)
 
 <br>
 <br>
