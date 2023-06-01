@@ -1,5 +1,5 @@
 ---
-title: Web Login Bypassing Techniques
+title: <img width="50" height="50" alt="front-page port 80-shoopyu" src="https://i.ytimg.com/vi/9wNJE2zaEP8/maxresdefault.jpg"> Web Login Bypassing Techniques
 date: 2023-05-29 00:00:02 +730
 categories: [Resources, bug bounty]
 tags: [bypass,bugbounty,web-login-bypass] # TAG names should always be lowercase
