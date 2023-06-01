@@ -66,15 +66,16 @@ Injecting SQL queries into login fields is our secret weapon! Here's a taste of 
 
 Who said NoSQL databases are immune to our hacking shenanigans? Brace yourselves for some NoSQL injection payloads:
 
-```json
+
+```
 - Mongo:
+
     - admin' || 1==1//
     - admin' || 1==1%00
     - admin' || '1==1
     - admin' || '1'=='1'
-
-- Let's rattle the NoSQL cages! 🐆💢
 ```
+
 
 ## 3. Operator-Based Attacks: Dancing with Operators 💃🎩
 
@@ -177,12 +178,14 @@ This method mainly based on Response Status code manipulation and Response Body 
 - Login with correct credentials and intercepts request in burp suite and analyze the response 
 - Try to login with wrong credentials and manipulate the response as you see it with your correct credentials like
 
-```Burpsuite
+```
 403 Forbidden  
 <redacted>  
 {"error":true, "message":"Invalid Token"}
 ```
-```Burpsuite
+<br>
+
+```
 200 OK  
 <redacted>  
 {"success":true}
