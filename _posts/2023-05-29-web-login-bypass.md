@@ -9,7 +9,7 @@ mermaid: true
 
 # Web Login Bypassing Techniques for Bug Bounty Hunters: 😎🚀
 
-> "To login or not to login, that is the question... but we have the answers!" 🕵️‍♂️🔓
+
 
 Greetings, fellow bug bounty hunters! Are you ready to embark on a wild adventure of bypassing web login systems? Buckle up and prepare to witness some mind-boggling techniques that will make you go "Woah!" Let's dive into the chaos and unleash our hacking skills! 💥
 
