@@ -15,7 +15,7 @@ With a simple google we can learn that crx files are associated with google chro
 extensions. <br>
 <img width="521" alt="1" src="https://github.com/thelocalh0st/thelocalh0st.github.io/assets/125783410/077124a7-5cd8-4320-8801-93a33e5ccfbc">
 <br>
->ANSWER: Google Chrome
+>ANSWER: Google chrome
 {: .prompt-info }
 
 <br><br><br>
