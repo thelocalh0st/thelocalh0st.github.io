@@ -1,5 +1,5 @@
 ---
-title: <img width="50" height="50" alt="front-page port 80-shoopyu" src="https://app.letsdefend.io/_next/image?url=https://api.letsdefend.io/static/img/Suspicious_Browser_Extension_Cover_4W5Om0Y.png&w=828&q=75">Suspicious Browser extension analysis 🔍
+title: <img width="50" height="50" alt="front-page port 80-shoopyu" src="https://github.com/thelocalh0st/thelocalh0st.github.io/assets/125783410/fec7f941-3c09-49dd-8f34-cb3a5befeaab">Suspicious Browser extension analysis 🔍
 date: 2023-06-18 00:00:02 +730
 categories: [Write Up, letsdefend]
 comments: true
@@ -8,9 +8,8 @@ tags: [blueteam,cyberlabs,secops,security-operations, malware-analysis, reverse-
 
 ---
 
-![enter image description here](https://app.letsdefend.io/_next/image?url=https://api.letsdefend.io/static/img/Suspicious_Browser_Extension_Cover_4W5Om0Y.png&w=828&q=75)
-
-
+![Suspicious_Browser_Extension_Cover_4W5Om0Y](https://github.com/thelocalh0st/thelocalh0st.github.io/assets/125783410/fec7f941-3c09-49dd-8f34-cb3a5befeaab)
+<br><br><br><br>
 1. Which browser supports this extension?
 With a simple google we can learn that crx files are associated with google chrome’s web browser
 extensions. <br>
