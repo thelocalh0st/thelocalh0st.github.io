@@ -15,7 +15,7 @@ With a simple google we can learn that crx files are associated with google chro
 extensions. <br>
 <img width="521" alt="1" src="https://github.com/thelocalh0st/thelocalh0st.github.io/assets/125783410/077124a7-5cd8-4320-8801-93a33e5ccfbc">
 <br>
->ANSWER: Google chrome
+>ANSWER: Google Chrome
 {: .prompt-info }
 
 <br><br><br>
@@ -40,8 +40,8 @@ Similiar to VirusTotal, crxcavator is a useful tool for checking if a browser ex
 and analysed. In this case, this is not known to the community.<br>
 <img width="286" alt="4" src="https://github.com/thelocalh0st/thelocalh0st.github.io/assets/125783410/a9e427e1-6726-4c31-a579-8bc8342191d4">
 <br>
->ANSWER: No
-{: .prompt-info}
+>ANSWER: no
+{: .prompt-info }
 
 <br><br><br>
 5.Download and install ExtAnalysis. Is the author of the extension known? <br>
