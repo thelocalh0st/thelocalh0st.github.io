@@ -10,7 +10,9 @@ order: 4
 
 
 
-
+<br><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; CC by (ISC)2 | Azure AZ-900 | CNSP | CAP | SC-900 | Azure sentinel | Top 1% @ THM #learningeveryday
+<br><br>
 
 <h3 align="center">Connect with me:</h3>
 <p align="center">
