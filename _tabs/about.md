@@ -11,7 +11,7 @@ order: 4
 
 
 <br><br>
-<p align="center" style="background: rgb(131,58,180); background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; CC by (ISC)2 | Azure AZ-900 | CNSP | CAP | SC-900 | Azure sentinel | Top 1% @ THM #learningeveryday</p>
+<p align="center" style="color:#f7a602;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; CC by (ISC)2 | Azure AZ-900 | CNSP | CAP | SC-900 | Azure sentinel | Top 1% @ THM #learningeveryday</p>
 
 <br><br>
 
