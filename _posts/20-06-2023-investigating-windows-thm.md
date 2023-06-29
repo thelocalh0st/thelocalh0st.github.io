@@ -93,7 +93,8 @@ Clean file system
 >7.What file was the task trying to run daily?
 {: .prompt-info }
 <br>
-![7](https://github.com/thelocalh0st/thelocalh0st.github.io/assets/125783410/30985fd6-7ba8-4c27-9721-c2689a0bc6c1)
+![7](https://github.com/thelocalh0st/thelocalh0st.github.io/assets/125783410/d703ca55-6805-4b57-a2bf-45f71c1caf9e)
+<br><br>
 
 ```Answer
 nc.ps1
@@ -104,7 +105,8 @@ nc.ps1
 >8.What port did this file listen locally for?
 {: .prompt-info }
 <br>
-![8](https://github.com/thelocalh0st/thelocalh0st.github.io/assets/125783410/93901b82-98d7-479e-bb9d-869c78881814)
+![8](https://github.com/thelocalh0st/thelocalh0st.github.io/assets/125783410/2c965969-a2a0-4155-8128-386757d47a72)
+<br><br>
 
 ```Answer
 1348
