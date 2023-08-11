@@ -1,7 +1,7 @@
 ---
 title: <img width="50" height="50" alt="front-page port 80-shoopyu" src="https://dicc.in/blog/wp-content/uploads/2021/06/API-attacks-prevention-min-1140x600.jpg"> Passive API Reconnaissance
 date: 2023-07-28 00:00:02 +730
-categories: [Resources, ApiSecurity]
+categories: [Resources,general]
 comments: true
 tags: [redteam,apisecurity,api-pentest,reconnaissance] # TAG names should always be lowercase
 
