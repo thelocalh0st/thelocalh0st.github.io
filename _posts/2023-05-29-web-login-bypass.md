@@ -7,12 +7,11 @@ mermaid: true
 
 ---
 
-# Web Login Bypassing Techniques for Bug Bounty Hunters: 😎🚀
-
 
 
 Greetings, fellow bug bounty hunters! Are you ready to embark on a wild adventure of bypassing web login systems? Buckle up and prepare to witness some mind-boggling techniques that will make you go "Woah!" Let's dive into the chaos and unleash our hacking skills! 💥
 
+# Classification of bypassing techniques: 😎🚀
 ```mermaid
 flowchart LR
     A(Web Login Bypassing Techniques)
@@ -208,5 +207,8 @@ When you enter wrong credentials the site shows error like username and password
 > **Important Note:** While these techniques can be used for legitimate security testing, always ensure that you have proper authorization and permission before attempting any login bypass or brute force attacks. Stay ethical, my friends! 🕵️‍♀️🔒
 {: .prompt-tip }
 
+&nbsp;
+<br><br>
+[Download Login Bypass Payload](https://github.com/thelocalh0st/thelocalh0st.github.io/blob/main/assets/uploads/login-bypass.txt.txt)
 
 ![end](https://media.giphy.com/media/DAtJCG1t3im1G/giphy.gif)
