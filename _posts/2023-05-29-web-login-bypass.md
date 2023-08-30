@@ -9,7 +9,10 @@ mermaid: true
 
 
 
-Greetings, fellow bug bounty hunters! Are you ready to embark on a wild adventure of bypassing web login systems? Buckle up and prepare to witness some mind-boggling techniques that will make you go "Woah!" Let's dive into the chaos and unleash our hacking skills! 💥
+Greetings, fellow bug bounty hunters! Let's try to look for oversmarting the web login pages and bypassing tricks
+Check out this cool chart that breaks down the different ways we can bypass logins:
+
+
 
 # Classification of bypassing techniques: 😎🚀
 ```mermaid
