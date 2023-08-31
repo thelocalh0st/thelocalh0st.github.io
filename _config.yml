@@ -20,8 +20,12 @@ timezone:
 
 title: 𝔩𝔬𝔠𝔞𝔩 𝔥𝔬𝔰𝔱 # the main title
 
-tagline: A formal cyberscurity student                                 sujay_adkesar # it will display as the sub-title
+# tagline: A formal cyberscurity student                                 sujay_adkesar # it will display as the sub-title
+tagline: |  # Use a pipe symbol followed by a space to indicate a multi-line string
+  A formal cyberscurity student
+  sujay_adkesar # it will display as the sub-title
 
+  
 description: >- # used by seo meta and the atom feed
   A minimal, responsive technical writing.
 
