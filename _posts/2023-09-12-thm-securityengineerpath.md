@@ -7,7 +7,9 @@ tags: [tryhackme, swags, tickets] # TAG names should always be lowercase
 
 
 ---
-![enter image description here](https://preview.redd.it/new-security-engineer-path-win-20-000-worth-of-prizes-v0-wj04lclbinnb1.png?width=1920&format=png&auto=webp&s=02d97986dbbd084068d6947b888052286900d75a)
+![tr](https://github.com/thelocalh0st/thelocalh0st.github.io/assets/125783410/43e2fb39-87a3-4203-a878-153ae3fac0cc)
+
+
 
 ## Introduction:
 In today's digital age, cybersecurity is more critical than ever. As the world becomes increasingly interconnected, the demand for skilled security professionals continues to rise. If you're looking to embark on a rewarding journey into the world of cybersecurity, TryHackMe has you covered with its brand-new Security Engineer learning path. 🚀 In this blog post, we'll explore the advantages of this path and how it can pave the way for a successful career in cybersecurity. 🛡️
