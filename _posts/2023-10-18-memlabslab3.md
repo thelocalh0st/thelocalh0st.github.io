@@ -1,4 +1,3 @@
-
 ---
 title: <img width="50" height="50" alt="front-page port 80-shoopyu" src="https://repository-images.githubusercontent.com/203713308/0ed14700-ffd3-11ea-9c3a-ec9166b4dd01">MemLabs Lab3 🛡️
 date: 2023-10-18 00:00:02 +730
