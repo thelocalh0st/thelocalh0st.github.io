@@ -27,6 +27,3 @@ order: 4
 
 <a href="https://instagram.com/SUJAY_ADKESAR" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/instagram.svg" alt="sujay" height="30" width="40" /></a>
 &nbsp;&nbsp;
-
-
-![](https://media.giphy.com/media/DAtJCG1t3im1G/giphy.gif)
