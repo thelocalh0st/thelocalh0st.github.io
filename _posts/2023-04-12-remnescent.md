@@ -3,8 +3,6 @@ title: <img width="50" height="50" alt="front-page port 80-shoopyu" src="https:/
 date: 2023-04-12 00:00:02 +730
 categories: [Write Up , HackTheBox]
 tags: [windows-forensics, hackthebox, forensics-challenge] # TAG names should always be lowercase
-
-
 ---
 
 >**Note:** Before you begin, majority of this writeup uses [volality3.0](https://github.com/volatilityfoundation/volatility3), so make sure you downloaded and have it setup on your system.*
