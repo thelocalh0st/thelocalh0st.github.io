@@ -5,6 +5,7 @@ categories: [Write Up , HackTheBox]
 tags: [windows-forensics, hackthebox, forensics-challenge] # TAG names should always be lowercase
 ---
 
+<br>
 >**Note:** Before you begin, majority of this writeup uses [volality3.0](https://github.com/volatilityfoundation/volatility3), so make sure you downloaded and have it setup on your system.*
 
 ### Setup
