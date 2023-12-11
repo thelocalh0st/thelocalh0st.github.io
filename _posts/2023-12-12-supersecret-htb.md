@@ -1,6 +1,6 @@
 ---
 title: <img width="50" height="50" alt="front-page port 80-shoopyu" src="https://github.com/thelocalh0st/thelocalh0st.github.io/assets/95465072/b1357428-9893-4400-96c9-69e05733354a"> TrueSecrets | Hack The Box | Forensics 
-date: 2023-12-12 00:00:02 +730
+date: 2023-13-12 00:00:02 +730
 categories: [Write Up, HackTheBox]
 tags: [truesecrets,walkthrough,hackthebox,forensics,100-days-of-cybersecurity] # TAG names should always be lowercase
 
