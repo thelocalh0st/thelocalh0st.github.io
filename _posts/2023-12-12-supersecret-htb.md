@@ -1,8 +1,8 @@
 ---
-title: <img width="50" height="50" alt="front-page port 80-shoopyu" src="https://github.com/thelocalh0st/thelocalh0st.github.io/assets/95465072/b1357428-9893-4400-96c9-69e05733354a"> Dignostics | Hack The Box | Forensics 
+title: <img width="50" height="50" alt="front-page port 80-shoopyu" src="https://github.com/thelocalh0st/thelocalh0st.github.io/assets/95465072/b1357428-9893-4400-96c9-69e05733354a"> TrueSecrets | Hack The Box | Forensics 
 date: 2023-11-12 00:00:02 +730
 categories: [Write Up, HackTheBox]
-tags: [dignostics,hackthebox,forensics,100-days-of-cybersecurity] # TAG names should always be lowercase
+tags: [truesecrets,walkthrough,hackthebox,forensics,100-days-of-cybersecurity] # TAG names should always be lowercase
 
 
 ---
@@ -10,10 +10,14 @@ tags: [dignostics,hackthebox,forensics,100-days-of-cybersecurity] # TAG names sh
 
 <h1 style="color: cyan; text-align: center">100 Day's Of Cybersecurity - Day 3</h1>
 
-![](image-goes-here)
+
+![]https://github.com/thelocalh0st/thelocalh0st.github.io/assets/95465072/c16504aa-e48a-4390-b816-aae14b9cdbf3){: .dark .w-75 .shadow .rounded-10 w='1212' h='668' }
+
 
 ## Challenge Description 
-Our SOC has identified numerous phishing emails coming in claiming to have a document about an upcoming round of layoffs in the company. The emails all contain a link to diagnostic.htb/layoffs.doc. The DNS for that domain has since stopped resolving, but the server is still hosting the malicious document (your docker). Take a look and figure out what's going on.
+Our cybercrime unit has been investigating a well-known APT group for several months. The group has been responsible for several high-profile attacks on corporate organizations. However, what is interesting about that case, is that they have developed a custom command & control server of their own. Fortunately, our unit was able to raid the home of the leader of the APT group and take a memory capture of his computer while it was still powered on. Analyze the capture to try to find the source code of the server.
+
+
 
 ## Volllllatility!!
 
@@ -206,6 +210,8 @@ Under PID 2176 we can see that there's one intresting ZIP File called `backup_de
 
 ## Memory Dump
 
+ ![](https://github.com/thelocalh0st/thelocalh0st.github.io/assets/95465072/4fe3fc19-d384-4b9f-a38d-4f7c2711c81d)
+<br>
  - As the memory dump is a zip file renmae it to `.zip` and unzip it! 
  - now the file extension is turned to `.tc`  which means truecrypt!!!
 
@@ -214,13 +220,14 @@ Download the TrueCrypt  -- [Click here to download](https://truecrypt.en.softoni
 
 After doing some research on truecrypt i found a volatility argument to fetch the password! here you go 
 
-image-goes here
 
+<img width="775" alt="password" src="https://github.com/thelocalh0st/thelocalh0st.github.io/assets/95465072/0d0425d8-9bf2-415f-a588-37804b38855e">
 
 ## TrueCrypt Mounted Successfully
 
-There are 4 files in-total 
-one is `AgentServer.c` and other 3 encrypted files 
+ <img width="476" alt="mount" src="https://github.com/thelocalh0st/thelocalh0st.github.io/assets/95465072/3dcc35e2-bf64-4c99-8f22-573920dbeaf0">
+
+There are 4 files in-total one is `AgentServer.c` and other 3 encrypted files 
 
 ```C#
 using  System;
@@ -330,12 +337,17 @@ return Convert.ToBase64String(mstr.ToArray());
 
 In the above file there's `Key` and the `iv` (Initialization Vector) 
 
+<img width="617" alt="keys" src="https://github.com/thelocalh0st/thelocalh0st.github.io/assets/95465072/c84efe22-f958-49c6-9c04-914c8911802f">
+
+
+
 Lets Decrypt the other 3 files through online DES Decryptors [https://devtoolcafe.com/tools/des](https://devtoolcafe.com/tools/des)
 
 I tried to decrypt all the three files and found the flag in the `third file` 
 
 
 
+<img width="403" alt="flag" src="https://github.com/thelocalh0st/thelocalh0st.github.io/assets/95465072/d94520fc-9a81-467b-909f-1335666ce23b">
 
 ## Flag 
 
