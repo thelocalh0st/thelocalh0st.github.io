@@ -18,11 +18,10 @@ Our SOC has identified numerous phishing emails coming in claiming to have a doc
 ## /etc/host
 
 First thing first! as this challenge is based on instances 
-
+![]https://github.com/thelocalh0st/thelocalh0st.github.io/assets/95465072/24ab44b4-63cd-4ea9-aa06-7c03e73ccf48){: width="972" height="589" .w-50 .right}
  1. Start The instance
  2. Copy the target ip and port number
  3. Add it to `/etc/hosts/`
-<img width="339" alt="etc-hosts" src="https://github.com/thelocalh0st/thelocalh0st.github.io/assets/95465072/24ab44b4-63cd-4ea9-aa06-7c03e73ccf48">
 
 
 ## Initial Analysis
