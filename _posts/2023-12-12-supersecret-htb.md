@@ -1,6 +1,6 @@
 ---
 title: <img width="50" height="50" alt="front-page port 80-shoopyu" src="https://github.com/thelocalh0st/thelocalh0st.github.io/assets/95465072/b1357428-9893-4400-96c9-69e05733354a"> TrueSecrets | Hack The Box | Forensics 
-date: 2023-11-12 00:00:02 +730
+date: 2023-12-12 00:00:02 +730
 categories: [Write Up, HackTheBox]
 tags: [truesecrets,walkthrough,hackthebox,forensics,100-days-of-cybersecurity] # TAG names should always be lowercase
 
@@ -11,7 +11,7 @@ tags: [truesecrets,walkthrough,hackthebox,forensics,100-days-of-cybersecurity] #
 <h1 style="color: cyan; text-align: center">100 Day's Of Cybersecurity - Day 3</h1>
 
 
-![]https://github.com/thelocalh0st/thelocalh0st.github.io/assets/95465072/c16504aa-e48a-4390-b816-aae14b9cdbf3){: .dark .w-75 .shadow .rounded-10 w='1212' h='668' }
+![](https://github.com/thelocalh0st/thelocalh0st.github.io/assets/95465072/c16504aa-e48a-4390-b816-aae14b9cdbf3){: .dark .w-75 .shadow .rounded-10 w='1212' h='668' }
 
 
 ## Challenge Description 
