@@ -1,5 +1,5 @@
 ---
-title: <img width="50" height="50" alt="front-page port 80-shoopyu" src="https://github.com/thelocalh0st/thelocalh0st.github.io/assets/95465072/b1357428-9893-4400-96c9-69e05733354a"> Password Reset Vulnerabilities  
+title: <img width="50" height="50" alt="front-page port 80-shoopyu" src="https://github.com/thelocalh0st/thelocalh0st.github.io/assets/95465072/77d37890-df5d-43c6-8963-353f8cb4ebbd"> Password Reset Vulnerabilities  
 date: 2023-12-12 07:00:02 +730
 categories: [Resources, general]
 tags: [bugbounty, password-reset-vuln,100-days-of-cybersecurity] # TAG names should always be lowercase
@@ -9,9 +9,10 @@ tags: [bugbounty, password-reset-vuln,100-days-of-cybersecurity] # TAG names sho
 
 
 <h1 style="color: cyan; text-align: center">100 Day's Of Cybersecurity - Day 4</h1>
+<br><br>
+![th-364396762 (1)](https://github.com/thelocalh0st/thelocalh0st.github.io/assets/95465072/6609b668-6523-4436-b31b-e1e405cf670b)
 
-
-
+<br>
 Hey, hacking enthusiasts! Ready to uncover some mind-blowing tricks? Dive into these HubSpot Full Account Takeover methods and master the hacker's playbook!
 
 ## 📧 Using Your Token on Victims' Email
