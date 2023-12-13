@@ -1,7 +1,7 @@
 ---
 title: <img width="50" height="50" alt="front-page port 80-shoopyu" src="https://github.com/thelocalh0st/thelocalh0st.github.io/assets/95465072/77d37890-df5d-43c6-8963-353f8cb4ebbd"> Password Reset Vulnerabilities  
 date: 2023-12-12 07:00:02 +730
-categories: [Resources, general]
+categories: [Resources, bugbounty]
 tags: [bugbounty, password-reset-vuln,100-days-of-cybersecurity] # TAG names should always be lowercase
 
 
