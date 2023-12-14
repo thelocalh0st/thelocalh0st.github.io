@@ -1,11 +1,12 @@
 ---
-title: <img width="50" height="50" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Frepository-images.githubusercontent.com%2F518509014%2Ff7450454-158c-45e0-8b38-0c0ae4d7394c&f=1&nofb=1&ipt=439e1f842390f9cf76eb01516d4b0b2ca0cd73decbe1b7e312c147dea4b1e64b&ipo=images"> AgentSudo | Tryhackme | Walkthrough 
+title: <img width="50" height="50" src="https://github.com/thelocalh0st/thelocalh0st.github.io/assets/95465072/9e2adc03-02ab-43d3-8b52-388c3125946d"> AgentSudo | Tryhackme | Walkthrough 
 date: 2023-12-14 07:00:02 +730
 categories: [Write Up, TryHackMe]
 tags: [agent-sudo,walkthrough,tryhackme,privilege-escalation,hydra,100-days-of-cybersecurity] # TAG names should always be lowercase
 
 
 ---
+
 <h1 style="color: cyan; text-align: center">100 Day's Of Cybersecurity - Day 5</h1>
 ![maxresdefault-2146862418](https://github.com/thelocalh0st/thelocalh0st.github.io/assets/95465072/827af181-13fa-471d-ac3f-0a8d87d90ea0){: .dark .w-75 .shadow .rounded-10 w='1212' h='668' }
 
