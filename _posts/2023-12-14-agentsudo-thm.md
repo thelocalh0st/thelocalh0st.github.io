@@ -1,16 +1,13 @@
 ---
 title: <img width="50" height="50" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Frepository-images.githubusercontent.com%2F518509014%2Ff7450454-158c-45e0-8b38-0c0ae4d7394c&f=1&nofb=1&ipt=439e1f842390f9cf76eb01516d4b0b2ca0cd73decbe1b7e312c147dea4b1e64b&ipo=images"> AgentSudo | Tryhackme | Walkthrough 
-date: 2023-12-12 07:00:02 +730
+date: 2023-12-14 07:00:02 +730
 categories: [Write Up, TryHackMe]
 tags: [agent-sudo,walkthrough,tryhackme,privilege-escalation,hydra,100-days-of-cybersecurity] # TAG names should always be lowercase
 
 
 ---
 <h1 style="color: cyan; text-align: center">100 Day's Of Cybersecurity - Day 5</h1>
-
-{: .dark .w-75 .shadow .rounded-10 w='1212' h='668' }
-# Agent Sudo | TryHackMe
-
+![maxresdefault-2146862418](https://github.com/thelocalh0st/thelocalh0st.github.io/assets/95465072/827af181-13fa-471d-ac3f-0a8d87d90ea0){: .dark .w-75 .shadow .rounded-10 w='1212' h='668' }
 
 
 ## Nmap 
@@ -45,6 +42,8 @@ So there are totally `3 ports are open` that is
 
 ## HTTP - 80
 
+<img width="455" alt="Screenshot 2023-12-14 113235" src="https://github.com/thelocalh0st/thelocalh0st.github.io/assets/95465072/60cb4fb0-ccef-4974-a35a-80a121759601">
+
 there's two hint on the port number 80 
 `user-agent`
 `Agent R`
@@ -73,6 +72,7 @@ From, Agent R
 2️⃣ Bruteforcing
 		 `hydra -l chris -P /usr/share/wordlist/rockyou.txt $IP ftp`
 
+<img width="781" alt="ftp" src="https://github.com/thelocalh0st/thelocalh0st.github.io/assets/95465072/b7d1f89c-eea1-40aa-9079-6fbf9f0d84a0">
 
 there were 3 files in total we download it by 
 `mget *.*`
@@ -124,6 +124,7 @@ So we have james and hackerrules! as a password
 
 `ssh james@targetip`
 
+<img width="770" alt="ssh" src="https://github.com/thelocalh0st/thelocalh0st.github.io/assets/95465072/e35fd6e6-f712-4cf4-8376-3eb231e8c164">
 
 
 ## Privilege Escalation
