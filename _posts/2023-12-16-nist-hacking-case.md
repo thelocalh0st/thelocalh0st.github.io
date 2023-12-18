@@ -32,3 +32,7 @@ On `09/20/04` , a `Dell CPi notebook computer`, serial # VLQLW, was found abando
 
 
 ### Answers -- [Click here to download ](https://cfreds-archive.nist.gov/images/TestAnswers.pdf)
+
+
+
+![](https://media.giphy.com/media/DAtJCG1t3im1G/giphy.gif)
