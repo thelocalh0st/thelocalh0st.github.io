@@ -1,5 +1,5 @@
 ---
-title: <img width="50" height="50" alt="img" src="https://ericzimmerman.github.io/logoSmall.jpg"> Digital Forensics Tools
+title: <img width="50" height="50" alt="img" src="https://github.com/thelocalh0st/thelocalh0st.github.io/assets/95465072/33b960ca-0cdb-430f-a1fd-fdab01004109"> Digital Forensics Tools
 date: 2023-12-19 07:00:02 +730
 categories: [Resources, general]
 tags: [digital-forensics,tools,100-days-of-cybersecurity] # TAG names should always be lowercase
@@ -9,10 +9,12 @@ tags: [digital-forensics,tools,100-days-of-cybersecurity] # TAG names should alw
 
 
 
+
 <h1 style="color: cyan; text-align: center">100 Day's Of Cybersecurity - Day 10</h1>
 
 
 
+![lighter-359557108](https://github.com/thelocalh0st/thelocalh0st.github.io/assets/95465072/b091ec49-2320-43bf-a21d-c544d5dcf0de)
 
 
 
