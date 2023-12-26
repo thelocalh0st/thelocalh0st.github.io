@@ -1,5 +1,5 @@
 ---
-title: <img width="50" height="50" alt="img" src="https://github.com/thelocalh0st/thelocalh0st.github.io/assets/95465072/33b960ca-0cdb-430f-a1fd-fdab01004109"> Digital Forensics Tools
+title: <img width="50" height="50" alt="img" src="https://github.com/thelocalh0st/thelocalh0st.github.io/assets/95465072/9a44f712-9b73-488c-8d41-c02a246bda00">Broken Link Hijacking
 date: 2023-12-20 07:00:02 +730
 categories: [Resources, bugbounty]
 tags: [broken-link-hijacking,bug-bounty,100-days-of-cybersecurity] # TAG names should always be lowercase
@@ -11,7 +11,7 @@ tags: [broken-link-hijacking,bug-bounty,100-days-of-cybersecurity] # TAG names s
 
 
 <h1 style="color: cyan; text-align: center">100 Day's Of Cybersecurity - Day 11</h1>
-
+![bug-bounty-2576459966](https://github.com/thelocalh0st/thelocalh0st.github.io/assets/95465072/9a44f712-9b73-488c-8d41-c02a246bda00)
 # Br0k3n L1nk Hij@ck1ng
 
 ## Introduction
