@@ -3,7 +3,7 @@ title: <img width="50" height="50" alt="img" src="https://github.com/thelocalh0s
 date: 2023-12-20 07:00:02 +730
 categories: [Resources, bugbounty]
 tags: [broken-link-hijacking,bug-bounty,100-days-of-cybersecurity] # TAG names should always be lowercase
-
+mermaid: true
 
 ---
 
