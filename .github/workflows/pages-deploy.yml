@@ -39,9 +39,6 @@ jobs:
         id: pages
         uses: actions/configure-pages@v3
 
-      - name: Clear Bundler cache
-        run: |
-          bundle clean --force
 
 
       - name: Setup Ruby
