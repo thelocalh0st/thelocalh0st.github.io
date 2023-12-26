@@ -1,4 +1,5 @@
 name: "Build and Deploy"
+
 on:
   push:
     branches:
@@ -44,6 +45,11 @@ jobs:
         with:
           ruby-version: 3   # reads from a '.ruby-version' or '.tools-version' file if 'ruby-version' is omitted
           bundler-cache: true
+
+          # Add these lines to install the rake gem and necessary development libraries
+          before_install:
+            - gem install rake
+            - sudo apt-get install -y build-essential
 
       - name: Build site
         run: bundle exec jekyll b -d "_site${{ steps.pages.outputs.base_path }}"
