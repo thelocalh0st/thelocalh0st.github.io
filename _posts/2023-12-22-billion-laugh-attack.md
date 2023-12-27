@@ -1,5 +1,4 @@
----
-title: <img width="50" height="50" alt="img" src="https://github.com/thelocalh0st/thelocalh0st.github.io/assets/95465072/9a44f712-9b73-488c-8d41-c02a246bda00"> Billion Laugh Attack 
+title: <img width="50" height="50" alt="img" src="https://github.com/thelocalh0st/thelocalh0st.github.io/assets/95465072/116c865a-648b-4c97-a19c-8ccc502f4577"> Billion Laugh Attack 
 date: 2023-12-21 07:00:02 +730
 categories: [Resources, bugbounty]
 tags: [broken-link-hijacking,bug-bounty,100-days-of-cybersecurity] # TAG names should always be lowercase
@@ -8,6 +7,7 @@ mermaid: true
 ---
 
 
+![1686635291267-BugBlog+(1)-2492330420](https://github.com/thelocalh0st/thelocalh0st.github.io/assets/95465072/116c865a-648b-4c97-a19c-8ccc502f4577){: .dark .w-75 .shadow .rounded-10 w='1212' h='668' }
 
 
 <h1 style="color: cyan; text-align: center">100 Day's Of Cybersecurity - Day 12</h1>
