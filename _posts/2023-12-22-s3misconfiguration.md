@@ -1,5 +1,5 @@
 ---
-title: <img width="50" height="50" alt="img" src="https://github.com/thelocalh0st/thelocalh0st.github.io/assets/95465072/9a44f712-9b73-488c-8d41-c02a246bda00"> S3 Bucket Misconfiguration!  
+title: <img width="50" height="50" alt="img" src="https://github.com/thelocalh0st/thelocalh0st.github.io/assets/95465072/b15cfb83-bf16-49a4-b5f7-511473deae65"> S3 Bucket Misconfiguration!  
 date: 2023-12-22 07:00:02 +730
 categories: [Resources, bugbounty]
 tags: [s3-misconfiguration,bug-bounty,100-days-of-cybersecurity] # TAG names should always be lowercase
@@ -8,10 +8,9 @@ mermaid: true
 ---
 
 
-
-
 <h1 style="color: cyan; text-align: center">100 Day's Of Cybersecurity - Day 13</h1>
 
+![Amazon-Web-Services-S3-Penetration-1054296230](https://github.com/thelocalh0st/thelocalh0st.github.io/assets/95465072/b15cfb83-bf16-49a4-b5f7-511473deae65){: .dark .w-75 .shadow .rounded-10 w='1212' h='668' }
 
 #  Misconfigurations Of S3 Bucket
 
