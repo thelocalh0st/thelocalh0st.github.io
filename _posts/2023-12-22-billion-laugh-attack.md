@@ -1,3 +1,4 @@
+---
 title: <img width="50" height="50" alt="img" src="https://github.com/thelocalh0st/thelocalh0st.github.io/assets/95465072/60a1e6b1-5f9f-4744-9cc7-481920c53a22"> Billion Laugh Attack 
 date: 2023-12-21 07:00:02 +730
 categories: [Resources, bugbounty]
