@@ -44,9 +44,18 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.3.0   # reads from a '.ruby-version' or '.tools-version' file if 'ruby-version' is omitted
+          ruby-version: 3   # reads from a '.ruby-version' or '.tools-version' file if 'ruby-version' is omitted
           bundler-cache: true
-
+      
+      - name: Install Dependencies
+        run: |
+          gem install rake -v '13.0.6'
+          sudo apt-get install libffi-dev
+          gem update bundler
+          gem update --system
+          bundle config --local path vendor/bundle
+          bundle install --jobs 4 --retry 3 --no-cache
+          
       - name: Build site
         run: bundle exec jekyll b -d "_site${{ steps.pages.outputs.base_path }}"
         env:
