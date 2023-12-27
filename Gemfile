@@ -2,6 +2,8 @@
 
 source "https://rubygems.org"
 
+ruby '3.3.0' # Add or update the Ruby version
+
 gem "jekyll-theme-chirpy", "~> 5.6", ">= 5.6.1"
 
 group :test do
