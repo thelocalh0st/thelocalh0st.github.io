@@ -2,7 +2,7 @@
 
 source "https://rubygems.org"
 
-ruby '3.3.0' # Add or update the Ruby version
+ruby '3.2.2' # Add or update the Ruby version
 gem "rake", "13.0.6"
 gem 'csv'
 gem 'base64'
