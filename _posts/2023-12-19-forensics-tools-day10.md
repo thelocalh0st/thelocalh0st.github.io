@@ -18,7 +18,7 @@ tags: [digital-forensics,tools,100-days-of-cybersecurity] # TAG names should alw
 
 | Serial Number | Tool Name                  | Hyperlink                                       |
 | ------------- | -------------------------- | ----------------------------------------------- |
-| 1             | FTK Imager                 | [FTK Imager](https://www.exterro.com/ftkimager) |
+| 1 | FTK Imager | [FTK Imager](https://www.exterro.com/ftk%02imager) |
 | 2             | dd for Windows             | [dd for Windows](http://www.chrysocome.net/dd)    |
 | 3             | Autopsy                    | [Autopsy](https://www.autopsy.com/download)      |
 | 4             | The Sleuth Kit             | [The Sleuth Kit](http://www.sleuthkit.org)        |
