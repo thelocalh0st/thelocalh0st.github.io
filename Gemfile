@@ -9,6 +9,8 @@ gem 'base64'
 gem 'bigdecimal'
 gem "jekyll-theme-chirpy", "~> 5.6", ">= 5.6.1"
 
+gem "jekyll", "4.3.2"
+
 group :test do
   gem "html-proofer", "~> 3.18"
 end
