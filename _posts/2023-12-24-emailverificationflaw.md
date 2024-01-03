@@ -1,6 +1,6 @@
 ---
 title: <img width="50" height="50" alt="img" src="https://github.com/thelocalh0st/thelocalh0st.github.io/assets/95465072/7a2dbdf9-ffd0-4b1e-bf9c-2f6af62e74aa">  Access Control Flaw in Email Verification 📧
-date: 2023-12-23 07:00:02 +730
+date: 2023-12-24 07:00:02 +730
 categories: [Resources, bugbounty]
 tags: [access-control-flaw,bug-bounty,100-days-of-cybersecurity] # TAG names should always be lowercase
 mermaid: true
