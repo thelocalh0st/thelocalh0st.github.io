@@ -174,49 +174,6 @@ In this case, an attacker manipulates the file parameter to access sensitive fil
 
 These examples illustrate the technical aspects of common file upload vulnerabilities and highlight the importance of implementing robust security measures to protect against them. Always validate, sanitize, and restrict file uploads to ensure the integrity and security of your web application.
 
-# 8. File Upload Bypass via Response Manipulation:
-Vulnerability Description:
-Attackers may manipulate the server's response to make it falsely appear that a file upload has failed, while the file is actually successfully uploaded. This can be achieved by intercepting and modifying the server's response to trick the client-side validation.
 
-Example Scenario:
-Suppose the server responds with a JSON object indicating the success or failure of the upload:
-
-json
-Copy code
-{
-  "status": "success",
-  "message": "File uploaded successfully"
-}
-Attack Vector:
-An attacker intercepts the response and modifies it to:
-
-json
-Copy code
-{
-  "status": "error",
-  "message": "File type not supported"
-}
-Request Snippet (Modified Response):
-
-http
-Copy code
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-  "status": "error",
-  "message": "File type not supported"
-}
-Actual File Upload:
-
-http
-Copy code
-POST /upload HTTP/1.1
-Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryXYZ
-Content-Disposition: form-data; name="file"; filename="malicious.php"
-Content-Type: image/jpeg
-
-...binary data of the image...
-In this scenario, the attacker tricks the client-side code into thinking the upload failed, allowing them to successfully upload a file with malicious content.
 
 ![](https://media.giphy.com/media/DAtJCG1t3im1G/giphy.gif)
