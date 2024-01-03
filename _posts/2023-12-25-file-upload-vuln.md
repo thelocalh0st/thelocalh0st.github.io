@@ -112,6 +112,20 @@ Content-Type: text/plain
 ...binary data of the file...
 ```
 
+# Remote Command Execution (RCE) via File Name Parameter
+
+If the application includes custom image processing or file manipulation, it may be susceptible to remote command execution through code injection in the file name.
+
+## Example Valid File Names and Payloads:
+
+| File Name            | Payload        | Outcome if Vulnerable  |
+|----------------------|----------------|------------------------|
+| a$(whoami)z.jpg      | $(whoami)      | a[CURRENT USER]z.jpg   |
+| a\`whoami\`z.jpg     | \`whoami\`     | a[CURRENT USER]z.jpg   |
+| a;sleep 30;z.jpg     | ;sleep 30;     | The application will take 30+ seconds to respond |
+
+
+
 # 5. Denial of Service (DoS) through File Uploads:
 
 
