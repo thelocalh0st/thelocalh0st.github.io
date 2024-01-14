@@ -1,6 +1,6 @@
 ---
 title: <img width="50" height="50" alt="img" src="https://github.com/thelocalh0st/thelocalh0st.github.io/assets/95465072/72322038-9495-47ba-bf30-0caa7c1a7968"> File Upload Vulnerabilities 🗃️ 
-date: 2023-12-25 07:00:02 +730
+date: 2024-01-16 07:00:02 +730
 categories: [Resources, bugbounty]
 tags: [fileupload-vulnerability,bug-bounty,100-days-of-cybersecurity] # TAG names should always be lowercase
 mermaid: true

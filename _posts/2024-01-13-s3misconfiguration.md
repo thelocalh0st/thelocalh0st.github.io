@@ -1,6 +1,6 @@
 ---
 title: <img width="50" height="50" alt="img" src="https://github.com/thelocalh0st/thelocalh0st.github.io/assets/95465072/b15cfb83-bf16-49a4-b5f7-511473deae65"> S3 Bucket Misconfiguration!  
-date: 2023-12-22 07:00:02 +730
+date: 2024-01-13 07:00:02 +730
 categories: [Resources, bugbounty]
 tags: [s3-misconfiguration,bug-bounty,100-days-of-cybersecurity] # TAG names should always be lowercase
 mermaid: true

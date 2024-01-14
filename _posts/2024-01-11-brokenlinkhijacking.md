@@ -1,6 +1,6 @@
 ---
 title: <img width="50" height="50" alt="img" src="https://github.com/thelocalh0st/thelocalh0st.github.io/assets/95465072/9a44f712-9b73-488c-8d41-c02a246bda00">Broken Link Hijacking
-date: 2023-12-20 07:00:02 +730
+date: 2024-01-11 07:00:02 +730
 categories: [Resources, bugbounty]
 tags: [broken-link-hijacking,bug-bounty,100-days-of-cybersecurity] # TAG names should always be lowercase
 mermaid: true
