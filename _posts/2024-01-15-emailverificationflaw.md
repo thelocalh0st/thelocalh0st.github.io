@@ -5,6 +5,7 @@ categories: [Resources, bugbounty]
 tags: [access-control-flaw,bug-bounty,100-days-of-cybersecurity] # TAG names should always be lowercase
 mermaid: true
 
+
 ---
 
 <h1 style="color: cyan; text-align: center">100 Day's Of Cybersecurity - Day 15</h1>
