@@ -1,7 +1,7 @@
 ---
 title: <img width="50" height="50" alt="img" src="https://ericzimmerman.github.io/logoSmall.jpg"> Ericzimmerman Tools | Windows Forensics
 date: 2024-01-09 07:00:02 +730
-categories: [Resources, general]
+categories: [Resources, DFIR]
 tags: [digital-forensics,ericzimmerman-tools,100-days-of-cybersecurity] # TAG names should always be lowercase
 
 
