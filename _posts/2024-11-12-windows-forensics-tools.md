@@ -8,9 +8,9 @@ tags: [windows-forensics, artifacts] # TAG names should always be lowercase
 # Windows Forensic Tools
 
 ## **Browser Analysis**
-- **Web Historian**  
+- **Hind Sight**  
   Tool for analyzing browser history.  
-  [![Download Web Historian](https://img.shields.io/badge/Download-Web_Historian-blue)](https://www.mandiant.com/resources/web-historian)
+  [![Download HindSight](https://img.shields.io/badge/Download-Hind_Sight-blue)](https://github.com/obsidianforensics/hindsight)
 
 - **Browser History Examiner**  
   Advanced tool for browser history forensics.  
