@@ -6,10 +6,56 @@ comments: true
 tags: [windows-forensics, artifacts] # TAG names should always be lowercase
 
 
----
+---  
+    <div class="container">
+        <h1>Windows Forensic Tools</h1>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
+        <div class="category">
+            <h2>Event Log Analysis Tools</h2>
+            <ul class="tools">
+                <li>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/Windows_logo.svg" alt="Windows">
+                    <a href="https://www.xpport.com" target="_blank">XPort</a>
+                </li>
+                <li>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/Windows_logo.svg" alt="Windows">
+                    <a href="https://www.eventlogexplorer.com" target="_blank">Event Log Explorer</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="category">
+            <h2>Browser History Tools</h2>
+            <ul class="tools">
+                <li>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/65/Chrome_logo_2023.svg" alt="Chrome">
+                    <a href="https://www.browserhistoryview.com" target="_blank">Browser History View</a>
+                </li>
+                <li>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Firefox_logo_2023.svg" alt="Firefox">
+                    <a href="https://www.mozbackup.org" target="_blank">MozBackup</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="category">
+            <h2>Disk Imaging Tools</h2>
+            <ul class="tools">
+                <li>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/17/CCleaner_Logo.svg" alt="CCleaner">
+                    <a href="https://www.recuva.com" target="_blank">Recuva</a>
+                </li>
+                <li>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/17/CCleaner_Logo.svg" alt="CCleaner">
+                    <a href="https://www.roadkil.net/program.php/PARTCOPY" target="_blank">PartCopy</a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+
+<style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
@@ -63,56 +109,5 @@ tags: [windows-forensics, artifacts] # TAG names should always be lowercase
             text-decoration: underline;
         }
     </style>
-</head>
-<body>
-    <div class="container">
-        <h1>Windows Forensic Tools</h1>
-
-        <div class="category">
-            <h2>Event Log Analysis Tools</h2>
-            <ul class="tools">
-                <li>
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/Windows_logo.svg" alt="Windows">
-                    <a href="https://www.xpport.com" target="_blank">XPort</a>
-                </li>
-                <li>
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/Windows_logo.svg" alt="Windows">
-                    <a href="https://www.eventlogexplorer.com" target="_blank">Event Log Explorer</a>
-                </li>
-            </ul>
-        </div>
-
-        <div class="category">
-            <h2>Browser History Tools</h2>
-            <ul class="tools">
-                <li>
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/65/Chrome_logo_2023.svg" alt="Chrome">
-                    <a href="https://www.browserhistoryview.com" target="_blank">Browser History View</a>
-                </li>
-                <li>
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Firefox_logo_2023.svg" alt="Firefox">
-                    <a href="https://www.mozbackup.org" target="_blank">MozBackup</a>
-                </li>
-            </ul>
-        </div>
-
-        <div class="category">
-            <h2>Disk Imaging Tools</h2>
-            <ul class="tools">
-                <li>
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/17/CCleaner_Logo.svg" alt="CCleaner">
-                    <a href="https://www.recuva.com" target="_blank">Recuva</a>
-                </li>
-                <li>
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/17/CCleaner_Logo.svg" alt="CCleaner">
-                    <a href="https://www.roadkil.net/program.php/PARTCOPY" target="_blank">PartCopy</a>
-                </li>
-            </ul>
-        </div>
-
-    </div>
-
-
-
 
 ![](https://media.giphy.com/media/DAtJCG1t3im1G/giphy.gif)
