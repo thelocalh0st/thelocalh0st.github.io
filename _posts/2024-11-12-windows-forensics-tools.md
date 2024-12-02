@@ -1,113 +1,119 @@
 ---
 title: <img width="50" height="50" alt="front-page port 80-shoopyu" src="https://github.com/user-attachments/assets/d424c2cf-c85b-4f9a-ade6-fdb7b71f65a0">Windows Artifacts
-date: 2020-10-18 00:00:02 +730
+date: 2024-11-12 00:00:02 +730
 categories: [Resources, DFIR]
 comments: true
 tags: [windows-forensics, artifacts] # TAG names should always be lowercase
-
-
 ---  
-    <div class="container">
-        <h1>Windows Forensic Tools</h1>
+# Windows Forensic Tools
 
-        <div class="category">
-            <h2>Event Log Analysis Tools</h2>
-            <ul class="tools">
-                <li>
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/Windows_logo.svg" alt="Windows">
-                    <a href="https://www.xpport.com" target="_blank">XPort</a>
-                </li>
-                <li>
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/Windows_logo.svg" alt="Windows">
-                    <a href="https://www.eventlogexplorer.com" target="_blank">Event Log Explorer</a>
-                </li>
-            </ul>
-        </div>
+## **Browser Analysis**
+- **Web Historian**  
+  Tool for analyzing browser history.  
+  [![Download Web Historian](https://img.shields.io/badge/Download-Web_Historian-blue)](https://www.mandiant.com/resources/web-historian)
 
-        <div class="category">
-            <h2>Browser History Tools</h2>
-            <ul class="tools">
-                <li>
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/65/Chrome_logo_2023.svg" alt="Chrome">
-                    <a href="https://www.browserhistoryview.com" target="_blank">Browser History View</a>
-                </li>
-                <li>
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Firefox_logo_2023.svg" alt="Firefox">
-                    <a href="https://www.mozbackup.org" target="_blank">MozBackup</a>
-                </li>
-            </ul>
-        </div>
+- **Browser History Examiner**  
+  Advanced tool for browser history forensics.  
+  [![Download Browser History Examiner](https://img.shields.io/badge/Download-Browser_History_Examiner-blue)](https://www.foxtonforensics.com/browser-history-examiner/)
 
-        <div class="category">
-            <h2>Disk Imaging Tools</h2>
-            <ul class="tools">
-                <li>
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/17/CCleaner_Logo.svg" alt="CCleaner">
-                    <a href="https://www.recuva.com" target="_blank">Recuva</a>
-                </li>
-                <li>
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/17/CCleaner_Logo.svg" alt="CCleaner">
-                    <a href="https://www.roadkil.net/program.php/PARTCOPY" target="_blank">PartCopy</a>
-                </li>
-            </ul>
-        </div>
+---
 
-    </div>
+## **Event Log Analysis**
+- **LogParser**  
+  Parses Windows event logs.  
+  [![Download LogParser](https://img.shields.io/badge/Download-LogParser-blue)](https://www.microsoft.com/en-us/download/details.aspx?id=24659)
 
+- **Event Log Explorer**  
+  Tool for deep event log analysis.  
+  [![Download Event Log Explorer](https://img.shields.io/badge/Download-Event_Log_Explorer-blue)](https://eventlogxp.com/)
 
-<style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            width: 80%;
-            margin: 0 auto;
-            padding-top: 50px;
-        }
-        h1 {
-            text-align: center;
-            color: #333;
-        }
-        .category {
-            margin-top: 20px;
-            padding: 10px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        }
-        .category h2 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-        }
-        .tools {
-            list-style: none;
-            padding: 0;
-        }
-        .tools li {
-            display: flex;
-            align-items: center;
-            margin: 10px 0;
-            background-color: #e9e9e9;
-            padding: 10px;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        .tools li img {
-            width: 30px;
-            height: 30px;
-            margin-right: 15px;
-        }
-        .tools li a {
-            text-decoration: none;
-            color: #007BFF;
-            font-size: 1rem;
-        }
-        .tools li a:hover {
-            text-decoration: underline;
-        }
-    </style>
+---
+
+## **Registry Analysis**
+- **RegRipper**  
+  Extracts useful information from Windows registry.  
+  [![Download RegRipper](https://img.shields.io/badge/Download-RegRipper-blue)](https://github.com/keydet89/RegRipper2.8)
+
+- **Registry Explorer**  
+  Advanced registry analysis tool.  
+  [![Download Registry Explorer](https://img.shields.io/badge/Download-Registry_Explorer-blue)](https://ericzimmerman.github.io/#!index.md)
+
+---
+
+## **Memory Forensics**
+- **Volatility**  
+  Framework for memory analysis.  
+  [![Download Volatility](https://img.shields.io/badge/Download-Volatility-blue)](https://www.volatilityfoundation.org/)
+
+- **Rekall**  
+  Memory forensics and analysis tool.  
+  [![Download Rekall](https://img.shields.io/badge/Download-Rekall-blue)](http://www.rekall-forensic.com/)
+
+---
+
+## **File System Analysis**
+- **FTK Imager**  
+  Imaging and forensic analysis tool.  
+  [![Download FTK Imager](https://img.shields.io/badge/Download-FTK_Imager-blue)](https://accessdata.com/product-download/ftk-imager-version-4-5)
+
+- **Autopsy**  
+  Digital forensics platform for file system investigation.  
+  [![Download Autopsy](https://img.shields.io/badge/Download-Autopsy-blue)](https://www.autopsy.com/download/)
+
+---
+
+## **Timeline Analysis**
+- **Plaso/Log2Timeline**  
+  Framework for creating forensic timelines.  
+  [![Download Plaso/Log2Timeline](https://img.shields.io/badge/Download-Plaso/Log2Timeline-blue)](https://plaso.readthedocs.io/)
+
+- **Timesketch**  
+  Collaborative timeline analysis tool.  
+  [![Download Timesketch](https://img.shields.io/badge/Download-Timesketch-blue)](https://github.com/google/timesketch)
+
+---
+
+## **Network Forensics**
+- **Wireshark**  
+  Network protocol analyzer.  
+  [![Download Wireshark](https://img.shields.io/badge/Download-Wireshark-blue)](https://www.wireshark.org/)
+
+- **NetworkMiner**  
+  Network forensic analysis tool.  
+  [![Download NetworkMiner](https://img.shields.io/badge/Download-NetworkMiner-blue)](https://www.netresec.com/)
+
+---
+
+## **Disk Analysis**
+- **X-Ways Forensics**  
+  Comprehensive disk analysis tool.  
+  [![Download X-Ways Forensics](https://img.shields.io/badge/Download-X--Ways_Forensics-blue)](https://www.x-ways.net/forensics/)
+
+- **OSFMount**  
+  Mounts disk images for analysis.  
+  [![Download OSFMount](https://img.shields.io/badge/Download-OSFMount-blue)](https://www.osforensics.com/tools/mount-disk-images.html)
+
+---
+
+## **Malware Analysis**
+- **Cuckoo Sandbox**  
+  Automated malware analysis.  
+  [![Download Cuckoo Sandbox](https://img.shields.io/badge/Download-Cuckoo_Sandbox-blue)](https://cuckoosandbox.org/)
+
+- **YARA**  
+  Pattern matching for malware detection.  
+  [![Download YARA](https://img.shields.io/badge/Download-YARA-blue)](https://virustotal.github.io/yara/)
+
+---
+
+## **Email Forensics**
+- **MailXaminer**  
+  Comprehensive email analysis tool.  
+  [![Download MailXaminer](https://img.shields.io/badge/Download-MailXaminer-blue)](https://www.mailxaminer.com/)
+
+- **P2 Commander**  
+  Forensic email investigation tool.  
+  [![Download P2 Commander](https://img.shields.io/badge/Download-P2_Commander-blue)](https://www.paraben.com/p2-commander/)
+
 
 ![](https://media.giphy.com/media/DAtJCG1t3im1G/giphy.gif)
