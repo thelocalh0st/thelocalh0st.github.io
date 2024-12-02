@@ -8,7 +8,7 @@ tags: [autopsy,digital-forensics,computer-forensics-reference-dataset,100-days-o
 ---
 
 
-<h1 style="color: cyan; text-align: center">100 Day's Of Cybersecurity - Day 7</h1>
+<!-- <h1 style="color: cyan; text-align: center">100 Day's Of Cybersecurity - Day 7</h1> -->
 
 ![](https://github.com/thelocalh0st/thelocalh0st.github.io/assets/95465072/8a86a878-c6ee-4874-baf1-e15a29a33942){: .dark .w-75 .shadow .rounded-10 w='1212' h='668' }
 

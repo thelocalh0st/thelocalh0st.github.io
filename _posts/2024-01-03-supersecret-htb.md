@@ -8,7 +8,7 @@ tags: [truesecrets,walkthrough,hackthebox,forensics,100-days-of-cybersecurity] #
 ---
 
 
-<h1 style="color: cyan; text-align: center">100 Day's Of Cybersecurity - Day 3</h1>
+<!-- <h1 style="color: cyan; text-align: center">100 Day's Of Cybersecurity - Day 3</h1> -->
 
 
 ![](https://github.com/thelocalh0st/thelocalh0st.github.io/assets/95465072/c16504aa-e48a-4390-b816-aae14b9cdbf3){: .dark .w-75 .shadow .rounded-10 w='1212' h='668' }

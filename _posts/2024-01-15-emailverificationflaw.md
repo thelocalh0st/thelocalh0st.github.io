@@ -8,7 +8,7 @@ mermaid: true
 
 ---
 
-<h1 style="color: cyan; text-align: center">100 Day's Of Cybersecurity - Day 15</h1>
+<!-- <h1 style="color: cyan; text-align: center">100 Day's Of Cybersecurity - Day 15</h1> -->
 
 ![email_verification_blog_banner-2742088540](https://github.com/thelocalh0st/thelocalh0st.github.io/assets/95465072/7a2dbdf9-ffd0-4b1e-bf9c-2f6af62e74aa){: .dark .w-75 .shadow .rounded-10 w='1212' h='668' }
 

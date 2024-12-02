@@ -8,7 +8,7 @@ tags: [dignostics,hackthebox,forensics,100-days-of-cybersecurity] # TAG names sh
 ---
 
 
-<h1 style="color: cyan; text-align: center">100 Day's Of Cybersecurity - Day 2</h1>
+<!-- <h1 style="color: cyan; text-align: center">100 Day's Of Cybersecurity - Day 2</h1> -->
 
 ![](https://github.com/thelocalh0st/thelocalh0st.github.io/assets/95465072/1a067bba-0bc7-4334-8fae-ee6d6d301a12){: .dark .w-75 .shadow .rounded-10 w='1212' h='668' }
 

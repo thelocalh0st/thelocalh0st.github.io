@@ -8,7 +8,7 @@ tags: [anonymous,walkthrough,tryhackme,privilege-escalation,hydra,100-days-of-cy
 ---
 
 
-<h1 style="color: cyan; text-align: center">100 Day's Of Cybersecurity - Day 6</h1>
+<!-- <h1 style="color: cyan; text-align: center">100 Day's Of Cybersecurity - Day 6</h1> -->
 
 ![anonymous-image-3385687945](https://github.com/thelocalh0st/thelocalh0st.github.io/assets/95465072/bec39529-aa33-4e82-a201-a5ebe01a6d76){: .dark .w-75 .shadow .rounded-10 w='1212' h='668' }
 

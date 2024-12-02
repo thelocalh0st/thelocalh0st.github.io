@@ -8,7 +8,7 @@ mermaid: true
 ---
 
 
-<h1 style="color: cyan; text-align: center">100 Day's Of Cybersecurity - Day 13</h1>
+<!-- <h1 style="color: cyan; text-align: center">100 Day's Of Cybersecurity - Day 13</h1> -->
 
 ![Amazon-Web-Services-S3-Penetration-1054296230](https://github.com/thelocalh0st/thelocalh0st.github.io/assets/95465072/b15cfb83-bf16-49a4-b5f7-511473deae65){: .dark .w-75 .shadow .rounded-10 w='1212' h='668' }
 

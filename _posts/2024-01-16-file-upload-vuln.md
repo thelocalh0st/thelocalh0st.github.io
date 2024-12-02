@@ -8,7 +8,7 @@ mermaid: true
 ---
 
 
-<h1 style="color: cyan; text-align: center">100 Day's Of Cybersecurity - Day 16</h1>
+<!-- <h1 style="color: cyan; text-align: center">100 Day's Of Cybersecurity - Day 16</h1> -->
 
 
 ![File-Upload-Vulnerability-2760290964](https://github.com/thelocalh0st/thelocalh0st.github.io/assets/95465072/72322038-9495-47ba-bf30-0caa7c1a7968){: .dark .w-75 .shadow .rounded-10 w='1212' h='668' }

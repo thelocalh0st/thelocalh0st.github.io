@@ -8,7 +8,7 @@ tags: [bugbounty, password-reset-vuln,100-days-of-cybersecurity] # TAG names sho
 ---
 
 
-<h1 style="color: cyan; text-align: center">100 Day's Of Cybersecurity - Day 4</h1>
+<!-- <h1 style="color: cyan; text-align: center">100 Day's Of Cybersecurity - Day 4</h1> -->
 <br><br>
 ![th-364396762 (1)](https://github.com/thelocalh0st/thelocalh0st.github.io/assets/95465072/6609b668-6523-4436-b31b-e1e405cf670b)
 

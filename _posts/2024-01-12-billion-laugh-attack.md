@@ -10,7 +10,7 @@ mermaid: true
 ![1686635291267-BugBlog+(1)-2492330420](https://github.com/thelocalh0st/thelocalh0st.github.io/assets/95465072/60a1e6b1-5f9f-4744-9cc7-481920c53a22){: .dark .w-75 .shadow .rounded-10 w='1212' h='668' }
 
 
-<h1 style="color: cyan; text-align: center">100 Day's Of Cybersecurity - Day 12</h1>
+<!-- <h1 style="color: cyan; text-align: center">100 Day's Of Cybersecurity - Day 12</h1> -->
 
 
 # The Billion Laughs Attack: A Threat to XML Parsing

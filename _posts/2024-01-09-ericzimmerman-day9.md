@@ -9,7 +9,7 @@ tags: [digital-forensics,ericzimmerman-tools,100-days-of-cybersecurity] # TAG na
 
 
 
-<h1 style="color: cyan; text-align: center">100 Day's Of Cybersecurity - Day 9</h1>
+<!-- <h1 style="color: cyan; text-align: center">100 Day's Of Cybersecurity - Day 9</h1> -->
 
 
 ![](https://ericzimmerman.github.io/logoSmall.jpg){: .dark .w-75 .shadow .rounded-10 w='1212' h='668' }
