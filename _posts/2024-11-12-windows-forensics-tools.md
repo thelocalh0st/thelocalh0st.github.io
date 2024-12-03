@@ -1,31 +1,38 @@
 ---
-title: <img width="50" height="50" alt="front-page port 80-shoopyu" src="https://github.com/user-attachments/assets/d424c2cf-c85b-4f9a-ade6-fdb7b71f65a0">Windows Artifacts
+title: <img width="50" height="50" alt="Windows Forensics Tools" src="https://github.com/user-attachments/assets/d424c2cf-c85b-4f9a-ade6-fdb7b71f65a0"> Windows Forensics Tools
 date: 2024-11-12 00:00:02 +730
 categories: [Resources, DFIR]
 comments: true
 tags: [windows-forensics, artifacts] # TAG names should always be lowercase
----  
-# Windows Forensic Tools
+---
 
-## **Browser Analysis**
+## **Browser Forensics**
 - **Hind Sight**  
-  Tool for analyzing browser history.  
-  [![Download HindSight](https://img.shields.io/badge/Download-Hind_Sight-blue)](https://github.com/obsidianforensics/hindsight)
+  Analyze browser history.  
+  [![Download HindSight](https://img.shields.io/badge/Download-HindSight-blue)](https://github.com/obsidianforensics/hindsight)
 
-- **Browser History Examiner**  
-  Advanced tool for browser history forensics.  
-  [![Download Browser History Examiner](https://img.shields.io/badge/Download-Browser_History_Examiner-blue)](https://www.foxtonforensics.com/browser-history-examiner/)
+- **Chrome History Analyzer**  
+  Tool for Chrome browser analysis.  
+  [![Download Chrome History Analyzer](https://img.shields.io/badge/Download-Chrome_History_Analyzer-blue)](https://github.com/forensicateam/chrome-analyzer)
+
+- **Web Browser Forensic Tool**  
+  Supports multiple browsers.  
+  [![Download Web Browser Forensic Tool](https://img.shields.io/badge/Download-Web_Browser_Forensic_Tool-blue)](https://github.com/dfir/windows)
 
 ---
 
-## **Event Log Analysis**
+## **Event Log Forensics**
 - **LogParser**  
   Parses Windows event logs.  
   [![Download LogParser](https://img.shields.io/badge/Download-LogParser-blue)](https://www.microsoft.com/en-us/download/details.aspx?id=24659)
 
 - **Event Log Explorer**  
-  Tool for deep event log analysis.  
+  Comprehensive event log viewer.  
   [![Download Event Log Explorer](https://img.shields.io/badge/Download-Event_Log_Explorer-blue)](https://eventlogxp.com/)
+
+- **EvtxECmd (Eric Zimmerman)**  
+  Fast parsing of EVTX event logs.  
+  [![Download EvtxECmd](https://img.shields.io/badge/Download-EvtxECmd-blue)](https://ericzimmerman.github.io/#!index.md)
 
 ---
 
@@ -34,9 +41,13 @@ tags: [windows-forensics, artifacts] # TAG names should always be lowercase
   Extracts useful information from Windows registry.  
   [![Download RegRipper](https://img.shields.io/badge/Download-RegRipper-blue)](https://github.com/keydet89/RegRipper2.8)
 
-- **Registry Explorer**  
-  Advanced registry analysis tool.  
+- **Registry Explorer (Eric Zimmerman)**  
+  Advanced registry analysis.  
   [![Download Registry Explorer](https://img.shields.io/badge/Download-Registry_Explorer-blue)](https://ericzimmerman.github.io/#!index.md)
+
+- **RECmd (Eric Zimmerman)**  
+  Command-line registry analysis.  
+  [![Download RECmd](https://img.shields.io/badge/Download-RECmd-blue)](https://ericzimmerman.github.io/#!index.md)
 
 ---
 
@@ -46,36 +57,40 @@ tags: [windows-forensics, artifacts] # TAG names should always be lowercase
   [![Download Volatility](https://img.shields.io/badge/Download-Volatility-blue)](https://www.volatilityfoundation.org/)
 
 - **Rekall**  
-  Memory forensics and analysis tool.  
+  Memory forensics and analysis.  
   [![Download Rekall](https://img.shields.io/badge/Download-Rekall-blue)](http://www.rekall-forensic.com/)
 
 ---
 
 ## **File System Analysis**
 - **FTK Imager**  
-  Imaging and forensic analysis tool.  
+  Imaging and forensic analysis.  
   [![Download FTK Imager](https://img.shields.io/badge/Download-FTK_Imager-blue)](https://accessdata.com/product-download/ftk-imager-version-4-5)
 
 - **Autopsy**  
-  Digital forensics platform for file system investigation.  
+  File system analysis and reporting.  
   [![Download Autopsy](https://img.shields.io/badge/Download-Autopsy-blue)](https://www.autopsy.com/download/)
+
+- **MFTECmd (Eric Zimmerman)**  
+  MFT table analysis.  
+  [![Download MFTECmd](https://img.shields.io/badge/Download-MFTECmd-blue)](https://ericzimmerman.github.io/#!index.md)
 
 ---
 
 ## **Timeline Analysis**
 - **Plaso/Log2Timeline**  
-  Framework for creating forensic timelines.  
+  Framework for forensic timelines.  
   [![Download Plaso/Log2Timeline](https://img.shields.io/badge/Download-Plaso/Log2Timeline-blue)](https://plaso.readthedocs.io/)
 
 - **Timesketch**  
-  Collaborative timeline analysis tool.  
+  Collaborative timeline analysis.  
   [![Download Timesketch](https://img.shields.io/badge/Download-Timesketch-blue)](https://github.com/google/timesketch)
 
 ---
 
 ## **Network Forensics**
 - **Wireshark**  
-  Network protocol analyzer.  
+  Network packet analyzer.  
   [![Download Wireshark](https://img.shields.io/badge/Download-Wireshark-blue)](https://www.wireshark.org/)
 
 - **NetworkMiner**  
@@ -89,9 +104,9 @@ tags: [windows-forensics, artifacts] # TAG names should always be lowercase
   Comprehensive disk analysis tool.  
   [![Download X-Ways Forensics](https://img.shields.io/badge/Download-X--Ways_Forensics-blue)](https://www.x-ways.net/forensics/)
 
-- **OSFMount**  
-  Mounts disk images for analysis.  
-  [![Download OSFMount](https://img.shields.io/badge/Download-OSFMount-blue)](https://www.osforensics.com/tools/mount-disk-images.html)
+- **DiskDigger**  
+  Data recovery and analysis.  
+  [![Download DiskDigger](https://img.shields.io/badge/Download-DiskDigger-blue)](https://diskdigger.org/)
 
 ---
 
@@ -108,12 +123,11 @@ tags: [windows-forensics, artifacts] # TAG names should always be lowercase
 
 ## **Email Forensics**
 - **MailXaminer**  
-  Comprehensive email analysis tool.  
+  Comprehensive email analysis.  
   [![Download MailXaminer](https://img.shields.io/badge/Download-MailXaminer-blue)](https://www.mailxaminer.com/)
 
 - **P2 Commander**  
-  Forensic email investigation tool.  
+  Email investigation tool.  
   [![Download P2 Commander](https://img.shields.io/badge/Download-P2_Commander-blue)](https://www.paraben.com/p2-commander/)
-
 
 ![](https://media.giphy.com/media/DAtJCG1t3im1G/giphy.gif)
