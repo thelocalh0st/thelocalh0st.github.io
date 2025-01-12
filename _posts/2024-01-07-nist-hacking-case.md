@@ -2,6 +2,7 @@
 title: <img width="50" height="50" alt="img" src="https://github.com/thelocalh0st/thelocalh0st.github.io/assets/95465072/de6eece3-9ff2-4439-9c01-c6433e45bc04"> CFReD | Nist | Hacking Case 
 date: 2024-01-07 07:00:02 +730
 categories: [Resources, DFIR]
+pin: true
 tags: [autopsy,digital-forensics,computer-forensics-reference-dataset,100-days-of-cybersecurity] # TAG names should always be lowercase
 
 
