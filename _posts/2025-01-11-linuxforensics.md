@@ -3,6 +3,7 @@ title: <img width="50" height="50" alt="front-page port 80-shoopyu" src="/assets
 date: 2025-01-11 00:00:02 +730
 categories: [Resources, DFIR]
 comments: true
+pin: true
 tags: [linuxforensics, artifacts, dfir] # TAG names should always be lowercase
 
 
@@ -264,3 +265,6 @@ Check for signs of unauthorized key pairs or unexpected entries indicating compr
 Linux forensics can be daunting due to the variety of artifacts and potential for attackers to cover their tracks. However, focusing on key system and user artifacts like **bash history**, **SSH files**, **system logs**, and **scheduled tasks** is critical. By leveraging tools like **Magnet Axiom**, you can automate the process of collecting, analyzing, and correlating evidence from multiple sources.
 
 Focusing on these key Linux artifacts and using the right forensic tools will allow you to efficiently uncover the truth, whether you're responding to a cyberattack, investigating insider threats, or conducting routine security audits.
+
+
+![](https://media.giphy.com/media/DAtJCG1t3im1G/giphy.gif)

@@ -1,7 +1,7 @@
 ---
 title: <img width="50" height="50" alt="img" src="https://github.com/thelocalh0st/thelocalh0st.github.io/assets/95465072/33b960ca-0cdb-430f-a1fd-fdab01004109"> Digital Forensics Tools
 date: 2024-01-10 07:00:02 +730
-categories: [Resources, general]
+categories: [Resources, DFIR]
 tags: [digital-forensics,tools,100-days-of-cybersecurity] # TAG names should always be lowercase
 
 
