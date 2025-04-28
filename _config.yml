@@ -18,10 +18,10 @@ timezone:
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: 𝔩𝔬𝔠𝔞𝔩 𝔥𝔬𝔰𝔱 # the main title
+title: sujay adkesar # the main title
 
 # tagline: A formal cyberscurity student                                 sujay_adkesar # it will display as the sub-title
-tagline: DFIR Analyst           # it will display as the sub-title
+tagline: DFIR Analyst<br>local host           # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
   A minimal, responsive technical writing.
