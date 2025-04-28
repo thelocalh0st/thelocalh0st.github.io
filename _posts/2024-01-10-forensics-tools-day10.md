@@ -3,7 +3,7 @@ title: <img width="50" height="50" alt="img" src="https://github.com/thelocalh0s
 date: 2024-01-10 07:00:02 +730
 categories: [Resources, DFIR]
 pin: true
-tags: [digital-forensics,tools,100-days-of-cybersecurity] # TAG names should always be lowercase
+tags: [digital-forensics,tools,cybersecurity] # TAG names should always be lowercase
 
 
 ---

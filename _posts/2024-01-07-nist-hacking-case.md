@@ -3,7 +3,7 @@ title: <img width="50" height="50" alt="img" src="https://github.com/thelocalh0s
 date: 2024-01-07 07:00:02 +730
 categories: [Resources, DFIR]
 pin: true
-tags: [autopsy,digital-forensics,computer-forensics-reference-dataset,100-days-of-cybersecurity] # TAG names should always be lowercase
+tags: [autopsy,digital-forensics,computer-forensics-reference-dataset,cybersecurity] # TAG names should always be lowercase
 
 
 ---
