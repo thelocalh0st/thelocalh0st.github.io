@@ -21,7 +21,7 @@ timezone:
 title: sujay adkesar # the main title
 
 # tagline: A formal cyberscurity student                                 sujay_adkesar # it will display as the sub-title
-tagline: DFIR Analyst<br>local host           # it will display as the sub-title
+tagline: DFIR Analyst&nbsp;&nbsp;local host           # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
   A minimal, responsive technical writing.
