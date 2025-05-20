@@ -10,6 +10,7 @@ tags: [windows-forensics, artifacts, mft] # TAG names should always be lowercase
 ---
 ## $MFT  :) Who is keeping track of the Tracker!!
 
+![](/assets/images/image-14-123111507.png)
 In the world of Windows file systems, there exists a fascinating technical paradox that few users ever consider: `The Master File Table (MFT), responsible for tracking every file on an NTFS volume, "MUST ALSO TRACK ITSELF".`
 
 The NTFS file system employs Record 0 in the MFT as a self-reference—an entry that describes the very table it resides within. This creates a recursive relationship where the tracker contains metadata about itself.
