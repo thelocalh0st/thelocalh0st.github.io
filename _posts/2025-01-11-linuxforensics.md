@@ -3,7 +3,7 @@ title: <img width="50" height="50" alt="front-page port 80-shoopyu" src="/assets
 date: 2025-01-11 00:00:02 +730
 categories: [Resources, DFIR]
 comments: true
-pin: true
+# pin: true
 tags: [linuxforensics, artifacts, dfir] # TAG names should always be lowercase
 
 
