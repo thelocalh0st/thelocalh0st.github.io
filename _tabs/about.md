@@ -6,7 +6,7 @@ order: 4
 
 
 <h1 align="center">01101000 01101001 There 👋, I'm SUJAY ADKESAR</h1>
-<h3 align="center">A Seasoned Web application penetration tester. Thursty to learn and explore new technologies and share the knowledge back to the community.</h3>
+<h3 align="center">Digital Forensics Analyst, Thirsty to learn and explore new technologies and share the knowledge back to the community.</h3>
 
 
 
