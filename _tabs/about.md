@@ -18,11 +18,12 @@ order: 4
 
 <div style="display: flex; justify-content: center; align-items: center;">
   <div style="text-align: center;">
-    <p style="font-size: 18px; font-weight: bold;">👁️ Visitors</p>
-    <img src="https://visitor-badge.laobi.icu/badge?page_id=thelocalh0st.github.io" alt="visitors" style="transform: scale(1.8);" />
+    <p style="font-size: 20px; font-weight: bold;">👁️ Visitors</p>
+    <img src="https://visitor-badge.laobi.icu/badge?page_id=thelocalh0st.github.io" alt="visitors" style="width: 180px; height: auto;" />
   </div>
 </div>
 <br><br>
+
 
 
 
