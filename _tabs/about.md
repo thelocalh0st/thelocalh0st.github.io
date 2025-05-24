@@ -18,8 +18,7 @@ order: 4
 
 <div style="display: flex; justify-content: center; align-items: center;">
   <div style="text-align: center;">
-    <p style="font-size: 20px; font-weight: bold;">👁️ Visitors</p>
-    <img src="https://visitor-badge.laobi.icu/badge?page_id=thelocalh0st.github.io" alt="visitors" style="width: 180px; height: auto;" />
+    <img src="https://visitor-badge.laobi.icu/badge?page_id=thelocalh0st.github.io" alt="visitors" style="width: 280px; height: auto;" />
   </div>
 </div>
 <br><br>
