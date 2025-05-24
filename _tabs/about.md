@@ -16,10 +16,13 @@ order: 4
 <br><br>
 
 
-<p align="center">
-  <img src="https://visitor-badge.laobi.icu/badge?page_id=thelocalh0st.github.io" alt="visitors" />
-</p>
 <br><br>
+<div align="center" style="font-size: 18px;">
+  <strong>👁️ Visitors:</strong><br>
+  <img src="https://visitor-badge.laobi.icu/badge?page_id=thelocalh0st.github.io" alt="visitors" style="zoom:1.5;" />
+</div>
+<br><br>
+
 
 <h3 align="center">Connect with me:</h3>
 <p align="center">
