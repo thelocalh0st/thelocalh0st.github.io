@@ -15,6 +15,12 @@ order: 4
 
 <br><br>
 
+
+<p align="center">
+  <img src="https://visitor-badge.laobi.icu/badge?page_id=thelocalh0st.github.io" alt="visitors" />
+</p>
+<br><br>
+
 <h3 align="center">Connect with me:</h3>
 <p align="center">
 <a href="" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/twitter.svg" alt="sujay" height="30" width="40" /></a>
