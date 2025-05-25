@@ -1,11 +1,10 @@
 ---
-title: <img width="50" height="50" alt="front-page port 80-shoopyu" src="https://github.com/user-attachments/assets/d424c2cf-c85b-4f9a-ade6-fdb7b71f65a0">Windows Artifacts
+title: <img width="50" height="50" alt="front-page port 80-shoopyu" src="/assets/images/windows-forensics.png">Windows Artifacts
 date: 2020-10-18 00:00:02 +730
 categories: [Resources, DFIR]
 comments: true
 pin: true
 tags: [windows-forensics, artifacts] # TAG names should always be lowercase
-
 
 ---
 System and User Information

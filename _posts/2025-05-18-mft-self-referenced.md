@@ -1,5 +1,5 @@
 ---
-title: <img width="50" height="50" alt="front-page port 80-shoopyu" src="/assets/images/image-14-123111507.png">The Recursive Paradox: How NTFS Self-References Its $MFT
+title: <img width="50" height="50" src="/assets/images/image-14-123111507.png">How NTFS Self-References Its $MFT
 date: 2020-10-18 00:00:02 +730
 categories: [Resources, DFIR]
 comments: true
@@ -8,6 +8,7 @@ tags: [windows-forensics, artifacts, mft] # TAG names should always be lowercase
 
 
 ---
+
 ## $MFT  :) Who is keeping track of the Tracker!!
 
 ![](/assets/images/image-14-123111507.png)
