@@ -1,6 +1,6 @@
 ---
 title: <img width="50" height="50" src="/assets/images/ram.png">Acquiring RAM Through Cooling Methods
-date: 2020-10-18 00:00:02 +730
+date: 2025-05-24 00:00:02 +730
 categories: [Resources, DFIR]
 comments: true
 pin: true
