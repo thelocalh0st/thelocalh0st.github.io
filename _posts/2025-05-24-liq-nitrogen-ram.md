@@ -77,43 +77,13 @@ Removing RAM at normal temperature (35°C) and reinserting after 10 minutes resu
 
 **Three Cooling Methods Tested:**
 
+| **Cooling Method**     | **Temperature** | **Time Delay(s)**               | **Data Recovery** |
+|------------------------|-----------------|----------------------------------|--------------------|
+| **Liquid Nitrogen**    | -196°C          | 10 min, 1 hr, 2.5 hrs            | 99.81%, 98.84%, 93.95% |
+| **Freezing Spray**     | -40°C           | 10 min                           | 96.45%             |
+| **Ice Submersion**     | 10°C            | 10 min                           | 99.71%             |
   
-
-**Method 1: Liquid Nitrogen**
-
-  
-
-- Temperature: -196°C
-
-- Time delays tested: 10 minutes, 1 hour, 2.5 hours
-
-- Process: RAM immediately submerged in liquid nitrogen after removal
-
-  
-
-**Method 2: Freezing Spray**
-
-  
-
-- Temperature: -40°C
-
-- Time delay: 10 minutes
-
-- Process: Compressed air freezing spray applied to RAM modules
-
-  
-
-**Method 3: Ice Submersion**
-
-  
-
-- Temperature: 10°C surface temperature
-
-- Time delay: 10 minutes
-
-- Process: RAM placed in anti-static bag and buried in ice cubes[^3]
-
-  
+ 
   
 
 ## **Analysis Process**
@@ -124,48 +94,11 @@ After cooling, RAM modules were reinserted into the same computer and booted fro
 
   
 
-## **Quantified Results**
-
-  
-
-**Data Recovery Percentages:**
-
-  
-
-- No cooling (35°C): **0.2% recovery**
-
-- Liquid nitrogen (-196°C): **99.81% recovery**
-
-- Ice submersion (10°C): **99.71% recovery**
-
-- Freezing spray (-40°C): **96.45% recovery**
-
-  
-
-**Time Sensitivity with Liquid Nitrogen:**
-
-  
-
-- 10 minutes delay: 99.81% recovery
-
-- 1 hour delay: 98.84% recovery
-
-- 2.5 hours delay: 93.95% recovery
-
-  
-  
-
 ## **Critical Forensic Discovery**
 
 
-The research successfully recovered **512-bit AES encryption keys** used by TrueCrypt in all cooling experiments[^3]. This finding demonstrates the ability to decrypt previously inaccessible encrypted files and containers, representing a significant breakthrough for forensic investigators dealing with encrypted evidence.
+The research successfully recovered **512-bit AES encryption keys** used by TrueCrypt in all cooling experiments. This finding demonstrates the ability to decrypt previously inaccessible encrypted files and containers, representing a significant breakthrough for forensic investigators dealing with encrypted evidence.
 
-  
- 
-
-## **Verification Status**
-
-  
 
 This research provides **empirically proven results** through controlled experiments with measurable, reproducible outcomes[^1][^3]. The study demonstrates quantitative data recovery percentages across multiple cooling methods and time delays, validating the practical effectiveness of RAM cooling techniques for forensic investigations.
 
