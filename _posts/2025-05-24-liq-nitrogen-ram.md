@@ -1,6 +1,6 @@
 ---
 title: <img width="50" height="50" src="/assets/images/ram.png">Acquiring RAM Through Cooling Methods
-date: 2020-10-18 00:00:02 +730
+date: 2025-05-24 00:00:02 +730
 categories: [Resources, DFIR]
 comments: true
 pin: true
@@ -92,6 +92,8 @@ Removing RAM at normal temperature (35°C) and reinserting after 10 minutes resu
 
 After cooling, RAM modules were reinserted into the same computer and booted from a USB stick containing DumpIT Linux memory dumping software. The software immediately dumped RAM contents to USB storage for later analysis.
 
+
+{% include embed/youtube.html id='XfUlRsE3ymQ' %}
   
 
 ## **Critical Forensic Discovery**

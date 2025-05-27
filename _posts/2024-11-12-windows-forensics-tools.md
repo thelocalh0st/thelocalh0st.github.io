@@ -1,11 +1,12 @@
 ---
-title: <img width="50" height="50" alt="Windows Forensics Tools" src="https://github.com/user-attachments/assets/d424c2cf-c85b-4f9a-ade6-fdb7b71f65a0"> Windows Forensics Tools
+title: <img width="50" height="50" src="/assets/images/winf.jpg"> Windows Forensics Tools
 date: 2024-11-12 00:00:02 +730
 categories: [Resources, DFIR]
 comments: true
 tags: [windows-forensics, artifacts] # TAG names should always be lowercase
 ---
 
+![](/assets/images/winf.jpg)
 ## **Browser Forensics**
 - **Hind Sight**  
   Analyze browser history.  
