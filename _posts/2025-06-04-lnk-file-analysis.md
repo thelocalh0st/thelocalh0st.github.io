@@ -33,7 +33,7 @@ To analyze and demystify the subtle, less-documented behaviors of `.LNK` (Window
 
 ### 🔹 Phase 1 – After First Open & Save
 
-|Attribute|Value
+|Attribute|Value|
 |--|--|
 |**Source Created**|07-Jun-25 07:31:12 PM
 |**Source Modified**|07-Jun-25 07:20:18 PM
@@ -48,7 +48,7 @@ To analyze and demystify the subtle, less-documented behaviors of `.LNK` (Window
 
 ### 🔹 Phase 2 – After Reopening & Redaction
 
-|Attribute|Value
+|Attribute|Value|
 |--|--|
 |**Source Created**|07-Jun-25 08:03:09 PM
 |**Source Modified**|07-Jun-25 08:02:03 PM
