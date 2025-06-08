@@ -35,14 +35,14 @@ To analyze and demystify the subtle, less-documented behaviors of `.LNK` (Window
 
 |Attribute|Value|
 |--|--|
-|**Source Created**|07-Jun-25 07:31:12 PM
-|**Source Modified**|07-Jun-25 07:20:18 PM
-|**Source Accessed**|07-Jun-25 07:47:43 PM
-|**Target Created**|07-Jun-25 07:19:57 PM
-|**Target Modified**|07-Jun-25 07:19:57 PM
-|**Target Accessed**|07-Jun-25 07:20:17 PM
-|**LNK File Size**|6,192 bytes (approx. 6 KB)
-|**Target File Size**|Not reflected post edit (remains ~6 KB)
+|**Source Created**|07-Jun-25 07:31:12 PM |
+|**Source Modified**|07-Jun-25 07:20:18 PM |
+|**Source Accessed**|07-Jun-25 07:47:43 PM|
+|**Target Created**|07-Jun-25 07:19:57 PM|
+|**Target Modified**|07-Jun-25 07:19:57 PM|
+|**Target Accessed**|07-Jun-25 07:20:17 PM|
+|**LNK File Size**|6,192 bytes (approx. 6 KB)|
+|**Target File Size**|Not reflected post edit (remains ~6 KB)|
 <br>
 ![](/assets/images/1.png)<br><br>
 
