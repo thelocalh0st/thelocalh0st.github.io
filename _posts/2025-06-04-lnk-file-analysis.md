@@ -20,7 +20,7 @@ To analyze and demystify the subtle, less-documented behaviors of `.LNK` (Window
 
 |Timestamp|Action Description|
 |--|--|
-|07:18:40 PM|Right-click ➝ New ➝ Excel document created|
+|07:18:40 PM|Right-click ➝ New ➝ Excel document created
 |07:19:57 PM|File creation timestamp in metadata
 |07:20 PM|Document opened for the first time
 |07:31 PM|Data written ➝ File saved ➝ Closed (1.41 MB)
@@ -35,14 +35,14 @@ To analyze and demystify the subtle, less-documented behaviors of `.LNK` (Window
 
 |Attribute|Value
 |--|--|
-|**Source Created**|07-Jun-25 07:31:12 PM|
-|**Source Modified**|07-Jun-25 07:20:18 PM|
-|**Source Accessed**|07-Jun-25 07:47:43 PM|
-|**Target Created**|07-Jun-25 07:19:57 PM|
-|**Target Modified**|07-Jun-25 07:19:57 PM|
-|**Target Accessed**|07-Jun-25 07:20:17 PM|
-|**LNK File Size**|6,192 bytes (approx. 6 KB)|
-|**Target File Size**|Not reflected post edit (remains ~6 KB)|
+|**Source Created**|07-Jun-25 07:31:12 PM
+|**Source Modified**|07-Jun-25 07:20:18 PM
+|**Source Accessed**|07-Jun-25 07:47:43 PM
+|**Target Created**|07-Jun-25 07:19:57 PM
+|**Target Modified**|07-Jun-25 07:19:57 PM
+|**Target Accessed**|07-Jun-25 07:20:17 PM
+|**LNK File Size**|6,192 bytes (approx. 6 KB)
+|**Target File Size**|Not reflected post edit (remains ~6 KB)
 <br>
 ![](/assets/images/1.png)<br><br>
 
@@ -50,14 +50,14 @@ To analyze and demystify the subtle, less-documented behaviors of `.LNK` (Window
 
 |Attribute|Value
 |--|--|
-|**Source Created**|07-Jun-25 08:03:09 PM|
-|**Source Modified**|07-Jun-25 08:02:03 PM|
-|**Source Accessed**|07-Jun-25 08:03:32 PM|
-|**Target Created**|07-Jun-25 07:19:57 PM|
-|**Target Modified**|07-Jun-25 07:31:39 PM|
-|**Target Accessed**|07-Jun-25 08:02:03 PM|
-|**LNK File Size**|1,484,420 bytes (~1.41 MB)|
-|**Redacted File Size**|10 KB (not reflected as LNK wasn’t updated)|
+|**Source Created**|07-Jun-25 08:03:09 PM
+|**Source Modified**|07-Jun-25 08:02:03 PM
+|**Source Accessed**|07-Jun-25 08:03:32 PM
+|**Target Created**|07-Jun-25 07:19:57 PM
+|**Target Modified**|07-Jun-25 07:31:39 PM
+|**Target Accessed**|07-Jun-25 08:02:03 PM
+|**LNK File Size**|1,484,420 bytes (~1.41 MB)
+|**Redacted File Size**|10 KB (not reflected as LNK wasn’t updated)
 <br>
 ![](/assets/images/2.png)<br><br>
 
