@@ -32,7 +32,7 @@ To analyze and demystify the subtle, less-documented behaviors of `.LNK` (Window
 ## 📂 LNK Analysis Phase-wise Comparison
 
 ### 🔹 Phase 1 – After First Open & Save
-
+<br>
 |Attribute|Value|
 |--|--|
 |**Source Created**|07-Jun-25 07:31:12 PM |
@@ -47,7 +47,7 @@ To analyze and demystify the subtle, less-documented behaviors of `.LNK` (Window
 ![](/assets/images/1.png)<br><br>
 
 ### 🔹 Phase 2 – After Reopening & Redaction
-
+<br>
 |Attribute|Value|
 |--|--|
 |**Source Created**|07-Jun-25 08:03:09 PM
