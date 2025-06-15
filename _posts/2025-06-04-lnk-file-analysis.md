@@ -32,33 +32,33 @@ To analyze and demystify the subtle, less-documented behaviors of `.LNK` (Window
 ## 📂 LNK Analysis Phase-wise Comparison
 
 ### 🔹 Phase 1 – After First Open & Save
-<br>
-|Attribute|Value|
-|--|--|
-|**Source Created**|07-Jun-25 07:31:12 PM |
-|**Source Modified**|07-Jun-25 07:20:18 PM |
-|**Source Accessed**|07-Jun-25 07:47:43 PM|
-|**Target Created**|07-Jun-25 07:19:57 PM|
-|**Target Modified**|07-Jun-25 07:19:57 PM|
-|**Target Accessed**|07-Jun-25 07:20:17 PM|
-|**LNK File Size**|6,192 bytes (approx. 6 KB)|
-|**Target File Size**|Not reflected post edit (remains ~6 KB)|
-<br>
+
+| Attribute           | Value                                 |
+|---------------------|----------------------------------------|
+| **Source Created**  | 07-Jun-25 07:31:12 PM                  |
+| **Source Modified** | 07-Jun-25 07:20:18 PM                  |
+| **Source Accessed** | 07-Jun-25 07:47:43 PM                  |
+| **Target Created**  | 07-Jun-25 07:19:57 PM                  |
+| **Target Modified** | 07-Jun-25 07:19:57 PM                  |
+| **Target Accessed** | 07-Jun-25 07:20:17 PM                  |
+| **LNK File Size**   | 6,192 bytes (approx. 6 KB)             |
+| **Target File Size**| Not reflected post edit (remains ~6 KB)|
+
 ![](/assets/images/1.png)<br><br>
 
 ### 🔹 Phase 2 – After Reopening & Redaction
-<br>
-|Attribute|Value|
-|--|--|
-|**Source Created**|07-Jun-25 08:03:09 PM
-|**Source Modified**|07-Jun-25 08:02:03 PM
-|**Source Accessed**|07-Jun-25 08:03:32 PM
-|**Target Created**|07-Jun-25 07:19:57 PM
-|**Target Modified**|07-Jun-25 07:31:39 PM
-|**Target Accessed**|07-Jun-25 08:02:03 PM
-|**LNK File Size**|1,484,420 bytes (~1.41 MB)
-|**Redacted File Size**|10 KB (not reflected as LNK wasn’t updated)
-<br>
+
+| Attribute            | Value                                 |
+|----------------------|----------------------------------------|
+| **Source Created**   | 07-Jun-25 08:03:09 PM                  |
+| **Source Modified**  | 07-Jun-25 08:02:03 PM                  |
+| **Source Accessed**  | 07-Jun-25 08:03:32 PM                  |
+| **Target Created**   | 07-Jun-25 07:19:57 PM                  |
+| **Target Modified**  | 07-Jun-25 07:31:39 PM                  |
+| **Target Accessed**  | 07-Jun-25 08:02:03 PM                  |
+| **LNK File Size**    | 1,484,420 bytes (~1.41 MB)             |
+| **Redacted File Size**| 10 KB (not reflected as LNK wasn’t updated)|
+
 ![](/assets/images/2.png)<br><br>
 
 > ⚠️ **Note:** After redacting and saving the document at 08:06 PM, if the document was _not reopened_, the final size (10 KB) **was not reflected in the LNK file**. The `.LNK` file holds the **last known size during the last access**, meaning: **if you don't open it post-edit, it doesn't get updated**.
