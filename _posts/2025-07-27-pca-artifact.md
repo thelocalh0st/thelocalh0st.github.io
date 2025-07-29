@@ -1,7 +1,6 @@
-
 ---
 title: <img width="50" height="50" src="/assets/images/pca-banner.png">Windows 11 PCA  Artifact  
-date: 2025-07-28 00:00:02 +730
+date: 2025-07-27 00:00:02 +730
 categories: [Resources, DFIR]
 comments: true
 pin: true
