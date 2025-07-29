@@ -1,7 +1,7 @@
 
 ---
-title: <img width="50" height="50" src="">Windows 11 PCA  Artifact  
-date: 2025-06-05 00:00:02 +730
+title: <img width="50" height="50" src="/assets/images/pca-banner.png">Windows 11 PCA  Artifact  
+date: 2025-07-28 00:00:02 +730
 categories: [Resources, DFIR]
 comments: true
 pin: true
@@ -10,7 +10,7 @@ tags: [windows-forensics, artifacts, pca, windows11-22h2,program-compatibility-a
 
 ---
 # GUI Execution Artifact - Program Compatibility Assistant 
-![](/assets/images/pca-banner.png)
+<br>
 In the rapidly evolving landscape of digital forensics, the discovery of new artifacts is a rare and exciting event. Windows 11 version 22H2 introduced a **significant new forensic artifact** that has captured the attention of the DFIR (Digital Forensics and Incident Response) community: the **Program Compatibility Assistant (PCA) artifact**
 
 ## What is the PCA Artifact?
