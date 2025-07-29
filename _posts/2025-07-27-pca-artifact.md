@@ -43,7 +43,7 @@ The most significant file for forensic analysis is **PcaAppLaunchDic.txt**.This 
 `[Full Executable Path] | [Last Execution Timestamp]` 
 For example:
 `C:\Program Files\Everything\Everything.exe|2022-12-28 16:06:24.212` 
-![](assets/images/1.png)
+![](/assets/images/1.png)
 
 The timestamp represents the **last time the specified executable was executed** and is stored in **UTC format**. Importantly, this timestamp is recorded when the process **terminates**, not when it starts
 
@@ -65,7 +65,7 @@ The `PcaGeneralDb0.txt` file contains **more detailed information** about execut
     
 -   Program ID (which can be **cross-referenced with Amcache** for enhanced analysis
 
-![](assets/images/2.png)
+![](/assets/images/2.png)
 
 ## PcaGeneralDb1.txt: Secondary Database
 
