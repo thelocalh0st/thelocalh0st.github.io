@@ -1,5 +1,5 @@
 ---
-title: <img src="/assets/images/pca-banner.png" alt="Windows 11 PCA Artifact" style="display: none;" class="title-hidden">
+title:  <img width="50" height="50" src="/assets/images/pca-banner.png" style="display: none;" class="title-hidden">Windows 11 PCA Artifac
 date: 2025-07-27 00:00:02 +730
 categories: [Resources, DFIR]
 comments: true
@@ -8,6 +8,15 @@ tags: [windows-forensics, artifacts, pca, windows11-22h2,program-compatibility-a
 
 
 ---
+.hidden-from-title {
+    display: none !important;
+}
+
+/* Show the image in the actual post content */
+.post-content .hidden-from-title {
+    display: block !important;
+}
+
 # GUI Execution Artifact - Program Compatibility Assistant 
 ![](/assets/images/pca-banner.png)
 <br>
