@@ -1,5 +1,5 @@
 ---
-title:  <img width="50" height="50" src="/assets/images/pca-banner.png" style="display: none;" class="title-hidden">Windows 11 PCA Artifac
+title:  <img width="50" height="50" src="/assets/images/pca-banner.png" class="title-hidden">Windows 11 PCA Artifac
 date: 2025-07-27 00:00:02 +730
 categories: [Resources, DFIR]
 comments: true
