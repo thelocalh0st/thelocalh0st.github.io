@@ -1,5 +1,5 @@
 ---
-title: <img width="50" height="50" src="/assets/images/pca-banner.png">Windows 11 PCA  Artifact  
+title: <img src="/assets/images/pca-banner.png" alt="Windows 11 PCA Artifact" style="display: none;" class="title-hidden">
 date: 2025-07-27 00:00:02 +730
 categories: [Resources, DFIR]
 comments: true
