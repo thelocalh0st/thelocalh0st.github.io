@@ -7,128 +7,190 @@ tags: [windows-forensics, artifacts] # TAG names should always be lowercase
 ---
 
 ![](/assets/images/winf.jpg)
-## **Browser Forensics**
-- **Hind Sight**  
-  Analyze browser history.  
-  [![Download HindSight](https://img.shields.io/badge/Download-HindSight-blue)](https://github.com/obsidianforensics/hindsight)
 
-- **Chrome History Analyzer**  
-  Tool for Chrome browser analysis.  
-  [![Download Chrome History Analyzer](https://img.shields.io/badge/Download-Chrome_History_Analyzer-blue)](https://github.com/forensicateam/chrome-analyzer)
 
-- **Web Browser Forensic Tool**  
-  Supports multiple browsers.  
-  [![Download Web Browser Forensic Tool](https://img.shields.io/badge/Download-Web_Browser_Forensic_Tool-blue)](https://github.com/dfir/windows)
+# **Windows Forensics Tools – 2025 Comprehensive Edition**
 
----
-
-## **Event Log Forensics**
-- **LogParser**  
-  Parses Windows event logs.  
-  [![Download LogParser](https://img.shields.io/badge/Download-LogParser-blue)](https://www.microsoft.com/en-us/download/details.aspx?id=24659)
-
-- **Event Log Explorer**  
-  Comprehensive event log viewer.  
-  [![Download Event Log Explorer](https://img.shields.io/badge/Download-Event_Log_Explorer-blue)](https://eventlogxp.com/)
-
-- **EvtxECmd (Eric Zimmerman)**  
-  Fast parsing of EVTX event logs.  
-  [![Download EvtxECmd](https://img.shields.io/badge/Download-EvtxECmd-blue)](https://ericzimmerman.github.io/#!index.md)
+## **All-in-One Suites**
+- **Autopsy**  
+  GUI file system, artifact, and timeline analysis  
+  https://www.autopsy.com/download/
+- **SIFT Workstation**  
+  Ubuntu-based VM with integrated forensic tools  
+  https://www.sans.org/tools/sift-workstation
+- **Magnet AXIOM**  
+  Unified PC, cloud, and mobile analysis (commercial)  
+  https://www.magnetforensics.com/products/axiom/
+- **OSForensics**  
+  Disk, search, and artifact analysis  
+  https://www.osforensics.com/download.html
 
 ---
 
-## **Registry Analysis**
-- **RegRipper**  
-  Extracts useful information from Windows registry.  
-  [![Download RegRipper](https://img.shields.io/badge/Download-RegRipper-blue)](https://github.com/keydet89/RegRipper2.8)
-
-- **Registry Explorer (Eric Zimmerman)**  
-  Advanced registry analysis.  
-  [![Download Registry Explorer](https://img.shields.io/badge/Download-Registry_Explorer-blue)](https://ericzimmerman.github.io/#!index.md)
-
-- **RECmd (Eric Zimmerman)**  
-  Command-line registry analysis.  
-  [![Download RECmd](https://img.shields.io/badge/Download-RECmd-blue)](https://ericzimmerman.github.io/#!index.md)
+## **Disk & File System Analysis**
+- **FTK Imager**  
+  Disk imaging, evidence preview, data export  
+  https://accessdata.com/product-download/ftk-imager-version-4-5
+- **X-Ways Forensics**  
+  Advanced disk and data analysis (commercial)  
+  https://www.x-ways.net/forensics/
+- **The Sleuth Kit (TSK)**  
+  CLI for file system, metadata, deleted files  
+  https://github.com/sleuthkit/sleuthkit
+- **Bulk Extractor**  
+  Extract artifacts from disk images  
+  https://github.com/simsong/bulk_extractor
+- **DiskDigger**  
+  Data recovery and file analysis  
+  https://diskdigger.org/
 
 ---
 
 ## **Memory Forensics**
 - **Volatility**  
-  Framework for memory analysis.  
-  [![Download Volatility](https://img.shields.io/badge/Download-Volatility-blue)](https://www.volatilityfoundation.org/)
-
+  Comprehensive memory analysis framework  
+  https://www.volatilityfoundation.org/
 - **Rekall**  
-  Memory forensics and analysis.  
-  [![Download Rekall](https://img.shields.io/badge/Download-Rekall-blue)](http://www.rekall-forensic.com/)
+  Open-source memory forensics suite  
+  http://www.rekall-forensic.com/
+- **Belkasoft RAM Capturer**  
+  Acquire volatile memory images  
+  https://belkasoft.com/ram-capturer
+- **DumpIt**  
+  Fast memory dump capture tool  
+  https://github.com/TechPathWay/Dumpit
 
 ---
 
-## **File System Analysis**
-- **FTK Imager**  
-  Imaging and forensic analysis.  
-  [![Download FTK Imager](https://img.shields.io/badge/Download-FTK_Imager-blue)](https://accessdata.com/product-download/ftk-imager-version-4-5)
+## **Registry Analysis**
+- **RegRipper**  
+  Extracts and parses registry hives  
+  https://github.com/keydet89/RegRipper3.0
+- **Registry Explorer**  
+  Advanced GUI registry viewer  
+  https://ericzimmerman.github.io/#!index.md
+- **RECmd**  
+  CLI registry analysis solution  
+  https://ericzimmerman.github.io/#!index.md
 
-- **Autopsy**  
-  File system analysis and reporting.  
-  [![Download Autopsy](https://img.shields.io/badge/Download-Autopsy-blue)](https://www.autopsy.com/download/)
+---
 
-- **MFTECmd (Eric Zimmerman)**  
-  MFT table analysis.  
-  [![Download MFTECmd](https://img.shields.io/badge/Download-MFTECmd-blue)](https://ericzimmerman.github.io/#!index.md)
+## **Event Log & System Artifact Analysis**
+- **LogParser**  
+  Query and parse Windows event logs  
+  https://www.microsoft.com/en-us/download/details.aspx?id=24659
+- **EvtxECmd**  
+  Fast EVTX log parser  
+  https://ericzimmerman.github.io/#!index.md
+- **Chainsaw**  
+  Fast detection for Windows event logs  
+  https://github.com/countercept/chainsaw
+- **Event Log Explorer**  
+  Comprehensive EVTX viewer (commercial)  
+  https://eventlogxp.com/
+
+---
+
+## **Browser Artifact Analysis**
+- **Hindsight**  
+  Parse Chrome browser history  
+  https://github.com/obsidianforensics/hindsight
+- **Chrome History Analyzer**  
+  Analyze Chrome browser activity  
+  https://github.com/forensicateam/chrome-analyzer
+- **Browser History Viewer (Nirsoft)**  
+  View browser history for multiple browsers  
+  https://www.nirsoft.net/utils/browsing_history_view.html
 
 ---
 
 ## **Timeline Analysis**
-- **Plaso/Log2Timeline**  
-  Framework for forensic timelines.  
-  [![Download Plaso/Log2Timeline](https://img.shields.io/badge/Download-Plaso/Log2Timeline-blue)](https://plaso.readthedocs.io/)
-
+- **Plaso (log2timeline)**  
+  Framework for building forensic timelines  
+  https://plaso.readthedocs.io/
 - **Timesketch**  
-  Collaborative timeline analysis.  
-  [![Download Timesketch](https://img.shields.io/badge/Download-Timesketch-blue)](https://github.com/google/timesketch)
+  Web-based collaborative timeline analysis  
+  https://github.com/google/timesketch
 
 ---
 
 ## **Network Forensics**
 - **Wireshark**  
-  Network packet analyzer.  
-  [![Download Wireshark](https://img.shields.io/badge/Download-Wireshark-blue)](https://www.wireshark.org/)
-
+  Packet capture and protocol analysis  
+  https://www.wireshark.org/
 - **NetworkMiner**  
-  Network forensic analysis tool.  
-  [![Download NetworkMiner](https://img.shields.io/badge/Download-NetworkMiner-blue)](https://www.netresec.com/)
-
----
-
-## **Disk Analysis**
-- **X-Ways Forensics**  
-  Comprehensive disk analysis tool.  
-  [![Download X-Ways Forensics](https://img.shields.io/badge/Download-X--Ways_Forensics-blue)](https://www.x-ways.net/forensics/)
-
-- **DiskDigger**  
-  Data recovery and analysis.  
-  [![Download DiskDigger](https://img.shields.io/badge/Download-DiskDigger-blue)](https://diskdigger.org/)
+  Passive network traffic analysis  
+  https://www.netresec.com/
+- **TCPDUMP for Windows**  
+  CLI network traffic capture  
+  https://www.tcpdump.org/
 
 ---
 
 ## **Malware Analysis**
 - **Cuckoo Sandbox**  
-  Automated malware analysis.  
-  [![Download Cuckoo Sandbox](https://img.shields.io/badge/Download-Cuckoo_Sandbox-blue)](https://cuckoosandbox.org/)
-
+  Automated dynamic malware analysis  
+  https://cuckoosandbox.org/
 - **YARA**  
-  Pattern matching for malware detection.  
-  [![Download YARA](https://img.shields.io/badge/Download-YARA-blue)](https://virustotal.github.io/yara/)
+  Malware pattern matching  
+  https://github.com/VirusTotal/yara
+- **REMnux**  
+  Linux distro for malware analysis  
+  https://remnux.org/
+- **PEStudio**  
+  Malware static binary analysis  
+  https://winitor.com/
 
 ---
 
 ## **Email Forensics**
 - **MailXaminer**  
-  Comprehensive email analysis.  
-  [![Download MailXaminer](https://img.shields.io/badge/Download-MailXaminer-blue)](https://www.mailxaminer.com/)
-
+  Commercial email investigation tool  
+  https://www.mailxaminer.com/
 - **P2 Commander**  
-  Email investigation tool.  
-  [![Download P2 Commander](https://img.shields.io/badge/Download-P2_Commander-blue)](https://www.paraben.com/p2-commander/)
+  Analyze emails, attachments and artifacts  
+  https://www.paraben.com/p2-commander/
+- **Aid4Mail Forensic**  
+  Forensically search and recover mails  
+  https://www.aid4mail.com/
+
+---
+
+## **Mobile Device Forensics**
+- **Cellebrite UFED**  
+  Industry-standard mobile forensics (commercial)  
+  https://www.cellebrite.com/en/ufed/
+- **MOBILedit Forensic Express**  
+  Mobile device extraction and analysis  
+  https://www.mobiledit.com/forensic-express
+- **Magnet AXIOM (mobile)**  
+  Mobile and cloud data analysis  
+  https://www.magnetforensics.com/products/axiom/
+
+---
+
+## **Other Useful Tools**
+- **MFTECmd**  
+  MFT ($MFT) table parser  
+  https://ericzimmerman.github.io/#!index.md
+- **PhotoRec/TestDisk**  
+  Data recovery from media  
+  https://www.cgsecurity.org/wiki/TestDisk_Download
+- **Shellbag Analyzer & Cleaner**  
+  Analyze Windows shellbag artifacts  
+  https://www.forensicswiki.org/wiki/Shell_Bags
+
+---
+
+## **Community & Curated Collections**
+- **Awesome Forensics List**  
+  Massive curated toolkit collection  
+  https://github.com/cugu/awesome-forensics
+- **Start.me Forensics Resource Hub**  
+  Huge resource list  
+  https://start.me/p/KMAYoE/forensics
+
+---
 
 ![](https://media.giphy.com/media/DAtJCG1t3im1G/giphy.gif)
+
