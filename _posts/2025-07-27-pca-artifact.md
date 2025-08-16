@@ -106,11 +106,11 @@ While the PCA artifact is valuable, it's important to understand its limitations
 
 The forensic community has quickly adapted to support this new artifact:
 
--   **Velociraptor** has developed specific artifacts for PCA analysis[6](https://www.linkedin.com/posts/idan-abramovich-b16a4211a_new-windows-11-pro-22h2-evidence-of-execution-activity-7320449133717155840-s6_H)
+-   **Velociraptor** has developed specific artifacts for PCA analysis
     
--   **KAPE** includes targets for collecting PCA files[7](https://github.com/EricZimmerman/KapeFiles/blob/master/Targets/Windows/AppCompatPCA.tkape)
+-   **KAPE** includes targets for collecting PCA files
     
--   Custom parsing tools have been developed by the community[8](http://windowsir.blogspot.com/2023/04/program-execution.html)
+-   Custom parsing tools have been developed by the community
     
 
 ## Investigation Workflow
@@ -130,7 +130,7 @@ When analyzing PCA artifacts, forensic investigators should:
 
 ## Future Implications
 
-The discovery of the PCA artifact represents a **significant advancement** in Windows forensics[1](https://www.sygnia.co/blog/new-windows-11-pca-artifact/). As Windows 11 22H2 becomes more prevalent in enterprise environments, this artifact will become increasingly valuable for:
+The discovery of the PCA artifact represents a **significant advancement** in Windows forensics. As Windows 11 22H2 becomes more prevalent in enterprise environments, this artifact will become increasingly valuable for:
 
 -   **Incident response teams** investigating security breaches
     
@@ -143,28 +143,29 @@ The discovery of the PCA artifact represents a **significant advancement** in Wi
 
 ## Conclusion
 
-The Windows 11 22H2 PCA artifact fills an important gap in digital forensics by providing **clear, text-based evidence of GUI program execution**[2](https://aboutdfir.com/new-windows-11-pro-22h2-evidence-of-execution-artifact/). Its simple format makes it easily parseable, while its integration capabilities with existing artifacts like Amcache enhance its investigative value[1](https://www.sygnia.co/blog/new-windows-11-pca-artifact/)[6](https://www.linkedin.com/posts/idan-abramovich-b16a4211a_new-windows-11-pro-22h2-evidence-of-execution-activity-7320449133717155840-s6_H).
+The Windows 11 22H2 PCA artifact fills an important gap in digital forensics by providing **clear, text-based evidence of GUI program execution**. Its simple format makes it easily parseable, while its integration capabilities with existing artifacts like Amcache enhance its investigative value.
 
-As the digital forensics community continues to research and develop tools for this artifact, it promises to become a **cornerstone of Windows 11 forensic analysis**[9](https://www.techzine.eu/blogs/security/114162/digging-deeper-into-software-artifacts/). For DFIR professionals, understanding and leveraging the PCA artifact will be essential as Windows 11 deployment continues to expand across enterprise environments.
+As the digital forensics community continues to research and develop tools for this artifact, it promises to become a **cornerstone of Windows 11 forensic analysis** For DFIR professionals, understanding and leveraging the PCA artifact will be essential as Windows 11 deployment continues to expand across enterprise environments.
 
-The discovery and documentation of this artifact by researchers like Andrew Rathbun and Lucas Gonzalez, along with continued research by teams at Sygnia, demonstrates the importance of **ongoing forensic research** in keeping pace with evolving operating systems and their investigative potential[1](https://www.sygnia.co/blog/new-windows-11-pca-artifact/)[2](https://aboutdfir.com/new-windows-11-pro-22h2-evidence-of-execution-artifact/).
+The discovery and documentation of this artifact by researchers like Andrew Rathbun and Lucas Gonzalez, along with continued research by teams at Sygnia, demonstrates the importance of **ongoing forensic research** in keeping pace with evolving operating systems and their investigative potential.
 
-1.  [https://www.sygnia.co/blog/new-windows-11-pca-artifact/](https://www.sygnia.co/blog/new-windows-11-pca-artifact/)
-2.  [https://aboutdfir.com/new-windows-11-pro-22h2-evidence-of-execution-artifact/](https://aboutdfir.com/new-windows-11-pro-22h2-evidence-of-execution-artifact/)
-3.  [https://www.youtube.com/watch?v=rV8aErDj06A](https://www.youtube.com/watch?v=rV8aErDj06A)
-4.  [https://www.linkedin.com/posts/stephan-berger-59575a20a_im-playing-around-with-the-program-compatibility-activity-7283872364231049216-09wE](https://www.linkedin.com/posts/stephan-berger-59575a20a_im-playing-around-with-the-program-compatibility-activity-7283872364231049216-09wE)
-5.  [https://www.forensic-cheatsheet.com/EN/Artifact/(EN)+PCA](https://www.forensic-cheatsheet.com/EN/Artifact/(EN)+PCA)
-6.  [https://www.linkedin.com/posts/idan-abramovich-b16a4211a_new-windows-11-pro-22h2-evidence-of-execution-activity-7320449133717155840-s6_H](https://www.linkedin.com/posts/idan-abramovich-b16a4211a_new-windows-11-pro-22h2-evidence-of-execution-activity-7320449133717155840-s6_H)
-7.  [https://github.com/EricZimmerman/KapeFiles/blob/master/Targets/Windows/AppCompatPCA.tkape](https://github.com/EricZimmerman/KapeFiles/blob/master/Targets/Windows/AppCompatPCA.tkape)
-8.  [http://windowsir.blogspot.com/2023/04/program-execution.html](http://windowsir.blogspot.com/2023/04/program-execution.html)
-9.  [https://www.techzine.eu/blogs/security/114162/digging-deeper-into-software-artifacts/](https://www.techzine.eu/blogs/security/114162/digging-deeper-into-software-artifacts/)
-10.  [https://blog.1234n6.com/available-artifacts-evidence-of-execution/](https://blog.1234n6.com/available-artifacts-evidence-of-execution/)
-11.  [https://github.com/Psmths/windows-forensic-artifacts/blob/main/execution/program-compatibility-assistant.md](https://github.com/Psmths/windows-forensic-artifacts/blob/main/execution/program-compatibility-assistant.md)
-12.  [https://blog.1234n6.com/available-artifacts-indicators-of-execution-updated/](https://blog.1234n6.com/available-artifacts-indicators-of-execution-updated/)
-13.  [https://www.linkedin.com/posts/sygnia_incidentresponse-windows11-windows11-activity-7160666212413157377-MqdZ](https://www.linkedin.com/posts/sygnia_incidentresponse-windows11-windows11-activity-7160666212413157377-MqdZ)
-14.  [https://mjolnirsecurity.com/the-mjolnir-security-threat-report-unearthing-uncharted-artifacts-in-windows-11/](https://mjolnirsecurity.com/the-mjolnir-security-threat-report-unearthing-uncharted-artifacts-in-windows-11/)
-15.  [https://neuroimage.usc.edu/brainstorm/Tutorials/ArtifactsSsp](https://neuroimage.usc.edu/brainstorm/Tutorials/ArtifactsSsp)
-16.  [https://docs.velociraptor.app/artifact_references/pages/windows.kapefiles.targets/](https://docs.velociraptor.app/artifact_references/pages/windows.kapefiles.targets/)
-17.  [https://www.cybertriage.com/blog/shimcache-and-amcache-forensic-analysis-2025/](https://www.cybertriage.com/blog/shimcache-and-amcache-forensic-analysis-2025/)
+1.  [https://windowsir.blogspot.com/2024/02/pcaparse.html]
+2.  [https://www.sygnia.co/blog/new-windows-11-pca-artifact/](https://www.sygnia.co/blog/new-windows-11-pca-artifact/)
+3.  [https://aboutdfir.com/new-windows-11-pro-22h2-evidence-of-execution-artifact/](https://aboutdfir.com/new-windows-11-pro-22h2-evidence-of-execution-artifact/)
+4.  [https://www.youtube.com/watch?v=rV8aErDj06A](https://www.youtube.com/watch?v=rV8aErDj06A)
+5.  [https://www.linkedin.com/posts/stephan-berger-59575a20a_im-playing-around-with-the-program-compatibility-activity-7283872364231049216-09wE](https://www.linkedin.com/posts/stephan-berger-59575a20a_im-playing-around-with-the-program-compatibility-activity-7283872364231049216-09wE)
+6.  [https://www.forensic-cheatsheet.com/EN/Artifact/(EN)+PCA](https://www.forensic-cheatsheet.com/EN/Artifact/(EN)+PCA)
+7.  [https://www.linkedin.com/posts/idan-abramovich-b16a4211a_new-windows-11-pro-22h2-evidence-of-execution-activity-7320449133717155840-s6_H](https://www.linkedin.com/posts/idan-abramovich-b16a4211a_new-windows-11-pro-22h2-evidence-of-execution-activity-7320449133717155840-s6_H)
+8.  [https://github.com/EricZimmerman/KapeFiles/blob/master/Targets/Windows/AppCompatPCA.tkape](https://github.com/EricZimmerman/KapeFiles/blob/master/Targets/Windows/AppCompatPCA.tkape)
+9.  [http://windowsir.blogspot.com/2023/04/program-execution.html](http://windowsir.blogspot.com/2023/04/program-execution.html)
+10.  [https://www.techzine.eu/blogs/security/114162/digging-deeper-into-software-artifacts/](https://www.techzine.eu/blogs/security/114162/digging-deeper-into-software-artifacts/)
+11.  [https://blog.1234n6.com/available-artifacts-evidence-of-execution/](https://blog.1234n6.com/available-artifacts-evidence-of-execution/)
+12.  [https://github.com/Psmths/windows-forensic-artifacts/blob/main/execution/program-compatibility-assistant.md](https://github.com/Psmths/windows-forensic-artifacts/blob/main/execution/program-compatibility-assistant.md)
+13.  [https://blog.1234n6.com/available-artifacts-indicators-of-execution-updated/](https://blog.1234n6.com/available-artifacts-indicators-of-execution-updated/)
+14.  [https://www.linkedin.com/posts/sygnia_incidentresponse-windows11-windows11-activity-7160666212413157377-MqdZ](https://www.linkedin.com/posts/sygnia_incidentresponse-windows11-windows11-activity-7160666212413157377-MqdZ)
+15.  [https://mjolnirsecurity.com/the-mjolnir-security-threat-report-unearthing-uncharted-artifacts-in-windows-11/](https://mjolnirsecurity.com/the-mjolnir-security-threat-report-unearthing-uncharted-artifacts-in-windows-11/)
+16.  [https://neuroimage.usc.edu/brainstorm/Tutorials/ArtifactsSsp](https://neuroimage.usc.edu/brainstorm/Tutorials/ArtifactsSsp)
+17.  [https://docs.velociraptor.app/artifact_references/pages/windows.kapefiles.targets/](https://docs.velociraptor.app/artifact_references/pages/windows.kapefiles.targets/)
+18.  [https://www.cybertriage.com/blog/shimcache-and-amcache-forensic-analysis-2025/](https://www.cybertriage.com/blog/shimcache-and-amcache-forensic-analysis-2025/)
 
   ![](https://media.giphy.com/media/DAtJCG1t3im1G/giphy.gif)
