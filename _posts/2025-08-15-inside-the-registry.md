@@ -1,5 +1,5 @@
 ---
-title: <img width="50" height="50" src="/assets/images/RADAR.png"> Inside The Registry
+title: <img width="50" height="50" src="/assets/images/HKLM.png"> Inside The Registry
 date: 2025-08-10 00:00:02 +730
 categories: [Resources, DFIR]
 comments: true
@@ -7,7 +7,8 @@ pin: true
 mermaid: true
 tags: [windows-forensics, artifacts, registry,HKCR,HKLM,HKU,HKCC, forensics,] # TAG names should always be lowercase
 ---
-
+# What are these HKCR, HKCU, HKLM 💭
+![](/assets/images/HKLM.png)
 The Windows Registry is the foundation of evidence in many digital investigations. Understanding the differences among its root hives—**HKCR**, **HKCU**, **HKLM**, **HKU**, and **HKCC**—is vital for any forensic analyst searching for artifacts. This guide offers a clear breakdown, focusing on what digital evidence each hive might contain and where to look.
 
 
@@ -82,8 +83,8 @@ HKCC refers to the **current hardware profile** in use. It’s less relevant to 
 
 ----------
 
-## Summary 
-
+## Pictorial Representation
+![](/assets/images/insidetheregistry.png)
 
 ----------
 
