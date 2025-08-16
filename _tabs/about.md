@@ -11,8 +11,7 @@ order: 4
 
 
 <br><br>
-<p align="center" style="color:#f7a602;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; CC by (ISC)2 | Azure AZ-900 | CNSP | CAP | SC-900 | Azure sentinel | Top 1% @ THM #learningeveryday</p>
-
+<h3 align="center">#LearningEveryDay</h3>
 <br><br>
 
 
