@@ -8,15 +8,6 @@ tags: [windows-forensics, artifacts, pca, windows11-22h2,program-compatibility-a
 
 
 ---
-.hidden-from-title {
-    display: none !important;
-}
-
-/* Show the image in the actual post content */
-.post-content .hidden-from-title {
-    display: block !important;
-}
-
 # GUI Execution Artifact - Program Compatibility Assistant 
 ![](/assets/images/pca-banner.png)
 <br>
