@@ -147,7 +147,7 @@ collections:
 
 defaults:
   - scope:
-      path: "" # An empty string here means all files in the project
+      path: "ads.txt" # An empty string here means all files in the project
       type: posts
     values:
       layout: post
@@ -219,11 +219,4 @@ keep_files:
 include:
   - ads.txt
 
-# Prevent Jekyll from processing ads.txt
-defaults:
-  - scope:
-      path: "ads.txt"
-    values:
-      layout: null
-      sitemap: false
 
