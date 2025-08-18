@@ -27,7 +27,7 @@ description: >- # used by seo meta and the atom feed
   Digital forensics, DFIR, Windows artifacts, incident response, malware analysis, CTF writeups.
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
-url: "https://thelocalh0st.com"
+url: ""
 
 github:
   username: sujayadkesar # change to your github username
