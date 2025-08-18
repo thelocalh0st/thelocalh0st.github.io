@@ -24,10 +24,10 @@ title: sujay adkesar # the main title
 tagline: Digital Forensics Analyst          # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
-  A minimal, responsive technical writing.
+  Digital forensics, DFIR, Windows artifacts, incident response, malware analysis, CTF writeups.
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
-url: ""
+url: "https://thelocalh0st.com"
 
 github:
   username: sujayadkesar # change to your github username
