@@ -187,9 +187,6 @@ compress_html:
   ignore:
     envs: [development]
     
-include:
-  - ads.txt
-  
 exclude:
   - "*.gem"
   - "*.gemspec"
@@ -209,3 +206,24 @@ jekyll-archives:
   permalinks:
     tag: /tags/:name/
     category: /categories/:name/
+
+# Static files handling for ads.txt
+static_files:
+  - ads.txt
+
+# Ensure ads.txt is included in build
+keep_files:
+  - ads.txt
+
+# Include ads.txt in the output
+include:
+  - ads.txt
+
+# Prevent Jekyll from processing ads.txt
+defaults:
+  - scope:
+      path: "ads.txt"
+    values:
+      layout: null
+      sitemap: false
+
