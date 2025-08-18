@@ -27,7 +27,7 @@ description: >- # used by seo meta and the atom feed
   Digital forensics, DFIR, Windows artifacts, incident response, malware analysis, CTF writeups.
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
-url: ""
+url: "https://thelocalh0st.github.io"
 
 github:
   username: sujayadkesar # change to your github username
@@ -147,7 +147,7 @@ collections:
 
 defaults:
   - scope:
-      path: "ads.txt" # An empty string here means all files in the project
+      path: "" # An empty string here means all files in the project
       type: posts
     values:
       layout: post
@@ -174,6 +174,7 @@ defaults:
       path: assets/js/dist
     values:
       swcache: true
+
 
 sass:
   style: compressed
@@ -207,16 +208,5 @@ jekyll-archives:
     tag: /tags/:name/
     category: /categories/:name/
 
-# Static files handling for ads.txt
-static_files:
-  - ads.txt
-
-# Ensure ads.txt is included in build
-keep_files:
-  - ads.txt
-
-# Include ads.txt in the output
-include:
-  - ads.txt
 
 
