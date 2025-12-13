@@ -23,7 +23,7 @@ The technology establishes a secure, always-on connection to Absolute's cloud pl
 
 ### Firmware-Level Embedding
 
-The Persistence module resides in a **non-flashable region** of the device's BIOS/UEFI firmware, embedded during manufacturing.[web:1] This location ensures it cannot be removed through:
+The Persistence module resides in a **non-flashable region** of the device's BIOS/UEFI firmware, embedded during manufacturing. This location ensures it cannot be removed through:
 - OS reinstallation or reimaging
 - Hard drive/SSD replacement
 - Firmware updates or flashing
