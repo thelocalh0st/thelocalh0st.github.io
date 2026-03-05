@@ -5,7 +5,7 @@ categories: [Resources, DFIR]
 comments: true
 pin: true
 mermaid: true
-tags: [windows-forensics, digital-forensics, dns, dns over https, cyberattack, incident response , dfir, soc] # TAG names should always be lowercase
+tags: [windows-forensics, digital-forensics, dns, dns-over-https, cyberattack, incident-response , dfir, soc] # TAG names should always be lowercase
 ---
 ![](/assets/images/dohh.png)
 
