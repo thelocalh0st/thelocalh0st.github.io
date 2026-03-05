@@ -1,5 +1,5 @@
 ---
-title: <img width="50" height="50" src="/assets/images/doh.png"> DOH: How DNS Hides Inside HTTPS
+title: <img width="50" height="50" src="/assets/images/dohh.png"> DOH: How DNS Hides Inside HTTPS
 date: 2026-03-04 00:00:02 +730
 categories: [Resources, DFIR]
 comments: true
@@ -7,9 +7,9 @@ pin: true
 mermaid: true
 tags: [windows-forensics, digital-forensics, dns, dns over https, cyberattack, incident response , dfir, soc] # TAG names should always be lowercase
 ---
-![](/assets/images/doh.png)
+![](/assets/images/dohh.png)
 
-<!-- # DoH: How DNS Hides Inside HTTPS — And Why Attackers Love It -->
+# DoH: How DNS Hides Inside HTTPS — And Why Attackers Love It
 
 **DNS over HTTPS (DoH)** encrypts DNS queries inside standard HTTPS. That's it. One sentence. But the forensic and security implications of that one sentence are enormous.
 
