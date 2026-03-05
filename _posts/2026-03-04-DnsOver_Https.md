@@ -1,5 +1,5 @@
 ---
-title: '<img width="50" height="50" src="/assets/images/dohh.png"> DOH: How DNS Hides Inside HTTPS'
+title: '<img width="50" height="50" src="/assets/images/dohh.png"> DOH How DNS Hides Inside HTTPS'
 date: 2026-03-04 00:00:02 +0530
 categories: [Resources, DFIR]
 comments: true
