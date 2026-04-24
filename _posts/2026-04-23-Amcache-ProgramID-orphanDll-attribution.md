@@ -9,7 +9,7 @@ tags: [windows-forensics, digital-forensics, dfir, incidentresponse,soc,cyberatt
 ---
 ![](/assets/images/program-id-dll-attribution.png)
 
-# Amcache `ProgramId` — Connecting Independent DLLs to Their Parent Applications
+# Amcache ProgramId — Connecting Independent DLLs to Their Parent Applications
 
 ## 1. What Is `ProgramId` — Plain & Simple
 
