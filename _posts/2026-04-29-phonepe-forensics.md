@@ -10,7 +10,7 @@ image:
   alt: Phonepe forensics in ios
 tags: [windows-forensics, digital-forensics, dfir, incidentresponse,soc,cyberattack,databreach,amcache,programid,orphan-dll] # TAG names should always be lowercase
 ---
-![](/assets/img/posts/phonepe-bannerimage.png)
+<!-- ![](/assets/img/posts/phonepe-bannerimage.png) -->
 
 
 
