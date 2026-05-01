@@ -1,10 +1,13 @@
 ---
-title: <img width="50" height="50" src="/assets/images/phonepe-bannerimage.png"> PhonePe Forensics in iOS
+title: PhonePe Forensics in iOS
 date: 2026-04-23 00:00:02 +730
 categories: [Resources, DFIR]
 comments: true
 pin: true
 mermaid: true
+image:
+  path: = /assets/images/phonepe-bannerimage.png
+  alt: Phonepe forensics in ios
 tags: [windows-forensics, digital-forensics, dfir, incidentresponse,soc,cyberattack,databreach,amcache,programid,orphan-dll] # TAG names should always be lowercase
 ---
 ![](/assets/images/phonepe-bannerimage.png)
