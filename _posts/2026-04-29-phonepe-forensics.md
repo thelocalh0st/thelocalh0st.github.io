@@ -1,6 +1,6 @@
 ---
 title: PhonePe Forensics in iOS
-date: 2026-04-23 00:00:02 +730
+date: 2026-04-29 00:00:02 +0530
 categories: [Resources, DFIR]
 comments: true
 pin: true
@@ -8,7 +8,7 @@ mermaid: true
 image:
   path: /assets/img/posts/phonepe-bannerimage.png
   alt: Phonepe forensics in ios
-tags: [windows-forensics, digital-forensics, dfir, incidentresponse,soc,cyberattack,databreach,amcache,programid,orphan-dll] # TAG names should always be lowercase
+tags: [mobile-forensics,phonepe,iphone,fraud-investigations]
 ---
 <!-- ![](/assets/img/posts/phonepe-bannerimage.png) -->
 
