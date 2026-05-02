@@ -8,7 +8,6 @@ mermaid: true
 image:
   path: /assets/img/posts/phonepe-bannerimage.png
   alt: Phonepe forensics in ios
-  lqip: "data:image/webp;base64,UklGRpoAAABXRUJQVlA4WAoAAAAQAAAADwAABwAAQUxQSDIAAAARnAmbmbmZmbmZmbmZmbmZufMA"
 tags: [mobile-forensics,phonepe,iphone,fraud-investigations]
 ---
 <!-- ![](/assets/img/posts/phonepe-bannerimage.png) -->
