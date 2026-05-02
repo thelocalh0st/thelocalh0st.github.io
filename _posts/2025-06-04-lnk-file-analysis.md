@@ -9,7 +9,7 @@ tags: [windows-forensics, artifacts, lnk, linkfileanalysis] # TAG names should a
 
 
 ---
-![](/assets/images/lnk.png)
+<!-- ![](/assets/images/lnk.png) -->
 
 ## 🔍 Objective
 

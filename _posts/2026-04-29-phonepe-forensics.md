@@ -1,5 +1,5 @@
 ---
-title: PhonePe Forensics in iOS
+title: PhonePe iOS Forensics: What Your iPhone Stores and How Investigators Read It
 date: 2026-04-29 00:00:02 +0530
 categories: [Resources, DFIR]
 comments: true
@@ -14,7 +14,7 @@ tags: [mobile-forensics,phonepe,iphone,fraud-investigations]
 
 
 
-# PhonePe iOS Forensics: What Your iPhone Stores and How Investigators Read It
+# PhonePe Forensics in iOS
 
 > **Audience:** Digital forensic examiners, mobile DFIR practitioners, cybercrime investigators, and legal/compliance professionals working UPI fraud cases.
 >

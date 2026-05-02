@@ -9,7 +9,7 @@ image:
   path: /assets/images/dohh.png
 tags: [windows-forensics, digital-forensics, dfir, incidentresponse,soc,cyberattack,databreach,dns] # TAG names should always be lowercase
 ---
-![](/assets/images/dohh.png)
+<!-- ![](/assets/images/dohh.png) -->
 
 # DoH: How DNS Hides Inside HTTPS — And Why Attackers Love It
 

@@ -6,13 +6,13 @@ comments: true
 pin: true
 mermaid: true
 image:
-  path: /assets/images/HKLM.png
+  path: /assets/images/inside-registry.png
 tags: [windows-forensics, artifacts, registry,HKCR,HKLM,HKU,HKCC, forensics,] # TAG names should always be lowercase
 ---
 # What are these HKCR, HKCU, HKLM 💭
 
-<img width="1536" height="1024" alt="registry1" src="https://github.com/user-attachments/assets/f0c5cc15-f094-462a-b598-6e1b6b270860" />
-<br><br>
+<!-- <img width="1536" height="1024" alt="registry1" src="https://github.com/user-attachments/assets/f0c5cc15-f094-462a-b598-6e1b6b270860" /> -->
+<br>
 The Windows Registry is the foundation of evidence in many digital investigations. Understanding the differences among its root hives—**HKCR**, **HKCU**, **HKLM**, **HKU**, and **HKCC**—is vital for any forensic analyst searching for artifacts. This guide offers a clear breakdown, focusing on what digital evidence each hive might contain and where to look.
 
 

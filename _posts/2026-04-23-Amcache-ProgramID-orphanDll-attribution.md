@@ -9,7 +9,7 @@ image:
   path: /assets/images/program-id-dll-attribution.png
 tags: [windows-forensics, digital-forensics, dfir, incidentresponse,soc,cyberattack,databreach,amcache,programid,orphan-dll] # TAG names should always be lowercase
 ---
-![](/assets/images/program-id-dll-attribution.png)
+<!-- ![](/assets/images/program-id-dll-attribution.png) -->
 
 # Amcache ProgramId — Connecting Independent DLLs to Their Parent Applications
 

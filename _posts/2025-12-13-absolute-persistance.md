@@ -9,7 +9,7 @@ image:
   path: /assets/images/absolute-920x533.jpg
 tags: [windows-forensics, absolute-persistance,absolute,persistance-technology,firmware] # TAG names should always be lowercase
 ---
-![](/assets/images/absolute.png)
+<!-- ![](/assets/images/absolute.png) -->
 
 In enterprise security, one of the biggest challenges is maintaining visibility and control over endpoints—especially when threats involve OS reinstalls, hard drive replacements, or rogue devices. Enter **Absolute Persistence**, a patented firmware-embedded technology that creates an unbreakable digital tether between devices and security infrastructure, surviving even the most aggressive evasion attempts.
 

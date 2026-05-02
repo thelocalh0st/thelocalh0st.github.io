@@ -1,9 +1,11 @@
 ---
-title: <img width="50" height="50" alt="front-page port 80-shoopyu" src="/assets/images/windows-forensics.png">Windows Artifacts
+title: Windows Artifacts
 date: 2020-10-18 00:00:02 +730
 categories: [Resources, DFIR]
 comments: true
 pin: true
+vimage:
+  path: /assets/images/windows-forensics.png
 tags: [windows-forensics, artifacts] # TAG names should always be lowercase
 
 ---

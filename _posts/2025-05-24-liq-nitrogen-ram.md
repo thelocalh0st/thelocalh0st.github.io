@@ -11,7 +11,7 @@ tags: [windows-forensics, artifacts, ram, acquiringram] # TAG names should alway
 
 ---
  
-![](/assets/images/ram.png)
+<!-- ![](/assets/images/ram.png) -->
 
   
 

@@ -10,7 +10,7 @@ tags: [linuxforensics, artifacts, dfir] # TAG names should always be lowercase
 
 
 ---
-![](/assets/images/linuxforensics.jpg)
+<!-- ![](/assets/images/linuxforensics.jpg) -->
 
 
 
