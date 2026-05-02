@@ -1,5 +1,5 @@
 ---
-title: PhonePe iOS Forensics: What Your iPhone Stores and How Investigators Read It
+title: PhonePe Forensics in iOS What Your iPhone Stores and How Investigators Read It
 date: 2026-04-29 00:00:02 +0530
 categories: [Resources, DFIR]
 comments: true
