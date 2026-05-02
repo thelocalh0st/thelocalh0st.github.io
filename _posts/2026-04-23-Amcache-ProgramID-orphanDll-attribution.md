@@ -1,10 +1,12 @@
 ---
-title: <img width="50" height="50" src="/assets/images/program-id-dll-attribution.png"> Amcache-ProgramID — The Orphan Dll Attribution
+title: Amcache-ProgramID — The Orphan Dll Attribution
 date: 2026-04-23 00:00:02 +730
 categories: [Resources, DFIR]
 comments: true
 pin: true
 mermaid: true
+image:
+  path: /assets/images/program-id-dll-attribution.png
 tags: [windows-forensics, digital-forensics, dfir, incidentresponse,soc,cyberattack,databreach,amcache,programid,orphan-dll] # TAG names should always be lowercase
 ---
 ![](/assets/images/program-id-dll-attribution.png)
