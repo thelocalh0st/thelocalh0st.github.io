@@ -1,10 +1,12 @@
 ---
-title: <img width="50" height="50" src="/assets/images/absolute-920x533.jpg"> Absolute Persistance
+title: Absolute Persistance
 date: 2025-08-10 00:00:02 +730
 categories: [Resources, DFIR]
 comments: true
 pin: true
 mermaid: true
+image:
+  path: /assets/images/absolute-920x533.jpg
 tags: [windows-forensics, absolute-persistance,absolute,persistance-technology,firmware] # TAG names should always be lowercase
 ---
 ![](/assets/images/absolute.png)

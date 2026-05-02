@@ -1,10 +1,12 @@
 ---
-title: <img width="50" height="50" src="/assets/images/HKLM.png"> Inside The Registry
+title: Inside The Registry
 date: 2025-08-10 00:00:02 +730
 categories: [Resources, DFIR]
 comments: true
 pin: true
 mermaid: true
+image:
+  path: /assets/images/HKLM.png
 tags: [windows-forensics, artifacts, registry,HKCR,HKLM,HKU,HKCC, forensics,] # TAG names should always be lowercase
 ---
 # What are these HKCR, HKCU, HKLM 💭

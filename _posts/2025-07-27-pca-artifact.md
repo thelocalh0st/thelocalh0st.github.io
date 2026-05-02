@@ -1,9 +1,11 @@
 ---
-title:  <img width="50" height="50" src="/assets/images/pca-banner.png" class="title-hidden">Windows 11 PCA Artifac
+title:  Windows 11 PCA Artifac
 date: 2025-07-27 00:00:02 +730
 categories: [Resources, DFIR]
 comments: true
 pin: true
+image:
+  path: /assets/images/pca-banner.png
 tags: [windows-forensics, artifacts, pca, windows11-22h2,program-compatibility-assistant,forensics,gui-execution] # TAG names should always be lowercase
 
 

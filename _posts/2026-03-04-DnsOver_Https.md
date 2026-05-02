@@ -1,10 +1,12 @@
 ---
-title: <img width="50" height="50" src="/assets/images/dohh.png"> How DNS Hides Inside HTTPS
+title: How DNS Hides Inside HTTPS
 date: 2026-03-03 00:00:02 +730
 categories: [Resources, DFIR]
 comments: true
 pin: true
 mermaid: true
+image:
+  path: /assets/images/dohh.png
 tags: [windows-forensics, digital-forensics, dfir, incidentresponse,soc,cyberattack,databreach,dns] # TAG names should always be lowercase
 ---
 ![](/assets/images/dohh.png)
