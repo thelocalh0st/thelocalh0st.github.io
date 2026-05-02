@@ -7,7 +7,7 @@ gem "rake", "13.0.6"
 gem 'csv'
 gem 'base64'
 gem 'bigdecimal'
-gem "jekyll-theme-chirpy", "~> 5.6", ">= 5.6.1"
+gem "jekyll-theme-chirpy", "~> 7.3"
 
 gem "jekyll", "4.3.2"
 
