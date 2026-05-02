@@ -1,9 +1,11 @@
 ---
-title: <img width="50" height="50" src="/assets/images/image-14-123111507.png">How NTFS Self-References Its $MFT
+title: How NTFS Self-References Its $MFT
 date: 2020-10-18 00:00:02 +730
 categories: [Resources, DFIR]
 comments: true
 pin: true
+image:
+  path: /assets/images/image-14-123111507.png
 tags: [windows-forensics, artifacts, mft] # TAG names should always be lowercase
 
 

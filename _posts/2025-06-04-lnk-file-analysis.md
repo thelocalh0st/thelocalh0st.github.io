@@ -1,8 +1,10 @@
 ---
-title: <img width="50" height="50" src="/assets/images/lnk.png">LNK File Forensics — Experimental Case Study
+title: LNK File Forensics — Experimental Case Study
 date: 2025-04-06 00:00:02 +730
 categories: [Resources, DFIR]
 comments: true
+image:
+  path: /assets/images/lnk.png
 tags: [windows-forensics, artifacts, lnk, linkfileanalysis] # TAG names should always be lowercase
 
 

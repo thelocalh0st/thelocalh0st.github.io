@@ -1,13 +1,12 @@
 ---
-title: <img width="50" height="50" src="/assets/images/winf.jpg"> Windows Forensics Tools
+title: <img width="50" height="50" src=""> Windows Forensics Tools
 date: 2024-11-12 00:00:02 +730
 categories: [Resources, DFIR]
 comments: true
+image:
+  path: /assets/images/winf.jpg
 tags: [windows-forensics, artifacts] # TAG names should always be lowercase
 ---
-
-![](/assets/images/winf.jpg)
-
 
 # **Windows Forensics Tools – 2025 Comprehensive Edition**
 
