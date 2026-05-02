@@ -27,7 +27,7 @@ description: >- # used by seo meta and the atom feed
   Digital forensics, DFIR, Windows artifacts, incident response, malware analysis, CTF writeups.
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
-url: "https://thelocalh0st.github.io"
+url: "https://thelocalh0st.com"
 
 github:
   username: sujayadkesar # change to your github username
@@ -101,7 +101,7 @@ comments:
 
 
   giscus:
-    repo: thelocalh0st/thelocalh0st.github.io
+    repo: thelocalh0st/thelocalh0st.com
     mapping: pathname
     strict: "0"
     reactions_enabled: "1"
