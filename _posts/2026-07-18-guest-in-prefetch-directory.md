@@ -10,173 +10,254 @@ image:
   alt: prefetch in ads
 tags: [prefetch,ads,hidden-prefetch,execution-artifact]
 ---
+# Guest in `C:\Windows\Prefetch`: How ADS Can Hide Execution Evidence
 
-# Guest in C:\Windows\Prefetch:
 
-Ever opened `C:\Windows\Prefetch` and seen a file that **wasn't** a `.pf`?
+`C:\Windows\Prefetch` is normally a predictable directory. Most systems contain `.pf` files, `Layout.ini`, and the `ReadyBoot` directory.
 
-A `.txt`. A `.png`. Something with zero business being in a folder that only ever holds `.pf` files, `Layout.ini`, and `ReadyBoot`.
+So, what does it mean when a `.txt`, `.png`, or another unexpected file appears there—particularly when the file is `0` bytes?
 
-If not yet — you will. Here's what it means when it happens.
+During a recent investigation, [Mihir Choudhary](https://www.linkedin.com/in/mihir-choudhary/) identified an unusual Prefetch behavior associated with malware executed from an NTFS Alternate Data Stream (ADS). The Prefetch artifact was not missing. Instead, it was stored inside another ADS.
+
+This post documents that observation, the forensic reasoning behind it, and an ongoing contribution to make this behavior easier to identify with PECmd.
 
 ## The Alert
 
-My colleague [Mihir Choudhary](https://www.linkedin.com/in/mihir-choudhary/) was working on an interesting case where EDR fired on a process-creation event. Nothing subtle about the telemetry — it was all right there but what interesting fact that he observed is here below! 
+While reviewing an EDR process-creation alert, a process path immediately stood out:
 
-```
+```text
 Event ID:     1 (Process Create)
 Image:        C:\Users\username\Pictures\Screenshot 2026-06-22 002415.png:malware.exe
 CommandLine:  "C:\Users\username\Pictures\Screenshot 2026-06-22 002415.png:malware.exe"
 ParentImage:  C:\Windows\System32\wbem\WMIC.exe
-
 ```
 
-That colon in the `Image` field is the giveaway: `malware.exe` never existed as a standalone file. It was executed straight out of an **Alternate Data Stream (ADS)** hidden on a screenshot — a real, documented Windows tradecraft technique, catalogued as [MITRE ATT&CK T1564.004](https://attack.mitre.org/techniques/T1564/004/), and one seen in the wild from groups like APT32 and malware families like Valak and WastedLocker.
+The key indicator was the second colon in the image path:
 
-So far, not a mystery — EDR told him exactly what ran and how.
-
-## What the ADS Actually Looked Like
-
-NTFS lets any file carry more than one stream. What you see is the default stream. A second, named stream can ride along invisibly:
-
-```
-Screenshot 2026-06-22 002415.png          ← what Explorer shows you (a normal image)
-Screenshot 2026-06-22 002415.png:malware.exe  ← the payload, riding in a hidden stream
-
+```text
+Screenshot 2026-06-22 002415.png:malware.exe
 ```
 
-Size in Explorer doesn't change. Hash of the visible file doesn't change. `dir` shows nothing unusual. That's the entire point of the technique.
+The `malware.exe` component was not a conventional file in the user's Pictures directory. Instead, it existed as a named Alternate Data Stream attached to an otherwise ordinary PNG image.
 
-## Going to Prefetch to Corroborate
+```text
+Visible host file:
+Screenshot 2026-06-22 002415.png
 
-EDR gives you _what ran_. Prefetch gives you _run count, timestamps, and what it touched_ — useful even when EDR retention doesn't go back far enough, or you need a second independent source for the timeline.
-
-Expected :
-
+Hidden ADS payload:
+Screenshot 2026-06-22 002415.png:malware.exe
 ```
+
+ADS execution is a known Windows defense-evasion technique, documented by MITRE ATT&CK as [T1564.004: NTFS File Attributes](https://attack.mitre.org/techniques/T1564/004/). The EDR telemetry established what executed and where it came from. The next objective was to corroborate that execution using Windows forensic artifacts.
+
+## What the ADS Looked Like
+
+NTFS permits a file to contain multiple data streams. The visible content of a file is its default stream, while named streams can be attached without appearing in Windows Explorer or standard directory listings.
+
+In this case, the PNG file appeared normal:
+
+```text
+Screenshot 2026-06-22 002415.png
+```
+
+However, it also carried a hidden executable stream:
+
+```text
+Screenshot 2026-06-22 002415.png:malware.exe
+```
+
+This makes ADS useful for defense evasion:
+
+- Explorer does not normally display named streams
+- Standard `dir` output does not reveal them
+- The visible host file can look harmless
+- The visible file hash does not represent the payload in a separate stream
+- A superficial review can miss the malicious content entirely
+
+## Going to Prefetch
+
+The investigation then moved to `C:\Windows\Prefetch` to independently validate the execution.
+
+For a normally launched executable, the expected artifact would resemble:
+
+```text
 C:\Windows\Prefetch\
 ├── CHROME.EXE-1A2B3C4D.pf
 ├── EXPLORER.EXE-9F8E7D6C.pf
-├── malware.exe-3F2A9C10.pf                    ← expected
+├── MALWARE.EXE-3F2A9C10.pf
 ├── Layout.ini
-
 ```
 
-He got this:
+No visible `MALWARE.EXE-*.pf` file was present. Instead, a highly unusual entry appeared:
 
-```
+```text
 C:\Windows\Prefetch\
 ├── CHROME.EXE-1A2B3C4D.pf
 ├── EXPLORER.EXE-9F8E7D6C.pf
-├── Screenshot 2026-06-22 002415.png       ← 0 bytes. Shouldn't be here at all.
+├── Screenshot 2026-06-22 002415.png
 ├── Layout.ini
-
 ```
 
-No `MALWARE.EXE-*.pf` anywhere. Instead, the original screenshot filename — sitting inside the one Windows folder that's supposed to be off-limits to anything but the Prefetcher itself.
+The PNG file was `0` bytes and clearly did not belong in a directory that should primarily contain Prefetch files.
 
-## Where the .pf Actually Went
+This mismatch became the key finding: EDR confirmed that `malware.exe` executed, but the corresponding Prefetch file was not visible. Rather than treating this as an absence of evidence, the anomalous PNG file became the investigative lead.
 
-Standard move for a suspicious file: check it for hidden streams.
+## Where the `.pf` Actually Went
+
+To investigate the unexpected PNG file, its NTFS streams were enumerated:
 
 ```powershell
 Get-Item -Path "C:\Windows\Prefetch\Screenshot 2026-06-22 002415.png" -Stream * |
   Where-Object Stream -ne ':$DATA'
-
 ```
 
-```
+The result revealed the missing Prefetch artifact:
+
+```text
 FileName : C:\Windows\Prefetch\Screenshot 2026-06-22 002415.png
 Stream   : malware.exe-3F2A9C10.pf
 Length   : 32768
-
 ```
 
-**The Prefetch entry was never missing.** It was hiding inside a stream on a placeholder file that had taken the screenshot's name.
+The Prefetch record had not been deleted, and it had not failed to generate. It was stored as a named stream attached to the placeholder PNG file.
 
-This exact behavior was first documented publicly in 2019 by researcher Ali Hadi ([binary-zone.com](https://www.binary-zone.com/2019/05/26/creating-a-hidden-prefetch-file-to-bypass-normal-forensic-analysis/)), who hid binaries in the ADS of `.txt` files and saw the identical pattern: the real `.pf` ends up as a stream on a file carrying the _original container's name_. This case is the same mechanism, just a `.png` instead of a `.txt`.
+```text
+C:\Windows\Prefetch\
+└── Screenshot 2026-06-22 002415.png
+    └── :malware.exe-3F2A9C10.pf
+```
+
+The complete path to the hidden Prefetch artifact was:
+
+```text
+C:\Windows\Prefetch\Screenshot 2026-06-22 002415.png:malware.exe-3F2A9C10.pf
+```
+
+This is an important DFIR distinction: a visible review of the Prefetch directory can suggest that no artifact exists, even though the artifact is present inside an NTFS stream.
 
 ## Why This Happens
 
-Prefetch filenames follow one rule: `<EXECUTABLE NAME>-<HASH>.pf`, built from the image path the process launched with.
+Prefetch filenames generally follow this pattern:
 
-```
-CreateProcess() launched with:
-  ...\Screenshot 2026-06-22 002415.png:malware.exe
-            │
-            ▼
-Prefetcher builds an output name from that full string:
-  Screenshot 2026-06-22 002415.png:malware.exe-3F2A9C10.pf
-            │
-            ▼
-NTFS reads that colon as a stream delimiter — not a literal character
-            │
-            ▼
-Result: a placeholder base file "Screenshot....png"
-        + a hidden stream "malware.exe-3F2A9C10.pf" (the real Prefetch trace)
-
+```text
+<EXECUTABLE NAME>-<HASH>.pf
 ```
 
-No documented Microsoft source confirms this internal step — this is the most consistent explanation from repeated hands-on testing, not a confirmed API contract. But the pattern is exact and reproducible: it's Windows' own naming logic tripping over the same colon that made the ADS execution possible in the first place. The attacker doesn't need to engineer this — they get it for free.
+In this case, the executable was launched from this ADS path:
+
+```text
+C:\Users\username\Pictures\Screenshot 2026-06-22 002415.png:malware.exe
+```
+
+Based on hands-on analysis and testing, the behavior appears to follow this sequence:
+
+```text
+ADS execution path:
+...\Screenshot 2026-06-22 002415.png:malware.exe
+
+Prefetch naming result:
+Screenshot 2026-06-22 002415.png:malware.exe-3F2A9C10.pf
+
+NTFS interpretation:
+The colon is treated as an Alternate Data Stream delimiter.
+
+Final on-disk structure:
+Base file: Screenshot 2026-06-22 002415.png
+Named stream: malware.exe-3F2A9C10.pf
+```
+
+The result is a `0`-byte placeholder file in the Prefetch directory, named after the original ADS host file, while the actual Prefetch record resides in a named stream.
+
+Similar behavior was documented in 2019 by researcher [Ali Hadi](https://www.binary-zone.com/2019/05/26/creating-a-hidden-prefetch-file-to-bypass-normal-forensic-analysis/). This finding independently reinforces that observation and demonstrates how the same behavior can occur when a PNG file is used as the ADS host.
+
+No known Microsoft documentation describes the exact internal implementation or naming logic involved. This explanation should therefore be treated as a repeatable forensic observation rather than a documented Windows API contract.
 
 ## Extracting and Parsing It
 
-Standard Prefetch parsers (PECmd, WinPrefetchView) scan by `.pf` extension and won't resolve a `base:stream` path directly. Pull the stream to a flat file first:
+Most Prefetch parsers search for conventional files ending in `.pf`. A Prefetch artifact stored inside an ADS can therefore be missed during normal processing.
+
+The stream must first be extracted to a regular file before parsing it.
+
+### PowerShell
 
 ```powershell
 Copy-Item -Path "C:\Windows\Prefetch\Screenshot 2026-06-22 002415.png:malware.exe-3F2A9C10.pf" `
-          -Destination "C:\Analysis\malware.exe-3F2A9C10.pf"
-
+  -Destination "C:\Analysis\malware.exe-3F2A9C10.pf"
 ```
+
+### Command Prompt
 
 ```cmd
-:: cmd.exe equivalent
 copy /b "C:\Windows\Prefetch\Screenshot 2026-06-22 002415.png:malware.exe-3F2A9C10.pf" C:\Analysis\malware.exe-3F2A9C10.pf
-
 ```
 
-Then parse it normally:
+The extracted file can then be parsed normally:
 
+```cmd
+PECmd.exe -f "C:\Analysis\malware.exe-3F2A9C10.pf"
 ```
-PECmd.exe -f "C:\Analysis\MALWARE.EXE-3F2A9C10.pf"
 
+Once extracted, the artifact can provide standard Prefetch evidence, including execution count, execution timestamps, referenced files and directories, and volume details.
+
+## PECmd ADS Support
+
+To make this artifact easier for analysts to find, [Mihir](https://www.linkedin.com/in/mihir-choudhary/) is contributing ADS-aware support to [PECmd](https://github.com/EricZimmerman/PECmd).
+
+The submitted pull request introduces a proposed `--ads` option for checking Prefetch artifacts stored in Alternate Data Streams.
+
+At the time of writing, this enhancement is under review and has not yet been merged into the main PECmd release. Once accepted, analysts will be able to use the `--ads` option to check for hidden Prefetch artifacts without manually enumerating and extracting every stream.
+
+```cmd
+PECmd.exe --ads
 ```
 
-You now get run count, last-run timestamps, and the "resources loaded" list — same as any other Prefetch file, once it's out of the stream.
-
+This feature is especially valuable during time-sensitive incident response. Without ADS-aware analysis, an investigator may incorrectly conclude that Prefetch did not capture a known execution event.
 
 ## Hunting Checklist
 
--   Flag anything in `C:\Windows\Prefetch` that isn't `.pf`, `Layout.ini`, or `ReadyBoot` — especially 0-byte entries.
--   Sweep the folder for hidden streams:
-    
-    ```powershell
-    Get-ChildItem "C:\Windows\Prefetch" -Force |  ForEach-Object { Get-Item -Path $_.FullName -Stream * -ErrorAction SilentlyContinue } |  Where-Object Stream -ne ':$DATA'
-    
-    ```
-    
--   Enable **Sysmon Event ID 15** (FileCreateStreamHash) — the cleanest signal for ADS creation, anywhere on disk.
--   Alert on a second colon in a process `Image`/`CommandLine` field — a legitimate exe path never has one.
--   If EDR/Amcache says something ran but your Prefetch parser shows nothing for it, that mismatch _is_ the finding — don't conclude "Prefetch wasn't available" without checking for a stream first.
--   Confirm your collection tooling actually preserves NTFS streams (KAPE, FTK Imager, full images: yes; many ad-hoc "grab this folder" scripts and non-NTFS destinations: often no).
+The following practical hunting and triage steps can help identify ADS-resident Prefetch artifacts:
 
+- Flag files in `C:\Windows\Prefetch` that are not `.pf` files, `Layout.ini`, or part of `ReadyBoot`
+- Prioritize `0`-byte entries, especially files masquerading as `.png`, `.jpg`, `.txt`, or `.dat`
+- Check Alternate Data Streams on unexpected files in the Prefetch directory before dismissing them
+- Investigate EDR, Amcache, or other execution evidence that has no matching visible `.pf` file
+- Alert on a second colon in a process `Image` or `CommandLine` field, such as `file.png:payload.exe`
+- Enable Sysmon Event ID 15, `FileCreateStreamHash`, to monitor named-stream creation
+- Validate that forensic collection tooling preserves NTFS ADS content
+
+The following PowerShell command enumerates nondefault streams within the Prefetch directory:
+
+```powershell
+Get-ChildItem "C:\Windows\Prefetch" -Force |
+  ForEach-Object {
+    Get-Item -Path $_.FullName -Stream * -ErrorAction SilentlyContinue
+  } |
+  Where-Object Stream -ne ':$DATA'
+```
+
+## Collection Considerations
+
+ADS-based evidence can be silently lost during acquisition.
+
+A conventional folder copy may preserve only the `0`-byte placeholder file while discarding the ADS that contains the actual Prefetch record. Copying files to a non-NTFS destination can also remove named-stream data.
+
+Before relying on a collection workflow, confirm that it preserves:
+
+- Named NTFS Alternate Data Streams
+- Prefetch directory contents
+- Relevant file-system metadata
+- The MFT and USN Journal, where possible
+- Original NTFS evidence rather than only exported file copies
 
 ## Key Takeaways
 
--   A missing `.pf` for a binary you know ran isn't proof Prefetch has no record — it may mean the record was renamed out from under you.
--   Any non-`.pf` file in `C:\Windows\Prefetch` is an immediate anomaly. Check it for streams before dismissing it.
--   ADS execution (T1564.004) is real-world tradecraft. Its side effect on Prefetch naming is a bonus the attacker likely didn't plan for.
--   Extract the stream to a flat file before parsing — PECmd won't read a `base:stream` path directly.
--   Corroborate with Amcache, ShimCache, Sysmon 15, and the MFT/USN Journal. One artifact is a fact; four is a timeline.
-
-## Sources
-
--   [MITRE ATT&CK T1564.004 — NTFS File Attributes](https://attack.mitre.org/techniques/T1564/004/)
--   [Ali Hadi — Creating a Hidden Prefetch File to Bypass Normal Forensic Analysis](https://www.binary-zone.com/2019/05/26/creating-a-hidden-prefetch-file-to-bypass-normal-forensic-analysis/)
--   [TrustedSec — Prefetch: The Little Snitch That Tells on You](https://trustedsec.com/blog/prefetch-the-little-snitch-that-tells-on-you)
--   [MITRE CAR-2020-08-001 — NTFS ADS Execution](https://car.mitre.org/analytics/CAR-2020-08-001/)
-
-
+- A missing visible `.pf` file does not prove that Prefetch failed to record execution
+- A Prefetch artifact created by ADS-based malware execution can itself be stored in an Alternate Data Stream
+- Any nonstandard file in `C:\Windows\Prefetch`, especially a `0`-byte PNG or text file, should be immediately checked for streams
+- Extract ADS-resident Prefetch artifacts to a regular `.pf` file before conventional parsing
+- The proposed PECmd `--ads` option aims to simplify discovery of Prefetch files stored in Alternate Data Streams
+- Corroborate findings with EDR telemetry, Amcache, ShimCache, Sysmon Event ID 15, the MFT, and the USN Journal
+- One artifact is a data point; multiple independent artifacts create a defensible execution timeline
 ---
 
 ![](https://media.giphy.com/media/DAtJCG1t3im1G/giphy.gif)
