@@ -10,7 +10,6 @@ image:
   alt: prefetch in ads
 tags: [prefetch,ads,hidden-prefetch,execution-artifact]
 ---
-![](/assets/images/prefetch.png)
 
 # Guest in C:\Windows\Prefetch:
 
@@ -22,7 +21,7 @@ If not yet — you will. Here's what it means when it happens.
 
 ## The Alert
 
-My colleague **Mihir** was working a case where EDR fired on a process-creation event. Nothing subtle about the telemetry — it was all right there:
+My colleague [Mihir Choudhary](https://www.linkedin.com/in/mihir-choudhary/) was working on an interesting case where EDR fired on a process-creation event. Nothing subtle about the telemetry — it was all right there but what interesting fact that he observed is here below! 
 
 ```
 Event ID:     1 (Process Create)
@@ -42,7 +41,7 @@ NTFS lets any file carry more than one stream. What you see is the default strea
 
 ```
 Screenshot 2026-06-22 002415.png          ← what Explorer shows you (a normal image)
-Screenshot 2026-06-22 002415.png:svc.exe  ← the payload, riding in a hidden stream
+Screenshot 2026-06-22 002415.png:malware.exe  ← the payload, riding in a hidden stream
 
 ```
 
@@ -58,7 +57,7 @@ Expected :
 C:\Windows\Prefetch\
 ├── CHROME.EXE-1A2B3C4D.pf
 ├── EXPLORER.EXE-9F8E7D6C.pf
-├── SVC.EXE-3F2A9C10.pf                    ← expected
+├── malware.exe-3F2A9C10.pf                    ← expected
 ├── Layout.ini
 
 ```
@@ -88,7 +87,7 @@ Get-Item -Path "C:\Windows\Prefetch\Screenshot 2026-06-22 002415.png" -Stream * 
 
 ```
 FileName : C:\Windows\Prefetch\Screenshot 2026-06-22 002415.png
-Stream   : SVC.EXE-3F2A9C10.pf
+Stream   : malware.exe-3F2A9C10.pf
 Length   : 32768
 
 ```
@@ -103,18 +102,18 @@ Prefetch filenames follow one rule: `<EXECUTABLE NAME>-<HASH>.pf`, built from th
 
 ```
 CreateProcess() launched with:
-  ...\Screenshot 2026-06-22 002415.png:svc.exe
+  ...\Screenshot 2026-06-22 002415.png:malware.exe
             │
             ▼
 Prefetcher builds an output name from that full string:
-  Screenshot 2026-06-22 002415.png:SVC.EXE-3F2A9C10.pf
+  Screenshot 2026-06-22 002415.png:malware.exe-3F2A9C10.pf
             │
             ▼
 NTFS reads that colon as a stream delimiter — not a literal character
             │
             ▼
 Result: a placeholder base file "Screenshot....png"
-        + a hidden stream "SVC.EXE-3F2A9C10.pf" (the real Prefetch trace)
+        + a hidden stream "malware.exe-3F2A9C10.pf" (the real Prefetch trace)
 
 ```
 
@@ -125,21 +124,21 @@ No documented Microsoft source confirms this internal step — this is the most 
 Standard Prefetch parsers (PECmd, WinPrefetchView) scan by `.pf` extension and won't resolve a `base:stream` path directly. Pull the stream to a flat file first:
 
 ```powershell
-Copy-Item -Path "C:\Windows\Prefetch\Screenshot 2026-06-22 002415.png:SVC.EXE-3F2A9C10.pf" `
-          -Destination "C:\Analysis\SVC.EXE-3F2A9C10.pf"
+Copy-Item -Path "C:\Windows\Prefetch\Screenshot 2026-06-22 002415.png:malware.exe-3F2A9C10.pf" `
+          -Destination "C:\Analysis\malware.exe-3F2A9C10.pf"
 
 ```
 
 ```cmd
 :: cmd.exe equivalent
-copy /b "C:\Windows\Prefetch\Screenshot 2026-06-22 002415.png:SVC.EXE-3F2A9C10.pf" C:\Analysis\SVC.EXE-3F2A9C10.pf
+copy /b "C:\Windows\Prefetch\Screenshot 2026-06-22 002415.png:malware.exe-3F2A9C10.pf" C:\Analysis\malware.exe-3F2A9C10.pf
 
 ```
 
 Then parse it normally:
 
 ```
-PECmd.exe -f "C:\Analysis\SVC.EXE-3F2A9C10.pf"
+PECmd.exe -f "C:\Analysis\MALWARE.EXE-3F2A9C10.pf"
 
 ```
 
