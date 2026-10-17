@@ -1,25 +1,20 @@
 ---
-title: <img width="50" height="50" alt="front-page port 80-shoopyu" src="https://www.thebigredgroup.com/wp-content/uploads/2021/06/top-six.jpg"> Cybersecurity Resources 💻🛡️
+title: Cybersecurity Resources 💻🛡️
 date: 2022-04-29 00:00:02 +730
 categories: [Resources, general]
+mermaid: true
+image:
+  path: /assets/images/cybersecuirty-resources.png
+  alt: Cybersecurity resources
 tags: [redteam, blueteam, cybersecurity , resources, courses,cyberlabs] # TAG names should always be lowercase
-
-
 ---
 
-
-
 # Cybersecurity Resources
-
 
 
 ## ⚛️ Overview
 Want to learn more about cybersecurity? Discover cybersecurity resources: anything from cybersecurity websites to podcasts, industry events, and organizations.
   
-![cybersec](https://github.com/thelocalh0st/thelocalh0st.github.io/assets/125783410/bdbbf881-8143-4db2-8374-31f21f62b67d)
-
-
-
 ## Training Platforms 📖
 
 1 [Hackthebox Academy](https://hackthebox.com) <br>
