@@ -21,7 +21,7 @@ And yet the taskbar's news and weather feed tells Microsoft's servers where the 
 This post covers:
 
 - where those positions come from
-- how to recover them with [WebCache Forensic Analyzer](https://github.com/akhil-dara/WebCache-Forensic-Analyzer) by Akhil Dara
+- how to recover them with [WebCache Forensic Analyzer](https://github.com/akhil-dara/WebCache-Forensic-Analyzer) by [Akhil Dara](https://www.linkedin.com/in/akhil-dara/)
 - how to read a fix without overstating it
 - how to corroborate it from the registry with RegRipper's `consentstore` plugin
 
@@ -158,7 +158,7 @@ A coordinate in a URL is **observed**: the digits are in the stored record. What
 | Up to about 200 m | WiFi or cell positioning | A building, not a room |
 | Beyond 200 m | Coarse positioning | A neighbourhood at best |
 
-A provider of `WiFi` means Windows positioned itself from the access points it could hear, by asking Microsoft's location service. Akhil Dara's [WiFi Geolocation Forensics](https://github.com/akhil-dara/wifi-geolocation-forensics) shows how that backend works. It also covers a caveat: when Microsoft holds no record for the access points heard, it can answer from the network connection instead.
+A provider of `WiFi` means Windows positioned itself from the access points it could hear, by asking Microsoft's location service. Akhil Dara's [WiFi Geolocation Forensics](https://github.com/akhil-dara/wifi-geolocation-forensics) shows how that backend works; I cover it in [a follow-up post](/posts/wifi-geolocation-forensics/). It also covers a caveat: when Microsoft holds no record for the access points heard, it can answer from the network connection instead.
 
 **From fixes to places.** A laptop that sits on the same desk produces many near-identical fixes. The tool groups them at a scale you choose: 11 m, 110 m (the default, matching typical WiFi accuracy) or 1.1 km.
 
@@ -258,11 +258,11 @@ flowchart TD
 
 ## Credits
 
-This post is built on the research and tooling of **[Akhil Dara](https://github.com/akhil-dara)**:
+This post is built on the research and tooling of **[Akhil Dara](https://www.linkedin.com/in/akhil-dara/)**:
 
 - **[WebCache Forensic Analyzer](https://github.com/akhil-dara/WebCache-Forensic-Analyzer)**, a forensic examiner for `WebCacheV01.dat` with dirty-database parsing, record recovery and the Location view (AGPL-3.0)
 - **[Location in WebCacheV01.dat](https://github.com/akhil-dara/WebCache-Forensic-Analyzer/blob/main/docs/how-location-is-found.md)**, the source of the parameter details, recovery figures, accuracy bands and grouping example used here
-- **[WiFi Geolocation Forensics](https://github.com/akhil-dara/wifi-geolocation-forensics)**, which shows how Windows turns the WiFi access points it hears into a position
+- **[WiFi Geolocation Forensics](https://github.com/akhil-dara/wifi-geolocation-forensics)**, which geolocates WiFi access points through Apple's and Microsoft's location services (see the [follow-up post](/posts/wifi-geolocation-forensics/))
 
 Thanks also to **Harlan Carvey** for [RegRipper](https://github.com/keydet89/RegRipper4.0) and its `consentstore` plugin.
 
