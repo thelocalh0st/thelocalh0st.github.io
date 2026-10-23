@@ -3,6 +3,7 @@ title: "The Browser Kept a Receipt: Proving a Download Was the Same File with ET
 date: 2026-10-23 00:00:00 +0530
 categories: [Resources, DFIR]
 comments: true
+pin: true
 image:
   path: /assets/images/etag/etag-banner.png
   alt: The browser kept a receipt - ETag and Last-Modified in Chromium's History database
