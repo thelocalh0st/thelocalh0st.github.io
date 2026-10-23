@@ -255,8 +255,6 @@ Say exactly what the evidence supports and nothing more. A template:
 
 ## Credit Where It's Due
 
-![Observation credit: Akhil](/assets/images/etag/etag-credit-akhil.svg){: w="1200" h="440" }
-
 This wasn't my find. Like a lot of the good observations in my cases, this one came from my friend **[Akhil Dara](https://www.linkedin.com/in/akhil-dara/)**. Akhil has a habit of staring at the column everyone else scrolls past and asking *"wait… why is this here?"*. This time the answer turned a "probably the same file" into something we could actually defend in a report.
 
 Akhil, the next chai is on me ☕.
