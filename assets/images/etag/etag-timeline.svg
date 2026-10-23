@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" role="img" aria-label="Two timelines. Scenario A: the payload never changes, the victim on Day 0 and the investigator on Day 15 both see ETag 6ac46e19-13e7f8, so it is the same file. Scenario B: the attacker swaps the payload on Day 7, the investigator sees ETag 6acfeea8-1421b0 and a Last-Modified after the victim's download, so today's sample is not the victim's file.">
+  <title>Unchanged payload vs rotated payload</title>
+  <defs>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#1e293b" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <style>
+    .sans { font-family: "Segoe UI", Inter, system-ui, -apple-system, Roboto, sans-serif; }
+    .mono { font-family: "Cascadia Mono", Consolas, "SFMono-Regular", Menlo, monospace; font-variant-ligatures: none; }
+    .head { animation: head 10s linear infinite; }
+    @keyframes head { 0% { transform: translateX(0); opacity: 1; } 70% { transform: translateX(850px); opacity: 1; } 76%, 100% { transform: translateX(850px); opacity: 0; } }
+    .p0 { animation: p0 10s ease-out infinite; } .p7 { animation: p7 10s ease-out infinite; }
+    .p15 { animation: p15 10s ease-out infinite; } .res { animation: res 10s ease-out infinite; }
+    @keyframes p0 { 0%, 7% { opacity: 0; } 10%, 97% { opacity: 1; } 100% { opacity: 0; } }
+    @keyframes p7 { 0%, 36% { opacity: 0; } 39%, 97% { opacity: 1; } 100% { opacity: 0; } }
+    @keyframes p15 { 0%, 69% { opacity: 0; } 72%, 97% { opacity: 1; } 100% { opacity: 0; } }
+    @keyframes res { 0%, 74% { opacity: 0; } 79%, 97% { opacity: 1; } 100% { opacity: 0; } }
+    .barB2 { animation: barB2 10s linear infinite; }
+    @keyframes barB2 { 0%, 37% { opacity: 0; } 39%, 97% { opacity: 1; } 100% { opacity: 0; } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } .head { display: none; } }
+  </style>
+
+  <rect width="1200" height="660" rx="22" fill="#0b1220"/>
+  <rect width="1200" height="660" rx="22" fill="url(#grid)" opacity=".55"/>
+
+  <text x="48" y="58" class="sans" font-size="15" font-weight="700" letter-spacing="3" fill="#fb7185">THE PART THAT CAN SAY "NO"</text>
+  <text x="48" y="96" class="sans" font-size="30" font-weight="700" fill="#f8fafc">An ETag can prove a match, and it can also kill a wrong one</text>
+
+  <!-- axis -->
+  <g class="sans" font-size="15" fill="#94a3b8" text-anchor="middle">
+    <line x1="200" y1="586" x2="1050" y2="586" stroke="#475569" stroke-width="2"/>
+    <g stroke="#475569" stroke-width="2"><line x1="200" y1="580" x2="200" y2="592"/><line x1="300" y1="580" x2="300" y2="592"/><line x1="650" y1="580" x2="650" y2="592"/><line x1="1050" y1="580" x2="1050" y2="592"/></g>
+    <text x="208" y="614" text-anchor="end">file uploaded</text>
+    <text x="300" y="614" fill="#fbbf24" text-anchor="start" dx="-8">Day 0 · victim</text>
+    <text x="650" y="614">Day 7</text>
+    <text x="1050" y="614" fill="#22d3ee">Day 15 · us</text>
+  </g>
+
+  <!-- playhead -->
+  <g class="head">
+    <line x1="200" y1="150" x2="200" y2="586" stroke="#e2e8f0" stroke-width="2" stroke-dasharray="3 5" opacity=".7"/>
+    <circle cx="200" cy="586" r="6" fill="#e2e8f0"/>
+  </g>
+
+  <!-- Scenario A -->
+  <text x="60" y="160" class="sans" font-size="14" font-weight="700" letter-spacing="2" fill="#86efac">SCENARIO A · PAYLOAD NEVER CHANGED</text>
+  <rect x="200" y="226" width="850" height="34" rx="8" fill="#0e3442" stroke="#22d3ee" stroke-width="2"/>
+  <text x="625" y="249" text-anchor="middle" class="mono" font-size="17" fill="#a5f3fc">ETag "6ac46e19-13e7f8" the whole time</text>
+  <g class="p0">
+    <line x1="300" y1="196" x2="300" y2="226" stroke="#fbbf24" stroke-width="2.5"/>
+    <circle cx="300" cy="192" r="7" fill="#fbbf24"/>
+    <text x="314" y="190" class="mono" font-size="15" fill="#fde68a">victim saw "6ac46e19-13e7f8"</text>
+  </g>
+  <g class="p15">
+    <line x1="1050" y1="196" x2="1050" y2="226" stroke="#22d3ee" stroke-width="2.5"/>
+    <circle cx="1050" cy="192" r="7" fill="#22d3ee"/>
+    <text x="1036" y="190" text-anchor="end" class="mono" font-size="15" fill="#a5f3fc">we see "6ac46e19-13e7f8"</text>
+  </g>
+  <g class="res">
+    <rect x="1066" y="226" width="110" height="34" rx="17" fill="#14532d" stroke="#4ade80" stroke-width="2"/>
+    <text x="1121" y="249" text-anchor="middle" class="sans" font-size="16" font-weight="800" fill="#bbf7d0">✓ SAME</text>
+  </g>
+
+  <!-- Scenario B -->
+  <text x="60" y="336" class="sans" font-size="14" font-weight="700" letter-spacing="2" fill="#fda4af">SCENARIO B · ATTACKER SWAPS THE PAYLOAD ON DAY 7</text>
+  <rect x="200" y="402" width="450" height="34" rx="8" fill="#0e3442" stroke="#22d3ee" stroke-width="2"/>
+  <text x="425" y="425" text-anchor="middle" class="mono" font-size="17" fill="#a5f3fc">"6ac46e19-13e7f8"</text>
+  <g class="barB2">
+    <rect x="650" y="402" width="400" height="34" rx="8" fill="#3b0a17" stroke="#fb7185" stroke-width="2"/>
+    <text x="850" y="425" text-anchor="middle" class="mono" font-size="17" fill="#fda4af">"6acfeea8-1421b0"</text>
+  </g>
+  <g class="p0">
+    <line x1="300" y1="372" x2="300" y2="402" stroke="#fbbf24" stroke-width="2.5"/>
+    <circle cx="300" cy="368" r="7" fill="#fbbf24"/>
+    <text x="314" y="366" class="mono" font-size="15" fill="#fde68a">victim saw "6ac46e19-13e7f8"</text>
+  </g>
+  <g class="p7">
+    <path d="M650 446 v18" stroke="#fb7185" stroke-width="2.5"/>
+    <text x="650" y="486" text-anchor="middle" class="sans" font-size="15" fill="#fda4af">⟳ v2 uploaded · Last-Modified: Wed, 14 Oct 2026 21:05:44 GMT</text>
+  </g>
+  <g class="p15">
+    <line x1="1050" y1="372" x2="1050" y2="402" stroke="#fb7185" stroke-width="2.5"/>
+    <circle cx="1050" cy="368" r="7" fill="#fb7185"/>
+    <text x="1036" y="366" text-anchor="end" class="mono" font-size="15" fill="#fda4af">we see "6acfeea8-1421b0"</text>
+  </g>
+  <g class="res">
+    <rect x="1066" y="402" width="110" height="34" rx="17" fill="#4c0519" stroke="#fb7185" stroke-width="2"/>
+    <text x="1121" y="425" text-anchor="middle" class="sans" font-size="16" font-weight="800" fill="#fecdd3">✗ NOT</text>
+    <text x="60" y="534" class="sans" font-size="16" fill="#cbd5e1">In B, today's sample is <tspan fill="#fda4af" font-weight="700">not</tspan> the victim's file. Bonus tell: its Last-Modified (14 Oct) is <tspan font-weight="700" fill="#fda4af">after</tspan> the victim's download start_time.</text>
+  </g>
+</svg>

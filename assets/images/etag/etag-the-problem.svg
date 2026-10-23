@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1200 640" width="1200" height="640" role="img" aria-label="Same URL downloaded on Day 0 by the victim and on Day 15 by the investigator. Is it the same file?">
+  <title>Same URL, fifteen days apart: same file?</title>
+  <defs>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#1e293b" stroke-width="1"/>
+    </pattern>
+    <linearGradient id="srv" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#13213a"/>
+      <stop offset="1" stop-color="#0f1a2e"/>
+    </linearGradient>
+    <path id="pL" d="M520 262 C 470 300, 330 290, 250 318"/>
+    <path id="pR" d="M680 262 C 730 300, 870 290, 950 318"/>
+    <g id="zip">
+      <rect x="-15" y="-11" width="30" height="22" rx="4" fill="#f59e0b"/>
+      <text x="0" y="5" font-family="Consolas, 'Cascadia Code', Menlo, monospace" font-size="11" font-weight="700" fill="#0b1220" text-anchor="middle">ZIP</text>
+    </g>
+  </defs>
+  <style>
+    .sans { font-family: "Segoe UI", Inter, system-ui, -apple-system, Roboto, sans-serif; }
+    .mono { font-family: "Cascadia Mono", Consolas, "SFMono-Regular", Menlo, monospace; font-variant-ligatures: none; }
+    .flow { stroke-dasharray: 7 9; animation: flow 1.1s linear infinite; }
+    @keyframes flow { to { stroke-dashoffset: -32; } }
+    .q { transform-box: fill-box; transform-origin: center; animation: pulse 2.2s ease-in-out infinite; }
+    @keyframes pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.12); } }
+    .ring { transform-box: fill-box; transform-origin: center; animation: ring 2.2s ease-out infinite; }
+    @keyframes ring { 0% { transform: scale(1); opacity: .7; } 100% { transform: scale(1.9); opacity: 0; } }
+    .v1 { animation: v1 6s steps(1) infinite; }
+    .v2 { animation: v2 6s steps(1) infinite; }
+    @keyframes v1 { 0%,49% { opacity: 1; } 50%,100% { opacity: 0; } }
+    @keyframes v2 { 0%,49% { opacity: 0; } 50%,100% { opacity: 1; } }
+    .ghost { animation: ghost 3s ease-in-out infinite; }
+    @keyframes ghost { 0%,100% { opacity: .35; } 50% { opacity: .12; } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } .v2 { display: none; } }
+  </style>
+
+  <rect width="1200" height="640" rx="22" fill="#0b1220"/>
+  <rect width="1200" height="640" rx="22" fill="url(#grid)" opacity=".55"/>
+
+  <text x="48" y="60" class="sans" font-size="15" font-weight="700" letter-spacing="3" fill="#f59e0b">CASE FILE · THE PROBLEM</text>
+  <text x="48" y="100" class="sans" font-size="32" font-weight="700" fill="#f8fafc">Same URL. Fifteen days apart. Same file?</text>
+
+  <!-- server -->
+  <g>
+    <rect x="430" y="132" width="340" height="132" rx="16" fill="url(#srv)" stroke="#22d3ee" stroke-opacity=".6" stroke-width="2"/>
+    <g transform="translate(456 158)">
+      <rect width="46" height="16" rx="4" fill="#1e3a5f"/><circle cx="38" cy="8" r="3" fill="#22c55e"/>
+      <rect y="22" width="46" height="16" rx="4" fill="#1e3a5f"/><circle cx="38" cy="30" r="3" fill="#22c55e"/>
+      <rect y="44" width="46" height="16" rx="4" fill="#1e3a5f"/><circle cx="38" cy="52" r="3" fill="#f59e0b"/>
+    </g>
+    <text x="522" y="172" class="mono" font-size="18" fill="#22d3ee">hxxps://cdn-share[.]example</text>
+    <text x="522" y="198" class="mono" font-size="18" fill="#e2e8f0">/download?id=7f3a9c</text>
+    <text x="522" y="224" class="sans" font-size="14" fill="#94a3b8">generic endpoint · serves whatever is current</text>
+    <g class="sans" font-size="13" font-weight="700">
+      <g class="v1"><rect x="522" y="234" width="128" height="22" rx="11" fill="#14532d"/><text x="586" y="250" text-anchor="middle" fill="#86efac">payload: v1</text></g>
+      <g class="v2"><rect x="522" y="234" width="128" height="22" rx="11" fill="#4c0519"/><text x="586" y="250" text-anchor="middle" fill="#fda4af">payload: v2 ?</text></g>
+    </g>
+  </g>
+
+  <!-- download paths -->
+  <use href="#pL" xlink:href="#pL" fill="none" stroke="#f59e0b" stroke-width="2.5" class="flow"/>
+  <use href="#pR" xlink:href="#pR" fill="none" stroke="#22d3ee" stroke-width="2.5" class="flow"/>
+  <use href="#zip" xlink:href="#zip">
+    <animateMotion dur="2.6s" repeatCount="indefinite"><mpath href="#pL" xlink:href="#pL"/></animateMotion>
+  </use>
+  <use href="#zip" xlink:href="#zip">
+    <animateMotion dur="2.6s" begin="1.3s" repeatCount="indefinite"><mpath href="#pR" xlink:href="#pR"/></animateMotion>
+  </use>
+
+  <!-- victim card -->
+  <g>
+    <rect x="56" y="322" width="400" height="248" rx="16" fill="#111a2c" stroke="#f59e0b" stroke-opacity=".55" stroke-width="2"/>
+    <text x="80" y="356" class="sans" font-size="14" font-weight="700" letter-spacing="2" fill="#f59e0b">DAY 0 · VICTIM WORKSTATION</text>
+    <!-- laptop -->
+    <g transform="translate(80 378)">
+      <rect x="6" y="0" width="84" height="54" rx="5" fill="#1f2a40" stroke="#475569" stroke-width="2"/>
+      <rect x="13" y="7" width="70" height="40" rx="2" fill="#0b1220"/>
+      <path d="M0 58 H96 L90 66 H6 Z" fill="#475569"/>
+    </g>
+    <!-- ghost file -->
+    <g class="ghost">
+      <rect x="196" y="380" width="236" height="44" rx="10" fill="none" stroke="#f59e0b" stroke-width="2" stroke-dasharray="6 6"/>
+      <text x="314" y="408" text-anchor="middle" class="mono" font-size="16" fill="#fbbf24">Invoice_Oct2026.zip</text>
+    </g>
+    <g class="sans" font-size="17">
+      <text x="80" y="480" fill="#fb7185">✖  file gone (deleted / reimaged)</text>
+      <text x="80" y="512" fill="#fb7185">✖  no hash anywhere</text>
+      <text x="80" y="544" fill="#4ade80">✔  browser History DB survived</text>
+    </g>
+  </g>
+
+  <!-- investigator card -->
+  <g>
+    <rect x="744" y="322" width="400" height="248" rx="16" fill="#111a2c" stroke="#22d3ee" stroke-opacity=".55" stroke-width="2"/>
+    <text x="768" y="356" class="sans" font-size="14" font-weight="700" letter-spacing="2" fill="#22d3ee">DAY 15 · INVESTIGATOR</text>
+    <g transform="translate(768 378)">
+      <rect x="6" y="0" width="84" height="54" rx="5" fill="#1f2a40" stroke="#475569" stroke-width="2"/>
+      <rect x="13" y="7" width="70" height="40" rx="2" fill="#0b1220"/>
+      <text x="48" y="33" text-anchor="middle" class="mono" font-size="12" fill="#22d3ee">&gt;_</text>
+      <path d="M0 58 H96 L90 66 H6 Z" fill="#475569"/>
+    </g>
+    <rect x="884" y="380" width="236" height="44" rx="10" fill="#0e2a35" stroke="#22d3ee" stroke-width="2"/>
+    <text x="1002" y="408" text-anchor="middle" class="mono" font-size="16" fill="#a5f3fc">Invoice_Oct2026.zip</text>
+    <g class="sans" font-size="17">
+      <text x="768" y="480" fill="#4ade80">✔  sample in hand</text>
+      <text x="768" y="512" fill="#4ade80">✔  SHA-256 a5d87cbb…5d08ca8848</text>
+      <text x="768" y="544" fill="#fbbf24">?  but is it the victim's file?</text>
+    </g>
+  </g>
+
+  <!-- the question -->
+  <circle cx="600" cy="448" r="44" fill="none" stroke="#f59e0b" stroke-width="3" class="ring"/>
+  <g class="q">
+    <circle cx="600" cy="448" r="44" fill="#1c1408" stroke="#f59e0b" stroke-width="3"/>
+    <text x="600" y="466" text-anchor="middle" class="sans" font-size="50" font-weight="700" fill="#fbbf24">≟</text>
+  </g>
+
+  <text x="600" y="608" text-anchor="middle" class="sans" font-size="17" fill="#94a3b8">A generic endpoint can swap payloads any time. Today's sample proves nothing about Day 0 … unless the server left a fingerprint.</text>
+</svg>

@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="1200" height="680" role="img" aria-label="Decoding an nginx-style ETag: 6ac46e19 is the hex Unix time of Last-Modified, Tue 06 Oct 2026 03:42:17 GMT, and 13e7f8 is the hex size, 1,304,568 bytes. Apache uses size and mtime in microseconds, Amazon S3 single-part uploads use the MD5 of the object, others are opaque.">
+  <title>Decoding an ETag</title>
+  <defs>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#1e293b" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <style>
+    .sans { font-family: "Segoe UI", Inter, system-ui, -apple-system, Roboto, sans-serif; }
+    .mono { font-family: "Cascadia Mono", Consolas, "SFMono-Regular", Menlo, monospace; font-variant-ligatures: none; }
+    .draw { stroke-dasharray: 340; animation: draw 10s ease-out infinite; }
+    @keyframes draw { 0%, 12% { stroke-dashoffset: 340; } 20%, 100% { stroke-dashoffset: 0; } }
+    .r1 { animation: r1 10s ease-out infinite; } .r2 { animation: r2 10s ease-out infinite; }
+    .r3 { animation: r3 10s ease-out infinite; } .r4 { animation: r4 10s ease-out infinite; }
+    @keyframes r1 { 0%, 20% { opacity: 0; } 25%, 96% { opacity: 1; } 100% { opacity: 0; } }
+    @keyframes r2 { 0%, 30% { opacity: 0; } 35%, 96% { opacity: 1; } 100% { opacity: 0; } }
+    @keyframes r3 { 0%, 42% { opacity: 0; } 47%, 96% { opacity: 1; } 100% { opacity: 0; } }
+    @keyframes r4 { 0%, 55% { opacity: 0; } 60%, 96% { opacity: 1; } 100% { opacity: 0; } }
+    .pop { transform-box: fill-box; transform-origin: center; animation: pop 10s ease-out infinite; }
+    @keyframes pop { 0%, 46% { transform: scale(0); } 50% { transform: scale(1.35); } 53%, 100% { transform: scale(1); } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+  </style>
+
+  <rect width="1200" height="680" rx="22" fill="#0b1220"/>
+  <rect width="1200" height="680" rx="22" fill="url(#grid)" opacity=".55"/>
+
+  <text x="48" y="58" class="sans" font-size="15" font-weight="700" letter-spacing="3" fill="#22d3ee">READING THE FINGERPRINT</text>
+  <text x="48" y="96" class="sans" font-size="30" font-weight="700" fill="#f8fafc">Some ETags are not random. Some you can decode.</text>
+
+  <!-- the etag -->
+  <text x="600" y="140" text-anchor="middle" class="mono" font-size="16" fill="#94a3b8">nginx builds it as  "%xT-%xO"  →  hex(mtime) - hex(size)</text>
+  <text x="600" y="204" text-anchor="middle" class="mono" font-size="46" font-weight="700" fill="#64748b">ETag: "<tspan fill="#22d3ee">6ac46e19</tspan>-<tspan fill="#fbbf24">13e7f8</tspan>"</text>
+  <path d="M587 222 C 587 250, 330 240, 320 266" fill="none" stroke="#22d3ee" stroke-width="2.5" class="draw"/>
+  <path d="M790 222 C 790 250, 880 240, 880 266" fill="none" stroke="#fbbf24" stroke-width="2.5" class="draw"/>
+
+  <!-- left card: time -->
+  <rect x="60" y="270" width="520" height="214" rx="16" fill="#0e1f2b" stroke="#22d3ee" stroke-width="2"/>
+  <text x="86" y="304" class="sans" font-size="14" font-weight="700" letter-spacing="2" fill="#67e8f9">FIRST HALF · LAST-MODIFIED (UNIX SECONDS)</text>
+  <g class="r1"><text x="86" y="346" class="mono" font-size="22" fill="#e2e8f0">0x6ac46e19 = 1,791,258,137</text></g>
+  <g class="r2"><text x="86" y="384" class="mono" font-size="22" fill="#a5f3fc">Tue, 06 Oct 2026 03:42:17 GMT</text></g>
+  <g class="r3">
+    <circle cx="98" cy="434" r="14" fill="#16a34a" class="pop"/>
+    <text x="98" y="440" text-anchor="middle" class="sans" font-size="17" font-weight="800" fill="#f0fdf4">✓</text>
+    <text x="124" y="440" class="sans" font-size="18" fill="#86efac">matches downloads.last_modified</text>
+  </g>
+
+  <!-- right card: size -->
+  <rect x="620" y="270" width="520" height="214" rx="16" fill="#221a08" stroke="#fbbf24" stroke-width="2"/>
+  <text x="646" y="304" class="sans" font-size="14" font-weight="700" letter-spacing="2" fill="#fcd34d">SECOND HALF · CONTENT LENGTH</text>
+  <g class="r1"><text x="646" y="346" class="mono" font-size="22" fill="#e2e8f0">0x13e7f8 = 1,304,568 bytes</text></g>
+  <g class="r3">
+    <circle cx="658" cy="394" r="14" fill="#16a34a" class="pop"/>
+    <text x="658" y="400" text-anchor="middle" class="sans" font-size="17" font-weight="800" fill="#f0fdf4">✓</text>
+    <text x="684" y="400" class="sans" font-size="18" fill="#86efac">matches downloads.total_bytes</text>
+  </g>
+  <g class="r4">
+    <circle cx="658" cy="440" r="14" fill="#16a34a"/>
+    <text x="658" y="446" text-anchor="middle" class="sans" font-size="17" font-weight="800" fill="#f0fdf4">✓</text>
+    <text x="684" y="446" class="sans" font-size="18" fill="#86efac">matches today's Content-Length</text>
+  </g>
+
+  <!-- other servers -->
+  <text x="60" y="530" class="sans" font-size="14" font-weight="700" letter-spacing="2" fill="#94a3b8">OTHER SERVERS, OTHER RECIPES</text>
+  <g>
+    <rect x="60" y="546" width="344" height="104" rx="12" fill="#111a2c" stroke="#334155"/>
+    <text x="80" y="576" class="sans" font-size="17" font-weight="700" fill="#e2e8f0">Apache httpd 2.4</text>
+    <text x="80" y="604" class="mono" font-size="16" fill="#c4b5fd">"&lt;size&gt;-&lt;mtime µs&gt;"</text>
+    <text x="80" y="630" class="sans" font-size="14" fill="#94a3b8">hex; inode too if FileETag says so</text>
+
+    <rect x="428" y="546" width="344" height="104" rx="12" fill="#0d2418" stroke="#16a34a"/>
+    <text x="448" y="576" class="sans" font-size="17" font-weight="700" fill="#e2e8f0">Amazon S3 (single-part)</text>
+    <text x="448" y="604" class="mono" font-size="16" fill="#86efac">"&lt;MD5 of the object&gt;"</text>
+    <text x="448" y="630" class="sans" font-size="14" fill="#94a3b8">jackpot: the ETag IS a hash*</text>
+
+    <rect x="796" y="546" width="344" height="104" rx="12" fill="#111a2c" stroke="#334155"/>
+    <text x="816" y="576" class="sans" font-size="17" font-weight="700" fill="#e2e8f0">CDNs, app servers, rest</text>
+    <text x="816" y="604" class="mono" font-size="16" fill="#cbd5e1">"opaque-string"</text>
+    <text x="816" y="630" class="sans" font-size="14" fill="#94a3b8">don't decode it, compare it</text>
+  </g>
+  <text x="1140" y="670" text-anchor="end" class="sans" font-size="12" fill="#64748b">* not for multipart uploads or SSE-KMS / SSE-C objects</text>
+</svg>

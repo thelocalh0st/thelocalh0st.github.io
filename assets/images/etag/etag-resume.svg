@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" width="1200" height="620" role="img" aria-label="A download is interrupted at 62 percent. The browser resumes it with a Range request and If-Range carrying the saved ETag. If the ETag still matches the server answers 206 with the missing bytes, otherwise 200 with the whole new file. To resume after a restart Chromium stores the validators in the History downloads table.">
+  <title>Why the browser keeps the ETag: resuming downloads</title>
+  <defs>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#1e293b" stroke-width="1"/>
+    </pattern>
+    <linearGradient id="fillA" x1="0" x2="1"><stop offset="0" stop-color="#0891b2"/><stop offset="1" stop-color="#22d3ee"/></linearGradient>
+    <linearGradient id="fillB" x1="0" x2="1"><stop offset="0" stop-color="#16a34a"/><stop offset="1" stop-color="#4ade80"/></linearGradient>
+    <clipPath id="track"><rect x="60" y="178" width="1080" height="34" rx="9"/></clipPath>
+  </defs>
+  <style>
+    .sans { font-family: "Segoe UI", Inter, system-ui, -apple-system, Roboto, sans-serif; }
+    .mono { font-family: "Cascadia Mono", Consolas, "SFMono-Regular", Menlo, monospace; font-variant-ligatures: none; }
+  </style>
+
+  <rect width="1200" height="620" rx="22" fill="#0b1220"/>
+  <rect width="1200" height="620" rx="22" fill="url(#grid)" opacity=".55"/>
+
+  <text x="48" y="58" class="sans" font-size="15" font-weight="700" letter-spacing="3" fill="#f59e0b">WAIT, WHY WOULD A BROWSER SAVE THAT?</text>
+  <text x="48" y="96" class="sans" font-size="30" font-weight="700" fill="#f8fafc">Downloads break. Resuming one needs proof that nothing changed.</text>
+
+  <!-- progress -->
+  <text x="60" y="160" class="mono" font-size="18" fill="#cbd5e1">Invoice_Oct2026.zip</text>
+  <g class="sans" font-size="17" text-anchor="end">
+    <text x="1140" y="160" fill="#94a3b8" opacity="0">downloading…
+      <animate attributeName="opacity" dur="12s" repeatCount="indefinite" values="1;1;0;0" keyTimes="0;0.24;0.25;1"/></text>
+    <text x="1140" y="160" fill="#fb7185" opacity="0">⚡ connection dropped at 808,832 bytes
+      <animate attributeName="opacity" dur="12s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;0.25;0.26;0.6;0.61;1"/></text>
+    <text x="1140" y="160" fill="#4ade80">✔ resumed → 1,304,568 bytes, one version
+      <animate attributeName="opacity" dur="12s" repeatCount="indefinite" values="0;0;1;1;0" keyTimes="0;0.61;0.62;0.97;1"/></text>
+  </g>
+  <rect x="60" y="178" width="1080" height="34" rx="9" fill="#111a2c" stroke="#334155"/>
+  <g clip-path="url(#track)">
+    <rect x="60" y="178" width="670" height="34" fill="url(#fillA)">
+      <animate attributeName="width" dur="12s" repeatCount="indefinite" values="0;670;670;670" keyTimes="0;0.24;0.97;1"/>
+    </rect>
+    <rect x="730" y="178" width="410" height="34" fill="url(#fillB)">
+      <animate attributeName="width" dur="12s" repeatCount="indefinite" values="0;0;410;410" keyTimes="0;0.62;0.78;1"/>
+    </rect>
+  </g>
+  <g opacity="1">
+    <animate attributeName="opacity" dur="12s" repeatCount="indefinite" values="0;0;1;1;0" keyTimes="0;0.25;0.26;0.97;1"/>
+    <line x1="730" y1="168" x2="730" y2="222" stroke="#fb7185" stroke-width="3" stroke-dasharray="5 4"/>
+    <text x="730" y="246" text-anchor="middle" class="mono" font-size="15" fill="#fda4af">62% · byte 808,832</text>
+  </g>
+
+  <!-- resume request -->
+  <g opacity="1">
+    <animate attributeName="opacity" dur="12s" repeatCount="indefinite" values="0;0;1;1;0" keyTimes="0;0.32;0.36;0.97;1"/>
+    <rect x="60" y="278" width="560" height="168" rx="14" fill="#0f1729" stroke="#a78bfa" stroke-width="2"/>
+    <text x="84" y="310" class="sans" font-size="14" font-weight="700" letter-spacing="2" fill="#c4b5fd">BROWSER RETRIES WITH WHAT IT SAVED</text>
+    <text x="84" y="346" class="mono" font-size="19" fill="#e2e8f0">GET /download?id=7f3a9c</text>
+    <text x="84" y="378" class="mono" font-size="19" fill="#e2e8f0">Range: bytes=808832-</text>
+    <rect x="76" y="390" width="372" height="36" rx="7" fill="#2a1d05" stroke="#f59e0b" stroke-width="2.5"/>
+    <text x="84" y="415" class="mono" font-size="19" fill="#fbbf24">If-Range: "6ac46e19-13e7f8"</text>
+  </g>
+
+  <!-- outcomes -->
+  <g opacity="1">
+    <animate attributeName="opacity" dur="12s" repeatCount="indefinite" values="0;0;1;1;0" keyTimes="0;0.42;0.46;0.97;1"/>
+    <path d="M620 330 C 650 330, 650 316, 676 316" fill="none" stroke="#4ade80" stroke-width="2.5"/>
+    <path d="M620 400 C 650 400, 650 414, 676 414" fill="none" stroke="#f59e0b" stroke-width="2.5"/>
+    <rect x="676" y="278" width="464" height="76" rx="12" fill="#0d2418" stroke="#4ade80" stroke-width="2">
+      <animate attributeName="stroke-width" dur="12s" repeatCount="indefinite" values="2;2;5;2;2" keyTimes="0;0.58;0.62;0.68;1"/>
+    </rect>
+    <text x="698" y="308" class="sans" font-size="18" font-weight="700" fill="#86efac">Same ETag → 206 Partial Content</text>
+    <text x="698" y="336" class="sans" font-size="16" fill="#bbf7d0">server sends only the missing bytes</text>
+    <rect x="676" y="370" width="464" height="76" rx="12" fill="#231804" stroke="#f59e0b" stroke-width="2"/>
+    <text x="698" y="400" class="sans" font-size="18" font-weight="700" fill="#fcd34d">ETag changed → 200 OK, full file</text>
+    <text x="698" y="428" class="sans" font-size="16" fill="#fde68a">never glue half of v1 to half of v2</text>
+  </g>
+
+  <!-- where it lands -->
+  <g>
+    <rect x="60" y="478" width="1080" height="112" rx="14" fill="#101828" stroke="#22d3ee" stroke-opacity=".5" stroke-width="2"/>
+    <g transform="translate(92 500)">
+      <ellipse cx="30" cy="10" rx="30" ry="10" fill="#164e63" stroke="#22d3ee" stroke-width="2"/>
+      <path d="M0 10 V58 A30 10 0 0 0 60 58 V10" fill="#0e3442" stroke="#22d3ee" stroke-width="2"/>
+      <path d="M0 26 A30 10 0 0 0 60 26 M0 42 A30 10 0 0 0 60 42" fill="none" stroke="#22d3ee" stroke-width="1.5" opacity=".7"/>
+    </g>
+    <text x="180" y="522" class="sans" font-size="18" fill="#e2e8f0">So the resume survives a browser restart, Chromium writes these "validators" to disk:</text>
+    <text x="180" y="558" class="mono" font-size="20" fill="#22d3ee">History › downloads.<tspan fill="#fbbf24">etag</tspan>  ·  downloads.<tspan fill="#fbbf24">last_modified</tspan></text>
+    <text x="180" y="580" class="sans" font-size="14" fill="#94a3b8">(only when the response carried strong validators: a non-W/ ETag, or a Last-Modified at least 60 s older than Date)</text>
+  </g>
+</svg>

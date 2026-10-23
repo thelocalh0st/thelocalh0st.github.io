@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1200 700" width="1200" height="700" role="img" aria-label="HTTP sequence: the server returns an ETag with the file, the browser later revalidates with If-None-Match and gets 304 Not Modified.">
+  <title>How ETag works: 200 with ETag, then If-None-Match and 304</title>
+  <defs>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#1e293b" stroke-width="1"/>
+    </pattern>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="context-stroke"/>
+    </marker>
+    <marker id="ahC" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#22d3ee"/></marker>
+    <marker id="ahG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#4ade80"/></marker>
+    <marker id="ahA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#f59e0b"/></marker>
+    <path id="m1" d="M186 236 H1012"/>
+    <path id="m2" d="M1014 300 H188"/>
+    <path id="m3" d="M186 520 H1012"/>
+    <path id="m4" d="M1014 600 H188"/>
+  </defs>
+  <style>
+    .sans { font-family: "Segoe UI", Inter, system-ui, -apple-system, Roboto, sans-serif; }
+    .mono { font-family: "Cascadia Mono", Consolas, "SFMono-Regular", Menlo, monospace; font-variant-ligatures: none; }
+    .a1 { animation: a1 12s ease-out infinite; }
+    .a2 { animation: a2 12s ease-out infinite; }
+    .a3 { animation: a3 12s ease-out infinite; }
+    .a4 { animation: a4 12s ease-out infinite; }
+    .a5 { animation: a5 12s ease-out infinite; }
+    .a6 { animation: a6 12s ease-out infinite; }
+    @keyframes a1 { 0% { opacity: 0; } 5%, 93% { opacity: 1; } 100% { opacity: 0; } }
+    @keyframes a2 { 0%, 12% { opacity: 0; } 17%, 93% { opacity: 1; } 100% { opacity: 0; } }
+    @keyframes a3 { 0%, 20% { opacity: 0; } 26%, 93% { opacity: 1; } 100% { opacity: 0; } }
+    @keyframes a4 { 0%, 33% { opacity: 0; } 38%, 93% { opacity: 1; } 100% { opacity: 0; } }
+    @keyframes a5 { 0%, 48% { opacity: 0; } 53%, 93% { opacity: 1; } 100% { opacity: 0; } }
+    @keyframes a6 { 0%, 62% { opacity: 0; } 67%, 93% { opacity: 1; } 100% { opacity: 0; } }
+    .glow { animation: glow 1.6s ease-in-out infinite; }
+    @keyframes glow { 0%,100% { stroke-opacity: 1; } 50% { stroke-opacity: .35; } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } .pkt { display: none; } }
+  </style>
+
+  <rect width="1200" height="700" rx="22" fill="#0b1220"/>
+  <rect width="1200" height="700" rx="22" fill="url(#grid)" opacity=".55"/>
+
+  <text x="48" y="58" class="sans" font-size="15" font-weight="700" letter-spacing="3" fill="#22d3ee">HTTP 101 · ETAG</text>
+  <text x="48" y="96" class="sans" font-size="30" font-weight="700" fill="#f8fafc">The server stamps every version of a file with a fingerprint</text>
+
+  <!-- actors -->
+  <rect x="66" y="128" width="240" height="64" rx="14" fill="#111a2c" stroke="#a78bfa" stroke-width="2"/>
+  <text x="186" y="168" text-anchor="middle" class="sans" font-size="22" font-weight="700" fill="#ddd6fe">Browser</text>
+  <rect x="894" y="128" width="240" height="64" rx="14" fill="#111a2c" stroke="#22d3ee" stroke-width="2"/>
+  <text x="1014" y="168" text-anchor="middle" class="sans" font-size="22" font-weight="700" fill="#a5f3fc">Web server</text>
+  <line x1="186" y1="192" x2="186" y2="660" stroke="#475569" stroke-width="2" stroke-dasharray="4 7"/>
+  <line x1="1014" y1="192" x2="1014" y2="660" stroke="#475569" stroke-width="2" stroke-dasharray="4 7"/>
+
+  <!-- 1: request -->
+  <g class="a1">
+    <use href="#m1" xlink:href="#m1" stroke="#22d3ee" stroke-width="2.5" marker-end="url(#ahC)"/>
+    <circle cx="236" cy="217" r="14" fill="#22d3ee"/><text x="236" y="223" text-anchor="middle" class="sans" font-size="17" font-weight="800" fill="#0b1220">1</text><text x="262" y="224" class="mono" font-size="19" fill="#e2e8f0">GET /download?id=7f3a9c</text>
+  </g>
+
+  <!-- 2: response with validators -->
+  <g class="a2">
+    <use href="#m2" xlink:href="#m2" stroke="#4ade80" stroke-width="2.5" marker-end="url(#ahG)"/>
+    <circle cx="236" cy="281" r="14" fill="#4ade80"/><text x="236" y="287" text-anchor="middle" class="sans" font-size="17" font-weight="800" fill="#0b1220">2</text><text x="262" y="288" class="mono" font-size="19" fill="#e2e8f0">200 OK  <tspan fill="#94a3b8" class="sans" font-size="16">+ the validators</tspan></text>
+  </g>
+  <g class="a3">
+    <rect x="300" y="316" width="600" height="148" rx="12" fill="#0f1729" stroke="#334155" stroke-width="1.5"/>
+    <rect x="316" y="330" width="380" height="34" rx="7" fill="#2a1d05" stroke="#f59e0b" stroke-width="2.5" class="glow"/>
+    <text x="330" y="354" class="mono" font-size="19" fill="#fbbf24">ETag: "6ac46e19-13e7f8"</text>
+    <text x="330" y="392" class="mono" font-size="18" fill="#cbd5e1">Last-Modified: Tue, 06 Oct 2026 03:42:17 GMT</text>
+    <text x="330" y="422" class="mono" font-size="18" fill="#cbd5e1">Content-Length: 1304568</text>
+    <rect x="330" y="436" width="300" height="14" rx="4" fill="#1e3a5f"/>
+    <rect x="330" y="436" width="300" height="14" rx="4" fill="#22d3ee" opacity=".55"/>
+    <text x="644" y="449" class="sans" font-size="14" fill="#94a3b8">+ 1.24 MB of body</text>
+  </g>
+
+  <!-- browser keeps a receipt -->
+  <g class="a4">
+    <rect x="36" y="392" width="248" height="70" rx="10" fill="#1c1408" stroke="#f59e0b" stroke-width="2" stroke-dasharray="5 4"/>
+    <text x="160" y="421" text-anchor="middle" class="sans" font-size="16" font-weight="700" fill="#fbbf24">🧾 browser remembers</text>
+    <text x="160" y="446" text-anchor="middle" class="mono" font-size="14" fill="#fde68a">ETag + Last-Modified</text>
+  </g>
+
+  <!-- 3: conditional request -->
+  <g class="a5">
+    <use href="#m3" xlink:href="#m3" stroke="#22d3ee" stroke-width="2.5" marker-end="url(#ahC)"/>
+    <circle cx="236" cy="501" r="14" fill="#22d3ee"/><text x="236" y="507" text-anchor="middle" class="sans" font-size="17" font-weight="800" fill="#0b1220">3</text><text x="262" y="508" class="mono" font-size="19" fill="#e2e8f0">GET /download?id=7f3a9c</text>
+    <text x="262" y="548" class="mono" font-size="18" fill="#fbbf24">If-None-Match: "6ac46e19-13e7f8"</text>
+  </g>
+
+  <!-- 4: 304 -->
+  <g class="a6">
+    <use href="#m4" xlink:href="#m4" stroke="#4ade80" stroke-width="2.5" marker-end="url(#ahG)"/>
+    <circle cx="236" cy="581" r="14" fill="#4ade80"/><text x="236" y="587" text-anchor="middle" class="sans" font-size="17" font-weight="800" fill="#0b1220">4</text><text x="262" y="588" class="mono" font-size="19" fill="#e2e8f0">304 Not Modified</text>
+    <text x="262" y="628" class="sans" font-size="16" fill="#94a3b8">"Same version as yours. I won't resend the body."</text>
+  </g>
+
+  <!-- moving packets -->
+  <circle class="pkt" r="7" fill="#22d3ee" opacity="0">
+    <animateMotion dur="12s" repeatCount="indefinite" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.005;0.06;1"><mpath href="#m1" xlink:href="#m1"/></animateMotion>
+    <animate attributeName="opacity" dur="12s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;0.005;0.06;0.065;1"/>
+  </circle>
+  <circle class="pkt" r="7" fill="#4ade80" opacity="0">
+    <animateMotion dur="12s" repeatCount="indefinite" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.12;0.18;1"><mpath href="#m2" xlink:href="#m2"/></animateMotion>
+    <animate attributeName="opacity" dur="12s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;0.119;0.12;0.18;0.185;1"/>
+  </circle>
+  <circle class="pkt" r="7" fill="#22d3ee" opacity="0">
+    <animateMotion dur="12s" repeatCount="indefinite" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.48;0.54;1"><mpath href="#m3" xlink:href="#m3"/></animateMotion>
+    <animate attributeName="opacity" dur="12s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;0.479;0.48;0.54;0.545;1"/>
+  </circle>
+  <circle class="pkt" r="7" fill="#4ade80" opacity="0">
+    <animateMotion dur="12s" repeatCount="indefinite" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.62;0.68;1"><mpath href="#m4" xlink:href="#m4"/></animateMotion>
+    <animate attributeName="opacity" dur="12s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;0.619;0.62;0.68;0.685;1"/>
+  </circle>
+
+  <text x="600" y="680" text-anchor="middle" class="sans" font-size="17" fill="#cbd5e1">Change one byte on the server → new ETag → the old fingerprint stops matching.</text>
+</svg>
