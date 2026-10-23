@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 690" width="1200" height="690" role="img" aria-label="Incident timeline on 20 October 2026, UTC. 09:14 wave one lands. 09:21 to 09:26 Priya opens the attachment, the attacker signs in from 203.0.113.150 and creates inbox rule dot. 09:31 to 09:33 Marcus clicks, the script chain installs the DLL and a scheduled task, and the beacon starts. 09:40 Devon clicks. 09:52 Priya reports the email. 10:02 the attacker emails Treasury. 12:10 Li's click is blocked. 12:40 the attacker reads the hidden folder. 13:05 wave two reaches Treasury. 13:40 SOC triage starts. 14:25 FIN-LT-017 is isolated. Three hours forty-eight minutes passed between report and triage, with forty-five beacons in that window.">
+  <title>Incident timeline, 20 Oct 2026 (UTC)</title>
+  <defs>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#1e293b" stroke-width="1"/></pattern>
+  </defs>
+  <style>
+    .sans { font-family: "Segoe UI", Inter, system-ui, -apple-system, Roboto, sans-serif; }
+    .mono { font-family: "Cascadia Mono", Consolas, "SFMono-Regular", Menlo, monospace; font-variant-ligatures: none; }
+    .ev { animation: ev 12s ease-out infinite both; }
+    @keyframes ev { 0% { opacity: 0; } 4%, 93% { opacity: 1; } 100% { opacity: 0; } }
+    .head { animation: head 12s linear infinite; }
+    @keyframes head { 0% { transform: translateX(0); opacity: 1; } 75% { transform: translateX(1020px); opacity: 1; } 80%, 100% { transform: translateX(1020px); opacity: 0; } }
+    .beat { stroke-dasharray: 2 9; animation: beat 1.2s linear infinite; }
+    @keyframes beat { to { stroke-dashoffset: -22; } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } .head { display: none; } }
+  </style>
+
+  <rect width="1200" height="690" rx="22" fill="#0b1220"/>
+  <rect width="1200" height="690" rx="22" fill="url(#grid)" opacity=".55"/>
+  <text x="48" y="58" class="sans" font-size="15" font-weight="700" letter-spacing="3" fill="#60a5fa">STEP 6 · TIMELINE · 20 OCT 2026 (UTC)</text>
+  <text x="48" y="96" class="sans" font-size="30" font-weight="700" fill="#f8fafc">Everything that happened while the report waited</text>
+
+  <!-- track labels and lines -->
+  <g class="sans" font-size="12" font-weight="700" letter-spacing="2">
+    <text x="40" y="184" fill="#93c5fd">EMAIL</text>
+    <text x="40" y="294" fill="#fcd34d">IDENTITY</text>
+    <text x="40" y="404" fill="#fda4af">ENDPOINT</text>
+    <text x="40" y="514" fill="#86efac">RESPONSE</text>
+  </g>
+  <g stroke="#1f2a40" stroke-width="2">
+    <line x1="120" y1="180" x2="1150" y2="180"/><line x1="120" y1="290" x2="1150" y2="290"/>
+    <line x1="120" y1="400" x2="1150" y2="400"/><line x1="120" y1="510" x2="1150" y2="510"/>
+  </g>
+
+  <!-- axis (broken: 09:10-10:10, then 12:00-14:30) -->
+  <g class="mono" font-size="13" fill="#64748b" text-anchor="middle">
+    <line x1="120" y1="548" x2="640" y2="548" stroke="#334155" stroke-width="2"/>
+    <line x1="680" y1="548" x2="1150" y2="548" stroke="#334155" stroke-width="2"/>
+    <path d="M640 548 l6 -8 l8 16 l8 -16 l8 16 l6 -8" fill="none" stroke="#475569" stroke-width="2"/>
+    <text x="120" y="570">09:10</text><text x="293" y="570">09:30</text><text x="467" y="570">09:50</text><text x="634" y="570" text-anchor="end">10:10</text>
+    <text x="686" y="570" text-anchor="start">12:00</text><text x="864" y="570">13:00</text><text x="1048" y="570">14:00</text><text x="1140" y="570">14:30</text>
+  </g>
+
+  <!-- beacon band -->
+  <line x1="319" y1="400" x2="1123" y2="400" stroke="#f43f5e" stroke-width="5" class="beat"/>
+  <text x="760" y="390" text-anchor="middle" class="sans" font-size="13" fill="#fda4af">C2 beacon every ~303 s (58 total)</text>
+
+  <!-- EMAIL -->
+  <g class="ev" style="animation-delay:.3s"><circle cx="155" cy="180" r="8" fill="#60a5fa"/>
+    <text x="155" y="160" class="sans" font-size="13" fill="#bfdbfe"><tspan class="mono" fill="#93c5fd">09:14</tspan> wave 1: 5 inbox, 1 junk</text></g>
+  <g class="ev" style="animation-delay:2.6s"><circle cx="484" cy="180" r="9" fill="#e2e8f0" stroke="#60a5fa" stroke-width="3"/>
+    <text x="484" y="160" text-anchor="middle" class="sans" font-size="13" font-weight="700" fill="#f8fafc"><tspan class="mono">09:52</tspan> Priya reports it</text></g>
+  <g class="ev" style="animation-delay:5.2s"><circle cx="711" cy="180" r="8" fill="#60a5fa"/>
+    <text x="711" y="210" text-anchor="middle" class="sans" font-size="13" fill="#bfdbfe"><tspan class="mono" fill="#93c5fd">12:10</tspan> Li's click blocked</text></g>
+  <g class="ev" style="animation-delay:6.4s"><circle cx="880" cy="180" r="8" fill="#60a5fa"/>
+    <text x="880" y="160" text-anchor="middle" class="sans" font-size="13" fill="#bfdbfe"><tspan class="mono" fill="#93c5fd">13:05</tspan> wave 2 → Treasury</text></g>
+
+  <!-- IDENTITY -->
+  <g class="ev" style="animation-delay:.9s">
+    <path d="M215 276 V 268 H 259 V 276" fill="none" stroke="#fbbf24" stroke-width="2"/>
+    <circle cx="215" cy="290" r="7" fill="#fbbf24"/><circle cx="233" cy="290" r="7" fill="#fbbf24"/><circle cx="259" cy="290" r="7" fill="#fbbf24"/>
+    <text x="150" y="256" class="sans" font-size="13" fill="#fde68a"><tspan class="mono" fill="#fcd34d">09:21–09:26</tspan> attachment → AiTM sign-in → rule "."</text></g>
+  <g class="ev" style="animation-delay:3s"><circle cx="571" cy="290" r="9" fill="#fb923c"/>
+    <text x="571" y="320" text-anchor="middle" class="sans" font-size="13" font-weight="700" fill="#fed7aa"><tspan class="mono">10:02</tspan> BEC mail to Treasury</text></g>
+  <g class="ev" style="animation-delay:5.8s"><circle cx="803" cy="290" r="7" fill="#fbbf24"/>
+    <text x="803" y="270" text-anchor="middle" class="sans" font-size="13" fill="#fde68a"><tspan class="mono" fill="#fcd34d">12:40</tspan> reads hidden folder</text></g>
+
+  <!-- ENDPOINT -->
+  <g class="ev" style="animation-delay:1.5s">
+    <path d="M302 386 V 378 H 319 V 386" fill="none" stroke="#fb7185" stroke-width="2"/>
+    <circle cx="302" cy="400" r="7" fill="#fb7185"/><circle cx="319" cy="400" r="8" fill="#f43f5e"/>
+    <text x="236" y="440" class="sans" font-size="13" fill="#fecdd3"><tspan class="mono" fill="#fda4af">09:31–09:33</tspan> Marcus clicks → JS → DLL → task</text></g>
+  <g class="ev" style="animation-delay:2s"><circle cx="380" cy="400" r="7" fill="#fb7185"/>
+    <text x="392" y="372" class="sans" font-size="13" fill="#fecdd3"><tspan class="mono" fill="#fda4af">09:40</tspan> Devon clicks (no download)</text></g>
+
+  <!-- RESPONSE -->
+  <g class="ev" style="animation-delay:7.4s"><circle cx="987" cy="510" r="9" fill="#4ade80"/>
+    <text x="987" y="490" text-anchor="middle" class="sans" font-size="13" font-weight="700" fill="#bbf7d0"><tspan class="mono">13:40</tspan> SOC triage starts</text></g>
+  <g class="ev" style="animation-delay:8.6s"><circle cx="1125" cy="510" r="9" fill="#4ade80"/>
+    <text x="1140" y="534" text-anchor="end" class="sans" font-size="13" font-weight="700" fill="#bbf7d0"><tspan class="mono">14:25</tspan> FIN-LT-017 isolated</text></g>
+
+  <!-- playhead -->
+  <g class="head"><line x1="120" y1="140" x2="120" y2="548" stroke="#e2e8f0" stroke-width="2" stroke-dasharray="3 5" opacity=".6"/></g>
+
+  <!-- dwell -->
+  <g class="sans">
+    <rect x="48" y="596" width="1104" height="70" rx="14" fill="#2a0a14" stroke="#fb7185" stroke-width="2"/>
+    <text x="72" y="626" font-size="13" font-weight="700" letter-spacing="2" fill="#fda4af">THE GAP THAT HURT</text>
+    <text x="72" y="652" font-size="17" fill="#fecdd3"><tspan class="mono" font-weight="700" fill="#fb7185">3 h 48 m</tspan> from report to triage. In that window: the BEC email went out, wave 2 landed, and <tspan class="mono" font-weight="700" fill="#fb7185">45</tspan> beacons fired.</text>
+  </g>
+</svg>

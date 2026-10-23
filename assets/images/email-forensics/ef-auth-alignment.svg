@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="1200" height="680" role="img" aria-label="Four sender identities in one message. Header From contoso-payments.co has no DMARC record. SPF passed for the envelope domain mailer.swiftinvoice-cdn.net and DKIM passed for swiftinvoice-cdn.net, but neither aligns with the From domain. Reply-To points to securemail-hub.net and nothing checks it. Result: dmarc none, compauth fail reason 001, SCL 1, delivered to the inbox.">
+  <title>Authentication passed, alignment failed</title>
+  <defs>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#1e293b" stroke-width="1"/></pattern>
+    <g id="ok"><circle r="13" fill="#16a34a"/><path d="M-6 0 L-2 5 L7 -5" fill="none" stroke="#f0fdf4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g>
+    <g id="no"><circle r="13" fill="#e11d48"/><path d="M-5 -5 L5 5 M5 -5 L-5 5" stroke="#fff1f2" stroke-width="3" stroke-linecap="round"/></g>
+  </defs>
+  <style>
+    .sans { font-family: "Segoe UI", Inter, system-ui, -apple-system, Roboto, sans-serif; }
+    .mono { font-family: "Cascadia Mono", Consolas, "SFMono-Regular", Menlo, monospace; font-variant-ligatures: none; }
+    .pop { transform-box: fill-box; transform-origin: center; animation: pop 10s ease-out infinite both; }
+    .p1 { animation-delay: .4s; } .p2 { animation-delay: 1.2s; } .p3 { animation-delay: 2.2s; } .p4 { animation-delay: 3.2s; } .p5 { animation-delay: 4.2s; }
+    @keyframes pop { 0% { transform: scale(0); } 4% { transform: scale(1.3); } 7%, 92% { transform: scale(1); } 100% { transform: scale(0); } }
+    .draw { stroke-dasharray: 260; animation: draw 10s ease-out infinite both; }
+    .d1 { animation-delay: 2s; } .d2 { animation-delay: 3s; }
+    @keyframes draw { 0% { stroke-dashoffset: 260; } 8%, 92% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: 260; } }
+    .fade { animation: fade 10s ease-out infinite both; animation-delay: 4.6s; }
+    @keyframes fade { 0% { opacity: 0; } 6%, 92% { opacity: 1; } 100% { opacity: 0; } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+  </style>
+
+  <rect width="1200" height="680" rx="22" fill="#0b1220"/>
+  <rect width="1200" height="680" rx="22" fill="url(#grid)" opacity=".55"/>
+  <text x="48" y="58" class="sans" font-size="15" font-weight="700" letter-spacing="3" fill="#60a5fa">STEP 2 · AUTHENTICATION</text>
+  <text x="48" y="96" class="sans" font-size="30" font-weight="700" fill="#f8fafc">SPF passed. DKIM passed. It was still a lookalike.</text>
+
+  <!-- identities -->
+  <g class="sans">
+    <rect x="48" y="132" width="540" height="92" rx="14" fill="#0f1b33" stroke="#60a5fa" stroke-width="2"/>
+    <text x="70" y="160" font-size="13" font-weight="700" letter-spacing="2" fill="#93c5fd">HEADER FROM · WHAT PRIYA SEES</text>
+    <text x="70" y="192" class="mono" font-size="18" fill="#f8fafc">accounts@<tspan fill="#60a5fa" font-weight="700">contoso-payments[.]co</tspan></text>
+    <text x="70" y="214" font-size="14" fill="#94a3b8">no DMARC record → <tspan class="mono" fill="#fbbf24">dmarc=none</tspan></text>
+
+    <rect x="48" y="252" width="540" height="92" rx="14" fill="#101a2e" stroke="#334155"/>
+    <text x="70" y="280" font-size="13" font-weight="700" letter-spacing="2" fill="#94a3b8">ENVELOPE MAIL FROM · WHAT SPF CHECKS</text>
+    <text x="70" y="312" class="mono" font-size="17" fill="#e2e8f0">bounce-7731@mailer.<tspan font-weight="700">swiftinvoice-cdn[.]net</tspan></text>
+    <text x="70" y="334" font-size="14" fill="#94a3b8">198.51.100.23 is in its SPF record</text>
+    <use href="#ok" x="556" y="298" class="pop p1"/>
+
+    <rect x="48" y="372" width="540" height="92" rx="14" fill="#101a2e" stroke="#334155"/>
+    <text x="70" y="400" font-size="13" font-weight="700" letter-spacing="2" fill="#94a3b8">DKIM d= · WHO SIGNED IT</text>
+    <text x="70" y="432" class="mono" font-size="17" fill="#e2e8f0"><tspan font-weight="700">swiftinvoice-cdn[.]net</tspan>  s=mx2026</text>
+    <text x="70" y="454" font-size="14" fill="#94a3b8">signature verified</text>
+    <use href="#ok" x="556" y="418" class="pop p2"/>
+
+    <rect x="48" y="492" width="540" height="92" rx="14" fill="#231804" stroke="#f59e0b" stroke-width="2"/>
+    <text x="70" y="520" font-size="13" font-weight="700" letter-spacing="2" fill="#fcd34d">REPLY-TO · WHERE ANSWERS GO</text>
+    <text x="70" y="552" class="mono" font-size="17" fill="#fde68a">ap.contoso@<tspan font-weight="700">securemail-hub[.]net</tspan></text>
+    <text x="70" y="574" font-size="14" fill="#fcd34d">no protocol checks this header</text>
+  </g>
+
+  <!-- alignment lines -->
+  <path d="M588 298 C 640 298, 640 178, 588 178" fill="none" stroke="#fb7185" stroke-width="2.5" stroke-dasharray="7 5"/>
+  <path d="M588 418 C 676 418, 676 178, 588 178" fill="none" stroke="#fb7185" stroke-width="2.5" stroke-dasharray="7 5"/>
+  <path d="M588 298 C 640 298, 640 178, 588 178" fill="none" stroke="#fb7185" stroke-width="4" class="draw d1" opacity=".55"/>
+  <path d="M588 418 C 676 418, 676 178, 588 178" fill="none" stroke="#fb7185" stroke-width="4" class="draw d2" opacity=".55"/>
+  <use href="#no" x="626" y="238" class="pop p3"/>
+  <use href="#no" x="660" y="300" class="pop p4"/>
+  <text x="626" y="128" text-anchor="middle" class="sans" font-size="13" font-weight="700" letter-spacing="1.5" fill="#fda4af">ALIGNED WITH FROM?</text>
+
+  <!-- verdict -->
+  <g class="sans">
+    <rect x="712" y="132" width="440" height="230" rx="14" fill="#0f1729" stroke="#334155"/>
+    <text x="736" y="162" font-size="13" font-weight="700" letter-spacing="2" fill="#93c5fd">THE DMARC RULE</text>
+    <text font-size="17" fill="#e2e8f0">
+      <tspan x="736" y="196">DMARC passes only when SPF <tspan font-weight="700">or</tspan></tspan>
+      <tspan x="736" y="220">DKIM passes <tspan font-weight="700">and</tspan> that domain matches</tspan>
+      <tspan x="736" y="244">the From domain.</tspan>
+    </text>
+    <text font-size="16" fill="#cbd5e1">
+      <tspan x="736" y="284">Both passes here belong to</tspan>
+      <tspan x="736" y="306"><tspan class="mono" fill="#e2e8f0">swiftinvoice-cdn.net</tspan>, and the From</tspan>
+      <tspan x="736" y="328">domain has no DMARC record at all.</tspan>
+    </text>
+
+    <g class="fade">
+      <rect x="712" y="382" width="440" height="202" rx="14" fill="#2a0a14" stroke="#fb7185" stroke-width="2"/>
+      <text x="736" y="412" font-size="13" font-weight="700" letter-spacing="2" fill="#fda4af">WHAT MICROSOFT 365 STAMPED</text>
+      <text x="736" y="448" class="mono" font-size="17" fill="#fecdd3">dmarc=none action=none</text>
+      <text x="736" y="478" class="mono" font-size="17" fill="#fecdd3">compauth=fail reason=001</text>
+      <text x="736" y="508" class="mono" font-size="17" fill="#fecdd3">SCL:1 · SFV:NSPM · CAT:NONE</text>
+      <text x="736" y="548" font-size="16" fill="#fda4af">Composite auth failed, nothing acted on it,</text>
+      <text x="736" y="570" font-size="16" fill="#fda4af">and the message landed in the Inbox.</text>
+    </g>
+  </g>
+
+  <text x="600" y="640" text-anchor="middle" class="sans" font-size="16" fill="#94a3b8">Authentication proves which domain sent a message, not that it is the company it claims to be.</text>
+</svg>

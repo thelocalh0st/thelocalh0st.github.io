@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1200 700" width="1200" height="700" role="img" aria-label="Pivot map of Defender XDR advanced hunting tables. Start at EmailEvents. Attachment path: EmailAttachmentInfo by NetworkMessageId, DeviceFileEvents by SHA256, DeviceProcessEvents by device and time, DeviceNetworkEvents by process. Link path: EmailUrlInfo by NetworkMessageId, UrlClickEvents by Url, EntraIdSignInEvents by AccountUpn and time, CloudAppEvents by IPAddress. Remediation: EmailPostDeliveryEvents by NetworkMessageId.">
+  <title>How the hunt hops between tables</title>
+  <defs>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#1e293b" stroke-width="1"/></pattern>
+    <path id="r1" d="M250 330 C 270 330, 270 205, 290 205 H 1150"/>
+    <path id="r2" d="M250 360 C 270 360, 270 395, 290 395 H 1150"/>
+    <path id="r3" d="M250 390 C 270 390, 270 585, 290 585 H 500"/>
+  </defs>
+  <style>
+    .sans { font-family: "Segoe UI", Inter, system-ui, -apple-system, Roboto, sans-serif; }
+    .mono { font-family: "Cascadia Mono", Consolas, "SFMono-Regular", Menlo, monospace; font-variant-ligatures: none; }
+    @media (prefers-reduced-motion: reduce) { .dot { display: none; } }
+  </style>
+
+  <rect width="1200" height="700" rx="22" fill="#0b1220"/>
+  <rect width="1200" height="700" rx="22" fill="url(#grid)" opacity=".55"/>
+  <text x="48" y="58" class="sans" font-size="15" font-weight="700" letter-spacing="3" fill="#60a5fa">STEP 5 · HUNTING</text>
+  <text x="48" y="96" class="sans" font-size="30" font-weight="700" fill="#f8fafc">How the hunt hops between Defender XDR tables</text>
+
+  <use href="#r1" xlink:href="#r1" fill="none" stroke="#fb7185" stroke-width="2.5" opacity=".55"/>
+  <use href="#r2" xlink:href="#r2" fill="none" stroke="#fbbf24" stroke-width="2.5" opacity=".55"/>
+  <use href="#r3" xlink:href="#r3" fill="none" stroke="#4ade80" stroke-width="2.5" opacity=".55"/>
+
+  <!-- hub -->
+  <g class="sans">
+    <rect x="40" y="284" width="210" height="152" rx="14" fill="#0f1b33" stroke="#60a5fa" stroke-width="2.5"/>
+    <text x="60" y="314" font-size="12" font-weight="700" letter-spacing="2" fill="#93c5fd">START HERE</text>
+    <text x="60" y="342" class="mono" font-size="17" font-weight="700" fill="#f8fafc">EmailEvents</text>
+    <text x="60" y="368" font-size="13" fill="#cbd5e1">SenderFromDomain</text>
+    <text x="60" y="388" font-size="13" fill="#cbd5e1">SenderIPv4 · Subject</text>
+    <text x="60" y="408" font-size="13" fill="#cbd5e1">AuthenticationDetails</text>
+    <text x="60" y="426" font-size="13" fill="#cbd5e1">DeliveryAction</text>
+  </g>
+
+  <!-- lane labels -->
+  <g class="sans" font-size="13" font-weight="700" letter-spacing="2">
+    <text x="290" y="140" fill="#fda4af">ATTACHMENT → ENDPOINT</text>
+    <text x="290" y="330" fill="#fcd34d">LINK → IDENTITY → MAILBOX</text>
+    <text x="290" y="520" fill="#86efac">REMEDIATION AND ZAP</text>
+  </g>
+
+  <!-- node template: x, y; 200 x 116 -->
+  <g class="sans">
+    <!-- lane 1 -->
+    <g transform="translate(290 152)">
+      <rect width="200" height="112" rx="12" fill="#1a0d14" stroke="#fb7185" stroke-width="1.8"/>
+      <text x="14" y="28" class="mono" font-size="13.5" font-weight="700" fill="#fecdd3">EmailAttachmentInfo</text>
+      <text x="14" y="52" font-size="12.5" fill="#cbd5e1">FileName · FileType</text>
+      <text x="14" y="70" font-size="12.5" fill="#cbd5e1">SHA256 · FileSize</text>
+      <rect x="10" y="80" width="150" height="22" rx="11" fill="#3b0a17"/><text x="20" y="96" class="mono" font-size="11.5" fill="#fda4af">on NetworkMessageId</text>
+    </g>
+    <g transform="translate(510 152)">
+      <rect width="200" height="112" rx="12" fill="#1a0d14" stroke="#fb7185" stroke-width="1.8"/>
+      <text x="14" y="28" class="mono" font-size="13.5" font-weight="700" fill="#fecdd3">DeviceFileEvents</text>
+      <text x="14" y="52" font-size="12.5" fill="#cbd5e1">DeviceName · FolderPath</text>
+      <text x="14" y="70" font-size="12.5" fill="#cbd5e1">InitiatingProcessFileName</text>
+      <rect x="10" y="80" width="88" height="22" rx="11" fill="#3b0a17"/><text x="20" y="96" class="mono" font-size="11.5" fill="#fda4af">on SHA256</text>
+    </g>
+    <g transform="translate(730 152)">
+      <rect width="200" height="112" rx="12" fill="#1a0d14" stroke="#fb7185" stroke-width="1.8"/>
+      <text x="14" y="28" class="mono" font-size="13.5" font-weight="700" fill="#fecdd3">DeviceProcessEvents</text>
+      <text x="14" y="52" font-size="12.5" fill="#cbd5e1">ProcessCommandLine</text>
+      <text x="14" y="70" font-size="12.5" fill="#cbd5e1">parent → child chain</text>
+      <rect x="10" y="80" width="150" height="22" rx="11" fill="#3b0a17"/><text x="20" y="96" class="mono" font-size="11.5" fill="#fda4af">on DeviceId + time</text>
+    </g>
+    <g transform="translate(950 152)">
+      <rect width="200" height="112" rx="12" fill="#1a0d14" stroke="#fb7185" stroke-width="1.8"/>
+      <text x="14" y="28" class="mono" font-size="13.5" font-weight="700" fill="#fecdd3">DeviceNetworkEvents</text>
+      <text x="14" y="52" font-size="12.5" fill="#cbd5e1">RemoteIP · RemoteUrl</text>
+      <text x="14" y="70" font-size="12.5" fill="#cbd5e1">beacon cadence</text>
+      <rect x="10" y="80" width="170" height="22" rx="11" fill="#3b0a17"/><text x="20" y="96" class="mono" font-size="11.5" fill="#fda4af">on InitiatingProcess…</text>
+    </g>
+
+    <!-- lane 2 -->
+    <g transform="translate(290 342)">
+      <rect width="200" height="112" rx="12" fill="#1c1408" stroke="#fbbf24" stroke-width="1.8"/>
+      <text x="14" y="28" class="mono" font-size="13.5" font-weight="700" fill="#fde68a">EmailUrlInfo</text>
+      <text x="14" y="52" font-size="12.5" fill="#cbd5e1">Url · UrlDomain</text>
+      <text x="14" y="70" font-size="12.5" fill="#cbd5e1">UrlLocation</text>
+      <rect x="10" y="80" width="150" height="22" rx="11" fill="#3a2a06"/><text x="20" y="96" class="mono" font-size="11.5" fill="#fcd34d">on NetworkMessageId</text>
+    </g>
+    <g transform="translate(510 342)">
+      <rect width="200" height="112" rx="12" fill="#1c1408" stroke="#fbbf24" stroke-width="1.8"/>
+      <text x="14" y="28" class="mono" font-size="13.5" font-weight="700" fill="#fde68a">UrlClickEvents</text>
+      <text x="14" y="52" font-size="12.5" fill="#cbd5e1">ActionType · AccountUpn</text>
+      <text x="14" y="70" font-size="12.5" fill="#cbd5e1">IsClickedThrough</text>
+      <rect x="10" y="80" width="68" height="22" rx="11" fill="#3a2a06"/><text x="20" y="96" class="mono" font-size="11.5" fill="#fcd34d">on Url</text>
+    </g>
+    <g transform="translate(730 342)">
+      <rect width="200" height="112" rx="12" fill="#1c1408" stroke="#fbbf24" stroke-width="1.8"/>
+      <text x="14" y="28" class="mono" font-size="13.5" font-weight="700" fill="#fde68a">EntraIdSignInEvents</text>
+      <text x="14" y="52" font-size="12.5" fill="#cbd5e1">IPAddress · UserAgent</text>
+      <text x="14" y="70" font-size="12.5" fill="#cbd5e1">IsCompliant · Country</text>
+      <rect x="10" y="80" width="150" height="22" rx="11" fill="#3a2a06"/><text x="20" y="96" class="mono" font-size="11.5" fill="#fcd34d">on AccountUpn + time</text>
+    </g>
+    <g transform="translate(950 342)">
+      <rect width="200" height="112" rx="12" fill="#1c1408" stroke="#fbbf24" stroke-width="1.8"/>
+      <text x="14" y="28" class="mono" font-size="13.5" font-weight="700" fill="#fde68a">CloudAppEvents</text>
+      <text x="14" y="52" font-size="12.5" fill="#cbd5e1">New-InboxRule · Send</text>
+      <text x="14" y="70" font-size="12.5" fill="#cbd5e1">MailItemsAccessed</text>
+      <rect x="10" y="80" width="114" height="22" rx="11" fill="#3a2a06"/><text x="20" y="96" class="mono" font-size="11.5" fill="#fcd34d">on IPAddress</text>
+    </g>
+
+    <!-- lane 3 -->
+    <g transform="translate(290 532)">
+      <rect width="210" height="112" rx="12" fill="#0d2418" stroke="#4ade80" stroke-width="1.8"/>
+      <text x="14" y="28" class="mono" font-size="13" font-weight="700" fill="#bbf7d0">EmailPostDeliveryEvents</text>
+      <text x="14" y="52" font-size="12.5" fill="#cbd5e1">ZAP · admin remediation</text>
+      <text x="14" y="70" font-size="12.5" fill="#cbd5e1">user reports</text>
+      <rect x="10" y="80" width="150" height="22" rx="11" fill="#14532d"/><text x="20" y="96" class="mono" font-size="11.5" fill="#86efac">on NetworkMessageId</text>
+    </g>
+    <g transform="translate(540 532)">
+      <rect width="610" height="112" rx="12" fill="#0f1729" stroke="#334155"/>
+      <text x="20" y="32" font-size="13" font-weight="700" letter-spacing="2" fill="#93c5fd">KEYS WORTH REMEMBERING</text>
+      <text x="20" y="60" font-size="15" fill="#e2e8f0"><tspan class="mono" fill="#93c5fd">NetworkMessageId</tspan> ties every Email* table to one message copy.</text>
+      <text x="20" y="84" font-size="15" fill="#e2e8f0"><tspan class="mono" fill="#93c5fd">SHA256</tspan> crosses from mail to endpoint. <tspan class="mono" fill="#93c5fd">AccountUpn</tspan> crosses</text>
+      <text x="20" y="104" font-size="15" fill="#e2e8f0">from a click to identity, and <tspan class="mono" fill="#93c5fd">IPAddress</tspan> follows the attacker.</text>
+    </g>
+  </g>
+
+  <circle class="dot" r="6" fill="#fb7185"><animateMotion dur="6s" repeatCount="indefinite"><mpath href="#r1" xlink:href="#r1"/></animateMotion></circle>
+  <circle class="dot" r="6" fill="#fbbf24"><animateMotion dur="6s" begin="2s" repeatCount="indefinite"><mpath href="#r2" xlink:href="#r2"/></animateMotion></circle>
+  <circle class="dot" r="6" fill="#4ade80"><animateMotion dur="3s" begin="1s" repeatCount="indefinite"><mpath href="#r3" xlink:href="#r3"/></animateMotion></circle>
+</svg>

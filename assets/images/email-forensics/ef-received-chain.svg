@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" role="img" aria-label="The Received chain read from the bottom. Hop 1 was written by the attacker's mail server: client WIN-QK2L7M1 at 203.0.113.47 submitted with ESMTPSA at 09:13:58. Hop 2 is the first line written by Microsoft's edge: it saw 198.51.100.23 connect at 09:14:03, the trust boundary. Hops 3 to 5 are internal Microsoft relays ending at 09:14:06, eight seconds end to end.">
+  <title>Reading the Received chain bottom-up</title>
+  <defs>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#1e293b" stroke-width="1"/></pattern>
+  </defs>
+  <style>
+    .sans { font-family: "Segoe UI", Inter, system-ui, -apple-system, Roboto, sans-serif; }
+    .mono { font-family: "Cascadia Mono", Consolas, "SFMono-Regular", Menlo, monospace; font-variant-ligatures: none; }
+    .h { animation: h 10s ease-out infinite both; }
+    .h1 { animation-delay: 0s; } .h2 { animation-delay: .8s; } .h3 { animation-delay: 1.6s; } .h4 { animation-delay: 2.4s; } .h5 { animation-delay: 3.2s; }
+    @keyframes h { 0% { opacity: .25; } 6%, 90% { opacity: 1; } 100% { opacity: .25; } }
+    .climb { animation: climb 10s ease-in-out infinite; }
+    @keyframes climb { 0% { transform: translateY(0); opacity: 0; } 3% { opacity: 1; } 40% { transform: translateY(-296px); opacity: 1; } 46%, 100% { transform: translateY(-296px); opacity: 0; } }
+    .bound { animation: bound 1.8s ease-in-out infinite; }
+    @keyframes bound { 0%, 100% { stroke-opacity: 1; } 50% { stroke-opacity: .4; } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } .climb { display: none; } }
+  </style>
+
+  <rect width="1200" height="660" rx="22" fill="#0b1220"/>
+  <rect width="1200" height="660" rx="22" fill="url(#grid)" opacity=".55"/>
+  <text x="48" y="58" class="sans" font-size="15" font-weight="700" letter-spacing="3" fill="#60a5fa">STEP 1 · THE ENVELOPE</text>
+  <text x="48" y="96" class="sans" font-size="30" font-weight="700" fill="#f8fafc">Read Received headers from the bottom up</text>
+
+  <!-- climbing arrow -->
+  <line x1="36" y1="476" x2="36" y2="166" stroke="#334155" stroke-width="3"/>
+  <path d="M28 176 L36 160 L44 176" fill="none" stroke="#334155" stroke-width="3"/>
+  <circle cx="36" cy="476" r="7" fill="#60a5fa" class="climb"/>
+
+  <g class="sans">
+    <!-- hop 5 -->
+    <g class="h h5">
+      <rect x="60" y="136" width="760" height="58" rx="10" fill="#101a2e" stroke="#334155"/>
+      <text x="80" y="160" font-size="12" font-weight="700" letter-spacing="2" fill="#64748b">HOP 5 · MAILBOX</text>
+      <text x="80" y="182" class="mono" font-size="15" fill="#cbd5e1">SA1PR19MB5521 → MW4PR19MB6789.namprd19.prod.outlook.com</text>
+      <text x="800" y="182" text-anchor="end" class="mono" font-size="15" fill="#94a3b8">09:14:06</text>
+    </g>
+    <!-- hop 4 -->
+    <g class="h h4">
+      <rect x="60" y="204" width="760" height="58" rx="10" fill="#101a2e" stroke="#334155"/>
+      <text x="80" y="228" font-size="12" font-weight="700" letter-spacing="2" fill="#64748b">HOP 4 · MICROSOFT INTERNAL</text>
+      <text x="80" y="250" class="mono" font-size="15" fill="#cbd5e1">DM5PR07CA0089 → SA1PR19MB5521.namprd19.prod.outlook.com</text>
+      <text x="800" y="250" text-anchor="end" class="mono" font-size="15" fill="#94a3b8">09:14:05</text>
+    </g>
+    <!-- hop 3 -->
+    <g class="h h3">
+      <rect x="60" y="272" width="760" height="58" rx="10" fill="#101a2e" stroke="#334155"/>
+      <text x="80" y="296" font-size="12" font-weight="700" letter-spacing="2" fill="#64748b">HOP 3 · MICROSOFT INTERNAL</text>
+      <text x="80" y="318" class="mono" font-size="15" fill="#cbd5e1">EOP DM6NAM12FT041 → DM5PR07CA0089 (Frontend Transport)</text>
+      <text x="800" y="318" text-anchor="end" class="mono" font-size="15" fill="#94a3b8">09:14:04</text>
+    </g>
+    <!-- hop 2 -->
+    <g class="h h2">
+      <rect x="60" y="340" width="760" height="66" rx="10" fill="#0d2418" stroke="#4ade80" stroke-width="2"/>
+      <text x="80" y="364" font-size="12" font-weight="700" letter-spacing="2" fill="#86efac">HOP 2 · FIRST LINE WRITTEN BY MICROSOFT</text>
+      <text x="80" y="390" class="mono" font-size="15" fill="#e2e8f0">mta3.swiftinvoice-cdn.net (<tspan fill="#4ade80" font-weight="700">198.51.100.23</tspan>) → EOP edge</text>
+      <text x="800" y="390" text-anchor="end" class="mono" font-size="15" fill="#bbf7d0">09:14:03</text>
+    </g>
+    <!-- boundary -->
+    <line x1="60" y1="420" x2="820" y2="420" stroke="#fbbf24" stroke-width="3" stroke-dasharray="10 7" class="bound"/>
+    <text x="440" y="414" text-anchor="middle" font-size="13" font-weight="700" letter-spacing="2" fill="#fbbf24">TRUST BOUNDARY</text>
+    <!-- hop 1 -->
+    <g class="h h1">
+      <rect x="60" y="434" width="760" height="66" rx="10" fill="#2a0a14" stroke="#fb7185" stroke-width="2"/>
+      <text x="80" y="458" font-size="12" font-weight="700" letter-spacing="2" fill="#fda4af">HOP 1 · ORIGIN, WRITTEN BY THE SENDER'S SERVER</text>
+      <text x="80" y="484" class="mono" font-size="15" fill="#e2e8f0">WIN-QK2L7M1 [<tspan fill="#fb7185" font-weight="700">203.0.113.47</tspan>] → mta3 · ESMTPSA relay-7731</text>
+      <text x="800" y="484" text-anchor="end" class="mono" font-size="15" fill="#fecdd3">09:13:58</text>
+    </g>
+  </g>
+
+  <!-- rules -->
+  <g class="sans">
+    <rect x="850" y="136" width="300" height="364" rx="14" fill="#0f1729" stroke="#334155"/>
+    <text x="874" y="170" font-size="14" font-weight="700" letter-spacing="2" fill="#93c5fd">HOW TO READ IT</text>
+    <text font-size="16" fill="#e2e8f0">
+      <tspan x="874" y="206">Every server adds its line</tspan>
+      <tspan x="874" y="228">on top, so the origin is</tspan>
+      <tspan x="874" y="250">at the bottom.</tspan>
+      <tspan x="874" y="290">Trust starts at the first</tspan>
+      <tspan x="874" y="312">hop stamped by <tspan font-weight="700" fill="#86efac">your</tspan> gateway.</tspan>
+      <tspan x="874" y="352">Everything below it was</tspan>
+      <tspan x="874" y="374">written by the sender and</tspan>
+      <tspan x="874" y="396">can be forged.</tspan>
+      <tspan x="874" y="436">Big time gaps between hops</tspan>
+      <tspan x="874" y="458">mean held, greylisted or</tspan>
+      <tspan x="874" y="480">replayed mail.</tspan>
+    </text>
+  </g>
+
+  <!-- latency -->
+  <g class="sans">
+    <rect x="60" y="532" width="1090" height="86" rx="14" fill="#101828" stroke="#334155"/>
+    <text x="84" y="564" font-size="14" font-weight="700" letter-spacing="2" fill="#94a3b8">CLOCK CHECK</text>
+    <text x="84" y="596" class="mono" font-size="16" fill="#e2e8f0">Date: 12:13:51 +0300 = 09:13:51 UTC → first hop 09:13:58 → mailbox 09:14:06 · <tspan fill="#86efac">8 s in transit, no queueing</tspan></text>
+  </g>
+</svg>
