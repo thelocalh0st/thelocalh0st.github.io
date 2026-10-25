@@ -117,7 +117,7 @@ Open the copy, expand `downloads`, and there they are:
 ![Exhibit 1: History downloads schema](/assets/images/etag/etag-exhibit1-history-schema.png){: w="1600" h="1298" }
 _Exhibit 1: `etag` and `last_modified` sit right next to `mime_type`. Note the `hash` column as well._
 
-Notice `hash` (②). Chromium's own schema comment calls it the "Raw SHA-256 hash of contents". It sounds like the end of this blog post, but it's **empty** in practice. [Hindsight's source](https://github.com/obsidianforensics/hindsight) says the same thing: the column exists, but Chrome never populates it. So we're back to the validators.
+Notice `hash` (②). Chromium's own schema comment calls it the "Raw SHA-256 hash of contents". It sounds like the end of this blog post, but it's **empty** in practice. [Hindsight's source](https://github.com/RyanDFIR/hindsight) says the same thing: the column exists, but Chrome never populates it. So we're back to the validators.
 
 Here's the query I use. It joins the download to its URL chain and converts Chromium's WebKit timestamp (microseconds since 1601) to UTC:
 
@@ -136,7 +136,7 @@ JOIN downloads_url_chains c ON c.id = d.id;
 ![Exhibit 2: the suspect's download record](/assets/images/etag/etag-exhibit2-download-record.png){: w="1600" h="953" }
 _Exhibit 2: the receipt. URL, size, ETag and Last-Modified are all there, and the hash is empty._
 
-> **Prefer a tool?** [Hindsight](https://github.com/obsidianforensics/hindsight) parses these too. In its XLSX timeline, download rows carry **ETag** and **Last Modified** columns.
+> **Prefer a tool?** [Hindsight](https://github.com/RyanDFIR/hindsight) parses these too. In its XLSX timeline, download rows carry **ETag** and **Last Modified** columns, and now an **ETag Decoded** column as well (more on that [at the end](#now-built-into-hindsight)).
 {: .prompt-tip }
 
 > This post covers the **Chromium family** (Chrome, Edge, Brave, Opera, …). Firefox stores download details differently, so check what your Firefox version actually records before assuming these fields exist there.
@@ -259,6 +259,26 @@ This wasn't my find. Like a lot of the good observations in my cases, this one c
 
 Akhil, the next chai is on me ☕.
 
+## Now Built Into Hindsight
+
+Decoding ETags by hand is fun exactly once. After this case I wanted every examiner to get it for free, so I contributed it to [Hindsight](https://github.com/RyanDFIR/hindsight), the browser forensics tool most of us already run on every Chromium profile we touch.
+
+[Pull request #376](https://github.com/RyanDFIR/hindsight/pull/376) is now merged. Here's what it adds:
+
+- **Decoders for the common recipes:** nginx, Apache, IIS, ASP.NET Core / .NET, Azure Blob Storage (also behind GitHub release downloads), Express, Tomcat, and S3 MD5 / multipart ETags. They run on both downloads and cached responses.
+- **A built-in cross-check:** every decode is tested against the response's Last-Modified and byte count. A decode that contradicts both is thrown away, so you don't get confident nonsense from an opaque ETag.
+- **A new ETag Decoded column in the XLSX timeline,** plus `etag_format`, `etag_modified`, `etag_size` and `etag_notes` fields in the SQLite and JSONL output.
+
+The decode we did by hand earlier now sits right next to the download in the timeline:
+
+```text
+nginx | modified 2026-10-06 09:12:17.000 | 1,304,568 bytes | time matches Last-Modified; size matches total bytes
+```
+
+The modified time is shown in the examiner's timezone (IST here), which is 03:42:17 UTC. The change landed after the v2026.06 release, so run Hindsight from the main branch to use it today.
+
+A huge thank you to **[Ryan Benson](https://www.linkedin.com/in/RyanDFIR/)** for reviewing and accepting the PR, for giving the DFIR community such an amazing tool, and for keeping it updated every single day. 🙏
+
 ## References
 
 - MDN: [ETag](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/ETag) · [Last-Modified](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Last-Modified) · [If-Range](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/If-Range)
@@ -267,4 +287,4 @@ Akhil, the next chai is on me ☕.
 - nginx: [`ngx_http_core_module.c`](https://github.com/nginx/nginx/blob/master/src/http/ngx_http_core_module.c) (`ngx_http_set_etag`)
 - Apache httpd: [`FileETag` directive](https://httpd.apache.org/docs/2.4/mod/core.html#fileetag)
 - AWS: [S3 Object ETag](https://docs.aws.amazon.com/AmazonS3/latest/API/API_Object.html)
-- [Hindsight](https://github.com/obsidianforensics/hindsight) by Obsidian Forensics
+- [Hindsight](https://github.com/RyanDFIR/hindsight) by Ryan Benson · [PR #376: decode server file time and size from download and cache ETags](https://github.com/RyanDFIR/hindsight/pull/376)
