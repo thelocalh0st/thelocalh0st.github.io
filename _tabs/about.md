@@ -5,13 +5,13 @@ order: 4
 ---
 
 
-<h1 align="center">01101000 01101001 There 👋, I'm SUJAY ADKESAR</h1>
-<h3 align="center">Digital Forensics Analyst, Thirsty to learn and explore new technologies and share the knowledge back to the community.</h3>
+<h1 align="center">01101000 01101001 There 👋, I'm Sujay Adkesar</h1>
+<h3 align="center">Thirsty to learn and explore new technologies and share the knowledge back to the community.</h3>
 
 
 
 <br><br>
-<h3 align="center">#LearningEveryDay</h3>
+<h3 align="center">#LearningEveryDay &nbsp; #DigitalForensics&amp;IncidentResponse</h3>
 <br><br>
 
 
@@ -28,10 +28,7 @@ order: 4
 
 <h3 align="center">Connect with me:</h3>
 <p align="center">
-<a href="" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/twitter.svg" alt="sujay" height="30" width="40" /></a>
-&nbsp;&nbsp;
-  
-  
-<a href="https://www.linkedin.com/in/sujay-adkesar-a90725224" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="utkar5hm" height="30" width="40" /></a>
-&nbsp;&nbsp;
-
+<a href="https://www.linkedin.com/in/sujay-adkesar-a90725224" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin fa-2x"></i></a>
+&nbsp;&nbsp;&nbsp;
+<a href="https://github.com/sujayadkesar" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github fa-2x"></i></a>
+</p>

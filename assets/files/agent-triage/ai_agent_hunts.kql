@@ -1,0 +1,42 @@
+// Agent Triage Kit - Microsoft Defender XDR advanced hunting
+// https://thelocalh0st.com/posts/ai-coding-agent-forensics/
+
+// 1. What did an agent run? Claude Code wraps every Bash tool call the same way.
+DeviceProcessEvents
+| where Timestamp > ago(30d)
+| where ProcessCommandLine has "/.claude/shell-snapshots/snapshot-" and ProcessCommandLine has "pwd -P >|"
+| extend AgentCommand = extract(@"eval '(.+)' < /dev/null", 1, ProcessCommandLine)
+| project Timestamp, DeviceName, AccountName, InitiatingProcessFileName, AgentCommand, ProcessCommandLine
+| order by Timestamp asc
+
+// 2. Shells and LOLBins whose parent is an AI agent process
+DeviceProcessEvents
+| where Timestamp > ago(30d)
+| where InitiatingProcessFileName in~ ("claude.exe", "codex.exe", "codex-command-runner.exe", "copilot.exe", "Cursor.exe", "Windsurf.exe", "Antigravity.exe")
+| where FileName in~ ("powershell.exe", "pwsh.exe", "cmd.exe", "bash.exe", "wsl.exe", "curl.exe", "certutil.exe", "bitsadmin.exe", "mshta.exe", "rundll32.exe", "reg.exe", "net.exe", "nltest.exe", "whoami.exe")
+| summarize Count = count(), First = min(Timestamp), Last = max(Timestamp), Sample = any(ProcessCommandLine) by DeviceName, AccountName, InitiatingProcessFileName, FileName
+| order by Count desc
+
+// 3. Agents started with approvals or sandbox switched off
+DeviceProcessEvents
+| where Timestamp > ago(30d)
+| where ProcessCommandLine has_any ("--dangerously-skip-permissions", "--dangerously-bypass-approvals-and-sandbox", "--trust-all-tools", "--allow-all-tools", "bypassPermissions", "danger-full-access")
+    or (ProcessCommandLine has " --yolo" and ProcessCommandLine has_any ("gemini", "codex", "copilot"))
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine, InitiatingProcessFileName, InitiatingProcessCommandLine
+
+// 4. Package install scripts that drive an agent (s1ngularity pattern)
+DeviceProcessEvents
+| where Timestamp > ago(30d)
+| where InitiatingProcessFileName =~ "node.exe" and InitiatingProcessCommandLine has_any ("postinstall", "preinstall", "npm-cli.js")
+| where FileName in~ ("claude.exe", "codex.exe", "gemini.exe", "copilot.exe") or ProcessCommandLine has_any ("--dangerously-skip-permissions", "--yolo", "--trust-all-tools")
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine, InitiatingProcessCommandLine
+
+// 5. MCP / hook configs written by something other than the editor or agent
+DeviceFileEvents
+| where Timestamp > ago(30d)
+| where ActionType in ("FileCreated", "FileModified", "FileRenamed")
+| where FileName in~ (".mcp.json", "mcp.json", "mcp_config.json", "mcp-config.json", "claude_desktop_config.json", "hooks.json", "settings.local.json", ".claude.json")
+    or (FileName =~ "settings.json" and FolderPath has @"\.claude\")
+    or (FileName =~ "config.toml" and FolderPath has @"\.codex\")
+| where InitiatingProcessFileName !in~ ("Code.exe", "Cursor.exe", "Windsurf.exe", "Antigravity.exe", "claude.exe", "codex.exe", "copilot.exe", "notepad.exe")
+| project Timestamp, DeviceName, InitiatingProcessAccountName, FolderPath, FileName, InitiatingProcessFileName, InitiatingProcessCommandLine

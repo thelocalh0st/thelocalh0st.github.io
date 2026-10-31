@@ -1,0 +1,601 @@
+Description: AI coding agents - transcripts, MCP servers, hooks, rules, state DBs and logs (Claude Code, OpenAI Codex, Cursor, GitHub Copilot CLI, VS Code Copilot Chat, Gemini CLI, Antigravity, Windsurf, Cline)
+Author: Sujay Adkesar
+Version: 1.0
+Id: 94b14105-9552-4fab-a4b1-410595527fab
+RecreateDirectories: true
+Targets:
+    -
+        Name: Claude Code - Transcripts
+        Category: AICodingAgents
+        Path: C:\Users\%user%\.claude\projects\
+        Recursive: true
+        Comment: "Analyzer kind claude-transcript. See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: Claude Code - Prompt history
+        Category: AICodingAgents
+        Path: C:\Users\%user%\.claude\
+        FileMask: 'history.jsonl'
+        Comment: "Analyzer kind claude-history. See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: Claude Code - File snapshots
+        Category: AICodingAgents
+        Path: C:\Users\%user%\.claude\file-history\
+        Recursive: true
+        Comment: "See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: Claude Code - Settings
+        Category: AICodingAgents
+        Path: C:\Users\%user%\.claude\
+        FileMask: 'settings.json'
+        Comment: "Analyzer kind claude-settings. See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: Claude Code - Settings
+        Category: AICodingAgents
+        Path: C:\Users\%user%\.claude\
+        FileMask: 'settings.local.json'
+        Comment: "Analyzer kind claude-settings. See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: Claude Code - Global state + MCP
+        Category: AICodingAgents
+        Path: C:\Users\%user%\
+        FileMask: '.claude.json'
+        Comment: "Analyzer kind claude-global. See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: Claude Code - Global state + MCP
+        Category: AICodingAgents
+        Path: C:\Users\%user%\.claude\backups\
+        Comment: "Analyzer kind claude-global-backup. See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: Claude Code - Instructions
+        Category: AICodingAgents
+        Path: C:\Users\%user%\.claude\
+        FileMask: 'CLAUDE.md'
+        Comment: "Analyzer kind instructions. See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: Claude Code - Instructions
+        Category: AICodingAgents
+        Path: C:\Users\%user%\.claude\agents\
+        Recursive: true
+        Comment: "Analyzer kind instructions. See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: Claude Code - Instructions
+        Category: AICodingAgents
+        Path: C:\Users\%user%\.claude\skills\
+        FileMask: '*.md'
+        Recursive: true
+        Comment: "Analyzer kind instructions. See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: Claude Code - Instructions
+        Category: AICodingAgents
+        Path: C:\Users\%user%\.claude\commands\
+        Recursive: true
+        Comment: "Analyzer kind instructions. See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: Claude Code - Instructions
+        Category: AICodingAgents
+        Path: C:\Users\%user%\.claude\rules\
+        Recursive: true
+        Comment: "Analyzer kind instructions. See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: Claude Code - Session state
+        Category: AICodingAgents
+        Path: C:\Users\%user%\.claude\shell-snapshots\
+        Recursive: true
+        Comment: "See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: Claude Code - Session state
+        Category: AICodingAgents
+        Path: C:\Users\%user%\.claude\session-env\
+        Recursive: true
+        Comment: "See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: Claude Code - Session state
+        Category: AICodingAgents
+        Path: C:\Users\%user%\.claude\plans\
+        Recursive: true
+        Comment: "See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: Claude Code - Session state
+        Category: AICodingAgents
+        Path: C:\Users\%user%\.claude\tasks\
+        Recursive: true
+        Comment: "See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: Claude Code - Session state
+        Category: AICodingAgents
+        Path: C:\Users\%user%\.claude\todos\
+        Recursive: true
+        Comment: "See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: Claude Code - Session state
+        Category: AICodingAgents
+        Path: C:\Users\%user%\.claude\
+        FileMask: '.last-cleanup'
+        Comment: "Analyzer kind claude-lastcleanup. See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: Claude Code - Logs
+        Category: AICodingAgents
+        Path: C:\Users\%user%\.claude\debug\
+        Recursive: true
+        Comment: "See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: Claude Code - Plugins
+        Category: AICodingAgents
+        Path: C:\Users\%user%\.claude\plugins\
+        FileMask: '*.json'
+        Comment: "See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: Claude Code - Desktop MCP config
+        Category: AICodingAgents
+        Path: C:\Users\%user%\AppData\Roaming\Claude\
+        FileMask: 'claude_desktop_config.json'
+        Comment: "Analyzer kind mcp-json. See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: Claude Code - Desktop MCP config
+        Category: AICodingAgents
+        Path: C:\Users\%user%\AppData\Local\Packages\Claude_*\LocalCache\Roaming\Claude*\
+        FileMask: 'claude_desktop_config.json'
+        Comment: "Analyzer kind mcp-json. See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: Claude Code - Desktop MCP logs
+        Category: AICodingAgents
+        Path: C:\Users\%user%\AppData\Roaming\Claude\logs\
+        FileMask: 'mcp*.log'
+        Comment: "See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: Claude Code - Managed policy
+        Category: AICodingAgents
+        Path: C:\Program Files\ClaudeCode\
+        FileMask: 'managed-settings.json'
+        Comment: "Analyzer kind claude-settings. See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: Claude Code - Managed policy
+        Category: AICodingAgents
+        Path: C:\Program Files\ClaudeCode\
+        FileMask: 'managed-mcp.json'
+        Comment: "Analyzer kind mcp-json. See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: OpenAI Codex - Transcripts
+        Category: AICodingAgents
+        Path: C:\Users\%user%\.codex\sessions\
+        FileMask: '*.jsonl'
+        Recursive: true
+        Comment: "Analyzer kind codex-rollout. See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: OpenAI Codex - Transcripts
+        Category: AICodingAgents
+        Path: C:\Users\%user%\.codex\archived_sessions\
+        FileMask: '*.jsonl'
+        Recursive: true
+        Comment: "Analyzer kind codex-rollout. See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: OpenAI Codex - Session index
+        Category: AICodingAgents
+        Path: C:\Users\%user%\.codex\
+        FileMask: 'session_index.jsonl'
+        Comment: "Analyzer kind codex-index. See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: OpenAI Codex - Prompt history
+        Category: AICodingAgents
+        Path: C:\Users\%user%\.codex\
+        FileMask: 'history.jsonl'
+        Comment: "See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: OpenAI Codex - State + logs DB
+        Category: AICodingAgents
+        Path: C:\Users\%user%\.codex\
+        FileMask: 'state_*.sqlite*'
+        Comment: "See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: OpenAI Codex - State + logs DB
+        Category: AICodingAgents
+        Path: C:\Users\%user%\.codex\
+        FileMask: 'logs_*.sqlite*'
+        Comment: "See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: OpenAI Codex - Config + MCP
+        Category: AICodingAgents
+        Path: C:\Users\%user%\.codex\
+        FileMask: 'config.toml'
+        Comment: "Analyzer kind codex-config. See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: OpenAI Codex - Instructions
+        Category: AICodingAgents
+        Path: C:\Users\%user%\.codex\
+        FileMask: 'AGENTS.md'
+        Comment: "Analyzer kind instructions. See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: OpenAI Codex - Instructions
+        Category: AICodingAgents
+        Path: C:\Users\%user%\.codex\rules\
+        Recursive: true
+        Comment: "Analyzer kind instructions. See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: OpenAI Codex - Instructions
+        Category: AICodingAgents
+        Path: C:\Users\%user%\.codex\memories\
+        Recursive: true
+        Comment: "See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: OpenAI Codex - Logs
+        Category: AICodingAgents
+        Path: C:\Users\%user%\.codex\log\
+        Recursive: true
+        Comment: "See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: Cursor - Transcripts
+        Category: AICodingAgents
+        Path: C:\Users\%user%\.cursor\projects\*\agent-transcripts\
+        Recursive: true
+        Comment: "Analyzer kind cursor-transcript. See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: Cursor - Agent tool output
+        Category: AICodingAgents
+        Path: C:\Users\%user%\.cursor\projects\*\agent-tools\
+        Recursive: true
+        Comment: "See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: Cursor - Agent tool output
+        Category: AICodingAgents
+        Path: C:\Users\%user%\.cursor\projects\*\terminals\
+        Recursive: true
+        Comment: "See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: Cursor - MCP tool cache
+        Category: AICodingAgents
+        Path: C:\Users\%user%\.cursor\projects\*\mcps\
+        Recursive: true
+        Comment: "Analyzer kind cursor-mcpcache. See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: Cursor - Config + MCP
+        Category: AICodingAgents
+        Path: C:\Users\%user%\.cursor\
+        FileMask: 'mcp.json'
+        Comment: "Analyzer kind mcp-json. See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: Cursor - Hooks
+        Category: AICodingAgents
+        Path: C:\Users\%user%\.cursor\
+        FileMask: 'hooks.json'
+        Comment: "Analyzer kind hooks-json. See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: Cursor - Hooks
+        Category: AICodingAgents
+        Path: C:\Users\%user%\.cursor\hooks\
+        Recursive: true
+        Comment: "See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: Cursor - Config + MCP
+        Category: AICodingAgents
+        Path: C:\Users\%user%\.cursor\
+        FileMask: 'cli-config.json'
+        Comment: "Analyzer kind cursor-settings. See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: Cursor - Instructions
+        Category: AICodingAgents
+        Path: C:\Users\%user%\.cursor\rules\
+        Recursive: true
+        Comment: "Analyzer kind instructions. See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: Cursor - AI code tracking
+        Category: AICodingAgents
+        Path: C:\Users\%user%\.cursor\ai-tracking\
+        Recursive: true
+        Comment: "See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: Cursor - CLI chats
+        Category: AICodingAgents
+        Path: C:\Users\%user%\.cursor\chats\
+        Recursive: true
+        Comment: "See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: Cursor - State DB
+        Category: AICodingAgents
+        Path: C:\Users\%user%\AppData\Roaming\Cursor\User\globalStorage\
+        FileMask: 'state.vscdb*'
+        Comment: "See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: Cursor - State DB
+        Category: AICodingAgents
+        Path: C:\Users\%user%\AppData\Roaming\Cursor\User\workspaceStorage\*\
+        FileMask: 'state.vscdb*'
+        Comment: "See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: Cursor - State DB
+        Category: AICodingAgents
+        Path: C:\Users\%user%\AppData\Roaming\Cursor\User\workspaceStorage\*\
+        FileMask: 'workspace.json'
+        Comment: "See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: Cursor - Config + MCP
+        Category: AICodingAgents
+        Path: C:\Users\%user%\AppData\Roaming\Cursor\User\
+        FileMask: 'settings.json'
+        Comment: "Analyzer kind cursor-settings. See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: Cursor - Config + MCP
+        Category: AICodingAgents
+        Path: C:\Users\%user%\AppData\Roaming\Cursor\User\
+        FileMask: 'mcp.json'
+        Comment: "Analyzer kind mcp-json. See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: Cursor - Logs
+        Category: AICodingAgents
+        Path: C:\Users\%user%\AppData\Roaming\Cursor\logs\
+        Recursive: true
+        Comment: "See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: GitHub Copilot CLI - Transcripts
+        Category: AICodingAgents
+        Path: C:\Users\%user%\.copilot\session-state\
+        Recursive: true
+        Comment: "Analyzer kind copilot-events. See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: GitHub Copilot CLI - Transcripts
+        Category: AICodingAgents
+        Path: C:\Users\%user%\.copilot\history-session-state\
+        Recursive: true
+        Comment: "Analyzer kind copilot-events. See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: GitHub Copilot CLI - Session index
+        Category: AICodingAgents
+        Path: C:\Users\%user%\.copilot\
+        FileMask: 'session-store.db*'
+        Comment: "See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: GitHub Copilot CLI - Prompt history
+        Category: AICodingAgents
+        Path: C:\Users\%user%\.copilot\command-history-state\
+        Recursive: true
+        Comment: "See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: GitHub Copilot CLI - Config + MCP
+        Category: AICodingAgents
+        Path: C:\Users\%user%\.copilot\
+        FileMask: 'mcp-config.json'
+        Comment: "Analyzer kind mcp-json. See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: GitHub Copilot CLI - Config + MCP
+        Category: AICodingAgents
+        Path: C:\Users\%user%\.copilot\
+        FileMask: 'config.json'
+        Comment: "See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: GitHub Copilot CLI - Config + MCP
+        Category: AICodingAgents
+        Path: C:\Users\%user%\.copilot\
+        FileMask: 'settings.json'
+        Comment: "Analyzer kind hooks-json. See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: GitHub Copilot CLI - Saved approvals
+        Category: AICodingAgents
+        Path: C:\Users\%user%\.copilot\
+        FileMask: 'permissions-config.json'
+        Comment: "Analyzer kind copilot-perms. See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: GitHub Copilot CLI - Hooks
+        Category: AICodingAgents
+        Path: C:\Users\%user%\.copilot\hooks\
+        Recursive: true
+        Comment: "Analyzer kind hook-script. See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: GitHub Copilot CLI - Instructions
+        Category: AICodingAgents
+        Path: C:\Users\%user%\.copilot\
+        FileMask: 'copilot-instructions.md'
+        Comment: "Analyzer kind instructions. See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: GitHub Copilot CLI - Instructions
+        Category: AICodingAgents
+        Path: C:\Users\%user%\.copilot\agents\
+        Recursive: true
+        Comment: "Analyzer kind instructions. See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: GitHub Copilot CLI - Instructions
+        Category: AICodingAgents
+        Path: C:\Users\%user%\.copilot\instructions\
+        Recursive: true
+        Comment: "Analyzer kind instructions. See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: GitHub Copilot CLI - Logs
+        Category: AICodingAgents
+        Path: C:\Users\%user%\.copilot\logs\
+        Recursive: true
+        Comment: "See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: VS Code Copilot Chat - Transcripts
+        Category: AICodingAgents
+        Path: C:\Users\%user%\AppData\Roaming\Code\User\workspaceStorage\*\chatSessions\
+        Recursive: true
+        Comment: "See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: VS Code Copilot Chat - Transcripts
+        Category: AICodingAgents
+        Path: C:\Users\%user%\AppData\Roaming\Code\User\workspaceStorage\*\chatEditingSessions\
+        Recursive: true
+        Comment: "See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: VS Code Copilot Chat - Transcripts
+        Category: AICodingAgents
+        Path: C:\Users\%user%\AppData\Roaming\Code\User\globalStorage\emptyWindowChatSessions\
+        Recursive: true
+        Comment: "See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: VS Code Copilot Chat - State DB
+        Category: AICodingAgents
+        Path: C:\Users\%user%\AppData\Roaming\Code\User\workspaceStorage\*\
+        FileMask: 'workspace.json'
+        Comment: "See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: VS Code Copilot Chat - Config + MCP
+        Category: AICodingAgents
+        Path: C:\Users\%user%\AppData\Roaming\Code\User\
+        FileMask: 'mcp.json'
+        Comment: "Analyzer kind mcp-json. See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: VS Code Copilot Chat - Config + MCP
+        Category: AICodingAgents
+        Path: C:\Users\%user%\AppData\Roaming\Code\User\
+        FileMask: 'settings.json'
+        Comment: "See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: VS Code Copilot Chat - Logs
+        Category: AICodingAgents
+        Path: C:\Users\%user%\AppData\Roaming\Code\logs\
+        Recursive: true
+        Comment: "See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: Gemini CLI - Transcripts
+        Category: AICodingAgents
+        Path: C:\Users\%user%\.gemini\tmp\
+        Recursive: true
+        Comment: "Analyzer kind gemini-chat. See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: Gemini CLI - Config + MCP
+        Category: AICodingAgents
+        Path: C:\Users\%user%\.gemini\
+        FileMask: 'settings.json'
+        Comment: "Analyzer kind gemini-settings. See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: Gemini CLI - Instructions
+        Category: AICodingAgents
+        Path: C:\Users\%user%\.gemini\
+        FileMask: 'GEMINI.md'
+        Comment: "Analyzer kind instructions. See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: Gemini CLI - Instructions
+        Category: AICodingAgents
+        Path: C:\Users\%user%\.gemini\commands\
+        Recursive: true
+        Comment: "Analyzer kind instructions. See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: Gemini CLI - Extensions
+        Category: AICodingAgents
+        Path: C:\Users\%user%\.gemini\extensions\
+        FileMask: 'gemini-extension.json'
+        Recursive: true
+        Comment: "Analyzer kind mcp-json. See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: Antigravity - Config + MCP
+        Category: AICodingAgents
+        Path: C:\Users\%user%\.gemini\antigravity\
+        FileMask: 'mcp_config.json'
+        Comment: "Analyzer kind mcp-json. See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: Antigravity - Transcripts
+        Category: AICodingAgents
+        Path: C:\Users\%user%\.gemini\antigravity\
+        Recursive: true
+        Comment: "Analyzer kind antigravity. See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: Antigravity - State DB
+        Category: AICodingAgents
+        Path: C:\Users\%user%\AppData\Roaming\Antigravity\User\globalStorage\
+        FileMask: 'state.vscdb*'
+        Comment: "See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: Antigravity - State DB
+        Category: AICodingAgents
+        Path: C:\Users\%user%\AppData\Roaming\Antigravity\User\workspaceStorage\*\
+        FileMask: 'state.vscdb*'
+        Comment: "See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: Antigravity - State DB
+        Category: AICodingAgents
+        Path: C:\Users\%user%\AppData\Roaming\Antigravity\User\workspaceStorage\*\
+        FileMask: 'workspace.json'
+        Comment: "See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: Antigravity - Config + MCP
+        Category: AICodingAgents
+        Path: C:\Users\%user%\AppData\Roaming\Antigravity\User\
+        FileMask: 'settings.json'
+        Comment: "See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: Antigravity - Logs
+        Category: AICodingAgents
+        Path: C:\Users\%user%\AppData\Roaming\Antigravity\logs\
+        Recursive: true
+        Comment: "See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: Windsurf - Config + MCP
+        Category: AICodingAgents
+        Path: C:\Users\%user%\.codeium\windsurf\
+        FileMask: 'mcp_config.json'
+        Comment: "Analyzer kind mcp-json. See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: Windsurf - Instructions
+        Category: AICodingAgents
+        Path: C:\Users\%user%\.codeium\windsurf\memories\
+        FileMask: '*.md'
+        Comment: "Analyzer kind instructions. See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: Windsurf - Transcripts
+        Category: AICodingAgents
+        Path: C:\Users\%user%\.codeium\windsurf\
+        Recursive: true
+        Comment: "Analyzer kind windsurf. See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: Windsurf - State DB
+        Category: AICodingAgents
+        Path: C:\Users\%user%\AppData\Roaming\Windsurf\User\globalStorage\
+        FileMask: 'state.vscdb*'
+        Comment: "See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: Windsurf - State DB
+        Category: AICodingAgents
+        Path: C:\Users\%user%\AppData\Roaming\Windsurf\User\workspaceStorage\*\
+        FileMask: 'state.vscdb*'
+        Comment: "See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: Windsurf - State DB
+        Category: AICodingAgents
+        Path: C:\Users\%user%\AppData\Roaming\Windsurf\User\workspaceStorage\*\
+        FileMask: 'workspace.json'
+        Comment: "See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: Windsurf - Config + MCP
+        Category: AICodingAgents
+        Path: C:\Users\%user%\AppData\Roaming\Windsurf\User\
+        FileMask: 'settings.json'
+        Comment: "See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: Windsurf - Logs
+        Category: AICodingAgents
+        Path: C:\Users\%user%\AppData\Roaming\Windsurf\logs\
+        Recursive: true
+        Comment: "See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: Cline - Transcripts
+        Category: AICodingAgents
+        Path: C:\Users\%user%\AppData\Roaming\Code\User\globalStorage\saoudrizwan.claude-dev\tasks\
+        Recursive: true
+        Comment: "See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: Cline - Config + MCP
+        Category: AICodingAgents
+        Path: C:\Users\%user%\AppData\Roaming\Code\User\globalStorage\saoudrizwan.claude-dev\settings\
+        Recursive: true
+        Comment: "Analyzer kind mcp-json. See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: Cline - Transcripts
+        Category: AICodingAgents
+        Path: C:\Users\%user%\AppData\Roaming\Cursor\User\globalStorage\saoudrizwan.claude-dev\tasks\
+        Recursive: true
+        Comment: "See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: Cline - Config + MCP
+        Category: AICodingAgents
+        Path: C:\Users\%user%\AppData\Roaming\Cursor\User\globalStorage\saoudrizwan.claude-dev\settings\
+        Recursive: true
+        Comment: "Analyzer kind mcp-json. See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+    -
+        Name: Cline - Transcripts
+        Category: AICodingAgents
+        Path: C:\Users\%user%\.cline\
+        Recursive: true
+        Comment: "See https://thelocalh0st.com/posts/ai-coding-agent-forensics/"
+
+# Credential files (.credentials.json, auth.json, oauth_creds.json) are left out on purpose.
+# Repository-level files (.mcp.json, AGENTS.md, .cursor/rules) can live anywhere:
+# use the PowerShell collector (project sweep) or the Python analyzer for those.

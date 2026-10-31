@@ -1,0 +1,180 @@
+name: Custom.MacOS.Forensics.AICodingAgents
+author: Sujay Adkesar (thelocalh0st.com)
+description: |
+  Collects what AI coding agents leave on an endpoint: transcripts, MCP server
+  definitions, hooks, rules files, state databases and logs, with SHA256 per file.
+  Extra sources pull the tool calls straight out of Claude Code and Codex transcripts.
+  Generated 2026-10-31 by the Agent Triage Kit for: Claude Code, OpenAI Codex, Cursor, GitHub Copilot CLI, VS Code Copilot Chat, Gemini CLI, Antigravity, Windsurf, Cline.
+  Analyze the collection offline with agent_triage_analyze.py from https://thelocalh0st.com/posts/ai-coding-agent-forensics/
+type: CLIENT
+precondition: SELECT OS FROM info() WHERE OS = 'darwin'
+parameters:
+  - name: GlobTable
+    type: csv
+    default: |
+      Glob,Agent,Category
+      /Users/*/.claude/projects/**,Claude Code,Transcripts
+      /Users/*/.claude/history.jsonl,Claude Code,Prompt history
+      /Users/*/.claude/file-history/**,Claude Code,File snapshots
+      /Users/*/.claude/settings.json,Claude Code,Settings
+      /Users/*/.claude/settings.local.json,Claude Code,Settings
+      /Users/*/.claude.json,Claude Code,Global state + MCP
+      /Users/*/.claude/backups/*,Claude Code,Global state + MCP
+      /Users/*/.claude/CLAUDE.md,Claude Code,Instructions
+      /Users/*/.claude/agents/**,Claude Code,Instructions
+      /Users/*/.claude/skills/**/*.md,Claude Code,Instructions
+      /Users/*/.claude/commands/**,Claude Code,Instructions
+      /Users/*/.claude/rules/**,Claude Code,Instructions
+      /Users/*/.claude/shell-snapshots/**,Claude Code,Session state
+      /Users/*/.claude/session-env/**,Claude Code,Session state
+      /Users/*/.claude/plans/**,Claude Code,Session state
+      /Users/*/.claude/tasks/**,Claude Code,Session state
+      /Users/*/.claude/todos/**,Claude Code,Session state
+      /Users/*/.claude/.last-cleanup,Claude Code,Session state
+      /Users/*/.claude/debug/**,Claude Code,Logs
+      /Users/*/.claude/plugins/*.json,Claude Code,Plugins
+      /Users/*/Library/Application Support/Claude/claude_desktop_config.json,Claude Code,Desktop MCP config
+      /Users/*/Library/Logs/Claude/mcp*.log,Claude Code,Desktop MCP logs
+      /Library/Application Support/ClaudeCode/managed-settings.json,Claude Code,Managed policy
+      /Library/Application Support/ClaudeCode/managed-mcp.json,Claude Code,Managed policy
+      /Users/*/.codex/sessions/**/*.jsonl,OpenAI Codex,Transcripts
+      /Users/*/.codex/archived_sessions/**/*.jsonl,OpenAI Codex,Transcripts
+      /Users/*/.codex/session_index.jsonl,OpenAI Codex,Session index
+      /Users/*/.codex/history.jsonl,OpenAI Codex,Prompt history
+      /Users/*/.codex/state_*.sqlite*,OpenAI Codex,State + logs DB
+      /Users/*/.codex/logs_*.sqlite*,OpenAI Codex,State + logs DB
+      /Users/*/.codex/config.toml,OpenAI Codex,Config + MCP
+      /Users/*/.codex/AGENTS.md,OpenAI Codex,Instructions
+      /Users/*/.codex/rules/**,OpenAI Codex,Instructions
+      /Users/*/.codex/memories/**,OpenAI Codex,Instructions
+      /Users/*/.codex/log/**,OpenAI Codex,Logs
+      /Users/*/.cursor/projects/*/agent-transcripts/**,Cursor,Transcripts
+      /Users/*/.cursor/projects/*/agent-tools/**,Cursor,Agent tool output
+      /Users/*/.cursor/projects/*/terminals/**,Cursor,Agent tool output
+      /Users/*/.cursor/projects/*/mcps/**,Cursor,MCP tool cache
+      /Users/*/.cursor/mcp.json,Cursor,Config + MCP
+      /Users/*/.cursor/hooks.json,Cursor,Hooks
+      /Users/*/.cursor/hooks/**,Cursor,Hooks
+      /Users/*/.cursor/cli-config.json,Cursor,Config + MCP
+      /Users/*/.cursor/rules/**,Cursor,Instructions
+      /Users/*/.cursor/ai-tracking/**,Cursor,AI code tracking
+      /Users/*/.cursor/chats/**,Cursor,CLI chats
+      /Users/*/Library/Application Support/Cursor/User/globalStorage/state.vscdb*,Cursor,State DB
+      /Users/*/Library/Application Support/Cursor/User/workspaceStorage/*/state.vscdb*,Cursor,State DB
+      /Users/*/Library/Application Support/Cursor/User/workspaceStorage/*/workspace.json,Cursor,State DB
+      /Users/*/Library/Application Support/Cursor/User/settings.json,Cursor,Config + MCP
+      /Users/*/Library/Application Support/Cursor/User/mcp.json,Cursor,Config + MCP
+      /Users/*/Library/Application Support/Cursor/logs/**,Cursor,Logs
+      /Users/*/.copilot/session-state/**,GitHub Copilot CLI,Transcripts
+      /Users/*/.copilot/history-session-state/**,GitHub Copilot CLI,Transcripts
+      /Users/*/.copilot/session-store.db*,GitHub Copilot CLI,Session index
+      /Users/*/.copilot/command-history-state/**,GitHub Copilot CLI,Prompt history
+      /Users/*/.copilot/mcp-config.json,GitHub Copilot CLI,Config + MCP
+      /Users/*/.copilot/config.json,GitHub Copilot CLI,Config + MCP
+      /Users/*/.copilot/settings.json,GitHub Copilot CLI,Config + MCP
+      /Users/*/.copilot/permissions-config.json,GitHub Copilot CLI,Saved approvals
+      /Users/*/.copilot/hooks/**,GitHub Copilot CLI,Hooks
+      /Users/*/.copilot/copilot-instructions.md,GitHub Copilot CLI,Instructions
+      /Users/*/.copilot/agents/**,GitHub Copilot CLI,Instructions
+      /Users/*/.copilot/instructions/**,GitHub Copilot CLI,Instructions
+      /Users/*/.copilot/logs/**,GitHub Copilot CLI,Logs
+      /Users/*/Library/Application Support/Code/User/workspaceStorage/*/chatSessions/**,VS Code Copilot Chat,Transcripts
+      /Users/*/Library/Application Support/Code/User/workspaceStorage/*/chatEditingSessions/**,VS Code Copilot Chat,Transcripts
+      /Users/*/Library/Application Support/Code/User/globalStorage/emptyWindowChatSessions/**,VS Code Copilot Chat,Transcripts
+      /Users/*/Library/Application Support/Code/User/workspaceStorage/*/workspace.json,VS Code Copilot Chat,State DB
+      /Users/*/Library/Application Support/Code/User/mcp.json,VS Code Copilot Chat,Config + MCP
+      /Users/*/Library/Application Support/Code/User/settings.json,VS Code Copilot Chat,Config + MCP
+      /Users/*/Library/Application Support/Code/logs/**,VS Code Copilot Chat,Logs
+      /Users/*/.gemini/tmp/**,Gemini CLI,Transcripts
+      /Users/*/.gemini/settings.json,Gemini CLI,Config + MCP
+      /Users/*/.gemini/GEMINI.md,Gemini CLI,Instructions
+      /Users/*/.gemini/commands/**,Gemini CLI,Instructions
+      /Users/*/.gemini/extensions/**/gemini-extension.json,Gemini CLI,Extensions
+      /Users/*/.gemini/antigravity/mcp_config.json,Antigravity,Config + MCP
+      /Users/*/.gemini/antigravity/**,Antigravity,Transcripts
+      /Users/*/Library/Application Support/Antigravity/User/globalStorage/state.vscdb*,Antigravity,State DB
+      /Users/*/Library/Application Support/Antigravity/User/workspaceStorage/*/state.vscdb*,Antigravity,State DB
+      /Users/*/Library/Application Support/Antigravity/User/workspaceStorage/*/workspace.json,Antigravity,State DB
+      /Users/*/Library/Application Support/Antigravity/User/settings.json,Antigravity,Config + MCP
+      /Users/*/Library/Application Support/Antigravity/logs/**,Antigravity,Logs
+      /Users/*/.codeium/windsurf/mcp_config.json,Windsurf,Config + MCP
+      /Users/*/.codeium/windsurf/memories/*.md,Windsurf,Instructions
+      /Users/*/.codeium/windsurf/**,Windsurf,Transcripts
+      /Users/*/Library/Application Support/Windsurf/User/globalStorage/state.vscdb*,Windsurf,State DB
+      /Users/*/Library/Application Support/Windsurf/User/workspaceStorage/*/state.vscdb*,Windsurf,State DB
+      /Users/*/Library/Application Support/Windsurf/User/workspaceStorage/*/workspace.json,Windsurf,State DB
+      /Users/*/Library/Application Support/Windsurf/User/settings.json,Windsurf,Config + MCP
+      /Users/*/Library/Application Support/Windsurf/logs/**,Windsurf,Logs
+      /Users/*/Library/Application Support/Code/User/globalStorage/saoudrizwan.claude-dev/tasks/**,Cline,Transcripts
+      /Users/*/Library/Application Support/Code/User/globalStorage/saoudrizwan.claude-dev/settings/**,Cline,Config + MCP
+      /Users/*/Library/Application Support/Cursor/User/globalStorage/saoudrizwan.claude-dev/tasks/**,Cline,Transcripts
+      /Users/*/Library/Application Support/Cursor/User/globalStorage/saoudrizwan.claude-dev/settings/**,Cline,Config + MCP
+      /Users/*/.cline/**,Cline,Transcripts
+  - name: ConfigGlobTable
+    type: csv
+    default: |
+      Glob
+      /Users/*/.claude/settings.json
+      /Users/*/.claude/settings.local.json
+      /Users/*/.claude.json
+      /Users/*/Library/Application Support/Claude/claude_desktop_config.json
+      /Library/Application Support/ClaudeCode/managed-settings.json
+      /Library/Application Support/ClaudeCode/managed-mcp.json
+      /Users/*/.codex/config.toml
+      /Users/*/.cursor/mcp.json
+      /Users/*/.cursor/hooks.json
+      /Users/*/.cursor/cli-config.json
+      /Users/*/Library/Application Support/Cursor/User/settings.json
+      /Users/*/Library/Application Support/Cursor/User/mcp.json
+      /Users/*/.copilot/mcp-config.json
+      /Users/*/.copilot/settings.json
+      /Users/*/Library/Application Support/Code/User/mcp.json
+      /Users/*/.gemini/settings.json
+      /Users/*/.gemini/extensions/**/gemini-extension.json
+      /Users/*/.gemini/antigravity/mcp_config.json
+      /Users/*/.codeium/windsurf/mcp_config.json
+      /Users/*/Library/Application Support/Code/User/globalStorage/saoudrizwan.claude-dev/settings/**
+      /Users/*/Library/Application Support/Cursor/User/globalStorage/saoudrizwan.claude-dev/settings/**
+  - name: ClaudeTranscriptGlob
+    default: /Users/*/.claude/projects/**/*.jsonl
+  - name: CodexRolloutGlob
+    default: /Users/*/.codex/sessions/**/*.jsonl
+  - name: MaxSizeBytes
+    type: int
+    default: 1073741824
+  - name: UploadFiles
+    type: bool
+    default: Y
+sources:
+  - name: Files
+    query: |
+      SELECT * FROM foreach(row=GlobTable, query={
+          SELECT Agent, Category, OSPath, Size, Mtime, Btime,
+                 hash(path=OSPath).SHA256 AS SHA256,
+                 if(condition=UploadFiles, then=upload(file=OSPath)) AS Upload
+          FROM glob(globs=Glob)
+          WHERE NOT IsDir AND Size < MaxSizeBytes
+      })
+  - name: McpAndHookConfigs
+    query: |
+      SELECT OSPath, Mtime, read_file(filename=OSPath, length=1048576) AS Content
+      FROM glob(globs=ConfigGlobTable.Glob)
+      WHERE NOT IsDir
+  - name: ClaudeCodeToolCalls
+    query: |
+      SELECT * FROM foreach(row={ SELECT OSPath FROM glob(globs=ClaudeTranscriptGlob) },
+        query={
+          SELECT timestamp AS Timestamp, sessionId AS SessionId, cwd AS Cwd,
+                 isSidechain AS Subagent, message.content AS Content, OSPath AS Transcript
+          FROM parse_jsonl(filename=OSPath)
+          WHERE type = 'assistant' AND format(format='%v', args=message.content) =~ 'tool_use'
+        })
+  - name: CodexShellCommands
+    query: |
+      SELECT * FROM foreach(row={ SELECT OSPath FROM glob(globs=CodexRolloutGlob) },
+        query={
+          SELECT timestamp AS Timestamp, payload.command AS Command, payload.cwd AS Cwd,
+                 payload.exit_code AS ExitCode, OSPath AS Rollout
+          FROM parse_jsonl(filename=OSPath)
+          WHERE type = 'event_msg' AND payload.type = 'exec_command_end'
+        })

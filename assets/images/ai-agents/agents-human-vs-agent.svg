@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" role="img" aria-label="The same command, typed by a human and run by an agent, leaves different evidence. Typed by a human in PowerShell: it is in PSReadLine history, there is no agent transcript, the parent chain is explorer, Windows Terminal, pwsh, and the command line is the bare command. Run by the agent: it is not in PSReadLine or bash history, it is in the agent transcript with a timestamp, working directory and the prompt that caused it, and the parent is the agent process. For Claude Code the command line is a bash -c wrapper that sources a shell snapshot, evals the command with stdin from /dev/null and writes pwd to a claude cwd temp file.">
+  <title>Same command, two authors</title>
+  <defs>
+    <pattern id="g2" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#1e293b" stroke-width="1"/></pattern>
+  </defs>
+  <style>
+    .s { font-family: "Segoe UI", Inter, system-ui, -apple-system, Roboto, sans-serif; }
+    .m { font-family: "Cascadia Mono", Consolas, "SFMono-Regular", Menlo, monospace; font-variant-ligatures: none; white-space: pre; }
+    .r { animation: reveal .8s ease-out both; }
+    .r1 { animation-delay: .3s; } .r2 { animation-delay: 1s; } .r3 { animation-delay: 1.7s; } .r4 { animation-delay: 2.4s; }
+    @keyframes reveal { from { opacity: .35; } to { opacity: 1; } }
+    .scan { animation: scan 10s ease-in-out infinite; }
+    @keyframes scan { 0% { transform: translateY(0); opacity: 0; } 4% { opacity: .5; } 30% { transform: translateY(400px); opacity: .5; } 34%, 100% { transform: translateY(400px); opacity: 0; } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } .scan { display: none; } }
+  </style>
+
+  <rect width="1200" height="660" rx="22" fill="#0b1220"/>
+  <rect width="1200" height="660" rx="22" fill="url(#g2)" opacity=".55"/>
+  <text x="48" y="58" class="s" font-size="15" font-weight="700" letter-spacing="3" fill="#60a5fa">THE FINGERPRINT · VERIFIED IN THE LAB</text>
+  <text x="48" y="96" class="s" font-size="30" font-weight="700" fill="#f8fafc">Same command, two authors, different evidence</text>
+
+  <!-- column heads -->
+  <rect x="300" y="124" width="410" height="64" rx="14" fill="#0f1b33" stroke="#94a3b8" stroke-opacity=".5"/>
+  <text x="324" y="152" class="s" font-size="13" font-weight="700" letter-spacing="2" fill="#94a3b8">TYPED BY A HUMAN</text>
+  <text x="324" y="176" class="m" font-size="14" fill="#e2e8f0">PS C:\repo&gt; whoami /all</text>
+  <rect x="726" y="124" width="426" height="64" rx="14" fill="#13305e" stroke="#60a5fa" stroke-width="2"/>
+  <text x="750" y="152" class="s" font-size="13" font-weight="700" letter-spacing="2" fill="#93c5fd">RUN BY THE AGENT</text>
+  <text x="750" y="176" class="m" font-size="14" fill="#e2e8f0">tool_use: Bash { "command": "whoami /all" }</text>
+
+  <rect class="scan" x="300" y="206" width="852" height="3" fill="#60a5fa"/>
+
+  <!-- row 1 -->
+  <g class="r r1">
+    <text x="48" y="240" class="s" font-size="16" font-weight="700" fill="#f8fafc">Shell history</text>
+    <text x="48" y="262" class="s" font-size="13" fill="#94a3b8">PSReadLine, .bash_history</text>
+    <rect x="300" y="214" width="410" height="66" rx="12" fill="#0b2a22" stroke="#34d399" stroke-opacity=".6"/>
+    <text x="324" y="252" class="s" font-size="15" fill="#d1fae5">✔  ConsoleHost_history.txt</text>
+    <rect x="726" y="214" width="426" height="66" rx="12" fill="#2a1220" stroke="#fb7185" stroke-opacity=".6"/>
+    <text x="750" y="244" class="s" font-size="15" fill="#fecdd3">✘  nothing: the shell is non-interactive</text>
+    <text x="750" y="266" class="s" font-size="13" fill="#fda4af">0 hits in the lab, in both histories</text>
+  </g>
+  <!-- row 2 -->
+  <g class="r r2">
+    <text x="48" y="326" class="s" font-size="16" font-weight="700" fill="#f8fafc">Agent transcript</text>
+    <text x="48" y="348" class="s" font-size="13" fill="#94a3b8">JSONL per session</text>
+    <rect x="300" y="300" width="410" height="66" rx="12" fill="#2a1220" stroke="#fb7185" stroke-opacity=".6"/>
+    <text x="324" y="338" class="s" font-size="15" fill="#fecdd3">✘  no record</text>
+    <rect x="726" y="300" width="426" height="66" rx="12" fill="#0b2a22" stroke="#34d399" stroke-opacity=".6"/>
+    <text x="750" y="330" class="s" font-size="15" fill="#d1fae5">✔  command, timestamp (ms), cwd, session,</text>
+    <text x="750" y="352" class="s" font-size="15" fill="#d1fae5">    model, and the output it got back</text>
+  </g>
+  <!-- row 3 -->
+  <g class="r r3">
+    <text x="48" y="412" class="s" font-size="16" font-weight="700" fill="#f8fafc">The why</text>
+    <text x="48" y="434" class="s" font-size="13" fill="#94a3b8">what asked for it</text>
+    <rect x="300" y="386" width="410" height="66" rx="12" fill="#2a1220" stroke="#fb7185" stroke-opacity=".6"/>
+    <text x="324" y="424" class="s" font-size="15" fill="#fecdd3">✘  lives in someone's head</text>
+    <rect x="726" y="386" width="426" height="66" rx="12" fill="#0b2a22" stroke="#34d399" stroke-opacity=".6"/>
+    <text x="750" y="416" class="s" font-size="15" fill="#d1fae5">✔  the prompt, the tool result, the MCP</text>
+    <text x="750" y="438" class="s" font-size="15" fill="#d1fae5">    tool descriptions the model was shown</text>
+  </g>
+  <!-- row 4 -->
+  <g class="r r4">
+    <text x="48" y="498" class="s" font-size="16" font-weight="700" fill="#f8fafc">Process tree</text>
+    <text x="48" y="520" class="s" font-size="13" fill="#94a3b8">Sysmon 1 / 4688 / EDR</text>
+    <rect x="300" y="472" width="410" height="148" rx="12" fill="#0f1b33" stroke="#22304d"/>
+    <text x="324" y="504" class="m" font-size="13" fill="#94a3b8">explorer.exe</text>
+    <text x="324" y="528" class="m" font-size="13" fill="#94a3b8"> └ WindowsTerminal.exe</text>
+    <text x="324" y="552" class="m" font-size="13" fill="#94a3b8">    └ pwsh.exe</text>
+    <text x="324" y="576" class="m" font-size="13" fill="#e2e8f0">       └ whoami.exe /all</text>
+    <rect x="726" y="472" width="426" height="148" rx="12" fill="#0f1b33" stroke="#60a5fa" stroke-opacity=".7"/>
+    <text x="750" y="504" class="m" font-size="13" fill="#93c5fd">claude.exe</text>
+    <text x="750" y="528" class="m" font-size="13" fill="#e2e8f0"> └ bash.exe -c "source …/.claude/</text>
+    <text x="750" y="548" class="m" font-size="13" fill="#e2e8f0">     shell-snapshots/snapshot-bash-*.sh</text>
+    <text x="750" y="568" class="m" font-size="13" fill="#fde68a">     … eval 'whoami /all' &lt; /dev/null</text>
+    <text x="750" y="588" class="m" font-size="13" fill="#fde68a">     &amp;&amp; pwd -P &gt;| …/claude-xxxx-cwd"</text>
+    <text x="750" y="610" class="m" font-size="13" fill="#e2e8f0">       └ whoami.exe /all</text>
+  </g>
+</svg>

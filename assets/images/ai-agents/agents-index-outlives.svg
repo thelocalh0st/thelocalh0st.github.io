@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" width="1200" height="620" role="img" aria-label="The index outlives the transcript. Claude Code transcripts in projects are deleted by the retention sweep once older than 30 days, and the sweep runs when the agent is launched. Prompt history in history.jsonl is kept until someone deletes it, and backups keep the last five copies of .claude.json with its MCP servers. Codex rollouts can be deleted while session_index.jsonl and the threads table in state_5.sqlite still point to them. A session in the index with no transcript is either aged out or deleted, and the age tells you which.">
+  <title>The index outlives the transcript</title>
+  <defs>
+    <pattern id="g3" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#1e293b" stroke-width="1"/></pattern>
+    <linearGradient id="fade" x1="0" x2="1"><stop offset="0" stop-color="#60a5fa"/><stop offset="1" stop-color="#60a5fa" stop-opacity=".15"/></linearGradient>
+  </defs>
+  <style>
+    .s { font-family: "Segoe UI", Inter, system-ui, -apple-system, Roboto, sans-serif; }
+    .m { font-family: "Cascadia Mono", Consolas, "SFMono-Regular", Menlo, monospace; font-variant-ligatures: none; white-space: pre; }
+    .head { animation: play 9s linear infinite; }
+    @keyframes play { 0% { transform: translateX(0); } 85%, 100% { transform: translateX(820px); } }
+    .pulse { transform-box: fill-box; transform-origin: center; animation: pulse 1.8s ease-in-out infinite; }
+    @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.12); } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } .head { display: none; } }
+  </style>
+
+  <rect width="1200" height="620" rx="22" fill="#0b1220"/>
+  <rect width="1200" height="620" rx="22" fill="url(#g3)" opacity=".55"/>
+  <text x="48" y="58" class="s" font-size="15" font-weight="700" letter-spacing="3" fill="#60a5fa">ANTI-FORENSICS, BY DEFAULT</text>
+  <text x="48" y="96" class="s" font-size="30" font-weight="700" fill="#f8fafc">The index outlives the transcript</text>
+
+  <!-- axis -->
+  <line x1="300" y1="150" x2="1120" y2="150" stroke="#334155" stroke-width="1.5"/>
+  <text x="300" y="138" class="s" font-size="13" fill="#94a3b8" text-anchor="middle">day 0</text>
+  <text x="846" y="138" class="s" font-size="13" fill="#94a3b8" text-anchor="middle">day 30</text>
+  <text x="1120" y="138" class="s" font-size="13" fill="#94a3b8" text-anchor="middle">day 45</text>
+  <line x1="846" y1="150" x2="846" y2="470" stroke="#334155" stroke-dasharray="4 6"/>
+
+  <!-- launch marker -->
+  <g class="pulse">
+    <rect x="868" y="160" width="176" height="30" rx="15" fill="#2a1220" stroke="#fb7185"/>
+    <text x="956" y="180" class="s" font-size="13" font-weight="700" text-anchor="middle" fill="#fecdd3">agent launched → sweep</text>
+  </g>
+
+  <!-- lane 1: transcript -->
+  <text x="48" y="228" class="m" font-size="14" fill="#e2e8f0">projects/&lt;session&gt;.jsonl</text>
+  <text x="48" y="248" class="s" font-size="13" fill="#94a3b8">Claude Code transcript</text>
+  <rect x="300" y="214" width="566" height="26" rx="8" fill="url(#fade)"/>
+  <rect x="866" y="214" width="254" height="26" rx="8" fill="none" stroke="#fb7185" stroke-dasharray="5 6"/>
+  <text x="993" y="232" class="s" font-size="13" text-anchor="middle" fill="#fda4af">deleted (older than 30 days)</text>
+
+  <!-- lane 2: history -->
+  <text x="48" y="298" class="m" font-size="14" fill="#e2e8f0">history.jsonl</text>
+  <text x="48" y="318" class="s" font-size="13" fill="#94a3b8">every prompt, session id, project</text>
+  <rect x="300" y="284" width="820" height="26" rx="8" fill="#34d399" fill-opacity=".85"/>
+  <text x="710" y="302" class="s" font-size="13" font-weight="700" text-anchor="middle" fill="#052e1f">kept until someone deletes it</text>
+
+  <!-- lane 3: backups -->
+  <text x="48" y="368" class="m" font-size="14" fill="#e2e8f0">backups/.claude.json.*</text>
+  <text x="48" y="388" class="s" font-size="13" fill="#94a3b8">last 5 copies, MCP servers inside</text>
+  <g fill="#f59e0b">
+    <circle cx="420" cy="367" r="9"/><circle cx="560" cy="367" r="9"/><circle cx="700" cy="367" r="9"/><circle cx="905" cy="367" r="9"/><circle cx="1060" cy="367" r="9"/>
+  </g>
+  <line x1="300" y1="367" x2="1120" y2="367" stroke="#f59e0b" stroke-opacity=".35"/>
+
+  <!-- lane 4: codex -->
+  <text x="48" y="438" class="m" font-size="14" fill="#e2e8f0">Codex index vs rollout</text>
+  <text x="48" y="458" class="s" font-size="13" fill="#94a3b8">session_index.jsonl · state_5.sqlite</text>
+  <rect x="300" y="424" width="820" height="12" rx="6" fill="#34d399" fill-opacity=".85"/>
+  <rect x="300" y="442" width="300" height="12" rx="6" fill="#60a5fa"/>
+  <rect x="600" y="442" width="520" height="12" rx="6" fill="none" stroke="#fb7185" stroke-dasharray="5 6"/>
+  <text x="612" y="475" class="s" font-size="13" fill="#fda4af">rollout deleted by hand; the index row still points to it</text>
+
+  <!-- playhead -->
+  <g class="head"><line x1="300" y1="150" x2="300" y2="470" stroke="#e2e8f0" stroke-width="2" stroke-opacity=".7"/><circle cx="300" cy="150" r="5" fill="#e2e8f0"/></g>
+
+  <!-- callout -->
+  <rect x="48" y="506" width="1104" height="78" rx="14" fill="#0f1b33" stroke="#22304d"/>
+  <text x="72" y="538" class="s" font-size="16" font-weight="700" fill="#f8fafc">Session in the index, no transcript?</text>
+  <text x="72" y="564" class="s" font-size="15" fill="#cbd5e1">Older than the retention window: aged out. Younger: someone deleted it. And never open the agent to "have a look" before you collect.</text>
+</svg>

@@ -1,0 +1,294 @@
+name: Custom.Linux.Forensics.AICodingAgents
+author: Sujay Adkesar (thelocalh0st.com)
+description: |
+  Collects what AI coding agents leave on an endpoint: transcripts, MCP server
+  definitions, hooks, rules files, state databases and logs, with SHA256 per file.
+  Extra sources pull the tool calls straight out of Claude Code and Codex transcripts.
+  Generated 2026-10-31 by the Agent Triage Kit for: Claude Code, OpenAI Codex, Cursor, GitHub Copilot CLI, VS Code Copilot Chat, Gemini CLI, Antigravity, Windsurf, Cline.
+  Analyze the collection offline with agent_triage_analyze.py from https://thelocalh0st.com/posts/ai-coding-agent-forensics/
+type: CLIENT
+precondition: SELECT OS FROM info() WHERE OS = 'linux'
+parameters:
+  - name: GlobTable
+    type: csv
+    default: |
+      Glob,Agent,Category
+      /home/*/.claude/projects/**,Claude Code,Transcripts
+      /root/.claude/projects/**,Claude Code,Transcripts
+      /home/*/.claude/history.jsonl,Claude Code,Prompt history
+      /root/.claude/history.jsonl,Claude Code,Prompt history
+      /home/*/.claude/file-history/**,Claude Code,File snapshots
+      /root/.claude/file-history/**,Claude Code,File snapshots
+      /home/*/.claude/settings.json,Claude Code,Settings
+      /root/.claude/settings.json,Claude Code,Settings
+      /home/*/.claude/settings.local.json,Claude Code,Settings
+      /root/.claude/settings.local.json,Claude Code,Settings
+      /home/*/.claude.json,Claude Code,Global state + MCP
+      /root/.claude.json,Claude Code,Global state + MCP
+      /home/*/.claude/backups/*,Claude Code,Global state + MCP
+      /root/.claude/backups/*,Claude Code,Global state + MCP
+      /home/*/.claude/CLAUDE.md,Claude Code,Instructions
+      /root/.claude/CLAUDE.md,Claude Code,Instructions
+      /home/*/.claude/agents/**,Claude Code,Instructions
+      /root/.claude/agents/**,Claude Code,Instructions
+      /home/*/.claude/skills/**/*.md,Claude Code,Instructions
+      /root/.claude/skills/**/*.md,Claude Code,Instructions
+      /home/*/.claude/commands/**,Claude Code,Instructions
+      /root/.claude/commands/**,Claude Code,Instructions
+      /home/*/.claude/rules/**,Claude Code,Instructions
+      /root/.claude/rules/**,Claude Code,Instructions
+      /home/*/.claude/shell-snapshots/**,Claude Code,Session state
+      /root/.claude/shell-snapshots/**,Claude Code,Session state
+      /home/*/.claude/session-env/**,Claude Code,Session state
+      /root/.claude/session-env/**,Claude Code,Session state
+      /home/*/.claude/plans/**,Claude Code,Session state
+      /root/.claude/plans/**,Claude Code,Session state
+      /home/*/.claude/tasks/**,Claude Code,Session state
+      /root/.claude/tasks/**,Claude Code,Session state
+      /home/*/.claude/todos/**,Claude Code,Session state
+      /root/.claude/todos/**,Claude Code,Session state
+      /home/*/.claude/.last-cleanup,Claude Code,Session state
+      /root/.claude/.last-cleanup,Claude Code,Session state
+      /home/*/.claude/debug/**,Claude Code,Logs
+      /root/.claude/debug/**,Claude Code,Logs
+      /home/*/.claude/plugins/*.json,Claude Code,Plugins
+      /root/.claude/plugins/*.json,Claude Code,Plugins
+      /home/*/.config/Claude/claude_desktop_config.json,Claude Code,Desktop MCP config
+      /root/.config/Claude/claude_desktop_config.json,Claude Code,Desktop MCP config
+      /home/*/.config/Claude/logs/mcp*.log,Claude Code,Desktop MCP logs
+      /root/.config/Claude/logs/mcp*.log,Claude Code,Desktop MCP logs
+      /etc/claude-code/managed-settings.json,Claude Code,Managed policy
+      /etc/claude-code/managed-mcp.json,Claude Code,Managed policy
+      /home/*/.codex/sessions/**/*.jsonl,OpenAI Codex,Transcripts
+      /root/.codex/sessions/**/*.jsonl,OpenAI Codex,Transcripts
+      /home/*/.codex/archived_sessions/**/*.jsonl,OpenAI Codex,Transcripts
+      /root/.codex/archived_sessions/**/*.jsonl,OpenAI Codex,Transcripts
+      /home/*/.codex/session_index.jsonl,OpenAI Codex,Session index
+      /root/.codex/session_index.jsonl,OpenAI Codex,Session index
+      /home/*/.codex/history.jsonl,OpenAI Codex,Prompt history
+      /root/.codex/history.jsonl,OpenAI Codex,Prompt history
+      /home/*/.codex/state_*.sqlite*,OpenAI Codex,State + logs DB
+      /root/.codex/state_*.sqlite*,OpenAI Codex,State + logs DB
+      /home/*/.codex/logs_*.sqlite*,OpenAI Codex,State + logs DB
+      /root/.codex/logs_*.sqlite*,OpenAI Codex,State + logs DB
+      /home/*/.codex/config.toml,OpenAI Codex,Config + MCP
+      /root/.codex/config.toml,OpenAI Codex,Config + MCP
+      /home/*/.codex/AGENTS.md,OpenAI Codex,Instructions
+      /root/.codex/AGENTS.md,OpenAI Codex,Instructions
+      /home/*/.codex/rules/**,OpenAI Codex,Instructions
+      /root/.codex/rules/**,OpenAI Codex,Instructions
+      /home/*/.codex/memories/**,OpenAI Codex,Instructions
+      /root/.codex/memories/**,OpenAI Codex,Instructions
+      /home/*/.codex/log/**,OpenAI Codex,Logs
+      /root/.codex/log/**,OpenAI Codex,Logs
+      /home/*/.cursor/projects/*/agent-transcripts/**,Cursor,Transcripts
+      /root/.cursor/projects/*/agent-transcripts/**,Cursor,Transcripts
+      /home/*/.cursor/projects/*/agent-tools/**,Cursor,Agent tool output
+      /root/.cursor/projects/*/agent-tools/**,Cursor,Agent tool output
+      /home/*/.cursor/projects/*/terminals/**,Cursor,Agent tool output
+      /root/.cursor/projects/*/terminals/**,Cursor,Agent tool output
+      /home/*/.cursor/projects/*/mcps/**,Cursor,MCP tool cache
+      /root/.cursor/projects/*/mcps/**,Cursor,MCP tool cache
+      /home/*/.cursor/mcp.json,Cursor,Config + MCP
+      /root/.cursor/mcp.json,Cursor,Config + MCP
+      /home/*/.cursor/hooks.json,Cursor,Hooks
+      /root/.cursor/hooks.json,Cursor,Hooks
+      /home/*/.cursor/hooks/**,Cursor,Hooks
+      /root/.cursor/hooks/**,Cursor,Hooks
+      /home/*/.cursor/cli-config.json,Cursor,Config + MCP
+      /root/.cursor/cli-config.json,Cursor,Config + MCP
+      /home/*/.cursor/rules/**,Cursor,Instructions
+      /root/.cursor/rules/**,Cursor,Instructions
+      /home/*/.cursor/ai-tracking/**,Cursor,AI code tracking
+      /root/.cursor/ai-tracking/**,Cursor,AI code tracking
+      /home/*/.cursor/chats/**,Cursor,CLI chats
+      /root/.cursor/chats/**,Cursor,CLI chats
+      /home/*/.config/Cursor/User/globalStorage/state.vscdb*,Cursor,State DB
+      /root/.config/Cursor/User/globalStorage/state.vscdb*,Cursor,State DB
+      /home/*/.config/Cursor/User/workspaceStorage/*/state.vscdb*,Cursor,State DB
+      /root/.config/Cursor/User/workspaceStorage/*/state.vscdb*,Cursor,State DB
+      /home/*/.config/Cursor/User/workspaceStorage/*/workspace.json,Cursor,State DB
+      /root/.config/Cursor/User/workspaceStorage/*/workspace.json,Cursor,State DB
+      /home/*/.config/Cursor/User/settings.json,Cursor,Config + MCP
+      /root/.config/Cursor/User/settings.json,Cursor,Config + MCP
+      /home/*/.config/Cursor/User/mcp.json,Cursor,Config + MCP
+      /root/.config/Cursor/User/mcp.json,Cursor,Config + MCP
+      /home/*/.config/Cursor/logs/**,Cursor,Logs
+      /root/.config/Cursor/logs/**,Cursor,Logs
+      /home/*/.copilot/session-state/**,GitHub Copilot CLI,Transcripts
+      /root/.copilot/session-state/**,GitHub Copilot CLI,Transcripts
+      /home/*/.copilot/history-session-state/**,GitHub Copilot CLI,Transcripts
+      /root/.copilot/history-session-state/**,GitHub Copilot CLI,Transcripts
+      /home/*/.copilot/session-store.db*,GitHub Copilot CLI,Session index
+      /root/.copilot/session-store.db*,GitHub Copilot CLI,Session index
+      /home/*/.copilot/command-history-state/**,GitHub Copilot CLI,Prompt history
+      /root/.copilot/command-history-state/**,GitHub Copilot CLI,Prompt history
+      /home/*/.copilot/mcp-config.json,GitHub Copilot CLI,Config + MCP
+      /root/.copilot/mcp-config.json,GitHub Copilot CLI,Config + MCP
+      /home/*/.copilot/config.json,GitHub Copilot CLI,Config + MCP
+      /root/.copilot/config.json,GitHub Copilot CLI,Config + MCP
+      /home/*/.copilot/settings.json,GitHub Copilot CLI,Config + MCP
+      /root/.copilot/settings.json,GitHub Copilot CLI,Config + MCP
+      /home/*/.copilot/permissions-config.json,GitHub Copilot CLI,Saved approvals
+      /root/.copilot/permissions-config.json,GitHub Copilot CLI,Saved approvals
+      /home/*/.copilot/hooks/**,GitHub Copilot CLI,Hooks
+      /root/.copilot/hooks/**,GitHub Copilot CLI,Hooks
+      /home/*/.copilot/copilot-instructions.md,GitHub Copilot CLI,Instructions
+      /root/.copilot/copilot-instructions.md,GitHub Copilot CLI,Instructions
+      /home/*/.copilot/agents/**,GitHub Copilot CLI,Instructions
+      /root/.copilot/agents/**,GitHub Copilot CLI,Instructions
+      /home/*/.copilot/instructions/**,GitHub Copilot CLI,Instructions
+      /root/.copilot/instructions/**,GitHub Copilot CLI,Instructions
+      /home/*/.copilot/logs/**,GitHub Copilot CLI,Logs
+      /root/.copilot/logs/**,GitHub Copilot CLI,Logs
+      /home/*/.config/Code/User/workspaceStorage/*/chatSessions/**,VS Code Copilot Chat,Transcripts
+      /root/.config/Code/User/workspaceStorage/*/chatSessions/**,VS Code Copilot Chat,Transcripts
+      /home/*/.config/Code/User/workspaceStorage/*/chatEditingSessions/**,VS Code Copilot Chat,Transcripts
+      /root/.config/Code/User/workspaceStorage/*/chatEditingSessions/**,VS Code Copilot Chat,Transcripts
+      /home/*/.config/Code/User/globalStorage/emptyWindowChatSessions/**,VS Code Copilot Chat,Transcripts
+      /root/.config/Code/User/globalStorage/emptyWindowChatSessions/**,VS Code Copilot Chat,Transcripts
+      /home/*/.config/Code/User/workspaceStorage/*/workspace.json,VS Code Copilot Chat,State DB
+      /root/.config/Code/User/workspaceStorage/*/workspace.json,VS Code Copilot Chat,State DB
+      /home/*/.config/Code/User/mcp.json,VS Code Copilot Chat,Config + MCP
+      /root/.config/Code/User/mcp.json,VS Code Copilot Chat,Config + MCP
+      /home/*/.config/Code/User/settings.json,VS Code Copilot Chat,Config + MCP
+      /root/.config/Code/User/settings.json,VS Code Copilot Chat,Config + MCP
+      /home/*/.config/Code/logs/**,VS Code Copilot Chat,Logs
+      /root/.config/Code/logs/**,VS Code Copilot Chat,Logs
+      /home/*/.gemini/tmp/**,Gemini CLI,Transcripts
+      /root/.gemini/tmp/**,Gemini CLI,Transcripts
+      /home/*/.gemini/settings.json,Gemini CLI,Config + MCP
+      /root/.gemini/settings.json,Gemini CLI,Config + MCP
+      /home/*/.gemini/GEMINI.md,Gemini CLI,Instructions
+      /root/.gemini/GEMINI.md,Gemini CLI,Instructions
+      /home/*/.gemini/commands/**,Gemini CLI,Instructions
+      /root/.gemini/commands/**,Gemini CLI,Instructions
+      /home/*/.gemini/extensions/**/gemini-extension.json,Gemini CLI,Extensions
+      /root/.gemini/extensions/**/gemini-extension.json,Gemini CLI,Extensions
+      /home/*/.gemini/antigravity/mcp_config.json,Antigravity,Config + MCP
+      /root/.gemini/antigravity/mcp_config.json,Antigravity,Config + MCP
+      /home/*/.gemini/antigravity/**,Antigravity,Transcripts
+      /root/.gemini/antigravity/**,Antigravity,Transcripts
+      /home/*/.config/Antigravity/User/globalStorage/state.vscdb*,Antigravity,State DB
+      /root/.config/Antigravity/User/globalStorage/state.vscdb*,Antigravity,State DB
+      /home/*/.config/Antigravity/User/workspaceStorage/*/state.vscdb*,Antigravity,State DB
+      /root/.config/Antigravity/User/workspaceStorage/*/state.vscdb*,Antigravity,State DB
+      /home/*/.config/Antigravity/User/workspaceStorage/*/workspace.json,Antigravity,State DB
+      /root/.config/Antigravity/User/workspaceStorage/*/workspace.json,Antigravity,State DB
+      /home/*/.config/Antigravity/User/settings.json,Antigravity,Config + MCP
+      /root/.config/Antigravity/User/settings.json,Antigravity,Config + MCP
+      /home/*/.config/Antigravity/logs/**,Antigravity,Logs
+      /root/.config/Antigravity/logs/**,Antigravity,Logs
+      /home/*/.codeium/windsurf/mcp_config.json,Windsurf,Config + MCP
+      /root/.codeium/windsurf/mcp_config.json,Windsurf,Config + MCP
+      /home/*/.codeium/windsurf/memories/*.md,Windsurf,Instructions
+      /root/.codeium/windsurf/memories/*.md,Windsurf,Instructions
+      /home/*/.codeium/windsurf/**,Windsurf,Transcripts
+      /root/.codeium/windsurf/**,Windsurf,Transcripts
+      /home/*/.config/Windsurf/User/globalStorage/state.vscdb*,Windsurf,State DB
+      /root/.config/Windsurf/User/globalStorage/state.vscdb*,Windsurf,State DB
+      /home/*/.config/Windsurf/User/workspaceStorage/*/state.vscdb*,Windsurf,State DB
+      /root/.config/Windsurf/User/workspaceStorage/*/state.vscdb*,Windsurf,State DB
+      /home/*/.config/Windsurf/User/workspaceStorage/*/workspace.json,Windsurf,State DB
+      /root/.config/Windsurf/User/workspaceStorage/*/workspace.json,Windsurf,State DB
+      /home/*/.config/Windsurf/User/settings.json,Windsurf,Config + MCP
+      /root/.config/Windsurf/User/settings.json,Windsurf,Config + MCP
+      /home/*/.config/Windsurf/logs/**,Windsurf,Logs
+      /root/.config/Windsurf/logs/**,Windsurf,Logs
+      /home/*/.config/Code/User/globalStorage/saoudrizwan.claude-dev/tasks/**,Cline,Transcripts
+      /root/.config/Code/User/globalStorage/saoudrizwan.claude-dev/tasks/**,Cline,Transcripts
+      /home/*/.config/Code/User/globalStorage/saoudrizwan.claude-dev/settings/**,Cline,Config + MCP
+      /root/.config/Code/User/globalStorage/saoudrizwan.claude-dev/settings/**,Cline,Config + MCP
+      /home/*/.config/Cursor/User/globalStorage/saoudrizwan.claude-dev/tasks/**,Cline,Transcripts
+      /root/.config/Cursor/User/globalStorage/saoudrizwan.claude-dev/tasks/**,Cline,Transcripts
+      /home/*/.config/Cursor/User/globalStorage/saoudrizwan.claude-dev/settings/**,Cline,Config + MCP
+      /root/.config/Cursor/User/globalStorage/saoudrizwan.claude-dev/settings/**,Cline,Config + MCP
+      /home/*/.cline/**,Cline,Transcripts
+      /root/.cline/**,Cline,Transcripts
+  - name: ConfigGlobTable
+    type: csv
+    default: |
+      Glob
+      /home/*/.claude/settings.json
+      /root/.claude/settings.json
+      /home/*/.claude/settings.local.json
+      /root/.claude/settings.local.json
+      /home/*/.claude.json
+      /root/.claude.json
+      /home/*/.config/Claude/claude_desktop_config.json
+      /root/.config/Claude/claude_desktop_config.json
+      /etc/claude-code/managed-settings.json
+      /etc/claude-code/managed-mcp.json
+      /home/*/.codex/config.toml
+      /root/.codex/config.toml
+      /home/*/.cursor/mcp.json
+      /root/.cursor/mcp.json
+      /home/*/.cursor/hooks.json
+      /root/.cursor/hooks.json
+      /home/*/.cursor/cli-config.json
+      /root/.cursor/cli-config.json
+      /home/*/.config/Cursor/User/settings.json
+      /root/.config/Cursor/User/settings.json
+      /home/*/.config/Cursor/User/mcp.json
+      /root/.config/Cursor/User/mcp.json
+      /home/*/.copilot/mcp-config.json
+      /root/.copilot/mcp-config.json
+      /home/*/.copilot/settings.json
+      /root/.copilot/settings.json
+      /home/*/.config/Code/User/mcp.json
+      /root/.config/Code/User/mcp.json
+      /home/*/.gemini/settings.json
+      /root/.gemini/settings.json
+      /home/*/.gemini/extensions/**/gemini-extension.json
+      /root/.gemini/extensions/**/gemini-extension.json
+      /home/*/.gemini/antigravity/mcp_config.json
+      /root/.gemini/antigravity/mcp_config.json
+      /home/*/.codeium/windsurf/mcp_config.json
+      /root/.codeium/windsurf/mcp_config.json
+      /home/*/.config/Code/User/globalStorage/saoudrizwan.claude-dev/settings/**
+      /root/.config/Code/User/globalStorage/saoudrizwan.claude-dev/settings/**
+      /home/*/.config/Cursor/User/globalStorage/saoudrizwan.claude-dev/settings/**
+      /root/.config/Cursor/User/globalStorage/saoudrizwan.claude-dev/settings/**
+  - name: ClaudeTranscriptGlob
+    default: /home/*/.claude/projects/**/*.jsonl
+  - name: CodexRolloutGlob
+    default: /home/*/.codex/sessions/**/*.jsonl
+  - name: MaxSizeBytes
+    type: int
+    default: 1073741824
+  - name: UploadFiles
+    type: bool
+    default: Y
+sources:
+  - name: Files
+    query: |
+      SELECT * FROM foreach(row=GlobTable, query={
+          SELECT Agent, Category, OSPath, Size, Mtime, Btime,
+                 hash(path=OSPath).SHA256 AS SHA256,
+                 if(condition=UploadFiles, then=upload(file=OSPath)) AS Upload
+          FROM glob(globs=Glob)
+          WHERE NOT IsDir AND Size < MaxSizeBytes
+      })
+  - name: McpAndHookConfigs
+    query: |
+      SELECT OSPath, Mtime, read_file(filename=OSPath, length=1048576) AS Content
+      FROM glob(globs=ConfigGlobTable.Glob)
+      WHERE NOT IsDir
+  - name: ClaudeCodeToolCalls
+    query: |
+      SELECT * FROM foreach(row={ SELECT OSPath FROM glob(globs=ClaudeTranscriptGlob) },
+        query={
+          SELECT timestamp AS Timestamp, sessionId AS SessionId, cwd AS Cwd,
+                 isSidechain AS Subagent, message.content AS Content, OSPath AS Transcript
+          FROM parse_jsonl(filename=OSPath)
+          WHERE type = 'assistant' AND format(format='%v', args=message.content) =~ 'tool_use'
+        })
+  - name: CodexShellCommands
+    query: |
+      SELECT * FROM foreach(row={ SELECT OSPath FROM glob(globs=CodexRolloutGlob) },
+        query={
+          SELECT timestamp AS Timestamp, payload.command AS Command, payload.cwd AS Cwd,
+                 payload.exit_code AS ExitCode, OSPath AS Rollout
+          FROM parse_jsonl(filename=OSPath)
+          WHERE type = 'event_msg' AND payload.type = 'exec_command_end'
+        })
