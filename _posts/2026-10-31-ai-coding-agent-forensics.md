@@ -56,7 +56,7 @@ How the other agents record a shell command:
 
 | Agent | Launches the command as | Logged in |
 | --- | --- | --- |
-| Claude Code | `bash.exe -c "source …/.claude/shell-snapshots/… eval '<cmd>' < /dev/null && pwd -P >\| …claude-XXXX-cwd"`, parent `claude.exe` | `projects/<project>/<session>.jsonl`, `tool_use` + `tool_result` |
+| Claude Code | <code>bash.exe -c "source …/.claude/shell-snapshots/… eval '&lt;cmd&gt;' &lt; /dev/null &amp;&amp; pwd -P &gt;&#124; …claude-XXXX-cwd"</code>, parent `claude.exe` | `projects/<project>/<session>.jsonl`, `tool_use` + `tool_result` |
 | OpenAI Codex | `["powershell.exe", "-Command", "<cmd>"]` | `sessions/YYYY/MM/DD/rollout-*.jsonl`, `exec_command_end` with `exit_code`, `cwd`, `source: agent` |
 | Cursor | `run_terminal_command_v2` | `state.vscdb` bubbles, with `createdAt` and a `rejected` flag when the human said no |
 
