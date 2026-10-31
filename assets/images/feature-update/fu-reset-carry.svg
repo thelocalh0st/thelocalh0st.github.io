@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" width="1200" height="600" role="img" aria-label="What a media feature update does to evidence. Starts at the upgrade: Prefetch, BAM, PCA, event logs, setupapi logs, scheduled task files, the live USBSTOR and Enum tree, and sometimes Amcache. Carried over: jump lists and LNK files, UserAssist values, browser history, SRUM, the Search index, the Recycle Bin, DPAPI keys and user data. Second chances: DeviceMigration, the Source OS keys, Setup Upgrade Appx, NetworkList, setupapi.upgrade.log and Windows.old, which is perishable. Items marked as measured were checked on the lab laptop; the rest come from AlexSta's controlled tests.">
+  <title>What resets, what survives, where to look instead</title>
+  <defs>
+    <pattern id="dots2" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="1.2" cy="1.2" r="1.2" fill="#e2e8f0"/></pattern>
+  </defs>
+  <style>
+    .s { font-family: "Segoe UI", Inter, system-ui, -apple-system, Roboto, sans-serif; }
+    .col { animation: up .6s ease-out both; } .c2 { animation-delay: .15s; } .c3 { animation-delay: .3s; }
+    @keyframes up { from { opacity: .35; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+  </style>
+  <rect width="1200" height="600" rx="22" fill="#ffffff"/>
+  <rect width="1200" height="600" rx="22" fill="url(#dots2)"/>
+  <rect x=".5" y=".5" width="1199" height="599" rx="22" fill="none" stroke="#e2e8f0"/>
+  <text x="48" y="58" class="s" font-size="14" font-weight="700" letter-spacing="3" fill="#1d4ed8">AFTER A MEDIA FEATURE UPDATE</text>
+  <text x="48" y="94" class="s" font-size="29" font-weight="700" fill="#0f172a">What resets, what survives, where to look instead</text>
+
+  <g class="col">
+    <rect x="48" y="126" width="352" height="410" rx="16" fill="#fff1f2" stroke="#fecdd3"/>
+    <text x="72" y="162" class="s" font-size="13" font-weight="700" letter-spacing="2" fill="#be123c">STARTS AT THE UPGRADE</text>
+    <text x="72" y="186" class="s" font-size="13" fill="#9f1239">nothing before it: "not recorded"</text>
+    <g class="s" font-size="16" fill="#0f172a">
+      <text x="72" y="228">Prefetch</text><text x="72" y="262">BAM</text>
+      <text x="72" y="296">PCA <tspan fill="#be123c" font-size="12.5" font-weight="700">  ● measured</tspan></text>
+      <text x="72" y="330">Event logs <tspan fill="#be123c" font-size="12.5" font-weight="700">  ● measured</tspan></text>
+      <text x="72" y="364">setupapi.dev.log</text><text x="72" y="398">Scheduled task files</text>
+      <text x="72" y="432">Live USBSTOR / Enum <tspan fill="#be123c" font-size="12.5" font-weight="700">  ● measured</tspan></text>
+      <text x="72" y="466" fill="#64748b">Amcache (rebuilt on one host,</text><text x="72" y="488" fill="#64748b">carried on another)</text>
+    </g>
+  </g>
+
+  <g class="col c2">
+    <rect x="424" y="126" width="352" height="410" rx="16" fill="#f0fdf4" stroke="#bbf7d0"/>
+    <text x="448" y="162" class="s" font-size="13" font-weight="700" letter-spacing="2" fill="#15803d">CARRIED OVER</text>
+    <text x="448" y="186" class="s" font-size="13" fill="#166534">your bridge across the upgrade</text>
+    <g class="s" font-size="16" fill="#0f172a">
+      <text x="448" y="228">Jump lists, LNK <tspan fill="#15803d" font-size="12.5" font-weight="700">  ● measured</tspan></text>
+      <text x="448" y="262">UserAssist values <tspan fill="#15803d" font-size="12.5" font-weight="700">  ● measured</tspan></text>
+      <text x="448" y="296">Browser history</text><text x="448" y="330">SRUM</text><text x="448" y="364">Windows Search index</text>
+      <text x="448" y="398">Recycle Bin</text><text x="448" y="432">DPAPI keys, user data</text>
+      <text x="448" y="466" fill="#64748b">Registry key LastWrite times</text><text x="448" y="488" fill="#64748b">do NOT survive: values do</text>
+    </g>
+  </g>
+
+  <g class="col c3">
+    <rect x="800" y="126" width="352" height="410" rx="16" fill="#eff6ff" stroke="#bfdbfe"/>
+    <text x="824" y="162" class="s" font-size="13" font-weight="700" letter-spacing="2" fill="#1d4ed8">SECOND CHANCES</text>
+    <text x="824" y="186" class="s" font-size="13" fill="#1e40af">what Setup leaves behind</text>
+    <g class="s" font-size="16" fill="#0f172a">
+      <text x="824" y="228">DeviceMigration <tspan fill="#1d4ed8" font-size="12.5" font-weight="700">  ● measured</tspan></text>
+      <text x="824" y="262">Source OS keys <tspan fill="#1d4ed8" font-size="12.5" font-weight="700">  ● measured</tspan></text>
+      <text x="824" y="296">Setup\Upgrade\Appx <tspan fill="#1d4ed8" font-size="12.5" font-weight="700">  ● measured</tspan></text>
+      <text x="824" y="330">setupapi.upgrade.log <tspan fill="#1d4ed8" font-size="12.5" font-weight="700">  ● measured</tspan></text>
+      <text x="824" y="364">NetworkList profiles</text>
+      <text x="824" y="398">Windows.old</text>
+      <text x="824" y="432" fill="#b45309" font-size="14">gone in 10 days by default</text>
+      <text x="824" y="466" fill="#64748b">deleted MFT records of the old</text><text x="824" y="488" fill="#64748b">OS can still be there</text>
+    </g>
+  </g>
+  <text x="48" y="568" class="s" font-size="13" fill="#64748b">● measured = checked on my lab laptop for this post. Everything else: Alexandru Stamate's controlled upgrade tests (AlexSta CyberSecurity, Sep 2026).</text>
+</svg>

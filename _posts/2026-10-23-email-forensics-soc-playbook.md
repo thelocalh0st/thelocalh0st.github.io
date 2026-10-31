@@ -562,3 +562,7 @@ EmailEvents
 - [Allow or block URLs using the Tenant Allow/Block List](https://learn.microsoft.com/en-us/defender-office-365/tenant-allow-block-list-urls-configure)
 - [Revoke-MgUserSignInSession](https://learn.microsoft.com/powershell/module/microsoft.graph.users.actions/revoke-mgusersigninsession) and [revoking user access in Microsoft Entra ID](https://learn.microsoft.com/entra/identity/users/users-revoke-access)
 - [MITRE ATT&CK: T1566 Phishing](https://attack.mitre.org/techniques/T1566/) · [T1557 Adversary-in-the-Middle](https://attack.mitre.org/techniques/T1557/) · [T1564.008 Email Hiding Rules](https://attack.mitre.org/techniques/T1564/008/)
+
+---
+
+![](https://media.giphy.com/media/DAtJCG1t3im1G/giphy.gif)

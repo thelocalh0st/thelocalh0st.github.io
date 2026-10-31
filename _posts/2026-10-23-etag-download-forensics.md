@@ -288,3 +288,7 @@ A huge thank you to **[Ryan Benson](https://www.linkedin.com/in/RyanDFIR/)** for
 - Apache httpd: [`FileETag` directive](https://httpd.apache.org/docs/2.4/mod/core.html#fileetag)
 - AWS: [S3 Object ETag](https://docs.aws.amazon.com/AmazonS3/latest/API/API_Object.html)
 - [Hindsight](https://github.com/RyanDFIR/hindsight) by Ryan Benson · [PR #376: decode server file time and size from download and cache ETags](https://github.com/RyanDFIR/hindsight/pull/376)
+
+---
+
+![](https://media.giphy.com/media/DAtJCG1t3im1G/giphy.gif)

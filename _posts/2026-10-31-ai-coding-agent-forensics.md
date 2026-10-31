@@ -6,7 +6,7 @@ comments: true
 pin: true
 description: "Where AI coding agents keep their evidence, the fingerprint they leave in the process tree, how transcripts disappear, where the poison sits, and a free triage kit for PowerShell, bash, KAPE, Velociraptor, Kansa, Intune, Sigma and KQL."
 image:
-  path: /assets/images/ai-agents/agents-banner.png
+  path: /assets/images/ai-agents/agents-banner-light.png
   alt: Did the agent do it? Endpoint forensics for AI coding agents
 tags: [ai-agents, mcp, incident-response, claude-code, cursor, codex, copilot, prompt-injection, kape, velociraptor, triage]
 ---
@@ -154,3 +154,7 @@ Prefer plain files? Here are the all-agents builds:
 - The Hacker News: [Rules File Backdoor](https://thehackernews.com/2025/03/new-rules-file-backdoor-attack-lets.html) (Pillar Security research)
 - Vendor docs: [Claude Code `.claude` directory and retention](https://code.claude.com/docs/en/claude-directory), [Copilot CLI config directory](https://docs.github.com/en/enterprise-cloud@latest/copilot/reference/copilot-cli-reference/cli-config-dir-reference), [Codex configuration](https://developers.openai.com/codex/config-reference), [Cursor hooks](https://cursor.com/docs/agent/hooks)
 - Related tools worth a look: SpecterOps [Blacklight](https://cybersecuritynews.com/blacklight-toolkit/) (agent artifact discovery) and [AgentDFIR](https://pkg.go.dev/github.com/efij/AgentDFIR)
+
+---
+
+![](https://media.giphy.com/media/DAtJCG1t3im1G/giphy.gif)

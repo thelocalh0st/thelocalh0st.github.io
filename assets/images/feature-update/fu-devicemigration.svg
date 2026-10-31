@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" width="1200" height="560" role="img" aria-label="How DeviceMigration works. Before the upgrade, the old OS Enum tree knows every device ever connected. During setup, Windows takes a snapshot of it into DeviceMigration, stored in two places: ControlSet00N Control DeviceMigration, readable only with SYSTEM rights on a live box, and Setup Upgrade PnP CurrentControlSet Control DeviceMigration, readable by any user. The new OS rebuilds Enum with only what it re-detects. On the lab laptop the snapshot held 218 device instances, 26 not present at upgrade time, and 53 that are no longer in the live Enum tree.">
+  <title>DeviceMigration: the device history Setup keeps</title>
+  <defs>
+    <pattern id="dots3" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="1.2" cy="1.2" r="1.2" fill="#e2e8f0"/></pattern>
+    <marker id="ar3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#94a3b8"/></marker>
+    <path id="p1" d="M372 250 H468"/><path id="p2" d="M812 250 H880"/>
+  </defs>
+  <style>
+    .s { font-family: "Segoe UI", Inter, system-ui, -apple-system, Roboto, sans-serif; }
+    .m { font-family: "Cascadia Mono", Consolas, "SFMono-Regular", Menlo, monospace; font-variant-ligatures: none; white-space: pre; }
+    @media (prefers-reduced-motion: reduce) { .dot { display: none; } }
+  </style>
+  <rect width="1200" height="560" rx="22" fill="#ffffff"/>
+  <rect width="1200" height="560" rx="22" fill="url(#dots3)"/>
+  <rect x=".5" y=".5" width="1199" height="559" rx="22" fill="none" stroke="#e2e8f0"/>
+  <text x="48" y="58" class="s" font-size="14" font-weight="700" letter-spacing="3" fill="#1d4ed8">THE KEY NOBODY PARSES</text>
+  <text x="48" y="94" class="s" font-size="29" font-weight="700" fill="#0f172a">DeviceMigration: the device history Setup keeps</text>
+
+  <!-- old OS -->
+  <rect x="48" y="132" width="324" height="250" rx="16" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="70" y="164" class="s" font-size="13" font-weight="700" letter-spacing="2" fill="#475569">OLD OS · Enum TREE</text>
+  <g class="s" font-size="15" fill="#0f172a">
+    <text x="70" y="200">•  Logitech receiver</text><text x="70" y="230">•  Bluetooth headset</text><text x="70" y="260">•  Android phone (MTP)</text>
+    <text x="70" y="290">•  USB webcam</text><text x="70" y="320">•  Apple device (MTP)</text><text x="70" y="350" fill="#64748b">… 218 instances</text>
+  </g>
+
+  <!-- snapshot -->
+  <rect x="472" y="132" width="340" height="250" rx="16" fill="#eff6ff" stroke="#93c5fd" stroke-width="2"/>
+  <text x="494" y="164" class="s" font-size="13" font-weight="700" letter-spacing="2" fill="#1d4ed8">SETUP SNAPSHOT</text>
+  <text x="494" y="188" class="m" font-size="12.5" fill="#1e3a8a">MigrationTime 2026-02-07 11:20:58Z</text>
+  <rect x="494" y="204" width="296" height="74" rx="10" fill="#ffffff" stroke="#bfdbfe"/>
+  <text x="508" y="228" class="m" font-size="12" fill="#0f172a">SYSTEM\Setup\Upgrade\PnP\</text>
+  <text x="508" y="246" class="m" font-size="12" fill="#0f172a"> CurrentControlSet\Control\</text>
+  <text x="508" y="264" class="m" font-size="12" fill="#0f172a"> DeviceMigration</text>
+  <text x="760" y="226" class="s" font-size="11" font-weight="700" text-anchor="end" fill="#15803d">any user</text>
+  <rect x="494" y="290" width="296" height="56" rx="10" fill="#ffffff" stroke="#bfdbfe"/>
+  <text x="508" y="314" class="m" font-size="12" fill="#0f172a">ControlSet00N\Control\</text>
+  <text x="508" y="332" class="m" font-size="12" fill="#0f172a"> DeviceMigration</text>
+  <text x="776" y="314" class="s" font-size="11" font-weight="700" text-anchor="end" fill="#b45309">SYSTEM only</text>
+  <text x="494" y="368" class="s" font-size="13" fill="#1e40af">Present · LastPresentDate · BusDeviceDesc · IDs</text>
+
+  <!-- new OS -->
+  <rect x="884" y="132" width="268" height="250" rx="16" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="906" y="164" class="s" font-size="13" font-weight="700" letter-spacing="2" fill="#475569">NEW OS · Enum REBUILT</text>
+  <g class="s" font-size="15">
+    <text x="906" y="200" fill="#94a3b8" text-decoration="line-through">Logitech receiver</text>
+    <text x="906" y="230" fill="#94a3b8" text-decoration="line-through">Bluetooth headset</text>
+    <text x="906" y="260" fill="#94a3b8" text-decoration="line-through">Android phone</text>
+    <text x="906" y="290" fill="#94a3b8" text-decoration="line-through">USB webcam</text>
+    <text x="906" y="320" fill="#0f172a">Apple device (parent only)</text>
+    <text x="906" y="350" fill="#64748b">… only what it re-detects</text>
+  </g>
+
+  <path d="M372 250 H466" stroke="#94a3b8" stroke-width="2" marker-end="url(#ar3)"/>
+  <path d="M812 250 H880" stroke="#94a3b8" stroke-width="2" marker-end="url(#ar3)"/>
+  <circle class="dot" r="5" fill="#2563eb"><animateMotion dur="2.4s" repeatCount="indefinite"><mpath href="#p1"/></animateMotion></circle>
+  <circle class="dot" r="5" fill="#94a3b8"><animateMotion dur="2.4s" begin="1.2s" repeatCount="indefinite"><mpath href="#p2"/></animateMotion></circle>
+
+  <!-- numbers -->
+  <g class="s">
+    <rect x="48" y="412" width="352" height="104" rx="14" fill="#ffffff" stroke="#e2e8f0"/>
+    <text x="72" y="462" font-size="40" font-weight="800" fill="#0f172a">218</text>
+    <text x="72" y="494" font-size="14" fill="#475569">device instances in the snapshot</text>
+    <rect x="424" y="412" width="352" height="104" rx="14" fill="#ffffff" stroke="#e2e8f0"/>
+    <text x="448" y="462" font-size="40" font-weight="800" fill="#0f172a">26</text>
+    <text x="448" y="494" font-size="14" fill="#475569">disconnected, each with LastPresentDate</text>
+    <rect x="800" y="412" width="352" height="104" rx="14" fill="#fffbeb" stroke="#fcd34d"/>
+    <text x="824" y="462" font-size="40" font-weight="800" fill="#b45309">53</text>
+    <text x="824" y="494" font-size="14" fill="#78350f">exist only in the snapshot, not in live Enum</text>
+  </g>
+</svg>

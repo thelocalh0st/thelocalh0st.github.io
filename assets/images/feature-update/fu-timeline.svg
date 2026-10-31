@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" width="1200" height="560" role="img" aria-label="One laptop, five recorded upgrades. Windows 10 21H1 installed 9 April 2021, upgraded to Windows 11 21H2 on 21 October 2021, to 22H2 on 11 October 2022 and later to 23H2 through an enablement package that left no record, to 24H2 on 9 February 2025, repaired with a same-build reinstall on 11 June 2025, and upgraded to 25H2 on 7 February 2026. InstallDate shows 7 February 2026; the oldest Source OS key shows the real first install, 9 April 2021.">
+  <title>One laptop, five upgrades, one misleading InstallDate</title>
+  <defs>
+    <pattern id="dots1" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="1.2" cy="1.2" r="1.2" fill="#e2e8f0"/></pattern>
+  </defs>
+  <style>
+    .s { font-family: "Segoe UI", Inter, system-ui, -apple-system, Roboto, sans-serif; }
+    .m { font-family: "Cascadia Mono", Consolas, "SFMono-Regular", Menlo, monospace; font-variant-ligatures: none; white-space: pre; }
+    .bar { transform-box: fill-box; transform-origin: left center; animation: grow .7s ease-out both; }
+    .b2 { animation-delay: .15s; } .b3 { animation-delay: .3s; } .b4 { animation-delay: .45s; } .b5 { animation-delay: .6s; } .b6 { animation-delay: .75s; }
+    @keyframes grow { from { opacity: .35; } to { opacity: 1; } }
+    .pulse { transform-box: fill-box; transform-origin: center; animation: pulse 2.2s ease-in-out infinite; }
+    @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.06); } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+  </style>
+
+  <rect width="1200" height="560" rx="22" fill="#ffffff"/>
+  <rect width="1200" height="560" rx="22" fill="url(#dots1)"/>
+  <rect x=".5" y=".5" width="1199" height="559" rx="22" fill="none" stroke="#e2e8f0"/>
+  <text x="48" y="58" class="s" font-size="14" font-weight="700" letter-spacing="3" fill="#1d4ed8">MY LAB LAPTOP · HKLM\SYSTEM\Setup\Source OS</text>
+  <text x="48" y="94" class="s" font-size="29" font-weight="700" fill="#0f172a">One laptop, five upgrades, one misleading InstallDate</text>
+
+  <!-- callouts -->
+  <g>
+    <rect x="62" y="128" width="300" height="62" rx="12" fill="#f0fdf4" stroke="#86efac"/>
+    <text x="80" y="153" class="s" font-size="13" font-weight="700" letter-spacing="1.5" fill="#15803d">FIRST INSTALL (OLDEST SOURCE OS KEY)</text>
+    <text x="80" y="177" class="m" font-size="16" fill="#14532d">2021-04-09 04:43Z</text>
+    <path d="M127 190 V254" stroke="#16a34a" stroke-width="2" stroke-dasharray="4 4"/>
+  </g>
+  <g class="pulse">
+    <rect x="820" y="128" width="330" height="62" rx="12" fill="#fffbeb" stroke="#fcd34d"/>
+    <text x="838" y="153" class="s" font-size="13" font-weight="700" letter-spacing="1.5" fill="#b45309">INSTALLDATE (WHAT TOOLS SHOW)</text>
+    <text x="838" y="177" class="m" font-size="16" fill="#78350f">2026-02-07 11:46Z</text>
+  </g>
+  <path d="M964 190 V254" stroke="#d97706" stroke-width="2" stroke-dasharray="4 4"/>
+
+  <!-- lane -->
+  <rect class="bar" x="127" y="256" width="93" height="44" rx="8" fill="#e2e8f0"/>
+  <rect class="bar b2" x="220" y="256" width="168" height="44" rx="0" fill="#dbeafe"/>
+  <rect class="bar b3" x="388" y="256" width="403" height="44" rx="0" fill="#bfdbfe"/>
+  <rect class="bar b4" x="791" y="256" width="59" height="44" rx="0" fill="#93c5fd"/>
+  <rect class="bar b5" x="850" y="256" width="114" height="44" rx="0" fill="#a5b4fc"/>
+  <rect class="bar b6" x="964" y="256" width="127" height="44" rx="8" fill="#fde68a"/>
+  <text x="173" y="283" class="s" font-size="13" font-weight="600" text-anchor="middle" fill="#334155">Win10 21H1</text>
+  <text x="304" y="283" class="s" font-size="13" font-weight="600" text-anchor="middle" fill="#1e3a8a">Win11 21H2</text>
+  <text x="590" y="283" class="s" font-size="13" font-weight="600" text-anchor="middle" fill="#1e3a8a">Win11 22H2  →  23H2</text>
+  <text x="907" y="283" class="s" font-size="13" font-weight="600" text-anchor="middle" fill="#312e81">24H2</text>
+  <text x="1027" y="283" class="s" font-size="13" font-weight="600" text-anchor="middle" fill="#78350f">25H2</text>
+  <!-- enablement package tick -->
+  <path d="M564 300 V322" stroke="#64748b" stroke-width="1.5"/>
+  <text x="564" y="340" class="s" font-size="12.5" text-anchor="middle" fill="#64748b">enablement package: no Source OS key,</text>
+  <text x="564" y="357" class="s" font-size="12.5" text-anchor="middle" fill="#64748b">InstallDate untouched</text>
+
+  <!-- upgrade markers -->
+  <g fill="#ffffff" stroke="#1d4ed8" stroke-width="2.5">
+    <path d="M220 270 l8 8 -8 8 -8 -8z"/><path d="M388 270 l8 8 -8 8 -8 -8z"/><path d="M791 270 l8 8 -8 8 -8 -8z"/>
+    <path d="M850 270 l8 8 -8 8 -8 -8z" stroke="#64748b"/><path d="M964 270 l8 8 -8 8 -8 -8z" stroke="#d97706"/>
+  </g>
+  <text x="820" y="232" class="s" font-size="12" text-anchor="middle" fill="#64748b">24H2 → 24H2 repair</text>
+
+  <!-- axis -->
+  <line x1="80" y1="398" x2="1120" y2="398" stroke="#cbd5e1" stroke-width="1.5"/>
+  <g class="s" font-size="13" fill="#64748b" text-anchor="middle">
+    <text x="80" y="420">2021</text><text x="253" y="420">2022</text><text x="427" y="420">2023</text><text x="600" y="420">2024</text><text x="773" y="420">2025</text><text x="947" y="420">2026</text><text x="1120" y="420">2027</text>
+  </g>
+  <g stroke="#cbd5e1"><path d="M80 392v12M253 392v12M427 392v12M600 392v12M773 392v12M947 392v12M1120 392v12"/></g>
+
+  <!-- footer facts -->
+  <rect x="48" y="448" width="1104" height="76" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="72" y="478" class="s" font-size="15" fill="#0f172a"><tspan font-weight="700">Upgrade began → finished:</tspan> 2025: 29 Jan → 9 Feb (11 days). 2026: 31 Jan → 7 Feb (7 days). The key name is when it began, local time.</text>
+  <text x="72" y="504" class="s" font-size="15" fill="#0f172a"><tspan font-weight="700">ProductName</tspan> in every record still says "Windows 10 Home Single Language". Trust CurrentBuild (22000 and up is Windows 11).</text>
+</svg>

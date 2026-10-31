@@ -1,0 +1,43 @@
+name: Custom.Windows.Registry.FeatureUpdateEvidence
+author: Sujay Adkesar (thelocalh0st.com)
+description: |
+  What the last Windows feature update did to the timeline:
+    * UpgradeHistory: one row per in-place upgrade from HKLM\SYSTEM\Setup\Source OS keys.
+      The key name is when the upgrade began (local time), the values describe the OLD OS.
+    * DeviceMigration: the PnP snapshot Setup takes of the old OS, with InLiveEnum
+      telling you which devices are gone from the rebuilt Enum tree.
+  Feature Update Evidence Kit: https://thelocalh0st.com/posts/windows-feature-update-evidence/
+type: CLIENT
+precondition: SELECT OS FROM info() WHERE OS = 'windows'
+parameters:
+  - name: SourceOSGlob
+    default: HKEY_LOCAL_MACHINE/SYSTEM/Setup/Source OS*
+  - name: MigrationGlob
+    default: HKEY_LOCAL_MACHINE/SYSTEM/Setup/Upgrade/PnP/CurrentControlSet/Control/DeviceMigration/Devices/*/*/*
+sources:
+  - name: UpgradeHistory
+    query: |
+      SELECT Key.OSPath.Basename AS SourceOSKey,
+             CurrentBuild, UBR, DisplayVersion, ProductName,
+             timestamp(epoch=InstallDate) AS OldOSInstalled,
+             Key.Mtime AS KeyLastWrite
+      FROM read_reg_key(globs=SourceOSGlob, accessor='registry')
+
+  - name: CurrentOS
+    query: |
+      SELECT CurrentBuild, UBR, DisplayVersion,
+             timestamp(epoch=InstallDate) AS InstallDateResetByLastUpgrade
+      FROM read_reg_key(globs='HKEY_LOCAL_MACHINE/SOFTWARE/Microsoft/Windows NT/CurrentVersion', accessor='registry')
+
+  - name: DeviceMigration
+    query: |
+      SELECT Key.OSPath.Dirname.Dirname.Basename AS Enumerator,
+             Key.OSPath.Dirname.Basename AS DeviceId,
+             Key.OSPath.Basename AS Instance,
+             Present AS PresentAtUpgrade, BusDeviceDesc,
+             LastPresentDate AS LastPresentDateFILETIME,
+             ClassGuid, DriverInfName, HardwareIds, LocationPaths,
+             stat(filename='HKEY_LOCAL_MACHINE/SYSTEM/CurrentControlSet/Enum/' + Key.OSPath.Dirname.Dirname.Basename + '/' +
+                  Key.OSPath.Dirname.Basename + '/' + Key.OSPath.Basename, accessor='registry').Mtime AS LiveEnumKeyLastWrite,
+             Key.Mtime AS SnapshotKeyLastWrite
+      FROM read_reg_key(globs=MigrationGlob, accessor='registry')

@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" width="1200" height="600" role="img" aria-label="Four timestamp traps after a feature update. One: InstallDate is the last upgrade, 7 February 2026, not the first install, 9 April 2021. Two: every Source OS key has the same LastWrite time, 8 February 2026 01:07 UTC, because the last upgrade rewrote them. Three: the Source OS key name is when the upgrade began in local time, InstallDate is when it finished in UTC, and on the lab laptop they were 7 days apart. Four, from AlexSta: files from the install image have a standard information birth time that differs from the file name birth time, so they look timestomped, and on a Safe OS upgrade the offline phase wrote local time as UTC.">
+  <title>Four timestamp traps</title>
+  <defs>
+    <pattern id="dots4" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="1.2" cy="1.2" r="1.2" fill="#e2e8f0"/></pattern>
+  </defs>
+  <style>
+    .s { font-family: "Segoe UI", Inter, system-ui, -apple-system, Roboto, sans-serif; }
+    .m { font-family: "Cascadia Mono", Consolas, "SFMono-Regular", Menlo, monospace; font-variant-ligatures: none; white-space: pre; }
+    .card { animation: up .6s ease-out both; } .k2 { animation-delay: .12s; } .k3 { animation-delay: .24s; } .k4 { animation-delay: .36s; }
+    @keyframes up { from { opacity: .35; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+  </style>
+  <rect width="1200" height="600" rx="22" fill="#ffffff"/>
+  <rect width="1200" height="600" rx="22" fill="url(#dots4)"/>
+  <rect x=".5" y=".5" width="1199" height="599" rx="22" fill="none" stroke="#e2e8f0"/>
+  <text x="48" y="58" class="s" font-size="14" font-weight="700" letter-spacing="3" fill="#1d4ed8">BEFORE YOU WRITE THE TIMELINE</text>
+  <text x="48" y="94" class="s" font-size="29" font-weight="700" fill="#0f172a">Four timestamp traps a feature update sets</text>
+
+  <g class="card">
+    <rect x="48" y="126" width="540" height="206" rx="16" fill="#ffffff" stroke="#e2e8f0"/>
+    <text x="72" y="160" class="s" font-size="13" font-weight="700" letter-spacing="2" fill="#b45309">1 · INSTALLDATE IS THE LAST UPGRADE</text>
+    <text x="72" y="204" class="m" font-size="15" fill="#64748b">InstallDate        </text><text x="262" y="204" class="m" font-size="15" fill="#b45309" text-decoration="line-through">2026-02-07</text>
+    <text x="72" y="234" class="m" font-size="15" fill="#64748b">oldest Source OS   </text><text x="262" y="234" class="m" font-size="15" fill="#15803d" font-weight="700">2021-04-09</text>
+    <text x="72" y="280" class="s" font-size="14.5" fill="#334155">"Machine built in February" was wrong by</text>
+    <text x="72" y="302" class="s" font-size="14.5" fill="#334155">almost five years on my laptop.</text>
+  </g>
+  <g class="card k2">
+    <rect x="612" y="126" width="540" height="206" rx="16" fill="#ffffff" stroke="#e2e8f0"/>
+    <text x="636" y="160" class="s" font-size="13" font-weight="700" letter-spacing="2" fill="#b45309">2 · KEY LASTWRITE IS REWRITTEN</text>
+    <g class="m" font-size="13.5" fill="#334155">
+      <text x="636" y="196">Source OS (…10/21/2021…)  2026-02-08 01:07Z</text>
+      <text x="636" y="218">Source OS (…10/11/2022…)  2026-02-08 01:07Z</text>
+      <text x="636" y="240">Source OS (…1/29/2025…)   2026-02-08 01:07Z</text>
+      <text x="636" y="262">Source OS (…6/11/2025…)   2026-02-08 01:07Z</text>
+      <text x="636" y="284">Source OS (…1/31/2026…)   2026-02-08 01:07Z</text>
+    </g>
+    <text x="636" y="314" class="s" font-size="14.5" fill="#334155">Use the key names and values. Ignore the key times.</text>
+  </g>
+  <g class="card k3">
+    <rect x="48" y="352" width="540" height="206" rx="16" fill="#ffffff" stroke="#e2e8f0"/>
+    <text x="72" y="386" class="s" font-size="13" font-weight="700" letter-spacing="2" fill="#b45309">3 · BEGAN (LOCAL) ≠ FINISHED (UTC)</text>
+    <text x="72" y="428" class="m" font-size="14" fill="#334155">key name    2026-01-31 19:53  local</text>
+    <text x="72" y="456" class="m" font-size="14" fill="#334155">InstallDate 2026-02-07 11:46Z UTC</text>
+    <rect x="72" y="474" width="210" height="28" rx="14" fill="#fffbeb" stroke="#fcd34d"/>
+    <text x="177" y="493" class="s" font-size="13.5" font-weight="700" text-anchor="middle" fill="#b45309">7 days apart</text>
+    <text x="72" y="532" class="s" font-size="14.5" fill="#334155">Activity in that gap ran on the old OS.</text>
+  </g>
+  <g class="card k4">
+    <rect x="612" y="352" width="540" height="206" rx="16" fill="#ffffff" stroke="#e2e8f0"/>
+    <text x="636" y="386" class="s" font-size="13" font-weight="700" letter-spacing="2" fill="#b45309">4 · CLEAN FILES THAT LOOK TIMESTOMPED</text>
+    <text x="636" y="424" class="s" font-size="14.5" fill="#334155">Files from the install image carry $SI birth ≠ $FN</text>
+    <text x="636" y="446" class="s" font-size="14.5" fill="#334155">birth: tens of thousands per host. A Safe OS</text>
+    <text x="636" y="468" class="s" font-size="14.5" fill="#334155">upgrade's offline phase wrote local time as UTC,</text>
+    <text x="636" y="490" class="s" font-size="14.5" fill="#334155">shifting records by the UTC offset.</text>
+    <text x="636" y="532" class="s" font-size="13" fill="#64748b">Measured by AlexSta on controlled hosts.</text>
+  </g>
+</svg>
