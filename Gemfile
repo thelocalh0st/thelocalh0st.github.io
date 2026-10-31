@@ -2,7 +2,7 @@
 
 source "https://rubygems.org"
 
-ruby '3.2.2' # Add or update the Ruby version
+ruby '~> 3.2.0' # any 3.2.x, matches ruby-version '3.2' in the workflow
 gem "rake", "13.0.6"
 gem 'csv'
 gem 'base64'
