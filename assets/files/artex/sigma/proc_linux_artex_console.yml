@@ -1,0 +1,40 @@
+title: ARTEX Console Or Engine Started On A Host
+id: 8a50ec12-fac4-4c20-9eb1-d882d54a63f5
+status: experimental
+description: |
+    Finds ARTEX running inside your own estate: a red-team box nobody registered, a developer
+    trying it out, or a compromised server turned into an attack platform. The engine is a Go
+    binary started as "artex -addr :8787 -proxy :8788"; the public images are autumn27/artex and
+    the re-hosted tomicdd/artex and congdonglinux/artex.
+references:
+    - https://thelocalh0st.com/posts/artex-detection-forensics/
+    - https://labs.eye.security/how-we-defended-against-an-ai-driven-attack/
+author: Sujay Adkesar
+date: 2026-11-25
+tags:
+    - attack.resource-development
+    - attack.t1588.002
+logsource:
+    category: process_creation
+    product: linux
+detection:
+    selection_binary:
+        Image|endswith: '/artex'
+        CommandLine|contains:
+            - '-addr'
+            - '-proxy'
+    selection_ports:
+        CommandLine|contains|all:
+            - ':8787'
+            - ':8788'
+    selection_image:
+        CommandLine|contains:
+            - 'autumn27/artex'
+            - 'tomicdd/artex'
+            - 'congdonglinux/artex'
+            - 'github.com/Hinln/ARTEX'
+            - 'github.com/Autumn-27/ARTEX'
+    condition: 1 of selection_*
+falsepositives:
+    - A sanctioned red team (register its hosts and exclude them)
+level: high

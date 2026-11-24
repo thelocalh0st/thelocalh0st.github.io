@@ -1,0 +1,93 @@
+type,value,context,source,reported,confidence,suggested_use,notes
+ipv4,38.244.50.120,ARTEX host and open directory (South Korea financial campaign),FBI FLASH-20261113-001 (CrowdStrike; Censys),2026-11-13,high,block-and-hunt,
+ipv4,144.172.64.60,ConnectWise campaign; sign-ins and Graph API activity in customer tenants,FBI FLASH-20261113-001 (Microsoft); Wiz,2026-10-22,high,block-and-hunt,also listed by Wiz for STORM-0940
+ipv4,144.172.64.99,ConnectWise campaign; sign-ins and Graph API activity in customer tenants,FBI FLASH-20261113-001 (Microsoft); Wiz,2026-10-22,high,block-and-hunt,also listed by Wiz for STORM-0940
+ipv4,144.172.64.128,ConnectWise campaign; sign-ins and Graph API activity in customer tenants,FBI FLASH-20261113-001 (Microsoft); Wiz,2026-10-22,high,block-and-hunt,also listed by Wiz for STORM-0940
+ipv4,187.15.88.186,Graph API access via compromised apps,FBI FLASH-20261113-001 (Microsoft),2026-11-13,medium,hunt,transient VPN address; relevant 15-16 Oct 2026 only
+ipv4,187.15.90.217,Graph API access via compromised apps,FBI FLASH-20261113-001 (Microsoft),2026-11-13,medium,hunt,transient VPN address; relevant 15-16 Oct 2026 only
+ipv4,187.15.89.186,Graph API access via compromised apps,FBI FLASH-20261113-001 (Microsoft),2026-11-13,medium,hunt,transient VPN address; relevant 15-16 Oct 2026 only
+ipv4,101.53.80.20,Proxy address (South Korea financial campaign),FBI FLASH-20261113-001 (CrowdStrike),2026-11-13,medium,hunt,shared proxy; do not block on this alone
+ipv4,205.214.59.31,Proxy address (South Korea financial campaign),FBI FLASH-20261113-001 (CrowdStrike),2026-11-13,medium,hunt,shared proxy; do not block on this alone
+ipv4,124.155.252.63,Proxy address (South Korea financial campaign),FBI FLASH-20261113-001 (CrowdStrike),2026-11-13,medium,hunt,shared proxy; do not block on this alone
+ipv4,154.201.79.246,Proxy address (South Korea financial campaign),FBI FLASH-20261113-001 (CrowdStrike),2026-11-13,medium,hunt,shared proxy; do not block on this alone
+ipv4,23.248.249.90,Proxy address (South Korea financial campaign),FBI FLASH-20261113-001 (CrowdStrike),2026-11-13,medium,hunt,shared proxy; do not block on this alone
+ipv4,23.158.220.98,Proxy address (South Korea financial campaign),FBI FLASH-20261113-001 (CrowdStrike),2026-11-13,medium,hunt,shared proxy; do not block on this alone
+ipv4,103.248.148.84,Proxy address (South Korea financial campaign),FBI FLASH-20261113-001 (CrowdStrike),2026-11-13,medium,hunt,shared proxy; do not block on this alone
+ipv4,203.160.133.172,Proxy address (South Korea financial campaign),FBI FLASH-20261113-001 (CrowdStrike),2026-11-13,medium,hunt,shared proxy; do not block on this alone
+ipv4,209.209.85.38,Proxy address (South Korea financial campaign),FBI FLASH-20261113-001 (CrowdStrike),2026-11-13,medium,hunt,shared proxy; do not block on this alone
+ipv4,199.19.95.66,WISP C2 node (Storm-3358),FBI FLASH-20261113-001 (Microsoft),2026-11-13,high,block-egress,active as of 6 Nov 2026
+ipv4,199.19.95.67,WISP C2 node (Storm-3358),FBI FLASH-20261113-001 (Microsoft),2026-11-13,high,block-egress,active as of 6 Nov 2026
+ipv4,199.19.95.68,WISP C2 node (Storm-3358),FBI FLASH-20261113-001 (Microsoft),2026-11-13,high,block-egress,active as of 6 Nov 2026
+ipv4,91.92.240.238,ARTEX server (Storm-3358),FBI FLASH-20261113-001 (Microsoft),2026-11-13,high,block-and-hunt,active as of 6 Nov 2026
+ipv4,85.11.168.45,ARTEX server (Storm-3358),FBI FLASH-20261113-001 (Microsoft),2026-11-13,high,block-and-hunt,active as of 6 Nov 2026
+ipv4,178.16.54.129,ARTEX server (Storm-3358),FBI FLASH-20261113-001 (Microsoft),2026-11-13,high,block-and-hunt,active as of 6 Nov 2026
+ipv4,31.77.229.35,ARTEX server (Storm-3358),FBI FLASH-20261113-001 (Microsoft),2026-11-13,high,block-and-hunt,active as of 6 Nov 2026
+ipv4,85.11.167.52,C2 server (Storm-3358),FBI FLASH-20261113-001 (Microsoft),2026-11-13,high,block-egress,active as of 6 Nov 2026
+ipv4,104.194.150.21,STORM-0940 ARTEX activity,Wiz,2026-10-22,medium,block-and-hunt,
+ipv4,167.88.172.97,STORM-0940 ARTEX activity,Wiz,2026-10-22,medium,block-and-hunt,
+ipv4,95.40.73.129,"Scanned 20+ hostnames, 36,698 requests, 25-27 Oct 2026",Bitrise incident report v1.6,2026-11-19,medium,hunt,AWS AS16509 (Hong Kong); cloud address may be reassigned
+ipv4,74.211.97.67,Related activity,Bitrise incident report v1.6,2026-11-19,medium,hunt,AS25820
+ipv4,118.100.234.120,"48,084 requests on 12 Nov 2026",Bitrise incident report v1.6,2026-11-19,low,hunt,AS4788 consumer ISP; likely residential proxy exit
+ipv4,207.5.195.93,Operator infrastructure,Eye Security,2026-11-12,medium,block-and-hunt,
+ipv4,156.240.236.28,Tier 1 block list,Profero (block list CSV),,medium,block-and-hunt,full list of 63 addresses in Profero's CSV
+ipv4,156.240.236.27,Tier 1 block list,Profero (block list CSV),,medium,block-and-hunt,full list of 63 addresses in Profero's CSV
+ipv4,156.240.236.14,Tier 1 block list,Profero (block list CSV),,medium,block-and-hunt,full list of 63 addresses in Profero's CSV
+domain,xcai.pro,LLM API reseller (South Korea financial campaign),FBI FLASH-20261113-001 (CrowdStrike),2026-11-13,medium,hunt-egress,
+domain,artex.lol,Operator console domain,Eye Security,2026-11-12,medium,block-and-hunt,
+domain,staging.artex.lol,Operator console domain,Eye Security,2026-11-12,medium,block-and-hunt,
+domain,artex.tokena2b.top,Operator console domain,Eye Security,2026-11-12,medium,block-and-hunt,
+domain,artex.ok7777.eu.cc,Operator console domain,Eye Security,2026-11-12,medium,block-and-hunt,
+domain,artex.noog2infra.site,Operator console domain,Eye Security,2026-11-12,medium,block-and-hunt,
+domain,artxdiag20261106artx.3vd1og.dnslog.cn,Out-of-band callback used in the intrusion,Eye Security,2026-11-12,high,hunt,dnslog.cn itself is a public service
+domain,maxxspace.com,Disposable sign-up email domain,Bitrise incident report v1.6,2026-11-19,low,hunt,check new accounts and invites
+domain,olipii.com,Disposable sign-up email domain,Bitrise incident report v1.6,2026-11-19,low,hunt,check new accounts and invites
+domain,ruutukf.com,Disposable sign-up email domain,Bitrise incident report v1.6,2026-11-19,low,hunt,check new accounts and invites
+domain,api.deepseek.com,LLM API the agents call,FBI FLASH-20261113-001 (Zscaler),2026-11-13,context,hunt-egress,legitimate service; investigate unexpected server-side calls only
+domain,open.bigmodel.cn,LLM API the agents call,FBI FLASH-20261113-001 (Zscaler),2026-11-13,context,hunt-egress,legitimate service; investigate unexpected server-side calls only
+domain,api.x.ai,LLM API the agents call,FBI FLASH-20261113-001 (Zscaler),2026-11-13,context,hunt-egress,legitimate service; investigate unexpected server-side calls only
+domain,api.anthropic.com,LLM API the agents call,FBI FLASH-20261113-001 (Zscaler),2026-11-13,context,hunt-egress,legitimate service; investigate unexpected server-side calls only
+docker-image,autumn27/artex,Official ARTEX image,ARTEX repository,2026-07-26,high,hunt-internal,
+docker-image,tomicdd/artex,Re-hosted ARTEX image,Eye Security,2026-11-12,high,hunt-internal,
+docker-image,congdonglinux/artex,Re-hosted ARTEX image,Eye Security,2026-11-12,high,hunt-internal,
+user-agent,artex-enrich/1.0,Hard-coded in enrich/enrich.go (unreachable in the last public commit),ARTEX source,2026-10-08,high,block,
+user-agent,Mozilla/5.0 (spa-api-recon),Hard-coded in skills/api-recon/scripts/harvest_static.py,ARTEX source,2026-10-08,high,block,
+user-agent,Mozilla/5.0 (spa-api-recon spider),Hard-coded in skills/api-recon/scripts/spider_mpa.py,ARTEX source,2026-10-08,high,block,
+user-agent,artex-selfupdate,Update check to api.github.com/repos/Hinln/ARTEX,ARTEX source,2026-10-08,high,hunt-internal,seen leaving your network = an ARTEX console inside it
+user-agent,norma/0.4,Agent core library client,Wiz; Bitrise,2026-10-22,high,block,
+user-agent,ReconProbe/1.0,Recon client,Wiz,2026-10-22,medium,block,
+user-agent,Mozilla/5.0 (ARTEX),Webshell operator client,Eye Security,2026-11-12,high,block,
+user-agent,Mozilla/5.0 (compatible; ArtExVerify/1.0),Verification client,Eye Security,2026-11-12,high,block,
+user-agent,pentest-probe-i5938/1.0,"12,813 requests; intent number in the string",Bitrise incident report v1.6,2026-11-19,high,block,the number changes per intent; match the pattern
+user-agent,Mozilla/5.0 (compatible; authorized-pentest/bitrise-readonly),Self-declared tester label,Bitrise incident report v1.6,2026-11-19,medium,challenge,expect your own company name in place of bitrise
+user-agent,Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101 Firefox/38.0,Tunnel client (Neo-reGeorg),Eye Security,2026-11-12,medium,hunt,
+user-agent,python-requests/2.34.2,Default client in several cases,Wiz; Bitrise; Eye Security,2026-10-22,low,hunt,common legitimate client
+user-agent,Python-urllib/3.14,Default client,Eye Security,2026-11-12,low,hunt,common legitimate client
+user-agent,curl/7.88.1,Default client,Wiz; Bitrise,2026-10-22,low,hunt,common legitimate client
+url-path,/zzz-nonexistent-xyz123,Control-404 canary before fuzzing,Wiz,2026-10-22,high,block,
+url-path,/zz-notexist-*,Control-404 canary,Eye Security,2026-11-12,high,block,
+url-path,/_i6084_probe_missing,Control-404 canary with intent number,Bitrise incident report v1.6,2026-11-19,high,block,
+url-path,/nope-1774,Control-404 canary,Bitrise incident report v1.6,2026-11-19,medium,block,
+url-path,zzq-random-nonexist-9182,Control-404 canary,Bitrise incident report v1.6,2026-11-19,high,block,
+url-path,zzartx0000.php,Webshell,Eye Security,2026-11-12,high,block,
+url-path,artx_s5.php,Webshell (key k=x9f3c2b7e),Eye Security,2026-11-12,high,block,
+url-path,cl1217.jsp,Webshell written through MySQL general_log,GTIG,2026-10-30,high,hunt,
+url-path,f1219a.jsp,Webshell written through MySQL general_log,GTIG,2026-10-30,high,hunt,
+url-path,z1219.jsp,Webshell written through MySQL general_log,GTIG,2026-10-30,high,hunt,
+string,X-ARTX-KEY,Webshell request header,Eye Security,2026-11-12,high,hunt,
+string,### ARTX-AGENT,Webshell response marker,Eye Security,2026-11-12,high,hunt,search response bodies or EDR file content
+string,ARTX_PERSIST_OK,Persistence check marker,Eye Security,2026-11-12,high,hunt,
+string,ARTEX_WRITE_PROBE,Data write probe marker,Eye Security,2026-11-12,high,hunt,search databases and storage
+string,ARTEX-PROBE-0001,Data write probe marker,Eye Security,2026-11-12,high,hunt,search databases and storage
+string,artex_control_marker_zz9q,Control marker,Eye Security,2026-11-12,high,hunt,
+string,artex-probe-NNNNN,Reused in files accounts passwords and email subjects,GTIG,2026-10-30,high,hunt,five digits
+string,ArtexProbe,Account name prefix,GTIG,2026-10-30,high,hunt,
+string,=== I871C START,Command output banner,Bitrise incident report v1.6,2026-11-19,medium,hunt,
+regex,"^i\d{3,5}[a-z-]{0,12}$","Usernames created by agents (i3694canary, i871-probe, i1040probe)",Bitrise incident report v1.6,2026-11-19,medium,hunt,
+fingerprint,http.favicon.hash:-576220750,ARTEX console favicon (15086 bytes),ARTEX source; ReversingLabs,2026-11-18,high,hunt-internal,Shodan mmh3 of the shipped favicon.ico
+fingerprint,8b567c0244f2dbee787165aea9c4ddabaaafb0fdb3b29899ac898c60a589856b,SHA-256 of the console favicon.ico,ARTEX source,2026-10-08,high,hunt-internal,
+fingerprint,"title:ARTEX — 自主渗透测试控制台",Console page title,ARTEX source,2026-10-08,high,hunt-internal,
+fingerprint,"GET /api/health -> {""ok"":true,""service"":""artex""}",Unauthenticated health endpoint,ARTEX source,2026-10-08,high,hunt-internal,
+fingerprint,tcp/8787 and 127.0.0.1:8788,Console port and intercept proxy port,ARTEX source,2026-10-08,medium,hunt-internal,8787 is also RStudio Server's default
+fingerprint,http.favicon.hash:-1356779733,AntiFox fork favicon,ReversingLabs,2026-11-18,medium,hunt-internal,
+fingerprint,http.favicon.hash:-397770841,AntiFox fork favicon,ReversingLabs,2026-11-18,medium,hunt-internal,
+fingerprint,http.favicon.hash:-1898746557,Earlier console favicon,SOCRadar,,low,hunt-internal,older builds

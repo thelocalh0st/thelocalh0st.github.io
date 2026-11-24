@@ -1,0 +1,29 @@
+title: ARTEX-Named Webshell Requested
+id: 31a93fb0-f7b6-4aaf-8892-7afa73557ea8
+status: experimental
+description: |
+    Requests for webshells named the way ARTEX agents named them in published intrusions
+    (zzartx0000.php, artx_s5.php with key k=x9f3c2b7e) and for the JSP shells written through
+    MySQL general_log in the GTIG case. A 200 here means code execution already happened.
+references:
+    - https://thelocalh0st.com/posts/artex-detection-forensics/
+    - https://labs.eye.security/how-we-defended-against-an-ai-driven-attack/
+    - https://cloud.google.com/blog/topics/threat-intelligence/artex-and-friends-enter-agentic-offensive-frameworks
+author: Sujay Adkesar
+date: 2026-11-25
+tags:
+    - attack.persistence
+    - attack.t1505.003
+logsource:
+    category: webserver
+detection:
+    selection_name:
+        - cs-uri-stem|re: '(?i)zzartx[0-9]*\.(php[0-9]?|phtml|jsp|aspx?)$'
+        - cs-uri-stem|re: '(?i)(^|/)artx_s[0-9]+\.php$'
+        - cs-uri-stem|re: '(?i)/(cl|z|f)[0-9]{4}a?\.jsp$'
+    selection_key:
+        cs-uri-query|contains: 'k=x9f3c2b7e'
+    condition: 1 of selection_*
+falsepositives:
+    - Unlikely
+level: critical

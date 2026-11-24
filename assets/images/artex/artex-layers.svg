@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" width="1200" height="600" role="img" aria-label="Four detection layers for ARTEX. L1 strings such as artex-enrich/1.0, norma/0.4, pentest-probe-i5938, /zz-notexist-8812 and artx_s5.php age in days and belong in WAF block lists, Sigma rules and IOC sweeps. L2 behaviour such as three or more user-agent families a minute, twenty refused paths in five minutes, ten or more hostnames, a client-IP header that changes on every call and one-second bursts with thirty-second pauses ages in months and belongs in SIEM correlations and rate limits keyed on the real client. L3 sequence, map then canary then auth probing then exploitation, lasts as long as agents plan like testers and belongs in temporal SIEM rules and the hunter. L4 foundations, the dormant accounts, keys that never expire, bots without MFA, trusted client-IP headers and open egress that the agents actually used, do not age.">
+  <title>Four detection layers for ARTEX</title>
+  <defs><pattern id="dotsL" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="1.2" cy="1.2" r="1.2" fill="#e2e8f0"/></pattern></defs>
+  <style>
+    .s { font-family: "Segoe UI", Inter, system-ui, -apple-system, Roboto, sans-serif; }
+    .m { font-family: "Cascadia Mono", Consolas, "SFMono-Regular", Menlo, monospace; font-variant-ligatures: none; white-space: pre; }
+    .band { animation: up .6s ease-out both; } .b2 { animation-delay: .12s; } .b3 { animation-delay: .24s; } .b4 { animation-delay: .36s; }
+    .life { transform-box: fill-box; transform-origin: left; animation: grow 1.2s ease-out both; animation-delay: .5s; }
+    @keyframes up { from { opacity: .35; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+    @keyframes grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+  </style>
+  <rect width="1200" height="600" rx="22" fill="#ffffff"/>
+  <rect width="1200" height="600" rx="22" fill="url(#dotsL)"/>
+  <rect x=".5" y=".5" width="1199" height="599" rx="22" fill="none" stroke="#e2e8f0"/>
+  <text x="48" y="52" class="s" font-size="13" font-weight="700" letter-spacing="2" fill="#be123c">WHERE TO DETECT IT</text>
+  <text x="48" y="86" class="s" font-size="26" font-weight="700" fill="#0f172a">Four layers, from what ages in days to what never does</text>
+  <text x="868" y="124" class="s" font-size="11" font-weight="700" letter-spacing="1.5" fill="#94a3b8">SHELF LIFE</text>
+  <text x="1012" y="124" class="s" font-size="11" font-weight="700" letter-spacing="1.5" fill="#94a3b8">WHERE IT LIVES</text>
+
+  <!-- L1 -->
+  <g class="band">
+    <rect x="48" y="136" width="1104" height="96" rx="14" fill="#fff1f2" stroke="#fecdd3"/>
+    <text x="70" y="178" class="s" font-size="30" font-weight="800" fill="#be123c">L1</text>
+    <text x="70" y="204" class="s" font-size="14" font-weight="700" fill="#881337">Strings</text>
+    <g class="m" font-size="12" fill="#9f1239">
+      <rect x="170" y="160" width="138" height="26" rx="7" fill="#ffffff" stroke="#fecdd3"/><text x="180" y="178">artex-enrich/1.0</text>
+      <rect x="316" y="160" width="92" height="26" rx="7" fill="#ffffff" stroke="#fecdd3"/><text x="326" y="178">norma/0.4</text>
+      <rect x="416" y="160" width="182" height="26" rx="7" fill="#ffffff" stroke="#fecdd3"/><text x="426" y="178">pentest-probe-i5938/1.0</text>
+      <rect x="170" y="194" width="150" height="26" rx="7" fill="#ffffff" stroke="#fecdd3"/><text x="180" y="212">/zz-notexist-8812</text>
+      <rect x="328" y="194" width="104" height="26" rx="7" fill="#ffffff" stroke="#fecdd3"/><text x="338" y="212">artx_s5.php</text>
+      <rect x="440" y="194" width="158" height="26" rx="7" fill="#ffffff" stroke="#fecdd3"/><text x="450" y="212">(ARTEX), ArtExVerify</text>
+    </g>
+    <text x="624" y="178" class="s" font-size="13" fill="#334155">Cheap to match, cheap for the</text>
+    <text x="624" y="198" class="s" font-size="13" fill="#334155">operator to change. Block, but</text>
+    <text x="624" y="218" class="s" font-size="13" fill="#334155">never trust a miss.</text>
+    <rect x="868" y="172" width="120" height="10" rx="5" fill="#ffe4e6"/>
+    <rect class="life" x="868" y="172" width="18" height="10" rx="5" fill="#e11d48"/>
+    <text x="868" y="204" class="s" font-size="12.5" font-weight="600" fill="#9f1239">days</text>
+    <text x="1012" y="176" class="s" font-size="12.5" fill="#334155">WAF block lists</text>
+    <text x="1012" y="196" class="s" font-size="12.5" fill="#334155">Sigma, IOC sweeps</text>
+  </g>
+  <!-- L2 -->
+  <g class="band b2">
+    <rect x="48" y="244" width="1104" height="96" rx="14" fill="#eef2ff" stroke="#c7d2fe"/>
+    <text x="70" y="286" class="s" font-size="30" font-weight="800" fill="#4338ca">L2</text>
+    <text x="70" y="312" class="s" font-size="14" font-weight="700" fill="#312e81">Behaviour</text>
+    <g class="s" font-size="12" fill="#3730a3">
+      <rect x="170" y="268" width="138" height="26" rx="7" fill="#ffffff" stroke="#c7d2fe"/><text x="180" y="286">3+ UA families/min</text>
+      <rect x="316" y="268" width="150" height="26" rx="7" fill="#ffffff" stroke="#c7d2fe"/><text x="326" y="286">20+ refused paths/5 min</text>
+      <rect x="474" y="268" width="124" height="26" rx="7" fill="#ffffff" stroke="#c7d2fe"/><text x="484" y="286">10+ hostnames</text>
+      <rect x="170" y="302" width="196" height="26" rx="7" fill="#ffffff" stroke="#c7d2fe"/><text x="180" y="320">client-IP header changes per call</text>
+      <rect x="374" y="302" width="224" height="26" rx="7" fill="#ffffff" stroke="#c7d2fe"/><text x="384" y="320">1 s bursts, 25–31 s pauses, every verb</text>
+    </g>
+    <text x="624" y="286" class="s" font-size="13" fill="#334155">How an agent works, not what it</text>
+    <text x="624" y="306" class="s" font-size="13" fill="#334155">types. Shared NAT and developers</text>
+    <text x="624" y="326" class="s" font-size="13" fill="#334155">trip it too: score, don't block.</text>
+    <rect x="868" y="280" width="120" height="10" rx="5" fill="#e0e7ff"/>
+    <rect class="life" x="868" y="280" width="72" height="10" rx="5" fill="#4f46e5"/>
+    <text x="868" y="312" class="s" font-size="12.5" font-weight="600" fill="#3730a3">months</text>
+    <text x="1012" y="284" class="s" font-size="12.5" fill="#334155">SIEM correlations</text>
+    <text x="1012" y="304" class="s" font-size="12.5" fill="#334155">rate limits on the</text>
+    <text x="1012" y="324" class="s" font-size="12.5" fill="#334155">real client address</text>
+  </g>
+  <!-- L3 -->
+  <g class="band b3">
+    <rect x="48" y="352" width="1104" height="96" rx="14" fill="#f0fdf4" stroke="#bbf7d0"/>
+    <text x="70" y="394" class="s" font-size="30" font-weight="800" fill="#15803d">L3</text>
+    <text x="70" y="420" class="s" font-size="14" font-weight="700" fill="#14532d">Sequence</text>
+    <g class="s" font-size="12.5" font-weight="600" fill="#166534">
+      <rect x="170" y="384" width="76" height="30" rx="8" fill="#ffffff" stroke="#bbf7d0"/><text x="208" y="404" text-anchor="middle">map</text>
+      <text x="257" y="404" fill="#86efac">→</text>
+      <rect x="272" y="384" width="88" height="30" rx="8" fill="#ffffff" stroke="#bbf7d0"/><text x="316" y="404" text-anchor="middle">canary</text>
+      <text x="371" y="404" fill="#86efac">→</text>
+      <rect x="386" y="384" width="96" height="30" rx="8" fill="#ffffff" stroke="#bbf7d0"/><text x="434" y="404" text-anchor="middle">auth probe</text>
+      <text x="493" y="404" fill="#86efac">→</text>
+      <rect x="508" y="384" width="90" height="30" rx="8" fill="#ffffff" stroke="#bbf7d0"/><text x="553" y="404" text-anchor="middle">exploit</text>
+    </g>
+    <text x="624" y="394" class="s" font-size="13" fill="#334155">The planner works like a tester,</text>
+    <text x="624" y="414" class="s" font-size="13" fill="#334155">so the order holds even when every</text>
+    <text x="624" y="434" class="s" font-size="13" fill="#334155">string and address changes.</text>
+    <rect x="868" y="388" width="120" height="10" rx="5" fill="#dcfce7"/>
+    <rect class="life" x="868" y="388" width="104" height="10" rx="5" fill="#16a34a"/>
+    <text x="868" y="420" class="s" font-size="12.5" font-weight="600" fill="#166534">as long as they plan</text>
+    <text x="1012" y="392" class="s" font-size="12.5" fill="#334155">temporal SIEM rules</text>
+    <text x="1012" y="412" class="s" font-size="12.5" fill="#334155">artex_hunter.py</text>
+  </g>
+  <!-- L4 -->
+  <g class="band b4">
+    <rect x="48" y="460" width="1104" height="96" rx="14" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text x="70" y="502" class="s" font-size="30" font-weight="800" fill="#334155">L4</text>
+    <text x="70" y="528" class="s" font-size="14" font-weight="700" fill="#1e293b">Foundations</text>
+    <g class="s" font-size="12" fill="#334155">
+      <rect x="170" y="484" width="128" height="26" rx="7" fill="#ffffff" stroke="#cbd5e1"/><text x="180" y="502">dormant accounts</text>
+      <rect x="306" y="484" width="152" height="26" rx="7" fill="#ffffff" stroke="#cbd5e1"/><text x="316" y="502">keys that never expire</text>
+      <rect x="466" y="484" width="132" height="26" rx="7" fill="#ffffff" stroke="#cbd5e1"/><text x="476" y="502">bots without MFA</text>
+      <rect x="170" y="518" width="190" height="26" rx="7" fill="#ffffff" stroke="#cbd5e1"/><text x="180" y="536">trusting X-Forwarded-For</text>
+      <rect x="368" y="518" width="230" height="26" rx="7" fill="#ffffff" stroke="#cbd5e1"/><text x="378" y="536">open egress to webhooks and OAST</text>
+    </g>
+    <text x="624" y="502" class="s" font-size="13" fill="#334155">What the agents actually used.</text>
+    <text x="624" y="522" class="s" font-size="13" fill="#334155">Fix these and the other three</text>
+    <text x="624" y="542" class="s" font-size="13" fill="#334155">layers only have to be early.</text>
+    <rect x="868" y="496" width="120" height="10" rx="5" fill="#334155"/>
+    <text x="868" y="528" class="s" font-size="12.5" font-weight="600" fill="#1e293b">does not age</text>
+    <text x="1012" y="500" class="s" font-size="12.5" fill="#334155">IAM, secrets,</text>
+    <text x="1012" y="520" class="s" font-size="12.5" fill="#334155">egress, proxy config</text>
+  </g>
+  <text x="48" y="584" class="s" font-size="12" fill="#94a3b8">Shelf life is a judgment from how fast each signal changed across the published cases, not a measurement.</text>
+</svg>

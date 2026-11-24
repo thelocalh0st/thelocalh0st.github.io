@@ -1,0 +1,34 @@
+title: Unsigned JWT Or Forged OAuth Callback In Request
+id: a36cbeb4-a109-450a-bc3a-0662aa5b33eb
+status: experimental
+description: |
+    Wiz watched ARTEX send a JWT with alg "none" to an SSO endpoint and replay an OAuth callback
+    with a made-up code (code=AAAA&state=notvalidb64!!), more than 60 SSO variants in two
+    minutes. Base64 of {"alg":"none" starts with eyJhbGciOiJub25lI.
+references:
+    - https://thelocalh0st.com/posts/artex-detection-forensics/
+    - https://www.wiz.io/blog/artex-in-the-wild-storm-0940-expands-targeting-of-it-and-software-vendors
+author: Sujay Adkesar
+date: 2026-11-25
+tags:
+    - attack.credential-access
+    - attack.t1606
+    - attack.initial-access
+    - attack.t1190
+logsource:
+    category: webserver
+detection:
+    selection_jwt_none:
+        cs-uri-query|contains:
+            - 'eyJhbGciOiJub25lI'
+            - 'eyJhbGciOiAibm9uZSI'
+            - 'eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lI'
+            - 'eyJhbGciOiJOT05FI'
+            - 'eyJhbGciOiJOb25lI'
+    selection_oauth:
+        - cs-uri-query|re: '(^|&)code=A{4,}(&|$)'
+        - cs-uri-query|contains: 'state=notvalid'
+    condition: 1 of selection_*
+falsepositives:
+    - Security testing of your own identity provider
+level: high

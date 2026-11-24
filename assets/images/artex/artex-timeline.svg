@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" width="1200" height="520" role="img" aria-label="ARTEX timeline, 2026. 26 July: first commit by Autumn-27. From August: in use in intrusions, per the FBI. 20 August: version 0.3.2 adds model failover chains. 7 and 8 October: version 0.3.15 adds chat-app alerts and the repository is taken down the next day; the Hinln/ARTEX fork lives on. 22 October: Wiz reports STORM-0940 widening its targets. 25 to 27 October: one AWS address sends 36,698 requests to more than 20 Bitrise hostnames. 30 October: Google Threat Intelligence publishes. 13 November: FBI FLASH-20261113-001, Elastic and Talos publish, and a dormant Bitrise bot account leads to the first secret read in 8 minutes 41 seconds. 18 November: ReversingLabs counts 969 live consoles across 11 fork families.">
+  <title>ARTEX timeline, 2026</title>
+  <defs><pattern id="dotsT" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="1.2" cy="1.2" r="1.2" fill="#e2e8f0"/></pattern></defs>
+  <style>
+    .s { font-family: "Segoe UI", Inter, system-ui, -apple-system, Roboto, sans-serif; }
+    .ev { animation: up .5s ease-out both; } .e2 { animation-delay: .1s; } .e3 { animation-delay: .2s; } .e4 { animation-delay: .3s; } .e5 { animation-delay: .4s; }
+    .e6 { animation-delay: .5s; } .e7 { animation-delay: .6s; } .e8 { animation-delay: .7s; } .e9 { animation-delay: .8s; } .e10 { animation-delay: .9s; }
+    @keyframes up { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+  </style>
+  <rect width="1200" height="520" rx="22" fill="#ffffff"/>
+  <rect width="1200" height="520" rx="22" fill="url(#dotsT)"/>
+  <rect x=".5" y=".5" width="1199" height="519" rx="22" fill="none" stroke="#e2e8f0"/>
+  <text x="48" y="52" class="s" font-size="13" font-weight="700" letter-spacing="2" fill="#be123c">TIMELINE · 2026</text>
+  <text x="48" y="86" class="s" font-size="26" font-weight="700" fill="#0f172a">First commit to FBI FLASH in sixteen weeks</text>
+  <text x="1152" y="62" class="s" font-size="12" fill="#64748b" text-anchor="end">above the line: research · below: the tool and the intrusions</text>
+
+  <!-- scale: 26 Jul..1 Oct = 80..380 (4.5 px/day), break, 1 Oct..20 Nov = 400..1120 (14.4 px/day) -->
+  <rect x="107" y="282" width="1013" height="8" rx="4" fill="#ffe4e6"/>
+  <text x="112" y="306" class="s" font-size="11.5" font-weight="600" fill="#be123c">in use in intrusions since at least August (FBI)</text>
+  <line x1="80" y1="272" x2="380" y2="272" stroke="#94a3b8" stroke-width="3"/>
+  <line x1="400" y1="272" x2="1120" y2="272" stroke="#94a3b8" stroke-width="3"/>
+  <path d="M382 262 l6 20 M392 262 l6 20" stroke="#94a3b8" stroke-width="2"/>
+  <g class="s" font-size="11.5" fill="#94a3b8" text-anchor="middle">
+    <text x="107" y="330">Aug</text><text x="246" y="330">Sep</text><text x="400" y="330">Oct</text><text x="846" y="330">Nov</text>
+  </g>
+
+  <!-- above: research -->
+  <g class="ev e5"><line x1="702" y1="272" x2="702" y2="212" stroke="#4f46e5" stroke-width="2"/><circle cx="702" cy="272" r="6" fill="#4f46e5"/>
+    <text x="608" y="166" class="s" font-size="12.5" font-weight="700" fill="#312e81">22 Oct · Wiz</text>
+    <text x="608" y="184" class="s" font-size="12" fill="#475569">STORM-0940 widens to IT</text>
+    <text x="608" y="200" class="s" font-size="12" fill="#475569">and software vendors</text></g>
+  <g class="ev e7"><line x1="818" y1="272" x2="818" y2="150" stroke="#4f46e5" stroke-width="2"/><circle cx="818" cy="272" r="6" fill="#4f46e5"/>
+    <text x="780" y="118" class="s" font-size="12.5" font-weight="700" fill="#312e81">30 Oct · GTIG</text>
+    <text x="780" y="136" class="s" font-size="12" fill="#475569">"ARTEX and friends"</text></g>
+  <g class="ev e9"><line x1="1019" y1="272" x2="1019" y2="212" stroke="#be123c" stroke-width="2"/><circle cx="1019" cy="272" r="7" fill="#be123c"/>
+    <text x="900" y="166" class="s" font-size="12.5" font-weight="700" fill="#9f1239">13 Nov · FBI FLASH</text>
+    <text x="900" y="184" class="s" font-size="12" fill="#475569">20261113-001, plus Elastic</text>
+    <text x="900" y="200" class="s" font-size="12" fill="#475569">and Talos detections</text></g>
+  <g class="ev e10"><line x1="1091" y1="272" x2="1091" y2="150" stroke="#4f46e5" stroke-width="2"/><circle cx="1091" cy="272" r="6" fill="#4f46e5"/>
+    <text x="1152" y="118" class="s" font-size="12.5" font-weight="700" fill="#312e81" text-anchor="end">18 Nov · ReversingLabs</text>
+    <text x="1152" y="136" class="s" font-size="12" fill="#475569" text-anchor="end">969 live consoles, 11 forks</text></g>
+
+  <!-- below: tool and intrusions -->
+  <g class="ev"><line x1="80" y1="272" x2="80" y2="372" stroke="#64748b" stroke-width="2"/><circle cx="80" cy="272" r="6" fill="#64748b"/>
+    <text x="70" y="392" class="s" font-size="12.5" font-weight="700" fill="#1e293b">26 Jul</text>
+    <text x="70" y="410" class="s" font-size="12" fill="#475569">first commit,</text>
+    <text x="70" y="426" class="s" font-size="12" fill="#475569">Autumn-27</text></g>
+  <g class="ev e2"><line x1="192" y1="272" x2="192" y2="440" stroke="#64748b" stroke-width="2"/><circle cx="192" cy="272" r="6" fill="#64748b"/>
+    <text x="182" y="460" class="s" font-size="12.5" font-weight="700" fill="#1e293b">20 Aug · v0.3.2</text>
+    <text x="182" y="478" class="s" font-size="12" fill="#475569">model failover chains</text></g>
+  <g class="ev e3"><line x1="493" y1="272" x2="493" y2="372" stroke="#64748b" stroke-width="2"/><circle cx="493" cy="272" r="6" fill="#64748b"/>
+    <text x="420" y="392" class="s" font-size="12.5" font-weight="700" fill="#1e293b">7–8 Oct · v0.3.15</text>
+    <text x="420" y="410" class="s" font-size="12" fill="#475569">chat-app alerts, then the repo</text>
+    <text x="420" y="426" class="s" font-size="12" fill="#475569">is pulled; Hinln/ARTEX lives on</text></g>
+  <g class="ev e4"><line x1="760" y1="272" x2="760" y2="440" stroke="#c2410c" stroke-width="2"/><circle cx="760" cy="272" r="6" fill="#c2410c"/>
+    <text x="660" y="460" class="s" font-size="12.5" font-weight="700" fill="#7c2d12">25–27 Oct · Bitrise scanned</text>
+    <text x="660" y="478" class="s" font-size="12" fill="#475569">36,698 requests, 20+ hostnames,</text>
+    <text x="660" y="494" class="s" font-size="12" fill="#475569">one AWS address</text></g>
+  <g class="ev e8"><line x1="1019" y1="279" x2="1019" y2="372" stroke="#c2410c" stroke-width="2"/>
+    <text x="1152" y="392" class="s" font-size="12.5" font-weight="700" fill="#7c2d12" text-anchor="end">13 Nov · Bitrise breached</text>
+    <text x="1152" y="410" class="s" font-size="12" fill="#475569" text-anchor="end">dormant bot account: first secret</text>
+    <text x="1152" y="426" class="s" font-size="12" fill="#475569" text-anchor="end">read 8 min 41 s after sign-in</text></g>
+</svg>

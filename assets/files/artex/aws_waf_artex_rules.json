@@ -1,0 +1,137 @@
+[
+  {
+    "Name": "artex-user-agents",
+    "Priority": 0,
+    "Statement": {
+      "RegexMatchStatement": {
+        "RegexString": "artex-enrich/|spa-api-recon|artex-selfupdate|^norma/[0-9]|reconprobe/|artexverify|\\(artex\\)|(probe|pentest|artx|artex)[-_]?i[0-9]{3,6}",
+        "FieldToMatch": { "SingleHeader": { "Name": "user-agent" } },
+        "TextTransformations": [ { "Priority": 0, "Type": "LOWERCASE" } ]
+      }
+    },
+    "Action": { "Block": {} },
+    "VisibilityConfig": { "SampledRequestsEnabled": true, "CloudWatchMetricsEnabled": true, "MetricName": "artex-user-agents" }
+  },
+  {
+    "Name": "artex-probe-paths",
+    "Priority": 1,
+    "Statement": {
+      "OrStatement": {
+        "Statements": [
+          {
+            "RegexMatchStatement": {
+              "RegexString": "^/zz|/artex-|zzartx|/artx_s[0-9]+\\.php|artx-nonexist|_probe_missing",
+              "FieldToMatch": { "UriPath": {} },
+              "TextTransformations": [ { "Priority": 0, "Type": "URL_DECODE" }, { "Priority": 1, "Type": "LOWERCASE" } ]
+            }
+          },
+          {
+            "AndStatement": {
+              "Statements": [
+                {
+                  "ByteMatchStatement": {
+                    "SearchString": "/nr",
+                    "FieldToMatch": { "UriPath": {} },
+                    "TextTransformations": [ { "Priority": 0, "Type": "NONE" } ],
+                    "PositionalConstraint": "EXACTLY"
+                  }
+                },
+                {
+                  "ByteMatchStatement": {
+                    "SearchString": "zz",
+                    "FieldToMatch": { "QueryString": {} },
+                    "TextTransformations": [ { "Priority": 0, "Type": "NONE" } ],
+                    "PositionalConstraint": "STARTS_WITH"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "ByteMatchStatement": {
+              "SearchString": "k=x9f3c2b7e",
+              "FieldToMatch": { "QueryString": {} },
+              "TextTransformations": [ { "Priority": 0, "Type": "NONE" } ],
+              "PositionalConstraint": "CONTAINS"
+            }
+          }
+        ]
+      }
+    },
+    "Action": { "Block": {} },
+    "VisibilityConfig": { "SampledRequestsEnabled": true, "CloudWatchMetricsEnabled": true, "MetricName": "artex-probe-paths" }
+  },
+  {
+    "Name": "artex-forged-tokens-ssrf-oast",
+    "Priority": 2,
+    "Statement": {
+      "OrStatement": {
+        "Statements": [
+          {
+            "RegexMatchStatement": {
+              "RegexString": "eyjhbgcioijub25li|eyj0exaioijkv1qilcjhbgcioijub25li|state=notvalid|169\\.254\\.169\\.254|metadata\\.google\\.internal|dnslog\\.cn|\\.oast\\.|webhook\\.site",
+              "FieldToMatch": { "QueryString": {} },
+              "TextTransformations": [ { "Priority": 0, "Type": "URL_DECODE" }, { "Priority": 1, "Type": "LOWERCASE" } ]
+            }
+          },
+          {
+            "ByteMatchStatement": {
+              "SearchString": "eyJhbGciOiJub25lI",
+              "FieldToMatch": { "SingleHeader": { "Name": "authorization" } },
+              "TextTransformations": [ { "Priority": 0, "Type": "NONE" } ],
+              "PositionalConstraint": "CONTAINS"
+            }
+          }
+        ]
+      }
+    },
+    "Action": { "Block": {} },
+    "VisibilityConfig": { "SampledRequestsEnabled": true, "CloudWatchMetricsEnabled": true, "MetricName": "artex-forged-tokens-ssrf-oast" }
+  },
+  {
+    "Name": "artex-self-labelled-tester",
+    "Priority": 3,
+    "Statement": {
+      "RegexMatchStatement": {
+        "RegexString": "pentest|authori[sz]ed[- ]|\\(authori[sz]ed|read-?only|security-research|bounty",
+        "FieldToMatch": { "SingleHeader": { "Name": "user-agent" } },
+        "TextTransformations": [ { "Priority": 0, "Type": "LOWERCASE" } ]
+      }
+    },
+    "Action": { "Captcha": {} },
+    "VisibilityConfig": { "SampledRequestsEnabled": true, "CloudWatchMetricsEnabled": true, "MetricName": "artex-self-labelled-tester" }
+  },
+  {
+    "Name": "artex-auth-burst",
+    "Priority": 10,
+    "Statement": {
+      "RateBasedStatement": {
+        "Limit": 100,
+        "EvaluationWindowSec": 300,
+        "AggregateKeyType": "IP",
+        "ScopeDownStatement": {
+          "RegexMatchStatement": {
+            "RegexString": "^/(api/)?(v[0-9]+/)?(login|signin|sign_in|sso|oauth|saml|token|register|signup|forgot_password|password)",
+            "FieldToMatch": { "UriPath": {} },
+            "TextTransformations": [ { "Priority": 0, "Type": "LOWERCASE" } ]
+          }
+        }
+      }
+    },
+    "Action": { "Block": {} },
+    "VisibilityConfig": { "SampledRequestsEnabled": true, "CloudWatchMetricsEnabled": true, "MetricName": "artex-auth-burst" }
+  },
+  {
+    "Name": "artex-per-ip-volume",
+    "Priority": 11,
+    "Statement": {
+      "RateBasedStatement": {
+        "Limit": 2000,
+        "EvaluationWindowSec": 300,
+        "AggregateKeyType": "IP"
+      }
+    },
+    "Action": { "Count": {} },
+    "VisibilityConfig": { "SampledRequestsEnabled": true, "CloudWatchMetricsEnabled": true, "MetricName": "artex-per-ip-volume" }
+  }
+]

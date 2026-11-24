@@ -1,0 +1,49 @@
+title: Cloud Metadata Address Or Out-Of-Band Callback Domain In Request
+id: 92296f88-e8b6-41c1-a3bf-2715bc418a26
+status: experimental
+description: |
+    ARTEX agents test SSRF with url=http://169.254.169.254/latest/meta-data/ and confirm blind
+    injection with callbacks to dnslog.cn, oast.me and webhook.site (GTIG counted 491 rotating
+    webhook.site URLs in one case). Neither belongs in a query string on most applications.
+references:
+    - https://thelocalh0st.com/posts/artex-detection-forensics/
+    - https://bitrise.io/artex-incident-report
+    - https://labs.eye.security/how-we-defended-against-an-ai-driven-attack/
+    - https://cloud.google.com/blog/topics/threat-intelligence/artex-and-friends-enter-agentic-offensive-frameworks
+author: Sujay Adkesar
+date: 2026-11-25
+tags:
+    - attack.initial-access
+    - attack.t1190
+    - attack.exfiltration
+    - attack.t1567
+logsource:
+    category: webserver
+detection:
+    selection_metadata:
+        cs-uri-query|contains:
+            - '169.254.169.254'
+            - '169.254.170.2'
+            - 'metadata.google.internal'
+            - '100.100.100.200'
+            - 'fd00:ec2::254'
+            - '169%2E254%2E169%2E254'
+            - '169%2e254%2e169%2e254'
+    selection_oast:
+        cs-uri-query|contains:
+            - 'dnslog.cn'
+            - '.oast.me'
+            - '.oast.fun'
+            - '.oast.pro'
+            - '.oast.site'
+            - '.oast.online'
+            - '.oast.live'
+            - 'interact.sh'
+            - 'oastify.com'
+            - 'burpcollaborator.net'
+            - 'webhook.site'
+            - 'ceye.io'
+    condition: 1 of selection_*
+falsepositives:
+    - Applications that legitimately accept webhook.site URLs (integration testing)
+level: high

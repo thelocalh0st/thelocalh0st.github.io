@@ -1,0 +1,40 @@
+title: ARTEX Probe Path Or Control-404 Canary
+id: 5f400c59-90e6-4ba9-aa21-af8189f1f88e
+status: experimental
+description: |
+    ARTEX agents name their throw-away artefacts with zz, artx or artex- prefixes and fire a
+    request for a path that cannot exist before each fuzzing round, to learn what a 404 looks
+    like (/zzz-nonexistent-xyz123, /zz-notexist-8812, /_i6084_probe_missing). The names are made
+    up at run time by the model, so this rule ages; the habit of a control request does not.
+references:
+    - https://thelocalh0st.com/posts/artex-detection-forensics/
+    - https://www.wiz.io/blog/artex-in-the-wild-storm-0940-expands-targeting-of-it-and-software-vendors
+    - https://labs.eye.security/how-we-defended-against-an-ai-driven-attack/
+    - https://profero.io/blog/ai-attack-cluster-tells
+    - https://bitrise.io/artex-incident-report
+author: Sujay Adkesar
+date: 2026-11-25
+tags:
+    - attack.reconnaissance
+    - attack.t1595.003
+logsource:
+    category: webserver
+detection:
+    selection_prefix:
+        - cs-uri-stem|startswith: '/zz'
+        - cs-uri-stem|re: '(?i)/artex[-_]([a-z]{0,2}[0-9]{3,}|probe|canary|marker|nonexist|write|test)'
+        - cs-uri-stem|re: '(?i)(^|[^a-z])artx[-_]?([a-z]{0,2}[0-9]{2,}|nonexist|probe|test|s[0-9])'
+    selection_nr:
+        cs-uri-stem: '/nr'
+        cs-uri-query|startswith: 'zz'
+    selection_canary:
+        - cs-uri-stem|re: '(?i)zz+[-_]?(q[-_])?(random[-_])?no[nt][-_]?exist'
+        - cs-uri-stem|contains:
+              - 'nonexistent-xyz'
+              - 'notexist-xyz'
+              - '_probe_missing'
+        - cs-uri-stem|re: '^/nope-[0-9]{3,}$'
+    condition: 1 of selection_*
+falsepositives:
+    - Pages or files whose names really start with zz or artex- (check your own content first)
+level: high

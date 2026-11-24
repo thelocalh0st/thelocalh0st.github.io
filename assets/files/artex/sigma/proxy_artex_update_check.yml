@@ -1,0 +1,30 @@
+title: ARTEX Update Check Or Download Through The Proxy
+id: e78226d9-7ab1-4499-b9d6-8952c69b05fe
+status: experimental
+description: |
+    The ARTEX console checks for updates as soon as it loads: the engine calls
+    https://api.github.com/repos/Hinln/ARTEX/releases/latest with the user agent
+    "artex-selfupdate" (selfupdate/github.go in the public source). Seeing that from inside your
+    network means somebody runs an ARTEX console there.
+references:
+    - https://thelocalh0st.com/posts/artex-detection-forensics/
+author: Sujay Adkesar
+date: 2026-11-25
+tags:
+    - attack.resource-development
+    - attack.t1588.002
+logsource:
+    category: proxy
+detection:
+    selection_ua:
+        c-useragent: 'artex-selfupdate'
+    selection_repo:
+        c-uri|contains:
+            - 'api.github.com/repos/Hinln/ARTEX'
+            - 'github.com/Hinln/ARTEX'
+            - 'github.com/Autumn-27/ARTEX'
+            - 'github.com/Autumn-27/norma'
+    condition: 1 of selection_*
+falsepositives:
+    - Researchers reading the repository in a browser
+level: medium

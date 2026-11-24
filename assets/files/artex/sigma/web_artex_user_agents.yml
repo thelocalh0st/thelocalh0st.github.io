@@ -1,0 +1,49 @@
+title: ARTEX User Agent In Web Logs
+id: 5d1605c0-28aa-4efa-9fcb-072faf47d879
+status: experimental
+description: |
+    Matches user agents that are hard-coded in the ARTEX source (artex-enrich, spa-api-recon,
+    artex-selfupdate), user agents reported from ARTEX intrusions, and user agents into which an
+    ARTEX worker stamped its intent number (pentest-probe-i5938/1.0). Strings are cheap for the
+    operator to change: treat a miss as meaningless and a hit as a reason to pull everything
+    else that source did.
+references:
+    - https://thelocalh0st.com/posts/artex-detection-forensics/
+    - https://www.wiz.io/blog/artex-in-the-wild-storm-0940-expands-targeting-of-it-and-software-vendors
+    - https://bitrise.io/artex-incident-report
+    - https://labs.eye.security/how-we-defended-against-an-ai-driven-attack/
+author: Sujay Adkesar
+date: 2026-11-25
+tags:
+    - attack.reconnaissance
+    - attack.t1595.002
+    - attack.initial-access
+    - attack.t1190
+logsource:
+    category: webserver
+detection:
+    selection_source_code:
+        cs-user-agent|contains:
+            - 'artex-enrich/'
+            - 'spa-api-recon'
+            - 'artex-selfupdate'
+    selection_reported:
+        - cs-user-agent|startswith: 'norma/'
+        - cs-user-agent|contains:
+              - 'ReconProbe/'
+              - 'ArtExVerify'
+              - '(ARTEX)'
+    selection_intent_number:
+        cs-user-agent|re: '(?i)(probe|pentest|artx|artex|audit|scan)[-_]?i[0-9]{3,6}([^0-9]|$)'
+    condition: 1 of selection_*
+fields:
+    - c-ip
+    - cs-host
+    - cs-method
+    - cs-uri-stem
+    - cs-uri-query
+    - sc-status
+    - cs-user-agent
+falsepositives:
+    - An ARTEX test you run yourself
+level: high

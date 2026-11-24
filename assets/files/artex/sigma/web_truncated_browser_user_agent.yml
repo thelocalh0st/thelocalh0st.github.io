@@ -1,0 +1,36 @@
+title: Truncated Or Hand-Written Browser User Agent
+id: e3ed73a8-e028-4f27-8b41-e8ee6d932e28
+status: experimental
+description: |
+    LLM agents write user agents from memory. Wiz recorded strings such as
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/124.0" and a bare "Mozilla/5.0"; Bitrise
+    saw "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) research-readonly". Real Chrome always
+    sends AppleWebKit and a four-part version (124.0.0.0). Low on its own; strong next to
+    anything else in this pack.
+references:
+    - https://thelocalh0st.com/posts/artex-detection-forensics/
+    - https://www.wiz.io/blog/artex-in-the-wild-storm-0940-expands-targeting-of-it-and-software-vendors
+    - https://bitrise.io/artex-incident-report
+author: Sujay Adkesar
+date: 2026-11-25
+tags:
+    - attack.reconnaissance
+    - attack.t1595
+logsource:
+    category: webserver
+detection:
+    selection_bare:
+        cs-user-agent: 'Mozilla/5.0'
+    selection_chrome_no_webkit:
+        cs-user-agent|contains: 'Chrome/'
+    filter_webkit:
+        cs-user-agent|contains: 'AppleWebKit/'
+    selection_short_chrome_version:
+        cs-user-agent|re: 'Chrome/[0-9]+(\.[0-9]+){0,2}([^0-9.]|$)'
+    selection_platform_only:
+        cs-user-agent|re: '^Mozilla/5\.0 \((Windows NT|Macintosh|X11|Linux|iPhone|iPad|Android)[^)]*\)( [A-Za-z-]+)?$'
+    condition: selection_bare or (selection_chrome_no_webkit and not filter_webkit) or selection_short_chrome_version or selection_platform_only
+falsepositives:
+    - Home-grown scripts that fake a browser badly
+    - Some embedded devices
+level: low

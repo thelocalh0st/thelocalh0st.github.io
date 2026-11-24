@@ -1,0 +1,41 @@
+title: Self-Declared Authorised Tester User Agent
+id: 29752109-453e-462a-8fb5-6dfde9efcc47
+status: experimental
+description: |
+    ARTEX workers run under a system prompt that tells the model it is an authorised penetration
+    testing system. Agents then label their own traffic: "authorized-pentest/<org>-readonly",
+    "research; read-only; pentest", "bitrise-pentest-probe/1.0 (authorized read-only)". A real
+    engagement is announced and comes from known addresses; this label is not an authorisation.
+    Alert when the label arrives from an address that is not on your approved-tester list.
+references:
+    - https://thelocalh0st.com/posts/artex-detection-forensics/
+    - https://bitrise.io/artex-incident-report
+    - https://profero.io/blog/ai-attack-cluster-tells
+author: Sujay Adkesar
+date: 2026-11-25
+tags:
+    - attack.reconnaissance
+    - attack.t1595.002
+logsource:
+    category: webserver
+detection:
+    selection:
+        cs-user-agent|contains:
+            - 'pentest'
+            - 'authorized-'
+            - 'authorised-'
+            - 'authorized read'
+            - '(authorized'
+            - 'research-readonly'
+            - 'research; read-only'
+            - 'read-only; pentest'
+            - 'security-research'
+            - 'bounty-check'
+            - 'authorized private bounty'
+    filter_approved_testers:
+        c-ip|cidr:
+            - '192.0.2.0/24'   # replace with the addresses of your announced testers
+    condition: selection and not filter_approved_testers
+falsepositives:
+    - Announced penetration tests and bug-bounty researchers who label their traffic
+level: medium

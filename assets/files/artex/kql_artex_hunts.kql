@@ -1,0 +1,168 @@
+// ARTEX Hunting Pack - KQL hunts for Microsoft Sentinel and Defender XDR
+// Sujay Adkesar - https://thelocalh0st.com - MIT licence
+// Run each query on its own. Sentinel: set the range from 1 August 2026 (the FBI FLASH says
+// "since at least August 2026"). Defender advanced hunting keeps 30 days.
+// KQL uses RE2 regular expressions: no look-behind, so kube-probe is filtered separately.
+
+// ===========================================================================================
+// 0. ArtexWeb(): one shape for IIS, Azure Front Door, Application Gateway and CEF WAF logs.
+//    Save it as a workspace function named ArtexWeb, or paste it above each web query.
+let ArtexWeb = () {
+    union isfuzzy=true
+        (W3CIISLog
+            | project TimeGenerated, Src = cIP, UA = csUserAgent, Method = csMethod, Site = csHost,
+                      Url = strcat(csUriStem, iff(isempty(csUriQuery) or csUriQuery == "-", "", strcat("?", csUriQuery))),
+                      Status = toint(scStatus)),
+        (AzureDiagnostics
+            | where Category in~ ("FrontDoorAccessLog")
+            | project TimeGenerated, Src = tostring(column_ifexists("clientIp_s", "")), UA = tostring(column_ifexists("userAgent_s", "")),
+                      Method = tostring(column_ifexists("httpMethod_s", "")), Site = tostring(column_ifexists("hostName_s", "")),
+                      Url = tostring(column_ifexists("requestUri_s", "")), Status = toint(column_ifexists("httpStatusCode_s", ""))),
+        (AzureDiagnostics
+            | where Category == "ApplicationGatewayAccessLog"
+            | project TimeGenerated, Src = tostring(column_ifexists("clientIP_s", "")), UA = tostring(column_ifexists("userAgent_s", "")),
+                      Method = tostring(column_ifexists("httpMethod_s", "")), Site = tostring(column_ifexists("host_s", "")),
+                      Url = tostring(column_ifexists("requestUri_s", "")), Status = toint(column_ifexists("httpStatus_d", 0))),
+        (CommonSecurityLog
+            | where isnotempty(RequestURL)
+            | project TimeGenerated, Src = SourceIP, UA = RequestClientApplication, Method = RequestMethod, Site = DestinationHostName,
+                      Url = RequestURL, Status = toint(""))
+    | extend Url = iff(Url matches regex @"^https?://", extract(@"^https?://[^/]+(/.*)?$", 1, Url), Url)
+    | extend Path = tostring(split(Url, "?")[0])
+};
+// ===========================================================================================
+
+
+// 1. ARTEX strings: source-code user agents, field user agents, intent numbers, probe paths, webshells
+ArtexWeb()
+| where TimeGenerated > datetime(2026-08-01)
+| where UA matches regex @"(?i)artex-enrich/|spa-api-recon|artex-selfupdate|^norma/\d|reconprobe/|artexverify|\(artex\)|(probe|pentest|artx|artex)[-_]?i\d{3,6}"
+     or Url matches regex @"(?i)^/zz|/nr\?zz|/artex-[a-z]{0,2}\d{3,}|zzartx|/artx_s\d+\.php|[?&]k=x9f3c2b7e|zz+[-_]?(q[-_])?(random[-_])?no[nt][-_]?exist|nonexistent[-_]xyz|_probe_missing|/nope-\d{3,}"
+| summarize Requests = count(), First = min(TimeGenerated), Last = max(TimeGenerated), Hosts = dcount(Site),
+            UserAgents = make_set(UA, 20), Statuses = make_set(Status, 10) by Src
+| order by Requests desc
+
+
+// 2. User-agent family switching (Elastic's hunt): 3+ families and 20+ requests in one minute
+ArtexWeb()
+| where TimeGenerated > datetime(2026-08-01)
+| extend Family = case(isempty(UA) or UA == "-", "empty",
+                       UA matches regex @"(?i)arte?x|norma/|spa-api-recon|reconprobe", "artex",
+                       UA matches regex @"(?i)^curl/", "curl",
+                       UA matches regex @"(?i)python|aiohttp|^httpx/", "python",
+                       UA matches regex @"(?i)^go-http-client", "go",
+                       UA matches regex @"(?i)boto|aws-cli|aws-sdk", "aws",
+                       UA matches regex @"(?i)fuzz faster|nuclei|sqlmap|gobuster|feroxbuster|nikto", "scanner",
+                       UA matches regex @"(?i)^mozilla/", "browser",
+                       "other")
+| summarize Families = dcount(Family), Requests = count() by Src, Minute = bin(TimeGenerated, 1m)
+| where Families >= 3 and Requests >= 20
+| summarize Minutes = count(), MaxFamilies = max(Families), Requests = sum(Requests), First = min(Minute) by Src
+| order by Minutes desc
+
+
+// 3. Breadth: refused-path fuzzing and hostname spread, per 5 minutes
+ArtexWeb()
+| where TimeGenerated > datetime(2026-08-01)
+| summarize RefusedPaths = dcountif(Path, Status in (401, 403, 404, 405)), Hosts = dcount(Site), Requests = count()
+    by Src, Window = bin(TimeGenerated, 5m)
+| summarize MaxRefusedPaths5m = max(RefusedPaths), MaxHosts5m = max(Hosts), Requests = sum(Requests), First = min(Window) by Src
+| where MaxRefusedPaths5m >= 20 or MaxHosts5m >= 10
+| order by MaxRefusedPaths5m desc
+
+
+// 4. Tester labels that appear on refused requests and vanish on successful ones (Profero)
+ArtexWeb()
+| where TimeGenerated > datetime(2026-08-01)
+| extend IsLabelled = UA matches regex @"(?i)authori[sz]ed|bounty|research|pentest|read-?only|probe" and UA !contains "kube-probe",
+         IsRefused = Status in (401, 403, 404, 405, 429),
+         IsOk = Status between (200 .. 399)
+| summarize LabelledRefused = countif(IsLabelled and IsRefused), Refused = countif(IsRefused),
+            LabelledOk = countif(IsLabelled and IsOk), Ok = countif(IsOk) by Src
+| extend PctLabelOnRefused = round(100.0 * LabelledRefused / Refused, 1),
+         PctLabelOnOk = iff(Ok > 0, round(100.0 * LabelledOk / Ok, 1), 0.0)
+| where Refused >= 20 and PctLabelOnRefused > 10 and PctLabelOnOk < 5
+
+
+// 5. Join keys: intent numbers and zz markers, across every source and hostname
+ArtexWeb()
+| where TimeGenerated > datetime(2026-08-01)
+| extend Intent = coalesce(extract(@"(?i)(?:probe|pentest|artx|artex|audit|scan)[-_]?i(\d{3,6})", 1, UA),
+                           extract(@"(?i)(?:probe|pentest|artx|artex|audit|canary|_)[-_]?i(\d{3,6})", 1, Url),
+                           extract(@"(?i)(?:^|[^a-z0-9])i(\d{3,6})[-_]?(?:canary|probe)", 1, Url)),
+         Marker = tolower(extract(@"(?i)(?:^|[^a-z0-9])(zz[a-z0-9]*(?:[-_][a-z0-9]+){1,3}|artex[-_]probe[-_]\d{3,6})", 1, Url))
+| extend Key = iff(isnotempty(Intent), strcat("i", Intent), Marker)
+| where isnotempty(Key)
+| summarize Requests = count(), First = min(TimeGenerated), Last = max(TimeGenerated), Sources = make_set(Src, 50), Hosts = dcount(Site) by Key
+| order by First asc
+
+
+// 6. Entra ID sign-ins from published ARTEX infrastructure or with ARTEX-style user agents
+let artexIPs = dynamic(["38.244.50.120", "144.172.64.60", "144.172.64.99", "144.172.64.128", "187.15.88.186", "187.15.90.217",
+    "187.15.89.186", "101.53.80.20", "205.214.59.31", "124.155.252.63", "154.201.79.246", "23.248.249.90", "23.158.220.98",
+    "103.248.148.84", "203.160.133.172", "209.209.85.38", "199.19.95.66", "199.19.95.67", "199.19.95.68", "91.92.240.238",
+    "85.11.168.45", "178.16.54.129", "31.77.229.35", "85.11.167.52", "104.194.150.21", "167.88.172.97", "95.40.73.129",
+    "74.211.97.67", "118.100.234.120", "207.5.195.93", "156.240.236.28", "156.240.236.27", "156.240.236.14"]);
+union isfuzzy=true SigninLogs, AADNonInteractiveUserSignInLogs, AADServicePrincipalSignInLogs
+| where TimeGenerated > datetime(2026-08-01)
+| where IPAddress in (artexIPs)
+     or UserAgent matches regex @"(?i)artex|norma/|reconprobe|pentest|authori[sz]ed[- ]|read-?only|python-requests/2\.34\.2|python-urllib/3\.1[24]|^curl/7\.88\.1"
+| project TimeGenerated, Type, UserPrincipalName = column_ifexists("UserPrincipalName", ""),
+          ServicePrincipalName = column_ifexists("ServicePrincipalName", ""), AppDisplayName, IPAddress,
+          UserAgent = column_ifexists("UserAgent", ""), ResultType, ConditionalAccessStatus
+| order by TimeGenerated asc
+
+
+// 7. Microsoft Graph calls from published infrastructure or ARTEX-style clients
+let artexIPs = dynamic(["144.172.64.60", "144.172.64.99", "144.172.64.128", "187.15.88.186", "187.15.90.217", "187.15.89.186",
+    "38.244.50.120", "91.92.240.238", "85.11.168.45", "178.16.54.129", "31.77.229.35"]);
+MicrosoftGraphActivityLogs
+| where TimeGenerated > datetime(2026-08-01)
+| where IPAddress in (artexIPs) or UserAgent matches regex @"(?i)artex|norma/|reconprobe|pentest"
+| summarize Calls = count(), First = min(TimeGenerated), Last = max(TimeGenerated), Uris = make_set(RequestUri, 25)
+    by AppId, ServicePrincipalId, UserId, IPAddress, UserAgent
+
+
+// 8. Accounts and apps created with agent-style names (Bitrise, GTIG and Eye Security naming)
+AuditLogs
+| where TimeGenerated > datetime(2026-08-01)
+| where OperationName in ("Add user", "Invite external user", "Add service principal", "Add application")
+| extend Target = tostring(TargetResources[0].userPrincipalName), Name = tostring(TargetResources[0].displayName)
+| where Target matches regex @"(?i)^(i\d{3,5}[a-z-]{0,12}|[^@]*artex[-_]?probe[^@]*|artx[^@]*|qa_probe_[^@]*|zz[^@]*)@"
+     or Name matches regex @"(?i)artex|artx|^i\d{3,5}[a-z-]{0,12}$|qa_probe|idor-probe"
+| project TimeGenerated, OperationName, InitiatedBy = tostring(InitiatedBy.user.userPrincipalName), Target, Name
+
+
+// 9. Defender XDR: an ARTEX engine or console running inside your estate.
+//    Port 8787 is also RStudio Server's default, so read the process before you panic.
+union
+    (DeviceNetworkEvents
+        | where Timestamp > ago(30d)
+        | where ActionType == "ListeningConnectionCreated" and LocalPort in (8787, 8788)
+        | project Timestamp, DeviceName, Process = InitiatingProcessFileName, CommandLine = InitiatingProcessCommandLine, Detail = tostring(LocalPort)),
+    (DeviceProcessEvents
+        | where Timestamp > ago(30d)
+        | where ProcessCommandLine has_any ("autumn27/artex", "tomicdd/artex", "congdonglinux/artex", "Hinln/ARTEX", "Autumn-27/ARTEX")
+             or (FileName =~ "artex" and ProcessCommandLine has_any ("-addr", "-proxy"))
+        | project Timestamp, DeviceName, Process = FileName, CommandLine = ProcessCommandLine, Detail = AccountName)
+| order by Timestamp desc
+
+
+// 10. Defender XDR: servers calling LLM APIs or the LLM reseller in the FBI FLASH
+DeviceNetworkEvents
+| where Timestamp > ago(30d)
+| where RemoteUrl has_any ("api.deepseek.com", "open.bigmodel.cn", "api.x.ai", "api.anthropic.com", "xcai.pro", "openrouter.ai")
+| join kind=leftouter (DeviceInfo | summarize arg_max(Timestamp, DeviceType, OSPlatform) by DeviceId) on DeviceId
+| where DeviceType == "Server" or OSPlatform startswith "Linux"
+| summarize Connections = count(), First = min(Timestamp), Last = max(Timestamp), Domains = make_set(RemoteUrl, 20),
+            Processes = make_set(InitiatingProcessFileName, 20) by DeviceName
+| order by Connections desc
+
+
+// 11. Defender XDR: your hosts talking to published ARTEX C2 or ARTEX servers
+let artexInfra = dynamic(["199.19.95.66", "199.19.95.67", "199.19.95.68", "85.11.167.52", "91.92.240.238", "85.11.168.45",
+    "178.16.54.129", "31.77.229.35", "38.244.50.120"]);
+DeviceNetworkEvents
+| where Timestamp > ago(30d)
+| where RemoteIP in (artexInfra) or RemoteUrl has_any ("artex.lol", "tokena2b.top", "ok7777.eu.cc", "noog2infra.site", "xcai.pro")
+| project Timestamp, DeviceName, RemoteIP, RemoteUrl, RemotePort, InitiatingProcessFileName, InitiatingProcessCommandLine

@@ -1,0 +1,104 @@
+``` ARTEX Hunting Pack - Splunk hunts - Sujay Adkesar - https://thelocalh0st.com - MIT licence ```
+``` Run each search on its own over 1 August 2026 to now (the FBI FLASH: "since at least August 2026"). ```
+``` Step 0: create a search macro named artex_web with the definition below, adjusted to your indexes. ```
+``` It gives every web, WAF and load-balancer source the same field names: src ua url path status site http_method. ```
+
+``` ===== macro artex_web (Settings > Advanced search > Search macros) ===== ```
+(index=web OR index=waf OR index=proxy) (sourcetype=access_combined OR sourcetype=nginx* OR sourcetype=aws:waf OR sourcetype=aws:elb:accesslogs OR sourcetype=ms:iis* OR sourcetype=cloudflare* OR sourcetype=azure*)
+| eval src=coalesce(src, src_ip, clientip, c_ip, ClientIP, 'httpRequest.clientIp'),
+       ua=coalesce(http_user_agent, useragent, cs_User_Agent, ClientRequestUserAgent, user_agent),
+       url=coalesce(url, uri, ClientRequestURI, uri_path."?".uri_query, uri_path, cs_uri_stem."?".cs_uri_query, cs_uri_stem),
+       status=tonumber(coalesce(status, sc_status, EdgeResponseStatus, elb_status_code)),
+       site=coalesce(site, dest, cs_host, ClientRequestHost),
+       http_method=coalesce(http_method, method, cs_method, ClientRequestMethod)
+| eval path=mvindex(split(url, "?"), 0)
+
+
+``` ===== 1. ARTEX strings: source-code user agents, field user agents, intent numbers, probe paths, webshells ===== ```
+`artex_web`
+| where match(ua, "(?i)artex-enrich/|spa-api-recon|artex-selfupdate|^norma/\d|reconprobe/|artexverify|\(artex\)|(probe|pentest|artx|artex)[-_]?i\d{3,6}")
+     OR match(url, "(?i)^/zz|/nr\?zz|/artex-[a-z]{0,2}\d{3,}|zzartx|/artx_s\d+\.php|[?&]k=x9f3c2b7e|zz+[-_]?(q[-_])?(random[-_])?no[nt][-_]?exist|nonexistent[-_]xyz|_probe_missing|/nope-\d{3,}")
+| stats count min(_time) as first max(_time) as last dc(site) as hosts values(status) as statuses values(ua) as user_agents by src
+| convert ctime(first) ctime(last)
+| sort - count
+
+
+``` ===== 2. User-agent family switching (Elastic's hunt): 3+ families and 20+ requests in one minute ===== ```
+`artex_web`
+| eval fam=case(isnull(ua) OR ua="" OR ua="-", "empty",
+               match(ua, "(?i)arte?x|norma/|spa-api-recon|reconprobe"), "artex",
+               match(ua, "(?i)^curl/"), "curl",
+               match(ua, "(?i)python|aiohttp|^httpx/"), "python",
+               match(ua, "(?i)^go-http-client"), "go",
+               match(ua, "(?i)boto|aws-cli|aws-sdk"), "aws",
+               match(ua, "(?i)fuzz faster|nuclei|sqlmap|gobuster|feroxbuster|nikto"), "scanner",
+               match(ua, "(?i)^mozilla/"), "browser",
+               true(), "other")
+| bin _time span=1m
+| stats dc(fam) as families count as requests values(fam) as fams by _time src
+| where families>=3 AND requests>=20
+| stats count as minutes max(families) as max_families sum(requests) as requests min(_time) as first by src
+| convert ctime(first)
+| sort - minutes
+
+
+``` ===== 3. Breadth: refused-path fuzzing and hostname spread, per 5 minutes ===== ```
+`artex_web`
+| bin _time span=5m
+| eval refused_path=if(match(tostring(status), "^40[1345]$"), path, null())
+| stats dc(refused_path) as refused_paths dc(site) as hosts count by _time src
+| stats max(refused_paths) as max_refused_paths_5m max(hosts) as max_hosts_5m sum(count) as requests min(_time) as first by src
+| where max_refused_paths_5m>=20 OR max_hosts_5m>=10
+| convert ctime(first)
+| sort - max_refused_paths_5m
+
+
+``` ===== 4. Tester labels that appear on refused requests and vanish on successful ones (Profero) ===== ```
+`artex_web`
+| eval labelled=if(match(ua, "(?i)authori[sz]ed|bounty|research|pentest|read-?only|(?<!kube-)probe"), 1, 0),
+       refused=if(match(tostring(status), "^(401|403|404|405|429)$"), 1, 0),
+       ok=if(status>=200 AND status<400, 1, 0)
+| stats sum(eval(labelled*refused)) as labelled_refused sum(refused) as refused sum(eval(labelled*ok)) as labelled_ok sum(ok) as ok by src
+| eval pct_label_on_refused=round(100*labelled_refused/refused, 1), pct_label_on_ok=if(ok>0, round(100*labelled_ok/ok, 1), 0)
+| where refused>=20 AND pct_label_on_refused>10 AND pct_label_on_ok<5
+
+
+``` ===== 5. A client-IP header that changes on nearly every request (Eye Security's rate-limit bypass) ===== ```
+`artex_web`
+| eval xff=coalesce(x_forwarded_for, http_x_forwarded_for, XForwardedFor), claimed=trim(mvindex(split(xff, ","), 0))
+| where isnotnull(claimed) AND claimed!="-" AND claimed!=""
+| stats dc(claimed) as claimed_ips dc(ua) as user_agents count by src
+| where claimed_ips>=20 AND claimed_ips>=count*0.5 AND user_agents<=5
+
+
+``` ===== 6. Join keys: intent numbers and zz markers, across every source and hostname ===== ```
+`artex_web`
+| rex field=ua "(?i)(?:probe|pentest|artx|artex|audit|scan)[-_]?i(?<intent>\d{3,6})"
+| rex field=url "(?i)(?:probe|pentest|artx|artex|audit|canary|_)[-_]?i(?<intent_url>\d{3,6})"
+| rex field=url "(?i)(?<![a-z0-9])i(?<intent_url2>\d{3,6})[-_]?(?:canary|probe)"
+| rex field=url "(?i)(?<marker>(?<![a-z0-9])zz[a-z0-9]*(?:[-_][a-z0-9]+){1,3}|artex[-_]probe[-_]\d{3,6})"
+| eval key=coalesce("i".intent, "i".intent_url, "i".intent_url2, lower(marker))
+| where isnotnull(key)
+| stats count min(_time) as first max(_time) as last values(src) as sources dc(site) as hosts by key
+| convert ctime(first) ctime(last)
+| sort first
+
+
+``` ===== 7. Pivot: every address that used the exact user agent of a confirmed hit ===== ```
+`artex_web`
+| search ua="PASTE THE USER AGENT HERE"
+| stats count min(_time) as first max(_time) as last dc(site) as hosts values(status) as statuses by src
+| convert ctime(first) ctime(last)
+
+
+``` ===== 8. FBI FLASH-20261113-001 and vendor addresses anywhere in your data ===== ```
+``` Proxy and VPN exits are shared: a hit is a lead, not a verdict. ```
+index=* (TERM(38.244.50.120) OR TERM(144.172.64.60) OR TERM(144.172.64.99) OR TERM(144.172.64.128) OR TERM(187.15.88.186) OR TERM(187.15.90.217) OR TERM(187.15.89.186) OR TERM(101.53.80.20) OR TERM(205.214.59.31) OR TERM(124.155.252.63) OR TERM(154.201.79.246) OR TERM(23.248.249.90) OR TERM(23.158.220.98) OR TERM(103.248.148.84) OR TERM(203.160.133.172) OR TERM(209.209.85.38) OR TERM(199.19.95.66) OR TERM(199.19.95.67) OR TERM(199.19.95.68) OR TERM(91.92.240.238) OR TERM(85.11.168.45) OR TERM(178.16.54.129) OR TERM(31.77.229.35) OR TERM(85.11.167.52) OR TERM(104.194.150.21) OR TERM(167.88.172.97) OR TERM(95.40.73.129) OR TERM(74.211.97.67) OR TERM(118.100.234.120) OR TERM(207.5.195.93) OR TERM(156.240.236.28) OR TERM(156.240.236.27) OR TERM(156.240.236.14) OR xcai.pro OR artex.lol OR tokena2b.top OR ok7777.eu.cc OR noog2infra.site)
+| stats count min(_time) as first max(_time) as last values(sourcetype) as sourcetypes by index host
+| convert ctime(first) ctime(last)
+
+
+``` ===== 9. An ARTEX console inside your network: update check and repository pulls through the proxy ===== ```
+index=proxy (http_user_agent="artex-selfupdate" OR url="*api.github.com/repos/Hinln/ARTEX*" OR url="*github.com/Hinln/ARTEX*" OR url="*github.com/Autumn-27/ARTEX*" OR url="*github.com/Autumn-27/norma*")
+| stats count min(_time) as first max(_time) as last values(url) as urls by src user
+| convert ctime(first) ctime(last)

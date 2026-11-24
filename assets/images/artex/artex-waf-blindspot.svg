@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" width="1200" height="600" role="img" aria-label="Why the firewall let it through. On the left, seven requests from one source as a per-request WAF rule sees them: a source map, config.json, a canary 404, an internal API returning 401, a username check, a password-reset token request and a forgot-password post, about one per second, all passing. On the right, the same traffic grouped by source in a lab replay of four published cases: four user-agent families in one minute, 33 paths refused in five minutes right after a canary 404, seven seconds from reading config.json to probing password reset, 22 hostnames from one address, 429 different X-Forwarded-For values in 445 calls, and eight addresses sharing one fingerprint that tried every HTTP verb on one order.">
+  <title>Why the firewall let it through</title>
+  <defs><pattern id="dotsW" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="1.2" cy="1.2" r="1.2" fill="#e2e8f0"/></pattern></defs>
+  <style>
+    .s { font-family: "Segoe UI", Inter, system-ui, -apple-system, Roboto, sans-serif; }
+    .m { font-family: "Cascadia Mono", Consolas, "SFMono-Regular", Menlo, monospace; font-variant-ligatures: none; white-space: pre; }
+    .row { animation: up .5s ease-out both; }
+    .r2 { animation-delay: .08s; } .r3 { animation-delay: .16s; } .r4 { animation-delay: .24s; } .r5 { animation-delay: .32s; } .r6 { animation-delay: .4s; } .r7 { animation-delay: .48s; }
+    .tile { animation: up .6s ease-out both; animation-delay: .7s; } .t2 { animation-delay: .8s; } .t3 { animation-delay: .9s; } .t4 { animation-delay: 1s; } .t5 { animation-delay: 1.1s; } .t6 { animation-delay: 1.2s; }
+    @keyframes up { from { opacity: .3; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+  </style>
+  <rect width="1200" height="600" rx="22" fill="#ffffff"/>
+  <rect width="1200" height="600" rx="22" fill="url(#dotsW)"/>
+  <rect x=".5" y=".5" width="1199" height="599" rx="22" fill="none" stroke="#e2e8f0"/>
+  <text x="48" y="52" class="s" font-size="13" font-weight="700" letter-spacing="2" fill="#be123c">WHY THE FIREWALL LET IT THROUGH</text>
+  <text x="48" y="86" class="s" font-size="26" font-weight="700" fill="#0f172a">Each request is ordinary. The source is not.</text>
+
+  <!-- left: per request -->
+  <rect x="48" y="112" width="568" height="432" rx="16" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="70" y="146" class="s" font-size="16" font-weight="700" fill="#0f172a">Request by request</text>
+  <text x="70" y="168" class="s" font-size="13" fill="#64748b">what a per-request WAF rule evaluates</text>
+  <g class="m" font-size="12">
+    <g class="row"><rect x="62" y="186" width="540" height="34" rx="8" fill="#f8fafc"/>
+      <text x="74" y="208" fill="#64748b">15:00:00</text><text x="146" y="208" fill="#0f172a">GET /packs/js/main-3a9f.js.map</text><text x="400" y="208" fill="#15803d">200</text><text x="434" y="208" fill="#64748b">Chrome/124.0</text></g>
+    <g class="row r2"><rect x="62" y="224" width="540" height="34" rx="8" fill="#ffffff"/>
+      <text x="74" y="246" fill="#64748b">15:00:02</text><text x="146" y="246" fill="#0f172a">GET /assets/config.json</text><text x="400" y="246" fill="#15803d">200</text><text x="434" y="246" fill="#64748b">norma/0.4</text></g>
+    <g class="row r3"><rect x="62" y="262" width="540" height="34" rx="8" fill="#f8fafc"/>
+      <text x="74" y="284" fill="#64748b">15:00:05</text><text x="146" y="284" fill="#0f172a">GET /zzz-nonexistent-xyz123</text><text x="400" y="284" fill="#b45309">404</text><text x="434" y="284" fill="#64748b">norma/0.4</text></g>
+    <g class="row r4"><rect x="62" y="300" width="540" height="34" rx="8" fill="#ffffff"/>
+      <text x="74" y="322" fill="#64748b">15:00:06</text><text x="146" y="322" fill="#0f172a">GET /api/v1/internal/billing…</text><text x="400" y="322" fill="#b45309">401</text><text x="434" y="322" fill="#64748b">curl/7.88.1</text></g>
+    <g class="row r5"><rect x="62" y="338" width="540" height="34" rx="8" fill="#f8fafc"/>
+      <text x="74" y="360" fill="#64748b">15:00:07</text><text x="146" y="360" fill="#0f172a">GET /Account/ValidateUserName</text><text x="400" y="360" fill="#15803d">200</text><text x="434" y="360" fill="#64748b">curl/7.88.1</text></g>
+    <g class="row r6"><rect x="62" y="376" width="540" height="34" rx="8" fill="#ffffff"/>
+      <text x="74" y="398" fill="#64748b">15:00:08</text><text x="146" y="398" fill="#0f172a">POST …/GeneratePasswordReset…</text><text x="400" y="398" fill="#15803d">204</text><text x="434" y="398" fill="#64748b">Chrome/124.0</text></g>
+    <g class="row r7"><rect x="62" y="414" width="540" height="34" rx="8" fill="#f8fafc"/>
+      <text x="74" y="436" fill="#64748b">15:00:09</text><text x="146" y="436" fill="#0f172a">POST /forgot_password</text><text x="400" y="436" fill="#15803d">200</text><text x="434" y="436" fill="#64748b">Python-urllib/3.12</text></g>
+  </g>
+  <rect x="70" y="474" width="138" height="30" rx="15" fill="#dcfce7"/>
+  <text x="139" y="494" class="s" font-size="13" font-weight="700" fill="#166534" text-anchor="middle">7 of 7 pass</text>
+  <text x="222" y="494" class="s" font-size="13" fill="#475569">no signature, no rate limit: about one a second</text>
+
+  <!-- right: grouped -->
+  <rect x="640" y="112" width="512" height="432" rx="16" fill="#fff7f7" stroke="#fecdd3"/>
+  <text x="662" y="146" class="s" font-size="16" font-weight="700" fill="#0f172a">Grouped by source</text>
+  <text x="662" y="168" class="s" font-size="13" fill="#64748b">lab replay of four published cases</text>
+  <g class="tile"><rect x="660" y="186" width="232" height="108" rx="12" fill="#ffffff" stroke="#fecdd3"/>
+    <text x="678" y="224" class="s" font-size="30" font-weight="800" fill="#be123c">4</text>
+    <text x="678" y="252" class="s" font-size="12.5" fill="#334155">user-agent families inside</text>
+    <text x="678" y="272" class="s" font-size="12.5" fill="#334155">one minute (Elastic: 3+)</text></g>
+  <g class="tile t2"><rect x="902" y="186" width="232" height="108" rx="12" fill="#ffffff" stroke="#fecdd3"/>
+    <text x="920" y="224" class="s" font-size="30" font-weight="800" fill="#be123c">33</text>
+    <text x="920" y="252" class="s" font-size="12.5" fill="#334155">paths refused in 5 minutes,</text>
+    <text x="920" y="272" class="s" font-size="12.5" fill="#334155">right after a canary 404</text></g>
+  <g class="tile t3"><rect x="660" y="302" width="232" height="108" rx="12" fill="#ffffff" stroke="#fecdd3"/>
+    <text x="678" y="340" class="s" font-size="30" font-weight="800" fill="#be123c">7 s</text>
+    <text x="678" y="368" class="s" font-size="12.5" fill="#334155">from reading config.json</text>
+    <text x="678" y="388" class="s" font-size="12.5" fill="#334155">to probing password reset</text></g>
+  <g class="tile t4"><rect x="902" y="302" width="232" height="108" rx="12" fill="#ffffff" stroke="#fecdd3"/>
+    <text x="920" y="340" class="s" font-size="30" font-weight="800" fill="#be123c">22</text>
+    <text x="920" y="368" class="s" font-size="12.5" fill="#334155">hostnames from one address</text>
+    <text x="920" y="388" class="s" font-size="12.5" fill="#334155">(Bitrise saw 20+)</text></g>
+  <g class="tile t5"><rect x="660" y="418" width="232" height="108" rx="12" fill="#ffffff" stroke="#fecdd3"/>
+    <text x="678" y="456" class="s" font-size="30" font-weight="800" fill="#be123c">429</text>
+    <text x="678" y="484" class="s" font-size="12.5" fill="#334155">X-Forwarded-For values in</text>
+    <text x="678" y="504" class="s" font-size="12.5" fill="#334155">445 calls: rate limit dodged</text></g>
+  <g class="tile t6"><rect x="902" y="418" width="232" height="108" rx="12" fill="#ffffff" stroke="#fecdd3"/>
+    <text x="920" y="456" class="s" font-size="30" font-weight="800" fill="#be123c">8</text>
+    <text x="920" y="484" class="s" font-size="12.5" fill="#334155">addresses, one fingerprint,</text>
+    <text x="920" y="504" class="s" font-size="12.5" fill="#334155">every HTTP verb on one order</text></g>
+  <text x="48" y="576" class="s" font-size="12" fill="#94a3b8">Lab: synthetic replay of the Wiz, Bitrise, Eye Security and Profero cases mixed with benign traffic. Numbers from artex_hunter.py on that log.</text>
+</svg>

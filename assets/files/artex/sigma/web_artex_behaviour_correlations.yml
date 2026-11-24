@@ -1,0 +1,211 @@
+# ARTEX behaviour correlations (Sigma 2.0 correlation rules).
+# The base rules below do not alert on their own; the correlation rules after them do.
+# Thresholds are starting points from published ARTEX cases. Tune them on your own traffic.
+title: Any Web Request
+name: artex_base_web_request
+status: experimental
+description: Base rule for the ARTEX correlations, matches every web request.
+author: Sujay Adkesar
+date: 2026-11-25
+logsource:
+    category: webserver
+detection:
+    selection:
+        cs-method|exists: true
+    condition: selection
+---
+title: Refused Web Request
+name: artex_base_refused_request
+status: experimental
+description: Base rule for the ARTEX correlations, matches 401, 403, 404 and 405 responses.
+author: Sujay Adkesar
+date: 2026-11-25
+logsource:
+    category: webserver
+detection:
+    selection:
+        sc-status:
+            - 401
+            - 403
+            - 404
+            - 405
+    condition: selection
+---
+title: Recon Map Request
+name: artex_base_map
+status: experimental
+description: Base rule. Source maps, runtime config and API descriptions, the first thing ARTEX reads.
+author: Sujay Adkesar
+date: 2026-11-25
+logsource:
+    category: webserver
+detection:
+    selection:
+        - cs-uri-stem|endswith:
+              - '.js.map'
+              - '/env.js'
+              - '/config.json'
+        - cs-uri-stem|contains:
+              - '/swagger'
+              - '/openapi'
+              - '/api-docs'
+    condition: selection
+---
+title: Auth Probing Request
+name: artex_base_auth
+status: experimental
+description: Base rule. Login, SSO, OAuth, registration and password-reset endpoints.
+author: Sujay Adkesar
+date: 2026-11-25
+logsource:
+    category: webserver
+detection:
+    selection:
+        cs-uri-stem|re: '(?i)(validateusername|password_?reset|reset_?password|forgot_?password|register_user|/sign_?up|/register|/confirm|/sso|/oauth|/saml|generate_redirect_link|/api/v[0-9]+/me|/log_?in|/sign_?in|/token)([/?]|$)'
+    condition: selection
+---
+title: Exploitation Attempt
+name: artex_base_exploit
+status: experimental
+description: Base rule. Unsigned JWT, metadata SSRF, out-of-band callbacks, stacked T-SQL, traversal, script uploads.
+author: Sujay Adkesar
+date: 2026-11-25
+logsource:
+    category: webserver
+detection:
+    selection_query:
+        cs-uri-query|contains:
+            - 'eyJhbGciOiJub25lI'
+            - '169.254.169.254'
+            - 'metadata.google.internal'
+            - 'dnslog.cn'
+            - '.oast.'
+            - 'webhook.site'
+            - '../'
+            - '%2e%2e'
+    selection_tsql:
+        cs-uri-query|re: '(?i)(declare\s+@|waitfor\s+(delay|time)|exec(ute)?\s*\()'
+    selection_upload:
+        cs-uri-stem|re: '(?i)\.(phtml|php[3-8s]|phar|pht|jspx|ashx)$'
+    condition: 1 of selection_*
+---
+title: Many User Agents From One Source In One Minute
+id: 663fa952-55fb-4510-a226-a8721759bc6c
+status: experimental
+description: |
+    ARTEX workers each pick their own client (curl, python-requests, urllib, a hand-written Chrome
+    string), so one source switches user agents inside a minute. Elastic's hunt uses three or
+    more user-agent families and twenty or more requests per minute; Sigma can count distinct
+    strings, which is close. Developers at a shared egress also do this, so pair it with the
+    string and sequence rules.
+references:
+    - https://www.elastic.co/security-labs/threat-command/agentic-offensive-frameworks-detection-artex
+    - https://thelocalh0st.com/posts/artex-detection-forensics/
+author: Sujay Adkesar
+date: 2026-11-25
+correlation:
+    type: value_count
+    rules:
+        - artex_base_web_request
+    group-by:
+        - c-ip
+    timespan: 1m
+    condition:
+        gte: 3
+        field: cs-user-agent
+falsepositives:
+    - Corporate NAT and developer egress
+level: medium
+---
+title: Many Refused Paths From One Source In Five Minutes
+id: 16582692-e43b-459b-8266-ff0a9fe7266f
+status: experimental
+description: Fuzzing rounds. Wiz and GTIG both report 500+ fuzz requests; 20 distinct refused paths in 5 minutes is a low bar on purpose.
+references:
+    - https://www.wiz.io/blog/artex-in-the-wild-storm-0940-expands-targeting-of-it-and-software-vendors
+    - https://cloud.google.com/blog/topics/threat-intelligence/artex-and-friends-enter-agentic-offensive-frameworks
+author: Sujay Adkesar
+date: 2026-11-25
+correlation:
+    type: value_count
+    rules:
+        - artex_base_refused_request
+    group-by:
+        - c-ip
+    timespan: 5m
+    condition:
+        gte: 20
+        field: cs-uri-stem
+falsepositives:
+    - Your own vulnerability scanner
+    - Broken links after a release
+level: medium
+---
+title: One Source Touching Many Hostnames
+id: c9b4ab0f-db3c-4028-b6a3-8d0053eaf0c6
+status: experimental
+description: Bitrise saw one address send 36,698 requests to more than 20 of its hostnames in two days. Per-host rate limits never fire on that.
+references:
+    - https://bitrise.io/artex-incident-report
+author: Sujay Adkesar
+date: 2026-11-25
+correlation:
+    type: value_count
+    rules:
+        - artex_base_web_request
+    group-by:
+        - c-ip
+    timespan: 1h
+    condition:
+        gte: 10
+        field: cs-host
+falsepositives:
+    - Monitoring services that check every hostname
+level: medium
+---
+title: Five Or More HTTP Methods On One Path
+id: 04eb0de1-5af6-4182-9b25-24ed4b4a1834
+status: experimental
+description: Profero saw ARTEX-style agents try every verb on a resource looking for one the access check forgot.
+references:
+    - https://profero.io/blog/ai-attack-cluster-tells
+author: Sujay Adkesar
+date: 2026-11-25
+correlation:
+    type: value_count
+    rules:
+        - artex_base_web_request
+    group-by:
+        - c-ip
+        - cs-uri-stem
+    timespan: 10m
+    condition:
+        gte: 5
+        field: cs-method
+falsepositives:
+    - REST clients with CORS preflight (OPTIONS) on the same resource
+level: low
+---
+title: Map, Then Auth Probing, Then Exploitation From One Source
+id: 748f2d90-99cf-42f5-ab23-0fe8d2bbabab
+status: experimental
+description: |
+    The order matters more than any single request. ARTEX reads the map first (source maps,
+    config.json, OpenAPI), then probes registration, password reset and SSO, then exploits.
+references:
+    - https://www.wiz.io/blog/artex-in-the-wild-storm-0940-expands-targeting-of-it-and-software-vendors
+    - https://thelocalh0st.com/posts/artex-detection-forensics/
+author: Sujay Adkesar
+date: 2026-11-25
+correlation:
+    type: temporal_ordered
+    rules:
+        - artex_base_map
+        - artex_base_auth
+        - artex_base_exploit
+    group-by:
+        - c-ip
+    timespan: 2h
+falsepositives:
+    - Your own penetration tests
+level: high

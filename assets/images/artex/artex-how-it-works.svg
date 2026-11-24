@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" width="1200" height="640" role="img" aria-label="How one ARTEX task reaches your edge, from the public source code. The operator types a goal into the console on port 8787 and picks models such as DeepSeek, GLM, Grok or Kimi. The planner turns the goal into intents, prefers depth over coverage and keeps two or three different routes alive. Three workers run in parallel by default, one intent each, each with its own HTTP client. All traffic passes an intercept proxy on 127.0.0.1:8788 that records every request and allows anything no rule matches. Four code facts show up in your logs: the worker prompt calls the system an authorised penetration test, so agents label their traffic; rule two tells workers to exhaust every bypass after a block, so you see refused-path bursts and canary 404s; workers run in folders named after their intent number, so intent numbers leak into user agents, paths and usernames; and the container ships curl, Python and Playwright Chromium, so one source switches user-agent families inside a minute.">
+  <title>How one ARTEX task reaches your edge</title>
+  <defs>
+    <pattern id="dotsH" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="1.2" cy="1.2" r="1.2" fill="#e2e8f0"/></pattern>
+    <marker id="arH" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#94a3b8"/></marker>
+  </defs>
+  <style>
+    .s { font-family: "Segoe UI", Inter, system-ui, -apple-system, Roboto, sans-serif; }
+    .m { font-family: "Cascadia Mono", Consolas, "SFMono-Regular", Menlo, monospace; font-variant-ligatures: none; }
+    .card { animation: up .6s ease-out both; } .k2 { animation-delay: .1s; } .k3 { animation-delay: .2s; } .k4 { animation-delay: .3s; }
+    .k5 { animation-delay: .45s; } .k6 { animation-delay: .55s; } .k7 { animation-delay: .65s; } .k8 { animation-delay: .75s; }
+    .flow { stroke-dasharray: 6 6; animation: dash 1.6s linear infinite; }
+    @keyframes up { from { opacity: .35; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+    @keyframes dash { to { stroke-dashoffset: -24; } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+  </style>
+  <rect width="1200" height="640" rx="22" fill="#ffffff"/>
+  <rect width="1200" height="640" rx="22" fill="url(#dotsH)"/>
+  <rect x=".5" y=".5" width="1199" height="639" rx="22" fill="none" stroke="#e2e8f0"/>
+  <text x="48" y="52" class="s" font-size="13" font-weight="700" letter-spacing="2" fill="#be123c">FROM THE PUBLIC SOURCE · v0.3.15</text>
+  <text x="48" y="86" class="s" font-size="26" font-weight="700" fill="#0f172a">One ARTEX task, from a typed goal to your edge</text>
+
+  <!-- operator -->
+  <g class="card">
+    <rect x="48" y="122" width="230" height="168" rx="14" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text x="66" y="152" class="s" font-size="16" font-weight="700" fill="#0f172a">Operator console</text>
+    <text x="66" y="178" class="m" font-size="12.5" fill="#be123c">:8787</text>
+    <text x="66" y="202" class="s" font-size="13" fill="#334155">goal typed in plain words</text>
+    <text x="66" y="224" class="s" font-size="13" fill="#334155">models: DeepSeek, GLM,</text>
+    <text x="66" y="244" class="s" font-size="13" fill="#334155">Grok, Kimi and others</text>
+    <text x="66" y="268" class="s" font-size="13" fill="#334155">failover chain since v0.3.2</text>
+  </g>
+  <!-- planner -->
+  <g class="card k2">
+    <rect x="318" y="122" width="230" height="168" rx="14" fill="#eef2ff" stroke="#c7d2fe"/>
+    <text x="336" y="152" class="s" font-size="16" font-weight="700" fill="#312e81">Planner</text>
+    <text x="336" y="178" class="s" font-size="13" fill="#3730a3">goal → intents</text>
+    <text x="336" y="202" class="s" font-size="13" fill="#3730a3">depth over coverage</text>
+    <text x="336" y="226" class="s" font-size="13" fill="#3730a3">2–3 different routes alive</text>
+    <text x="336" y="250" class="s" font-size="13" fill="#3730a3">retester re-checks findings</text>
+  </g>
+  <!-- workers -->
+  <g class="card k3">
+    <rect x="588" y="110" width="290" height="192" rx="14" fill="#fff7ed" stroke="#fed7aa"/>
+    <text x="606" y="140" class="s" font-size="16" font-weight="700" fill="#7c2d12">Workers × 3 (default)</text>
+    <rect x="606" y="154" width="254" height="40" rx="9" fill="#ffffff" stroke="#fed7aa"/>
+    <text x="620" y="179" class="m" font-size="12.5" fill="#9a3412">i&lt;n&gt;   curl/7.88.1</text>
+    <rect x="606" y="202" width="254" height="40" rx="9" fill="#ffffff" stroke="#fed7aa"/>
+    <text x="620" y="227" class="m" font-size="12.5" fill="#9a3412">i&lt;n+1&gt; python-requests</text>
+    <rect x="606" y="250" width="254" height="40" rx="9" fill="#ffffff" stroke="#fed7aa"/>
+    <text x="620" y="275" class="m" font-size="12.5" fill="#9a3412">i&lt;n+2&gt; Playwright Chromium</text>
+  </g>
+  <!-- proxy -->
+  <g class="card k4">
+    <rect x="918" y="122" width="234" height="120" rx="14" fill="#f0fdf4" stroke="#bbf7d0"/>
+    <text x="936" y="152" class="s" font-size="16" font-weight="700" fill="#14532d">Intercept proxy</text>
+    <text x="936" y="176" class="m" font-size="12.5" fill="#15803d">127.0.0.1:8788</text>
+    <text x="936" y="200" class="s" font-size="13" fill="#166534">records every request</text>
+    <text x="936" y="222" class="s" font-size="13" fill="#166534">no rule matches → ALLOW</text>
+  </g>
+  <g class="card k4">
+    <rect x="918" y="262" width="234" height="40" rx="10" fill="#fff1f2" stroke="#fecdd3"/>
+    <text x="1035" y="287" class="s" font-size="13.5" font-weight="700" fill="#be123c" text-anchor="middle">your WAF, logins and APIs</text>
+  </g>
+  <path d="M280 206 H314" stroke="#94a3b8" stroke-width="2" fill="none" marker-end="url(#arH)" class="flow"/>
+  <path d="M550 206 H584" stroke="#94a3b8" stroke-width="2" fill="none" marker-end="url(#arH)" class="flow"/>
+  <path d="M880 182 H914" stroke="#94a3b8" stroke-width="2" fill="none" marker-end="url(#arH)" class="flow"/>
+  <path d="M1035 243 V258" stroke="#94a3b8" stroke-width="2" fill="none" marker-end="url(#arH)"/>
+
+  <!-- code to logs -->
+  <text x="48" y="342" class="s" font-size="13" font-weight="700" letter-spacing="2" fill="#64748b">WHAT THE CODE SAYS, AND WHAT YOU WILL SEE</text>
+  <g class="card k5">
+    <rect x="48" y="358" width="264" height="232" rx="14" fill="#ffffff" stroke="#e2e8f0"/>
+    <text x="64" y="384" class="s" font-size="11" font-weight="700" letter-spacing="1.5" fill="#94a3b8">IN THE CODE</text>
+    <text x="64" y="406" class="m" font-size="12" fill="#334155">worker prompt: "you are the</text>
+    <text x="64" y="424" class="m" font-size="12" fill="#334155">executor of an authorised</text>
+    <text x="64" y="442" class="m" font-size="12" fill="#334155">penetration-testing system"</text>
+    <line x1="64" y1="462" x2="296" y2="462" stroke="#f1f5f9" stroke-width="2"/>
+    <text x="64" y="486" class="s" font-size="11" font-weight="700" letter-spacing="1.5" fill="#be123c">IN YOUR LOGS</text>
+    <text x="64" y="510" class="s" font-size="13.5" font-weight="600" fill="#0f172a">Agents label their own traffic:</text>
+    <text x="64" y="532" class="m" font-size="12" fill="#be123c">authorized-pentest, read-only,</text>
+    <text x="64" y="552" class="m" font-size="12" fill="#be123c">pentest-probe-i5938/1.0</text>
+  </g>
+  <g class="card k6">
+    <rect x="328" y="358" width="264" height="232" rx="14" fill="#ffffff" stroke="#e2e8f0"/>
+    <text x="344" y="384" class="s" font-size="11" font-weight="700" letter-spacing="1.5" fill="#94a3b8">IN THE CODE</text>
+    <text x="344" y="406" class="m" font-size="12" fill="#334155">rule 2: a first block, 404</text>
+    <text x="344" y="424" class="m" font-size="12" fill="#334155">or filter is not the end;</text>
+    <text x="344" y="442" class="m" font-size="12" fill="#334155">exhaust every bypass</text>
+    <line x1="344" y1="462" x2="576" y2="462" stroke="#f1f5f9" stroke-width="2"/>
+    <text x="344" y="486" class="s" font-size="11" font-weight="700" letter-spacing="1.5" fill="#be123c">IN YOUR LOGS</text>
+    <text x="344" y="510" class="s" font-size="13.5" font-weight="600" fill="#0f172a">Refused-path bursts, every</text>
+    <text x="344" y="532" class="s" font-size="13.5" font-weight="600" fill="#0f172a">HTTP verb on one path, a</text>
+    <text x="344" y="554" class="s" font-size="13.5" font-weight="600" fill="#0f172a">canary 404 before each round</text>
+  </g>
+  <g class="card k7">
+    <rect x="608" y="358" width="264" height="232" rx="14" fill="#ffffff" stroke="#e2e8f0"/>
+    <text x="624" y="384" class="s" font-size="11" font-weight="700" letter-spacing="1.5" fill="#94a3b8">IN THE CODE</text>
+    <text x="624" y="406" class="m" font-size="12" fill="#334155">run dir tasks/&lt;task&gt;/i&lt;id&gt;</text>
+    <text x="624" y="424" class="m" font-size="12" fill="#334155">session exp&lt;N&gt;-worker-i&lt;id&gt;</text>
+    <text x="624" y="442" class="m" font-size="12" fill="#334155">id = one BIGSERIAL counter</text>
+    <line x1="624" y1="462" x2="856" y2="462" stroke="#f1f5f9" stroke-width="2"/>
+    <text x="624" y="486" class="s" font-size="11" font-weight="700" letter-spacing="1.5" fill="#be123c">IN YOUR LOGS</text>
+    <text x="624" y="510" class="s" font-size="13.5" font-weight="600" fill="#0f172a">Intent numbers in user agents,</text>
+    <text x="624" y="532" class="s" font-size="13.5" font-weight="600" fill="#0f172a">paths and usernames:</text>
+    <text x="624" y="554" class="m" font-size="12" fill="#be123c">i871 i1040 i3694 i5938 i6084</text>
+  </g>
+  <g class="card k8">
+    <rect x="888" y="358" width="264" height="232" rx="14" fill="#ffffff" stroke="#e2e8f0"/>
+    <text x="904" y="384" class="s" font-size="11" font-weight="700" letter-spacing="1.5" fill="#94a3b8">IN THE CODE</text>
+    <text x="904" y="406" class="m" font-size="12" fill="#334155">image: curl, wget, nmap,</text>
+    <text x="904" y="424" class="m" font-size="12" fill="#334155">Python 3.12, Playwright</text>
+    <text x="904" y="442" class="m" font-size="12" fill="#334155">Chromium; 3 workers at once</text>
+    <line x1="904" y1="462" x2="1136" y2="462" stroke="#f1f5f9" stroke-width="2"/>
+    <text x="904" y="486" class="s" font-size="11" font-weight="700" letter-spacing="1.5" fill="#be123c">IN YOUR LOGS</text>
+    <text x="904" y="510" class="s" font-size="13.5" font-weight="600" fill="#0f172a">One source, 3+ user-agent</text>
+    <text x="904" y="532" class="s" font-size="13.5" font-weight="600" fill="#0f172a">families inside a minute,</text>
+    <text x="904" y="554" class="s" font-size="13.5" font-weight="600" fill="#0f172a">~1 s bursts, 25–31 s pauses</text>
+  </g>
+  <text x="48" y="618" class="s" font-size="12" fill="#94a3b8">ARTEX repository (AGPL-3.0), last public commit f3e3f54: agent/worker.go, agent/planner.go, intercept/prompt.go, db/schema.sql, Dockerfile. Log examples: Bitrise, Wiz, Unit 42.</text>
+</svg>
