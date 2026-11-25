@@ -53,8 +53,13 @@ google_site_verification: # fill in to your verification string
 # ↑ --------------------------
 # The end of `jekyll-seo-tag` settings
 
+# Chirpy 7 reads the analytics block below; this legacy key is ignored
+analytics:
+  google:
+    id: G-JCWDLLPLD1 # Google Analytics 4 measurement ID
+
 google_analytics:
-  id: G-JCWDLLPLD1 # fill in your Google Analytics ID
+  id: G-JCWDLLPLD1
   # Google Analytics pageviews report settings
   pv:
     proxy_endpoint: # fill in the Google Analytics superProxy endpoint of Google App Engine

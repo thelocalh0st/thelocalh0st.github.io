@@ -60,9 +60,6 @@ user-agent,Mozilla/5.0 (compatible; ArtExVerify/1.0),Verification client,Eye Sec
 user-agent,pentest-probe-i5938/1.0,"12,813 requests; intent number in the string",Bitrise incident report v1.6,2026-11-19,high,block,the number changes per intent; match the pattern
 user-agent,Mozilla/5.0 (compatible; authorized-pentest/bitrise-readonly),Self-declared tester label,Bitrise incident report v1.6,2026-11-19,medium,challenge,expect your own company name in place of bitrise
 user-agent,Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101 Firefox/38.0,Tunnel client (Neo-reGeorg),Eye Security,2026-11-12,medium,hunt,
-user-agent,python-requests/2.34.2,Default client in several cases,Wiz; Bitrise; Eye Security,2026-10-22,low,hunt,common legitimate client
-user-agent,Python-urllib/3.14,Default client,Eye Security,2026-11-12,low,hunt,common legitimate client
-user-agent,curl/7.88.1,Default client,Wiz; Bitrise,2026-10-22,low,hunt,common legitimate client
 url-path,/zzz-nonexistent-xyz123,Control-404 canary before fuzzing,Wiz,2026-10-22,high,block,
 url-path,/zz-notexist-*,Control-404 canary,Eye Security,2026-11-12,high,block,
 url-path,/_i6084_probe_missing,Control-404 canary with intent number,Bitrise incident report v1.6,2026-11-19,high,block,
@@ -85,7 +82,7 @@ string,=== I871C START,Command output banner,Bitrise incident report v1.6,2026-1
 regex,"^i\d{3,5}[a-z-]{0,12}$","Usernames created by agents (i3694canary, i871-probe, i1040probe)",Bitrise incident report v1.6,2026-11-19,medium,hunt,
 fingerprint,http.favicon.hash:-576220750,ARTEX console favicon (15086 bytes),ARTEX source; ReversingLabs,2026-11-18,high,hunt-internal,Shodan mmh3 of the shipped favicon.ico
 fingerprint,8b567c0244f2dbee787165aea9c4ddabaaafb0fdb3b29899ac898c60a589856b,SHA-256 of the console favicon.ico,ARTEX source,2026-10-08,high,hunt-internal,
-fingerprint,"title:ARTEX — 自主渗透测试控制台",Console page title,ARTEX source,2026-10-08,high,hunt-internal,
+fingerprint,title:ARTEX — 自主渗透测试控制台,Console page title,ARTEX source,2026-10-08,high,hunt-internal,
 fingerprint,"GET /api/health -> {""ok"":true,""service"":""artex""}",Unauthenticated health endpoint,ARTEX source,2026-10-08,high,hunt-internal,
 fingerprint,tcp/8787 and 127.0.0.1:8788,Console port and intercept proxy port,ARTEX source,2026-10-08,medium,hunt-internal,8787 is also RStudio Server's default
 fingerprint,http.favicon.hash:-1356779733,AntiFox fork favicon,ReversingLabs,2026-11-18,medium,hunt-internal,

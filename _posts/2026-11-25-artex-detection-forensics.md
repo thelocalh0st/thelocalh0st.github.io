@@ -4,7 +4,7 @@ date: 2026-11-25 00:30:00 +0530
 categories: [Resources, DFIR]
 comments: true
 pin: true
-description: "What ARTEX is, read from its own source code; why WAFs let it through; the strings, behaviours and attack order that give it away; how to check months of your own logs for it; and what to collect when it got in. With a paste-and-hunt log tool, a Python retro-hunter, Sigma, WAF, Splunk and KQL rules, 92 IOCs and an internal console finder."
+description: "What ARTEX is, read from its own source code; why WAFs let it through; the strings, behaviours and attack order that give it away; how to check months of your own logs for it; and what to collect when it got in. With a paste-and-hunt log tool, a Python retro-hunter, Sigma, WAF, Splunk and KQL rules, 89 IOCs and an internal console finder."
 image:
   path: /assets/images/artex/artex-banner.png
   alt: When ARTEX knocks. Hunting the open-source AI attack framework in your web, WAF and identity logs
@@ -189,9 +189,10 @@ I tested it on a synthetic log that replays four published cases inside ordinary
 
 ### The same logic in your SIEM
 
-[`kql_artex_hunts.kql`](/assets/files/artex/kql_artex_hunts.kql) has eleven Sentinel and Defender XDR queries; [`splunk_artex_hunts.spl`](/assets/files/artex/splunk_artex_hunts.spl) has nine Splunk searches on one normalising macro. Elastic users can take Elastic's own rules (detection-rules PR #7211). The core behavioural hunt in KQL:
+[`kql_artex_hunts.kql`](/assets/files/artex/kql_artex_hunts.kql) has eleven Sentinel and Defender XDR queries; [`splunk_artex_hunts.spl`](/assets/files/artex/splunk_artex_hunts.spl) has nine Splunk searches. Every query is self-contained: copy one block and run it. They alert only on ARTEX-specific user agents; generic clients such as `python-requests` and `curl` are left out because they flood results without pointing at ARTEX. Elastic users can take Elastic's own rules (detection-rules PR #7211). The core behavioural hunt in KQL:
 
 ```kusto
+// in the .kql file this query starts with the "let ArtexWeb = () {...};" block; run them together
 ArtexWeb()
 | where TimeGenerated > datetime(2026-08-01)
 | extend Family = case(isempty(UA) or UA == "-", "empty",
@@ -211,7 +212,7 @@ The pack also covers the places web logs do not:
 - **Microsoft Graph activity** from the ConnectWise campaign addresses in the FBI FLASH.
 - **New accounts and apps with agent names**: `i871-probe`, `artex-probe-NNNNN`, `qa_probe_*`.
 - **Servers talking to LLM APIs**, which the FBI says to investigate when unexpected.
-- **An IOC sweep** with [`artex_iocs.csv`](/assets/files/artex/artex_iocs.csv): 92 indicators, each with its source, date, confidence and a use of `block`, `hunt` or `hunt-internal`.
+- **An IOC sweep** with [`artex_iocs.csv`](/assets/files/artex/artex_iocs.csv): 89 indicators, each with its source, date, confidence and a use of `block`, `hunt` or `hunt-internal`.
 
 > Proxy and VPN exits in the IOC list are shared with innocent users. They are marked `hunt`. Block the operator servers and C2 nodes; hunt the rest.
 {: .prompt-warning }
@@ -329,7 +330,7 @@ Everything below, plus the README and the lab log, is in one zip: [**artex-hunti
 | [`kql_artex_hunts.kql`](/assets/files/artex/kql_artex_hunts.kql) | 11 Sentinel and Defender XDR hunts |
 | [`splunk_artex_hunts.spl`](/assets/files/artex/splunk_artex_hunts.spl) | 9 Splunk hunts |
 | [`cloudflare_rules.md`](/assets/files/artex/cloudflare_rules.md), [`aws_waf_artex_rules.json`](/assets/files/artex/aws_waf_artex_rules.json), [`modsecurity_artex.conf`](/assets/files/artex/modsecurity_artex.conf), [`nginx_artex.conf`](/assets/files/artex/nginx_artex.conf), [`haproxy_artex.cfg`](/assets/files/artex/haproxy_artex.cfg) | Edge rules |
-| [`artex_iocs.csv`](/assets/files/artex/artex_iocs.csv) | 92 indicators with source, date, confidence and use |
+| [`artex_iocs.csv`](/assets/files/artex/artex_iocs.csv) | 89 indicators with source, date, confidence and use |
 | [`lab_access.log.gz`](/assets/files/artex/lab_access.log.gz) | The synthetic test log |
 
 ## What I tested, and what I did not

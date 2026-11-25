@@ -1,9 +1,10 @@
 ``` ARTEX Hunting Pack - Splunk hunts - Sujay Adkesar - https://thelocalh0st.com - MIT licence ```
-``` Run each search on its own over 1 August 2026 to now (the FBI FLASH: "since at least August 2026"). ```
-``` Step 0: create a search macro named artex_web with the definition below, adjusted to your indexes. ```
-``` It gives every web, WAF and load-balancer source the same field names: src ua url path status site http_method. ```
+``` Every search is self-contained: copy one block and run it over 1 August 2026 to now (FBI: "since at least August 2026"). ```
+``` Change the first line of each search to your own indexes and sourcetypes. ```
+``` Only ARTEX-specific user agents alert. Generic clients (python-requests, curl, urllib) only count as one family in search 2. ```
 
-``` ===== macro artex_web (Settings > Advanced search > Search macros) ===== ```
+
+``` ===== 1. ARTEX strings: source-code user agents, field user agents, intent numbers, probe paths, webshells ===== ```
 (index=web OR index=waf OR index=proxy) (sourcetype=access_combined OR sourcetype=nginx* OR sourcetype=aws:waf OR sourcetype=aws:elb:accesslogs OR sourcetype=ms:iis* OR sourcetype=cloudflare* OR sourcetype=azure*)
 | eval src=coalesce(src, src_ip, clientip, c_ip, ClientIP, 'httpRequest.clientIp'),
        ua=coalesce(http_user_agent, useragent, cs_User_Agent, ClientRequestUserAgent, user_agent),
@@ -12,10 +13,6 @@
        site=coalesce(site, dest, cs_host, ClientRequestHost),
        http_method=coalesce(http_method, method, cs_method, ClientRequestMethod)
 | eval path=mvindex(split(url, "?"), 0)
-
-
-``` ===== 1. ARTEX strings: source-code user agents, field user agents, intent numbers, probe paths, webshells ===== ```
-`artex_web`
 | where match(ua, "(?i)artex-enrich/|spa-api-recon|artex-selfupdate|^norma/\d|reconprobe/|artexverify|\(artex\)|(probe|pentest|artx|artex)[-_]?i\d{3,6}")
      OR match(url, "(?i)^/zz|/nr\?zz|/artex-[a-z]{0,2}\d{3,}|zzartx|/artx_s\d+\.php|[?&]k=x9f3c2b7e|zz+[-_]?(q[-_])?(random[-_])?no[nt][-_]?exist|nonexistent[-_]xyz|_probe_missing|/nope-\d{3,}")
 | stats count min(_time) as first max(_time) as last dc(site) as hosts values(status) as statuses values(ua) as user_agents by src
@@ -24,7 +21,14 @@
 
 
 ``` ===== 2. User-agent family switching (Elastic's hunt): 3+ families and 20+ requests in one minute ===== ```
-`artex_web`
+(index=web OR index=waf OR index=proxy) (sourcetype=access_combined OR sourcetype=nginx* OR sourcetype=aws:waf OR sourcetype=aws:elb:accesslogs OR sourcetype=ms:iis* OR sourcetype=cloudflare* OR sourcetype=azure*)
+| eval src=coalesce(src, src_ip, clientip, c_ip, ClientIP, 'httpRequest.clientIp'),
+       ua=coalesce(http_user_agent, useragent, cs_User_Agent, ClientRequestUserAgent, user_agent),
+       url=coalesce(url, uri, ClientRequestURI, uri_path."?".uri_query, uri_path, cs_uri_stem."?".cs_uri_query, cs_uri_stem),
+       status=tonumber(coalesce(status, sc_status, EdgeResponseStatus, elb_status_code)),
+       site=coalesce(site, dest, cs_host, ClientRequestHost),
+       http_method=coalesce(http_method, method, cs_method, ClientRequestMethod)
+| eval path=mvindex(split(url, "?"), 0)
 | eval fam=case(isnull(ua) OR ua="" OR ua="-", "empty",
                match(ua, "(?i)arte?x|norma/|spa-api-recon|reconprobe"), "artex",
                match(ua, "(?i)^curl/"), "curl",
@@ -43,7 +47,14 @@
 
 
 ``` ===== 3. Breadth: refused-path fuzzing and hostname spread, per 5 minutes ===== ```
-`artex_web`
+(index=web OR index=waf OR index=proxy) (sourcetype=access_combined OR sourcetype=nginx* OR sourcetype=aws:waf OR sourcetype=aws:elb:accesslogs OR sourcetype=ms:iis* OR sourcetype=cloudflare* OR sourcetype=azure*)
+| eval src=coalesce(src, src_ip, clientip, c_ip, ClientIP, 'httpRequest.clientIp'),
+       ua=coalesce(http_user_agent, useragent, cs_User_Agent, ClientRequestUserAgent, user_agent),
+       url=coalesce(url, uri, ClientRequestURI, uri_path."?".uri_query, uri_path, cs_uri_stem."?".cs_uri_query, cs_uri_stem),
+       status=tonumber(coalesce(status, sc_status, EdgeResponseStatus, elb_status_code)),
+       site=coalesce(site, dest, cs_host, ClientRequestHost),
+       http_method=coalesce(http_method, method, cs_method, ClientRequestMethod)
+| eval path=mvindex(split(url, "?"), 0)
 | bin _time span=5m
 | eval refused_path=if(match(tostring(status), "^40[1345]$"), path, null())
 | stats dc(refused_path) as refused_paths dc(site) as hosts count by _time src
@@ -54,7 +65,14 @@
 
 
 ``` ===== 4. Tester labels that appear on refused requests and vanish on successful ones (Profero) ===== ```
-`artex_web`
+(index=web OR index=waf OR index=proxy) (sourcetype=access_combined OR sourcetype=nginx* OR sourcetype=aws:waf OR sourcetype=aws:elb:accesslogs OR sourcetype=ms:iis* OR sourcetype=cloudflare* OR sourcetype=azure*)
+| eval src=coalesce(src, src_ip, clientip, c_ip, ClientIP, 'httpRequest.clientIp'),
+       ua=coalesce(http_user_agent, useragent, cs_User_Agent, ClientRequestUserAgent, user_agent),
+       url=coalesce(url, uri, ClientRequestURI, uri_path."?".uri_query, uri_path, cs_uri_stem."?".cs_uri_query, cs_uri_stem),
+       status=tonumber(coalesce(status, sc_status, EdgeResponseStatus, elb_status_code)),
+       site=coalesce(site, dest, cs_host, ClientRequestHost),
+       http_method=coalesce(http_method, method, cs_method, ClientRequestMethod)
+| eval path=mvindex(split(url, "?"), 0)
 | eval labelled=if(match(ua, "(?i)authori[sz]ed|bounty|research|pentest|read-?only|(?<!kube-)probe"), 1, 0),
        refused=if(match(tostring(status), "^(401|403|404|405|429)$"), 1, 0),
        ok=if(status>=200 AND status<400, 1, 0)
@@ -64,7 +82,14 @@
 
 
 ``` ===== 5. A client-IP header that changes on nearly every request (Eye Security's rate-limit bypass) ===== ```
-`artex_web`
+(index=web OR index=waf OR index=proxy) (sourcetype=access_combined OR sourcetype=nginx* OR sourcetype=aws:waf OR sourcetype=aws:elb:accesslogs OR sourcetype=ms:iis* OR sourcetype=cloudflare* OR sourcetype=azure*)
+| eval src=coalesce(src, src_ip, clientip, c_ip, ClientIP, 'httpRequest.clientIp'),
+       ua=coalesce(http_user_agent, useragent, cs_User_Agent, ClientRequestUserAgent, user_agent),
+       url=coalesce(url, uri, ClientRequestURI, uri_path."?".uri_query, uri_path, cs_uri_stem."?".cs_uri_query, cs_uri_stem),
+       status=tonumber(coalesce(status, sc_status, EdgeResponseStatus, elb_status_code)),
+       site=coalesce(site, dest, cs_host, ClientRequestHost),
+       http_method=coalesce(http_method, method, cs_method, ClientRequestMethod)
+| eval path=mvindex(split(url, "?"), 0)
 | eval xff=coalesce(x_forwarded_for, http_x_forwarded_for, XForwardedFor), claimed=trim(mvindex(split(xff, ","), 0))
 | where isnotnull(claimed) AND claimed!="-" AND claimed!=""
 | stats dc(claimed) as claimed_ips dc(ua) as user_agents count by src
@@ -72,7 +97,14 @@
 
 
 ``` ===== 6. Join keys: intent numbers and zz markers, across every source and hostname ===== ```
-`artex_web`
+(index=web OR index=waf OR index=proxy) (sourcetype=access_combined OR sourcetype=nginx* OR sourcetype=aws:waf OR sourcetype=aws:elb:accesslogs OR sourcetype=ms:iis* OR sourcetype=cloudflare* OR sourcetype=azure*)
+| eval src=coalesce(src, src_ip, clientip, c_ip, ClientIP, 'httpRequest.clientIp'),
+       ua=coalesce(http_user_agent, useragent, cs_User_Agent, ClientRequestUserAgent, user_agent),
+       url=coalesce(url, uri, ClientRequestURI, uri_path."?".uri_query, uri_path, cs_uri_stem."?".cs_uri_query, cs_uri_stem),
+       status=tonumber(coalesce(status, sc_status, EdgeResponseStatus, elb_status_code)),
+       site=coalesce(site, dest, cs_host, ClientRequestHost),
+       http_method=coalesce(http_method, method, cs_method, ClientRequestMethod)
+| eval path=mvindex(split(url, "?"), 0)
 | rex field=ua "(?i)(?:probe|pentest|artx|artex|audit|scan)[-_]?i(?<intent>\d{3,6})"
 | rex field=url "(?i)(?:probe|pentest|artx|artex|audit|canary|_)[-_]?i(?<intent_url>\d{3,6})"
 | rex field=url "(?i)(?<![a-z0-9])i(?<intent_url2>\d{3,6})[-_]?(?:canary|probe)"
@@ -85,7 +117,14 @@
 
 
 ``` ===== 7. Pivot: every address that used the exact user agent of a confirmed hit ===== ```
-`artex_web`
+(index=web OR index=waf OR index=proxy) (sourcetype=access_combined OR sourcetype=nginx* OR sourcetype=aws:waf OR sourcetype=aws:elb:accesslogs OR sourcetype=ms:iis* OR sourcetype=cloudflare* OR sourcetype=azure*)
+| eval src=coalesce(src, src_ip, clientip, c_ip, ClientIP, 'httpRequest.clientIp'),
+       ua=coalesce(http_user_agent, useragent, cs_User_Agent, ClientRequestUserAgent, user_agent),
+       url=coalesce(url, uri, ClientRequestURI, uri_path."?".uri_query, uri_path, cs_uri_stem."?".cs_uri_query, cs_uri_stem),
+       status=tonumber(coalesce(status, sc_status, EdgeResponseStatus, elb_status_code)),
+       site=coalesce(site, dest, cs_host, ClientRequestHost),
+       http_method=coalesce(http_method, method, cs_method, ClientRequestMethod)
+| eval path=mvindex(split(url, "?"), 0)
 | search ua="PASTE THE USER AGENT HERE"
 | stats count min(_time) as first max(_time) as last dc(site) as hosts values(status) as statuses by src
 | convert ctime(first) ctime(last)
